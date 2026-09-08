@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/ilb-oa/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/ilb-oa/_icones/app-site-192.png">
+<link rel="apple-touch-icon" href="/ilb-oa/_icones/app-site-512.png">
+<meta name="theme-color" content="#131110">
+<title>Introdução ao Laboratório · Licenciatura em Física · IFMG Ouro Preto</title>
+<style>
+  /* Paleta FE — ver 1_Biblioteca/Logos/FE/paleta-fe.md */
+  :root { --epi: #3E8E5A; --aco: #7FB2D6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0d0d; color: #e8e8e8; font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px; }
+  h1 { font-family: 'Courier New', monospace; font-size: 1.6rem; color: var(--epi); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 2px solid var(--epi); padding-bottom: 12px; margin-bottom: 8px; }
+  .sub { display: flex; align-items: flex-start; gap: 24px; border: 1px solid #444; padding: 24px 26px; margin-bottom: 44px; font-size: 0.95rem; color: #c4c4c4; }
+  .sub .marcas { flex: 0 0 100px; display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 4px 0 0; }
+  .sub .marca { width: 100px; height: 100px; }
+  .sub .vagoneta { width: 100px; height: auto; display: block; }
+  .sub .sucesso { color: #3E8E5A; font-weight: bold; font-family: 'Courier New', monospace; font-size: 1.12rem; margin-top: 12px; }
+  .sub p { margin-bottom: 11px; }
+  .sub p:last-child { margin-bottom: 0; }
+  .sub strong { color: var(--epi); font-weight: normal; }
+  .intro-t { font-family: 'Courier New', monospace; font-size: 1.05rem; color: var(--aco); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 14px; }
+  h2 { font-family: 'Courier New', monospace; font-size: 1.05rem; color: #fff; margin: 32px 0 12px; }
+  ul { list-style: none; }
+  li { margin-bottom: 10px; }
+  a.oa { display: block; padding: 14px 18px; border: 1px solid #444; color: #e8e8e8; text-decoration: none; font-family: 'Courier New', monospace; font-size: 0.95rem; }
+  a.oa:hover { border-color: var(--epi); color: var(--epi); }
+  a.oa .tag { color: var(--aco); font-size: 0.8rem; margin-left: 10px; }
+  a.oa.extra { border-style: dashed; }
+  a.oa.extra .tag { color: var(--epi); }
+  a.oa .oa-icone { vertical-align: middle; margin: -4px 10px -2px 0; }
+  .footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid #333; font-size: 0.78rem; color: #888; font-family: 'Courier New', monospace; }
+  @media (max-width: 560px) {
+    .sub { flex-direction: column; align-items: center; gap: 16px; padding: 20px 18px; }
+    .sub .marcas { flex-basis: 76px; }
+    .sub .marca { width: 76px; height: 76px; }
+    .sub .vagoneta { width: 76px; }
+  }
+
+/* ABAS:CSS-INICIO */
+/* ==== ABAS LATERAIS (padrao dos TT digitais) ==== */
+.aba-toggle { position: fixed; left: 0; z-index: 998; background: #1a1b1f; border: 1px solid #444; border-left: none; color: #999; font-size: .7rem; padding: 8px 10px; cursor: pointer; font-family: 'Courier New', monospace; writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 1px; text-transform: uppercase; transition: color .15s; }
+.aba-toggle:hover { color: #3E8E5A; }
+#abaSiteT { top: 56px; }
+#abaMetodoT { top: 120px; }
+#abaMusicaT { top: 208px; }
+#abaIneditismoT { top: 296px; }
+#abaCreditosT { top: 432px; }
+.aba-painel { position: fixed; top: 0; left: 0; z-index: 997; width: 380px; max-width: 88vw; height: 100vh; overflow-y: auto; background: #1a1b1f; border-right: 1px solid #444; padding: 24px 22px 24px 42px; transform: translateX(-100%); transition: transform .25s; font-size: .92rem; color: #c4c4c4; line-height: 1.6; }
+.aba-painel.open { transform: translateX(0); }
+.aba-painel h3 { font-family: 'Courier New', monospace; font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; color: #3E8E5A; border-bottom: 1px solid #444; padding-bottom: 8px; margin-bottom: 14px; }
+.aba-painel p { margin-bottom: 11px; }
+.aba-painel strong { color: #3E8E5A; font-weight: normal; }
+.aba-painel em { color: #ddd; }
+.aba-painel a.aba-btn { display: block; margin: 10px 0; padding: 11px 14px; border: 1px solid #444; color: #e8e8e8; text-decoration: none; font-family: 'Courier New', monospace; font-size: .85rem; }
+.aba-painel a.aba-btn:hover { border-color: #3E8E5A; color: #3E8E5A; }
+.aba-painel .aba-nota { font-size: .8rem; color: #888; }
+.aba-painel ol { margin: 0 0 14px 0; padding-left: 22px; }
+.aba-painel ol li { margin-bottom: 7px; font-size: .88rem; }
+.aba-painel ul.apoio { list-style: none; margin: 0 0 14px 0; padding-left: 22px; border-left: 1px dashed #444; }
+.aba-painel ul.apoio li { margin-bottom: 7px; font-size: .88rem; }
+#abaMetodo b { color: #3E8E5A; }
+#abaMusica b { color: #3E8E5A; }
+.aba-painel .parada-t { font-family: 'Courier New', monospace; font-size: .82rem; letter-spacing: 1px; color: #7FB2D6; font-weight: 700; margin: 20px 0 6px; }
+.aba-painel .parada-n { font-size: 1.05rem; text-transform: uppercase; }
+.aba-painel .parada-q { text-transform: lowercase; }
+.aba-painel .parada-porque { color: #ddd; font-size: .88rem; margin-bottom: 11px; }
+.aba-painel .aba-sec { font-family: 'Courier New', monospace; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #7FB2D6; border-bottom: 1px solid #444; padding-bottom: 8px; margin: 20px 0 12px; }
+.aba-painel .aba-tags { display: flex; gap: 8px; margin: 0 0 14px; flex-wrap: wrap; }
+.aba-painel .aba-tag { background: #7FB2D6; color: #14120d; font-weight: 700; font-size: .72rem; padding: 4px 10px; text-transform: uppercase; letter-spacing: 1px; }
+.aba-painel b { color: #7FB2D6; font-weight: 700; }
+.aba-painel .aba-cargo { font-family: 'Courier New', monospace; font-size: .8rem; font-weight: 700; letter-spacing: 1px; color: #7FB2D6; border-bottom: 1px solid #444; padding-bottom: 3px; margin: 14px 0 4px; }
+.aba-painel .aba-nome { margin-bottom: 0; color: #ddd; }
+.aba-painel .regra { border: 1px solid #3E8E5A; padding: 12px 14px; margin: 14px 0 4px; font-size: .88rem; }
+@media (max-width: 800px) {
+  /* gutter: as abas fixas nao cobrem o conteudo em tela estreita */
+  .wrap { padding-left: 46px; }
+  .aba-toggle { font-size: .6rem; padding: 6px 6px; }
+}
+/* ABAS:CSS-FIM */
+
+/* METODO:CSS-INICIO */
+/* Paradas e numeracao do Metodo de Estudo (metodo_estudo.py, PARADAS_FE) */
+  .parada { font-family: 'Courier New', monospace; font-size: .95rem; font-weight: bold; color: #fff; text-transform: uppercase; letter-spacing: .1em; margin: 26px 0 10px; border-left: 5px solid var(--epi); background: rgba(127,178,214,.14); padding: 9px 12px; }
+  .parada span { color: var(--aco); text-transform: none; letter-spacing: 0; font-weight: normal; font-size: .95rem; }
+  /* Fontes azuis (var(--aco)) maiores em proporcao reforcada (pedido do autor, 2026-08-28) */
+  a.oa .tag { font-size: .95rem; }
+  /* No celular a parada e o marco visual da lista: fonte maior e o "quando" desce de linha */
+  @media (max-width: 560px) {
+    .parada { font-size: 1.05rem; padding: 11px 12px; margin: 28px 0 12px; }
+    .parada span { display: block; margin-top: 3px; }
+    /* Linhas de OA maiores no celular (pedido do autor, 2026-08-28): nome legivel
+       e a tag (vale nota - quando - duracao) numa linha propria, alinhada ao nome. */
+    a.oa, .oa.offline { font-size: 1.08rem; line-height: 1.5; }
+    .oa.sub { font-size: 1.02rem; }
+    a.oa .tag, .oa.offline .tag { display: block; font-size: 1.02rem; margin-left: 2.2em; margin-top: 2px; }
+    a.oa.extra .tag { margin-left: 0; }
+    .parada span { font-size: 1rem; }
+  }
+  .oa .num { display: inline-block; min-width: 1.6em; color: var(--epi); }
+  .oa.sub { font-size: .92rem; }  /* sem recuo: todos os OAs alinhados a esquerda (decisao 2026-08-19) */
+  .oa.offline { display: block; padding: 14px 18px; border: 1px dashed #444; color: #9a9a9a; font-family: 'Courier New', monospace; }
+  .oa.offline .num { color: #9a9a9a; }
+  .oa.offline .tag { color: #7f7f7f; font-size: .8rem; margin-left: 10px; }
+/* Navegacao das trilhas: atalhos fixos + sanfona por trilha (menos rolagem no celular) */
+  .trilha-nav { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0; margin-bottom: 14px; background: #0d0d0d; border-bottom: 1px solid #333; }
+  .trilha-nav a { font-family: 'Courier New', monospace; font-size: .8rem; color: var(--epi); text-decoration: none; border: 1px solid #444; padding: 5px 10px; }
+  .trilha-nav a:hover { border-color: var(--epi); }
+  details.trilha { border: 1px solid #444; margin-bottom: 12px; scroll-margin-top: 64px; }
+  @media (max-width: 560px) { details.trilha { scroll-margin-top: 108px; } } /* a barra de atalhos quebra em 2 linhas */
+  details.trilha[open] { border-color: var(--aco); }
+  details.trilha > summary { cursor: pointer; list-style: none; padding: 15px 16px; font-family: 'Courier New', monospace; font-size: 1.15rem; color: #fff; }
+  details.trilha > summary::-webkit-details-marker { display: none; }
+  details.trilha > summary::before { content: '+'; color: var(--epi); display: inline-block; min-width: 1.4em; }
+  details.trilha[open] > summary::before { content: '\2212'; }
+  details.trilha > summary:hover { color: var(--epi); }
+  details.trilha > .trilha-corpo { padding: 0 14px 14px; }
+  details.trilha .parada:first-child { margin-top: 4px; }
+  /* Titulo da trilha maior no celular — precisa vir DEPOIS da regra-base do summary na cascata */
+  @media (max-width: 560px) { details.trilha > summary { font-size: 1.28rem; } }
+/* METODO:CSS-FIM */
+
+</style>
+</head>
+<body>
+<!-- ABAS:INICIO -->
+<!-- ABAS LATERAIS -->
+<button class="aba-toggle" id="abaSiteT">Site</button>
+<aside class="aba-painel" id="abaSite">
+  <h3>Site</h3>
+  <p>Endereço: <strong>nidecop-jafb.github.io/ilb-oa</strong> — abre direto, sem senha e sem aplicativo. Nos OAs, a identificação é pelo <strong>RA</strong> (7 dígitos) com confirmação.</p>
+  <a class="aba-btn" href="https://nidecop-jafb.github.io/fe1-oa/">Disciplina irmã: FE1 — Física Experimental 1</a>
+</aside>
+
+<button class="aba-toggle" id="abaMetodoT">Método</button>
+<aside class="aba-painel" id="abaMetodo">
+  <h3>Método de Estudo</h3>
+  <p>A ordem não é burocracia: ela segue como o cérebro aprende — preparação (pergunta antes da resposta), construção ativa (recuperar em vez de reler) e consolidação (revisão no mesmo dia e revisões espaçadas, com o sono fazendo a parte dele).</p>
+  <p class="parada-t"><span class="parada-n">Pré-Lab</span> · <span class="parada-q">fazer em casa, antes da aula de bancada</span></p>
+  <p class="parada-porque">Preparar o experimento antes de tocar no equipamento: chegar à bancada sabendo o que será medido, com qual instrumento e com quais cuidados.</p>
+  <ol>
+    <li><b>Ponto de Partida (PP)</b> — vale nota · antes do Lab · 10 min<br><span class="aba-nota">Responder antes de estudar cria erro produtivo: o cérebro marca a lacuna e passa a procurar a resposta durante todo o Pré-Lab. Testar antes de ensinar aumenta o que fica depois — e você vai usar isso na sua sala de aula.</span></li>
+    <li><b>Resumo em Áudio (MD)</b> — ouvir · 3 a 5 min<br><span class="aba-nota">O áudio monta o esqueleto da prática antes da leitura. Com o mapa geral pronto, a memória de trabalho gasta menos esforço com a estrutura e sobra para o detalhe do procedimento.</span></li>
+    <li><b>Texto Temático (TT)</b> — ler · a prática explicada<br><span class="aba-nota">Leitura profunda sobre um esquema já ativado: ouvir e depois ler codifica o mesmo conteúdo por duas vias e deixa dois caminhos de recuperação.</span></li>
+    <li><b>Simulações (SM)</b> — explorar · simulações<br><span class="aba-nota">Manipular a simulação antes da bancada: errar sem risco e ver o invisível. O experimento virtual prepara o gesto do experimento real.</span></li>
+    <li><b>Testinho (TN)</b> — vale nota · antes do Lab · 10 min<br><span class="aba-nota">Fecha o Pré-Lab medindo segurança e procedimento, com correção na hora. Erro corrigido na véspera vira aprendizagem; erro descoberto na bancada, risco.</span></li>
+  </ol>
+  <p class="aba-nota">Materiais de apoio desta parada (sem número no caminho):</p>
+  <ul class="apoio">
+    <li><b>Cartões Didáticos (CD)</b> — ler · revisão ativa<br><span class="aba-nota">Recuperação ativa: virar o cartão e tentar responder antes de conferir custa esforço — e é esse esforço que fixa. Poucos minutos por dia rendem mais do que uma sessão longa de releitura.</span></li>
+    <li><b>Mapa Conceitual (MC)</b> — ler · questões conceituais<br><span class="aba-nota">O mapa liga cada conceito ao instrumento que o mede e mostra a estrutura inteira da prática de uma vez. Ver como as peças se conectam organiza o que a leitura acabou de construir.</span></li>
+    <li><b>Inventário de Equipamento (IE)</b> — o que vai na bancada<br><span class="aba-nota">Reconhecer cada instrumento pelo nome, pela função e pela menor divisão antes de manuseá-lo. Quem chega sabendo o que vai na bancada gasta os 100 minutos do Lab medindo, não descobrindo.</span></li>
+    <li><b>Checklist de Segurança (CS)</b> — obrigatório · antes da bancada<br><span class="aba-nota">Segurança é pré-condição, não etapa: quem entra sabendo os cuidados e os EPIs da prática libera a atenção para o experimento — e protege a si e aos colegas de bancada.</span></li>
+  </ul>
+  <p class="parada-t"><span class="parada-n">Lab</span> · <span class="parada-q">na bancada, com o professor · 100 min</span></p>
+  <p class="parada-porque">Construir o conhecimento com as mãos: montar, medir e registrar — com o professor sustentando o passo que você ainda não dá sozinho.</p>
+  <ol>
+    <li><b>Roteiro de Bancada (RB)</b> — execução · registrar os dados<br><span class="aba-nota">Registrar a medição com as próprias mãos, no momento em que ela acontece: o que a gente gera e anota fica mais do que o que a gente copia. A folha pode ser impressa para levar à bancada; o envio é digital.</span></li>
+    <li><b>Apresentação do Lab (AP)</b> — roteiro dos 100 min · rever depois<br><span class="aba-nota">Atenção conjunta e fio condutor da sessão: o professor projeta o roteiro e sustenta o passo que você ainda não dá sozinho — e os slides ficam disponíveis para rever depois.</span></li>
+    <li><b>Infográficos de Bancada (IG)</b> — painel e consultas · durante a prática<br><span class="aba-nota">Consulta visual no momento da dúvida: a resposta chega enquanto o problema ainda está na mão — e é assim que ela gruda.</span></li>
+    <li><b>Provinha (PR)</b> — vale nota · fechamento do Lab<br><span class="aba-nota">Teste curto logo após a prática: consolida enquanto o traço ainda está fresco e mostra, ali mesmo, o que precisa voltar.</span></li>
+  </ol>
+  <p class="parada-t"><span class="parada-n">Pós-Lab</span> · <span class="parada-q">a partir do mesmo dia da prática</span></p>
+  <p class="parada-porque">Transformar dados em conclusão. A memória não se fixa na bancada, e sim depois — em boa parte durante o sono.</p>
+  <ol>
+    <li><b>Relatório Mínimo (RM)</b> — vale nota · até 1 dia após o Lab · 1 página<br><span class="aba-nota">O que é revisto logo depois da prática entra na fila de consolidação da noite. É o "aula dada, aula estudada hoje" de Piazzi, aplicado aos dados da bancada — com um dia de folga para quem sai tarde do laboratório.</span></li>
+    <li><b>Relatório Completo (RC)</b> — vale nota · até 6 dias após o Lab<br><span class="aba-nota">Repetição espaçada com elaboração: voltar aos dados quando a lembrança já começou a cair rende mais — e escrever a análise completa é gerar, não copiar.</span></li>
+  </ol>
+  <p class="aba-nota">Materiais de apoio desta parada (sem número no caminho):</p>
+  <ul class="apoio">
+    <li><b>Desafio Pedagógico (DX)</b> — opcional · desafio<br><span class="aba-nota">Aprofundamento para quem quer ir além: um problema de análise de dados que pede o método da trilha aplicado a uma situação nova. Fora do caminho numerado, de propósito — é convite, não obrigação.</span></li>
+  </ul>
+  <div class="regra"><strong>Não pule nenhum objeto de aprendizagem. Se pulou, volte.</strong><br>Cada passo prepara o terreno do seguinte: sem o Ponto de Partida a leitura não encontra pergunta; sem o Pré-Lab a bancada vira receita seguida às cegas; sem o Relatório Mínimo os dados esfriam antes de virar conclusão. Pular um objeto de aprendizagem não adianta a trilha — atrasa. Se você pulou, volte ao passo que ficou para trás e siga dali.</div>
+</aside>
+
+<button class="aba-toggle" id="abaMusicaT">Música</button>
+<aside class="aba-painel" id="abaMusica">
+  <h3>Música</h3>
+  <p>Por que estudar ouvindo? Miguel Nicolelis responde em <em>O Verdadeiro Criador de Tudo</em>: ciência e arte saem do mesmo lugar — o cérebro humano. E Pierluigi Piazzi, em <em>Aprendendo Inteligência</em>, acrescenta a parte prática: música sem letra não disputa com a leitura as áreas da linguagem. A palavra cantada rouba a palavra lida; a música instrumental sustenta, e some.</p>
+  <p>Daí a regra do projeto — <strong>uma trilha, uma música</strong>: <strong>ler, escrever e medir</strong> ouvindo música instrumental. A peça de cada trilha aparece na barra do topo dos OAs e na aba Música do Texto Temático.</p>
+  <div class="aba-tags"><span class="aba-tag">Ler</span><span class="aba-tag">Escrever</span><span class="aba-tag">Medir</span></div>
+  <div class="aba-sec">O acervo — as oito playlists</div>
+  <p><b>1 · Baden Powell</b> — nos Afro-sambas cabem a bossa, o candomblé e a harmonia de câmara. Somar mundos é o ofício de quem estuda Física: a bancada mede, o caderno deduz, a mina explica por que importa.</p>
+  <p><b>2 · Yamandu Costa</b> — improvisa porque conhece a estrutura até o último traste. Improviso não é sorte: é o nome da liberdade de quem estudou.</p>
+  <p><b>3 · Orquestra Ouro Preto</b> — no ano 2000, numa cidade de igrejas barrocas e de uma escola de minas, o professor Ronaldo R. B. Toffolo e o compositor e bandoneonista argentino Rufo Herrera decidiram que Ouro Preto merecia uma orquestra sua. Deu certo: hoje ela leva a música brasileira ao repertório de concerto — de <em>Ritmos Brasileiros</em> às óperas <em>Auto da Compadecida</em> e <em>Hilda Furacão</em> — e forma jovens músicos na Academia Jovem e no Núcleo de Apoio a Bandas.</p>
+  <p>É, literalmente, uma casa: dos filhos de Ronaldo, Rodrigo rege a orquestra, Rodolfo é o violino solo e as gêmeas Marina e Mara também estão nos violinos.</p>
+  <p>E é a casa desta escola. Ronaldo R. B. Toffolo foi aluno, professor e diretor-geral da Escola Técnica Federal de Ouro Preto — a instituição que hoje é o IFMG Campus Ouro Preto — e defende, hoje como então, a audição de música instrumental como hábito saudável. A orquestra da cidade nasceu, em boa parte, dentro de casa. Estudar Física com ela ao fundo é estudar ouvindo a própria escola.</p>
+  <p><b>4 · Filarmônica de Minas Gerais</b> — noventa músicos, um único referencial de tempo, erro na casa dos milissegundos: ordem de grandeza, sincronia, medida.</p>
+  <p><b>5 · J. S. Bach</b> — a fuga é a definição de sistema físico: muitas vozes, uma lei só.</p>
+  <p><b>6 · W. A. Mozart</b> — nada sobra, nada falta. Elegância é saber o que pode ser retirado sem quebrar o todo — no pentagrama e na montagem experimental.</p>
+  <p><b>7 · L. van Beethoven</b> — de quatro notas, uma sinfonia; de duas ou três letras, uma lei. Muda a escala; a lei, não. E a Nona, composta já na surdez, lembra: o modelo vem antes da medida.</p>
+  <p><b>8 · Marco Antônio Araújo</b> — violoncelista da Sinfônica de Minas e compositor que fez o barroco mineiro, a modinha e a seresta caberem no rock progressivo. A obra, interrompida aos 36 anos, ficou inacabada — e é isso que ela ensina a quem mede: nenhum experimento termina; toda medida com incerteza é um convite à medida seguinte.</p>
+  <p class="aba-nota">Na ILB, cinco playlists giram em duas voltas exatas pelas trilhas T01-T10 — Baden Powell, Yamandu Costa, Orquestra Ouro Preto, Filarmônica de Minas Gerais e Marco Antônio Araújo. A T0A fica fora do ciclo, com Bach.</p>
+  <div class="aba-sec">Ampliando o acervo — em preparação</div>
+  <p><b>Raphael Rabello</b> (Petrópolis, 1962 — Rio de Janeiro, 1995) — primeiro registro profissional aos treze anos; discípulo de Dino 7 Cordas e parceiro de Radamés Gnattali, levou o violão de sete cordas do acompanhamento ao centro do palco. Morreu aos 32 anos, deixando uma obra relevante e inacabada.</p>
+  <a class="aba-btn" href="https://music.youtube.com/search?q=Bach+Concerto+Italiano+BWV+971+cravo" target="_blank" rel="noopener">ILB-T0A · Bach — Concerto Italiano (BWV 971)</a>
+</aside>
+
+<button class="aba-toggle" id="abaIneditismoT">Ineditismo</button>
+<aside class="aba-painel" id="abaIneditismo">
+  <h3>Ineditismo</h3>
+  <p>A Introdução ao Laboratório é a primeira disciplina experimental da Licenciatura em Física e a única da matriz sem vínculo com uma disciplina teórica. Sua função é propedêutica: instalar o método que os quatro laboratórios seguintes vão supor pronto.</p>
+  <p>Aqui o experimento é <strong>veículo</strong>, não objeto. Mede-se para aprender a medir — avaliar e expressar incertezas, apresentar tabelas e gráficos, ajustar uma curva aos dados. A Mecânica Clássica entra como campo de aplicação porque é o que se pode medir no 2.º período, com montagens simples e a física que se traz da educação básica.</p>
+  <p>Cada trilha tem três paradas. O <strong>Pré-Lab</strong>, feito em casa, prepara o experimento e a previsão. O <strong>Lab</strong> é a bancada, com o Roteiro de Bancada na mão. O <strong>Pós-Lab</strong> transforma o dado bruto em relatório — que é onde a medida vira conhecimento comunicável.</p>
+  <p>Até onde a pesquisa do autor alcançou, este é o primeiro conjunto de Trilhas de Aprendizagem para Introdução ao Laboratório de Física num curso de Licenciatura no Brasil. Os manuais disponíveis organizam-se por experimento; aqui a organização é pelo método de medida, que se repete em todas as trilhas enquanto o experimento muda.</p>
+  <p>E porque quem estuda aqui vai ensinar Física, cada trilha faz uma pergunta a mais: o que desta bancada caberia numa sala de aula de ensino médio?</p>
+  <p>Boas-vindas — e sucesso na sua caminhada pelas Trilhas de Aprendizagem de Introdução ao Laboratório.</p>
+</aside>
+
+<button class="aba-toggle" id="abaCreditosT">Créditos</button>
+<aside class="aba-painel" id="abaCreditos">
+  <h3>Créditos</h3>
+  <p class="aba-cargo">Reitor</p>
+  <p class="aba-nome">Rafael Bastos Teixeira</p>
+  <p class="aba-cargo">Pró-Reitor de Ensino</p>
+  <p class="aba-nome">Mário Luiz Viana Alvarenga</p>
+  <p class="aba-cargo">Diretor-Geral do Campus Ouro Preto</p>
+  <p class="aba-nome">Reginato Fernandes dos Santos</p>
+  <p class="aba-cargo">Diretora de Ensino</p>
+  <p class="aba-nome">Talita Valadares</p>
+  <p class="aba-cargo">Coordenador da Área de Física</p>
+  <p class="aba-nome">Lázaro Souza Lima</p>
+  <p class="aba-cargo">Presidente do Colegiado do Curso de Licenciatura em Física</p>
+  <p class="aba-nome">Daniel da Mota Neri</p>
+  <p class="aba-cargo">Vice-Presidente do Colegiado do Curso de Licenciatura em Física</p>
+  <p class="aba-nome">Daniel Bretas Roa</p>
+  <p class="aba-cargo">Autor da Trilha</p>
+  <p class="aba-nome">Julio Azevedo — Professor do Ensino Técnico e Tecnológico do IFMG, atuando na Área de Física do campus Ouro Preto desde 1985. Criador do Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) em 2016. Ex-aluno do Curso de Engenharia de Minas e do Curso de Física, ambos da UFOP.</p>
+
+  <p class="aba-cargo">Edição</p>
+  <p class="aba-nome">1.ª edição — Ouro Preto, 2026</p>
+</aside>
+<!-- ABAS:FIM -->
+
+
+<div class="wrap">
+  <h1>Introdução ao Laboratório · Licenciatura em Física</h1>
+  <div class="sub">
+    <figure class="marcas">
+      <svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
+        <g fill="none" stroke="#3E8E5A" stroke-width="3">
+          <ellipse cx="60" cy="52" rx="46" ry="18"/>
+          <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+          <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+        </g>
+        <g fill="#3E8E5A">
+          <circle cx="53" cy="47" r="7"/>
+          <circle cx="67" cy="47" r="7"/>
+          <circle cx="60" cy="58" r="9"/>
+        </g>
+        <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+          <line x1="26" y1="110" x2="94" y2="110"/>
+          <line x1="30" y1="110" x2="30" y2="104"/>
+          <line x1="40" y1="110" x2="40" y2="104"/>
+          <line x1="50" y1="110" x2="50" y2="104"/>
+          <line x1="60" y1="110" x2="60" y2="98"/>
+          <line x1="70" y1="110" x2="70" y2="104"/>
+          <line x1="80" y1="110" x2="80" y2="104"/>
+          <line x1="90" y1="110" x2="90" y2="104"/>
+        </g>
+      </svg>
+    </figure>
+    <section>
+      <h2 class="intro-t">Trilhas de Aprendizagem</h2>
+      <p>Trilhas de Aprendizagem são percursos de estudo construídos para orientar, apoiar e avaliar a sua caminhada pelo mundo da Física.</p>
+      <p>O endereço do site, a contribuição da música instrumental durante o estudo e os créditos estão nas <strong>abas da lateral esquerda</strong>.</p>
+      <p>Escolha uma trilha e faça os objetos de aprendizagem <strong>na ordem numerada</strong>, sem pular nenhum — a ordem segue como o cérebro aprende. Se pulou, volte.</p>
+      <p class="sucesso">Sucesso no seu estudo.</p>
+    </section>
+  </div>
+
+  <!-- TRILHAS:INICIO -->
+
+  <!-- TRILHAS:FIM -->
+
+  
+
+  <h2>Sugest&otilde;es de aprimoramento</h2>
+  <ul>
+    <li><a class="oa extra" href="sugestoes/">Envie a sua sugest&atilde;o &mdash; por texto ou &aacute;udio<span class="tag">formul&aacute;rio &middot; estudantes e equipe &middot; Pedagogia e Napnee</span></a></li>
+  </ul>
+
+  <div class="footer">
+    IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) · Primeira edição · 2026
+  </div>
+</div>
+
+
+<script>
+/* Navegacao local (file://): o navegador nao abre o index.html sozinho em
+   href de pasta ("t0a/pp/") — o clique cai numa pasta vazia. Aqui, SO quando
+   a pagina e aberta do disco, os links internos terminados em / ganham o
+   index.html explicito. No site publicado nada muda. */
+if (location.protocol === 'file:') {
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var h = links[i].getAttribute('href');
+      if (/^(https?:|mailto:|#)/.test(h)) continue;
+      var m = h.match(/^(.*\/)(#.*)?$/);
+      if (m) links[i].setAttribute('href', m[1] + 'index.html' + (m[2] || ''));
+    }
+  });
+}
+</script>
+<!-- ABAS-JS:INICIO -->
+<script>
+/* Abas laterais: uma aberta por vez; clique fora fecha. */
+(function () {
+  var pares = [['abaSiteT', 'abaSite'],
+               ['abaMetodoT', 'abaMetodo'],
+               ['abaMusicaT', 'abaMusica'],
+               ['abaIneditismoT', 'abaIneditismo'],
+               ['abaCreditosT', 'abaCreditos']];
+  /* Espacamento UNIFORME entre as linguetas: o rotulo e vertical e a altura
+     real varia com a fonte do navegador — medir e empilhar com folga fixa
+     garante o que a estimativa em CSS (12px por letra) so aproximava. */
+  var y = 56;
+  pares.forEach(function (p) {
+    var t = document.getElementById(p[0]);
+    t.style.top = y + 'px';
+    y += t.offsetHeight + 14;
+  });
+  var abas = pares.map(function (p) {
+    return [document.getElementById(p[0]), document.getElementById(p[1])];
+  });
+  abas.forEach(function (par) {
+    par[0].addEventListener('click', function () {
+      abas.forEach(function (outro) {
+        if (outro[1] === par[1]) { outro[1].classList.toggle('open'); }
+        else { outro[1].classList.remove('open'); }
+      });
+    });
+  });
+  document.addEventListener('click', function (e) {
+    abas.forEach(function (par) {
+      if (!par[1].contains(e.target) && e.target !== par[0]) {
+        par[1].classList.remove('open');
+      }
+    });
+  });
+})();
+</script>
+<!-- ABAS-JS:FIM -->
+</body>
+</html>
