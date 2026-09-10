@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILB · T0B · Sistema Internacional de Unidades — Texto Temático v1</title>
+<style>
+/* ═══ DESIGN SYSTEM: BRUTALISMO CIENTIFICO ═══ */
+:root {
+  --azul: oklch(0.65 0.22 45);
+  --azul-claro: oklch(0.72 0.19 45);
+  --azul-bg: oklch(0.28 0.05 45);
+  --ouro: oklch(0.72 0.13 152);
+  --ouro-claro: oklch(0.25 0.04 152);
+  --verde: oklch(0.85 0.18 95);
+  --verde-claro: oklch(0.25 0.04 95);
+  --erro: oklch(0.6 0.22 25);
+  --cinza: oklch(0.55 0.02 260);
+  --cinza-claro: oklch(0.18 0.02 260);
+  --cinza-borda: oklch(0.38 0.02 260);
+  --texto: oklch(0.93 0 0);
+  --branco: oklch(0.93 0 0);
+  --superficie: oklch(0.24 0.02 260);
+  --fundo: oklch(0.12 0.02 260);
+  --input-bg: oklch(0.2 0.02 260);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Space Mono', 'Cascadia Code', 'Consolas', monospace;
+  --serif: 'Georgia', 'Cambria', 'Times New Roman', serif;
+  --fs-base: 1.15rem;
+}
+
+/* ═══ LIGHT THEME ═══ */
+[data-theme="light"] {
+  --azul: oklch(0.50 0.22 45);
+  --azul-claro: oklch(0.55 0.19 45);
+  --azul-bg: oklch(0.90 0.03 45);
+  --ouro: oklch(0.48 0.12 152);
+  --ouro-claro: oklch(0.92 0.03 152);
+  --verde: oklch(0.55 0.18 95);
+  --verde-claro: oklch(0.90 0.04 95);
+  --erro: oklch(0.50 0.22 25);
+  --cinza: oklch(0.50 0.02 260);
+  --cinza-claro: oklch(0.92 0.02 260);
+  --cinza-borda: oklch(0.75 0.02 260);
+  --texto: oklch(0.20 0 0);
+  --branco: oklch(0.20 0 0);
+  --superficie: oklch(0.95 0.01 260);
+  --fundo: oklch(0.98 0.005 260);
+  --input-bg: oklch(0.93 0.01 260);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.8;
+  min-height: 100vh;
+  padding-bottom: 40px;
+  border-radius: 0;
+}
+
+/* ═══ PROGRESS BAR ═══ */
+.progress-top { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 1000; background: oklch(0.2 0.02 260); }
+[data-theme="light"] .progress-top { background: oklch(0.88 0.02 260); }
+.progress-top .bar { height: 100%; background: var(--ouro); width: 0%; transition: width 0.1s; }
+
+/* ═══ TOOLBAR (font size + theme) ═══ */
+.toolbar {
+  position: fixed; top: 3px; right: 0; z-index: 999;
+  display: flex; gap: 2px; padding: 6px 10px;
+  background: var(--superficie); border-bottom: 1px solid var(--cinza-borda); border-left: 1px solid var(--cinza-borda);
+}
+.toolbar button {
+  background: none; border: 1px solid var(--cinza-borda); color: var(--cinza);
+  font-family: var(--font); font-size: 0.75rem; padding: 4px 8px; cursor: pointer;
+  border-radius: 0; transition: color 0.15s, border-color 0.15s;
+}
+.toolbar button:hover { color: var(--texto); border-color: var(--texto); }
+.toolbar button.active { color: var(--ouro); border-color: var(--ouro); }
+
+/* ═══ TOC SIDEBAR ═══ */
+.toc-toggle {
+  position: fixed; top: 275px; left: 0; z-index: 998;
+  background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: none;
+  color: var(--cinza); font-size: 0.7rem; padding: 8px 10px; cursor: pointer;
+  font-family: var(--font); writing-mode: vertical-rl; text-orientation: mixed;
+  letter-spacing: 1px; text-transform: uppercase; border-radius: 0;
+  transition: color 0.15s;
+}
+.toc-toggle:hover { color: var(--ouro); }
+
+.toc-sidebar {
+  position: fixed; top: 60px; left: 0; z-index: 997;
+  width: 280px; max-height: calc(100vh - 80px); overflow-y: auto;
+  background: var(--superficie); border-right: 1px solid var(--cinza-borda);
+  padding: 20px 16px 20px 40px; transform: translateX(-100%); transition: transform 0.25s;
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-sidebar h3 {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--cinza); margin-bottom: 12px;
+}
+.toc-sidebar a {
+  display: block; padding: 6px 0; font-size: 0.85rem; color: oklch(0.75 0 0);
+  text-decoration: none; border-bottom: 1px solid oklch(0.22 0.02 260);
+  transition: color 0.15s;
+}
+[data-theme="light"] .toc-sidebar a { border-bottom-color: oklch(0.90 0.02 260); }
+.toc-sidebar a:hover { color: var(--ouro); }
+.toc-sidebar a.toc-ato { font-weight: 700; color: var(--azul); font-size: 0.9rem; }
+.toc-sidebar a.toc-topico { padding-left: 16px; font-size: 0.8rem; }
+.toc-sidebar a.toc-extra { font-style: italic; color: var(--cinza); font-size: 0.8rem; }
+
+/* ═══ HEADER ═══ */
+.header {
+  background: linear-gradient(180deg, oklch(0.14 0.03 45) 0%, var(--fundo) 100%);
+  padding: 48px 20px 24px; text-align: center;
+}
+[data-theme="light"] .header {
+  background: linear-gradient(180deg, oklch(0.95 0.02 45) 0%, var(--fundo) 100%);
+}
+.header-inner { max-width: 720px; margin: 0 auto; }
+.header h1 {
+  font-family: var(--serif); font-size: 1.8rem; font-weight: 400;
+  color: var(--branco); line-height: 1.3; margin-bottom: 10px;
+}
+.trilha-code {
+  font-family: var(--mono); font-weight: 700; font-size: 1.1rem;
+  color: var(--ouro); letter-spacing: 2px;
+}
+.badge {
+  display: inline-block; padding: 4px 14px; font-size: 0.75rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--ouro); border: 1px solid var(--ouro); margin-top: 4px;
+}
+.header-sub {
+  max-width: 720px; margin: 12px auto 0; font-size: 0.85rem;
+  color: var(--cinza); letter-spacing: 0.5px;
+}
+
+/* ═══ CONTENT ═══ */
+.conteudo { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+/* ═══ EPIGRAFE ═══ */
+.epigrafe {
+  padding: 40px 0; text-align: center;
+  border-bottom: 1px solid var(--cinza-borda); margin-bottom: 40px;
+}
+.epigrafe blockquote {
+  font-family: var(--serif); font-style: italic; font-size: 1.4rem;
+  line-height: 1.7; color: oklch(0.78 0 0); max-width: 520px; margin: 0 auto;
+}
+[data-theme="light"] .epigrafe blockquote { color: oklch(0.35 0 0); }
+.epigrafe .autor { font-size: 0.9rem; color: var(--verde); margin-top: 12px; font-style: normal; }
+.epigrafe .nota {
+  font-size: 0.8rem; color: var(--cinza); margin-top: 8px;
+  max-width: 480px; margin-left: auto; margin-right: auto;
+  font-style: normal;
+}
+
+/* ═══ ATO / TOPICO ═══ */
+.ato { margin-bottom: 48px; }
+.ato-titulo {
+  font-size: 1.2rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--ouro); padding: 16px 0;
+  border-top: 2px solid var(--ouro-claro); margin-bottom: 24px;
+}
+.ato-subtitulo {
+  font-family: var(--serif); font-size: 1.8rem; font-weight: 400;
+  font-style: italic; color: var(--branco); margin-bottom: 20px;
+}
+
+.topico { margin-bottom: 36px; }
+.topico-titulo {
+  font-size: 1.5rem; font-weight: 700; color: var(--verde);
+  margin-bottom: 16px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--verde-claro);
+}
+
+/* ═══ PARAGRAPHS ═══ */
+p {
+  font-family: var(--serif); font-size: var(--fs-base);
+  line-height: 1.85; margin-bottom: 16px; color: oklch(0.85 0 0);
+}
+[data-theme="light"] p { color: oklch(0.25 0 0); }
+p .termo { color: var(--ouro); font-weight: 600; }
+p .citacao { font-style: italic; color: var(--azul-claro); }
+p strong { color: var(--branco); }
+[data-theme="light"] p strong { color: oklch(0.15 0 0); }
+
+/* ═══ CONTEXT AXES (padrao FE-T04) ═══ */
+.eixo { margin-bottom: 14px; padding-left: 14px; border-left: 2px solid var(--cinza-borda); }
+.eixo-label {
+  font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 4px; font-family: var(--font);
+}
+.eixo-tecnico .eixo-label { color: var(--ouro); }
+.eixo-historico .eixo-label { color: var(--verde); }
+.eixo-cotidiano .eixo-label { color: var(--azul); }
+.eixo p { font-size: 1.1rem; }
+
+/* ═══ EQUACAO ═══ */
+.equacao {
+  background: oklch(0.16 0.02 260); padding: 18px 22px; margin: 20px 0;
+  border: 1px solid var(--cinza-borda); text-align: center;
+}
+[data-theme="light"] .equacao {
+  background: oklch(0.96 0.01 260); border-color: oklch(0.80 0.02 260);
+}
+.equacao-label {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--ouro); margin-bottom: 10px;
+  text-align: left;
+}
+.equacao-formula {
+  font-family: var(--serif); font-size: 1.5rem; color: var(--branco);
+  margin-bottom: 12px; letter-spacing: 1px;
+}
+.equacao-tabela { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.equacao-tabela th {
+  padding: 6px 10px; text-align: left; font-size: 0.8rem;
+  font-weight: 600; color: var(--ouro); border-bottom: 1px solid var(--cinza-borda);
+  font-family: var(--font); text-transform: uppercase;
+}
+.equacao-tabela td {
+  padding: 6px 10px; font-size: 0.9rem; color: oklch(0.78 0 0);
+  border-bottom: 1px solid oklch(0.22 0.02 260); font-family: var(--font);
+}
+[data-theme="light"] .equacao-tabela td {
+  color: oklch(0.30 0 0); border-bottom-color: oklch(0.88 0.02 260);
+}
+.equacao-aplicacao {
+  background: oklch(0.14 0.02 260); padding: 12px 16px; margin-top: 12px;
+  text-align: left; font-size: 0.95rem; color: oklch(0.80 0 0);
+  border-left: 2px solid var(--ouro);
+}
+[data-theme="light"] .equacao-aplicacao {
+  background: oklch(0.94 0.01 260); color: oklch(0.25 0 0);
+}
+.equacao-aplicacao strong { color: var(--ouro); }
+
+/* ═══ QUADRO (TABLE) ═══ */
+.quadro { background: var(--superficie); padding: 14px 16px; margin: 20px 0; overflow-x: auto; }
+.quadro-titulo {
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--ouro); margin-bottom: 10px;
+}
+.quadro table { width: 100%; border-collapse: collapse; font-size: 1.2rem; font-family: var(--font); }
+.quadro th {
+  padding: 8px 10px; text-align: left; font-weight: 600; color: var(--ouro);
+  border-bottom: 1px solid var(--cinza-borda); font-size: 0.85rem;
+}
+.quadro td {
+  padding: 8px 10px; border-bottom: 1px solid oklch(0.22 0.02 260);
+  color: oklch(0.82 0 0); vertical-align: top;
+}
+[data-theme="light"] .quadro td {
+  color: oklch(0.28 0 0); border-bottom-color: oklch(0.88 0.02 260);
+}
+
+/* ═══ FIGURES ═══ */
+.figura {
+  margin: 28px 0; text-align: center;
+}
+.figura-img {
+  width: 100%; max-width: 680px; height: auto; display: block; margin: 0 auto;
+  border: 1px solid var(--cinza-borda);
+}
+.figura-legenda {
+  font-family: var(--font); font-size: 1.0rem; color: var(--cinza);
+  margin-top: 8px; line-height: 1.5; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.figura-num {
+  font-weight: 700; color: var(--ouro); text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* ═══ COVER / CAPA (padrao FE-T04-TT-v5-digital) ═══ */
+.capa { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; background: linear-gradient(180deg, oklch(0.14 0.03 95) 0%, oklch(0.12 0.02 260) 100%); }
+[data-theme="light"] .capa { background: linear-gradient(180deg, oklch(0.93 0.03 95) 0%, var(--fundo) 100%); }
+.capa-disciplina { font-size: 2.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--ouro); margin-bottom: 6px; }
+.capa-curso { font-size: 1.8rem; letter-spacing: 1.5px; color: var(--cinza); margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
+.capa-img { max-width: 100%; margin: 0 auto 28px; border: 1px solid var(--cinza-borda); }
+.capa-img img { max-width: 100%; height: auto; display: block; }
+.capa-trilha { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde); margin-bottom: 8px; }
+.capa-titulo { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; font-style: italic; line-height: 1.25; color: var(--branco); margin-bottom: 28px; max-width: 540px; }
+.capa-autores { font-size: 1rem; color: var(--cinza); }
+.capa-autores strong { color: var(--texto); }
+.capa-inst { font-size: 1.0rem; color: var(--cinza); margin-top: 20px; letter-spacing: .5px; line-height: 1.5; max-width: 720px; margin-left: auto; margin-right: auto; }
+.capa-scroll { margin-top: 40px; font-size: .75rem; color: var(--cinza); animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.audio-hint { max-width: 720px; margin: -40px auto 40px; padding: 6px 0; text-align: center; font-size: .88rem; line-height: 1.5; color: var(--cinza); cursor: pointer; }
+.audio-hint strong { color: var(--ouro); }
+.audio-hint:hover { color: var(--texto); }
+[data-theme="light"] .audio-hint { background: oklch(0.94 0.03 95); color: oklch(0.30 0 0); }
+
+/* ═══ CREDITOS / CIP SIDEBAR ═══ */
+.creditos-toggle {
+  position: fixed; top: 365px; left: 0; z-index: 998;
+  background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: none;
+  color: var(--cinza); font-size: 0.7rem; padding: 8px 10px; cursor: pointer;
+  font-family: var(--font); writing-mode: vertical-rl; text-orientation: mixed;
+  letter-spacing: 1px; text-transform: uppercase; border-radius: 0;
+  transition: color 0.15s;
+}
+.creditos-toggle:hover { color: var(--ouro); }
+
+/* ═══ MUSICA TOGGLE + SIDEBAR ═══ */
+.musica-toggle {
+  position: fixed; top: 60px; left: 0; z-index: 998;
+  background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: none;
+  color: var(--cinza); font-size: 0.7rem; padding: 8px 10px; cursor: pointer;
+  font-family: var(--font); writing-mode: vertical-rl; text-orientation: mixed;
+  letter-spacing: 1px; text-transform: uppercase; border-radius: 0;
+  transition: color 0.15s;
+}
+.musica-toggle:hover { color: var(--ouro); }
+.musica-sidebar {
+  position: fixed; top: 0; left: 0; z-index: 996;
+  width: 340px; height: 100vh; overflow-y: auto;
+  background: var(--superficie); border-right: 1px solid var(--cinza-borda);
+  padding: 24px 20px 24px 40px; transform: translateX(-100%); transition: transform 0.25s;
+  font-family: var(--font); font-size: 0.95rem; line-height: 1.7;
+  color: var(--texto);
+}
+.musica-sidebar.open { transform: translateX(0); }
+.musica-sidebar .musica-titulo {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ouro); margin-bottom: 16px;
+  border-bottom: 1px solid var(--cinza-borda); padding-bottom: 8px;
+}
+.musica-sidebar .musica-ref { font-style: italic; color: var(--cinza); margin-bottom: 16px; display: block; }
+.musica-sidebar .musica-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.musica-sidebar .musica-tag {
+  background: var(--ouro); color: oklch(0.12 0 0); font-weight: 700;
+  font-size: 0.75rem; padding: 4px 10px; text-transform: uppercase; letter-spacing: 1px;
+}
+.musica-sidebar .musica-album { font-weight: 700; color: var(--branco); margin-bottom: 8px; }
+.musica-sidebar .musica-detail { color: var(--cinza); font-size: 0.85rem; margin-bottom: 16px; }
+.musica-sidebar .musica-link {
+  display: inline-block; padding: 8px 16px; background: var(--erro);
+  color: oklch(0.98 0 0); font-weight: 700; font-size: 0.8rem;
+  text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.15s;
+}
+.musica-sidebar .musica-link:hover { opacity: 0.85; }
+
+/* ═══ INEDITISMO TOGGLE + SIDEBAR ═══ */
+.ineditismo-toggle {
+  position: fixed; top: 145px; left: 0; z-index: 998;
+  background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: none;
+  color: var(--cinza); font-size: 0.7rem; padding: 8px 10px; cursor: pointer;
+  font-family: var(--font); writing-mode: vertical-rl; text-orientation: mixed;
+  letter-spacing: 1px; text-transform: uppercase; border-radius: 0;
+  transition: color 0.15s;
+}
+.ineditismo-toggle:hover { color: var(--ouro); }
+.ineditismo-sidebar {
+  position: fixed; top: 0; left: 0; z-index: 996;
+  width: 340px; height: 100vh; overflow-y: auto;
+  background: var(--superficie); border-right: 1px solid var(--cinza-borda);
+  padding: 24px 20px 24px 40px; transform: translateX(-100%); transition: transform 0.25s;
+  font-family: var(--font); font-size: 0.95rem; line-height: 1.7;
+  color: var(--texto);
+}
+.ineditismo-sidebar.open { transform: translateX(0); }
+.ineditismo-sidebar .ineditismo-titulo {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ouro); margin-bottom: 16px;
+  border-bottom: 1px solid var(--cinza-borda); padding-bottom: 8px;
+}
+.ineditismo-sidebar p {
+  font-size: 0.95rem; color: oklch(0.65 0 0); line-height: 1.7; margin-bottom: 10px;
+}
+[data-theme="light"] .ineditismo-sidebar p { color: oklch(0.40 0 0); }
+
+/* ═══ FIGURAS TOGGLE + SIDEBAR ═══ */
+.figuras-toggle {
+  position: fixed; top: 460px; left: 0; z-index: 998;
+  background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: none;
+  color: var(--cinza); font-size: 0.7rem; padding: 8px 10px; cursor: pointer;
+  font-family: var(--font); writing-mode: vertical-rl; text-orientation: mixed;
+  letter-spacing: 1px; text-transform: uppercase; border-radius: 0;
+  transition: color 0.15s;
+}
+.figuras-toggle:hover { color: var(--ouro); }
+.figuras-sidebar {
+  position: fixed; top: 0; left: 0; z-index: 996;
+  width: 380px; height: 100vh; overflow-y: auto;
+  background: var(--superficie); border-right: 1px solid var(--cinza-borda);
+  padding: 24px 20px 24px 40px; transform: translateX(-100%); transition: transform 0.25s;
+  font-family: var(--font); font-size: 0.88rem; line-height: 1.7;
+  color: var(--texto);
+}
+.figuras-sidebar.open { transform: translateX(0); }
+.figuras-sidebar .figuras-titulo {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ouro); margin-bottom: 16px;
+  border-bottom: 1px solid var(--cinza-borda); padding-bottom: 8px;
+}
+.figuras-sidebar p {
+  font-size: 0.85rem; color: var(--texto); margin-bottom: 8px; line-height: 1.5;
+}
+.figuras-sidebar .figura-num { color: var(--azul); font-weight: 700; }
+
+.creditos-sidebar {
+  position: fixed; top: 0; left: 0; z-index: 996;
+  width: 340px; height: 100vh; overflow-y: auto;
+  background: var(--superficie); border-right: 1px solid var(--cinza-borda);
+  padding: 24px 20px 24px 40px; transform: translateX(-100%); transition: transform 0.25s;
+  font-family: var(--font); font-size: 0.85rem; line-height: 1.7;
+  color: var(--texto);
+}
+.creditos-sidebar.open { transform: translateX(0); }
+.creditos-sidebar p {
+  font-family: var(--font); font-size: 0.85rem; color: var(--texto);
+  line-height: 1.6; margin-bottom: 4px;
+}
+.creditos-titulo, .cip-titulo {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--ouro); margin-bottom: 16px;
+  border-bottom: 1px solid var(--cinza-borda); padding-bottom: 8px;
+}
+.creditos-instituicao {
+  font-weight: 700; font-size: 0.9rem; color: var(--branco);
+  margin-bottom: 12px;
+}
+.creditos-cargo {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--cinza); margin-top: 10px; margin-bottom: 2px;
+}
+.creditos-nome { margin-bottom: 0; }
+.creditos-subtitulo {
+  font-weight: 700; font-size: 0.85rem; color: var(--ouro);
+  margin-top: 20px; margin-bottom: 8px;
+}
+.creditos-bio { margin-bottom: 8px; }
+.cip-section { margin-top: 24px; border-top: 1px solid var(--cinza-borda); padding-top: 16px; }
+.cip-bloco {
+  background: oklch(0.15 0.01 260); border: 1px solid var(--cinza-borda);
+  padding: 12px 14px; font-family: var(--mono); font-size: 0.7rem;
+  line-height: 1.5; white-space: pre-wrap; color: oklch(0.75 0 0);
+}
+[data-theme="light"] .cip-bloco {
+  background: oklch(0.94 0.01 260); color: oklch(0.30 0 0);
+}
+
+/* ═══ EXPLORE BOX ═══ */
+.explore {
+  background: oklch(0.16 0.03 150); padding: 20px 24px; margin: 24px 0;
+  border: 1px solid oklch(0.28 0.06 150);
+}
+[data-theme="light"] .explore {
+  background: oklch(0.95 0.03 150); border-color: oklch(0.75 0.06 150);
+}
+.explore-titulo {
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--verde); margin-bottom: 10px;
+  font-family: var(--font);
+}
+.explore p { font-size: 1.05rem; }
+.explore a { color: var(--verde); }
+
+/* ═══ DESTAQUE ═══ */
+.destaque {
+  background: oklch(0.16 0.04 45); padding: 14px 20px; margin: 16px 0;
+  font-family: var(--serif); font-size: 1.2rem; font-style: italic;
+  color: var(--azul-claro); border-left: 3px solid var(--azul);
+}
+[data-theme="light"] .destaque {
+  background: oklch(0.95 0.03 45); color: oklch(0.40 0.15 45);
+}
+
+/* ═══ BLOCKQUOTE ═══ */
+blockquote {
+  font-family: var(--serif); font-style: italic; padding: 12px 20px;
+  margin: 16px 0; border-left: 3px solid var(--cinza-borda);
+  color: oklch(0.78 0 0);
+}
+[data-theme="light"] blockquote { color: oklch(0.35 0 0); }
+blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal; display: block; margin-top: 6px; }
+
+/* ═══ CIENCIA E ARTE ═══ */
+.ciencia-arte {
+  padding: 40px 0; border-top: 2px solid var(--ouro-claro); margin-top: 40px;
+}
+.ciencia-arte-titulo {
+  font-size: 1.5rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--ouro); margin-bottom: 24px;
+  text-align: center;
+}
+.ciencia-arte-obra {
+  font-size: 1.5rem; font-weight: 600; color: var(--branco);
+  text-align: center; margin-bottom: 20px;
+}
+.ciencia-arte blockquote {
+  font-family: var(--serif); font-style: italic; font-size: 1.5rem;
+  color: oklch(0.78 0 0); max-width: 500px; margin: 0 auto 12px;
+  text-align: center; border-left: none; padding: 0;
+}
+.ciencia-arte .ca-autor { font-size: 0.9rem; color: var(--ouro); text-align: center; }
+
+/* ═══ C5 PROTOCOL ═══ */
+.c5-box { background: var(--superficie); padding: 18px 22px; margin: 20px 0; }
+.c5-titulo {
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--azul); margin-bottom: 12px;
+  font-family: var(--font);
+}
+.c5-tabela { width: 100%; border-collapse: collapse; }
+.c5-tabela th {
+  padding: 8px 10px; text-align: left; font-size: 0.8rem; font-weight: 700;
+  color: var(--ouro); border-bottom: 1px solid var(--cinza-borda);
+  font-family: var(--font); text-transform: uppercase;
+}
+.c5-tabela td {
+  padding: 8px 10px; border-bottom: 1px solid oklch(0.22 0.02 260);
+  color: oklch(0.82 0 0); vertical-align: top; font-size: 1.1rem;
+  font-family: var(--font);
+}
+[data-theme="light"] .c5-tabela td {
+  color: oklch(0.28 0 0); border-bottom-color: oklch(0.88 0.02 260);
+}
+.c5-tabela td:first-child {
+  font-family: var(--mono); font-weight: 700; color: var(--azul);
+  text-align: center; width: 40px;
+}
+
+/* ═══ ATIVIDADE INTERDISCIPLINAR ═══ */
+.atividade {
+  background: oklch(0.16 0.03 95); padding: 20px 24px; margin: 28px 0;
+  border-left: 3px solid var(--ouro);
+}
+[data-theme="light"] .atividade {
+  background: oklch(0.96 0.02 95);
+}
+.atividade-titulo {
+  font-size: 1rem; font-weight: 700; color: var(--ouro); margin-bottom: 10px;
+  font-family: var(--font);
+}
+.atividade p { font-size: 0.95rem; margin-bottom: 10px; }
+.atividade .conexao {
+  font-size: 0.82rem; font-style: italic; color: var(--cinza);
+  margin-top: 8px; border-top: 1px solid var(--cinza-borda); padding-top: 8px;
+}
+
+/* ═══ RCP (C5 SOLUTION) ═══ */
+.rcp {
+  margin-top: 14px; background: oklch(0.14 0.02 260); padding: 16px 20px;
+  border: 1px solid var(--cinza-borda);
+}
+[data-theme="light"] .rcp {
+  background: oklch(0.94 0.01 260);
+}
+.rcp summary {
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--azul); cursor: pointer;
+  font-family: var(--font); padding: 4px 0;
+}
+.rcp summary:hover { color: var(--ouro); }
+.rcp-step {
+  margin: 8px 0; padding-left: 4px;
+}
+.rcp-step-label {
+  font-family: var(--font); font-size: 0.8rem; font-weight: 700;
+  color: var(--ouro); text-transform: uppercase; letter-spacing: 0.5px;
+}
+.rcp-step-text {
+  font-family: var(--font); font-size: 0.9rem; color: oklch(0.78 0 0);
+  line-height: 1.6; margin-top: 2px;
+}
+[data-theme="light"] .rcp-step-text { color: oklch(0.30 0 0); }
+
+/* ═══ FOOTNOTE ═══ */
+.footnote {
+  font-family: var(--font); font-size: 0.85rem; color: var(--cinza);
+  line-height: 1.6; margin: 12px 0; padding: 10px 16px;
+  background: oklch(0.15 0.01 260); border-left: 2px solid var(--cinza-borda);
+}
+[data-theme="light"] .footnote {
+  background: oklch(0.94 0.01 260);
+}
+.footnote strong { color: oklch(0.75 0 0); }
+[data-theme="light"] .footnote strong { color: oklch(0.30 0 0); }
+
+/* ═══ REFS ═══ */
+.refs { padding: 32px 0; border-top: 1px solid var(--cinza-borda); margin-top: 32px; }
+.refs-titulo {
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--cinza); margin-bottom: 12px;
+  font-family: var(--font);
+}
+.refs p {
+  font-family: var(--font); font-size: 1.2rem; color: var(--cinza);
+  margin-bottom: 6px; line-height: 1.6;
+}
+
+/* ═══ SEPARADOR ═══ */
+.separador { width: 60px; height: 1px; background: var(--cinza-borda); margin: 36px auto; }
+
+/* ═══ ENCERRAMENTO + FOOTER ═══ */
+.encerramento {
+  max-width: 720px; margin: 40px auto 0; padding: 24px 20px;
+  border-top: 2px solid var(--ouro-claro); text-align: center;
+}
+.fecho-frase {
+  font-family: var(--serif); font-size: 1.5rem; font-style: italic;
+  color: var(--verde); margin-bottom: 10px;
+}
+.footer-line {
+  text-align: center; padding: 20px 0 12px; font-size: 0.75rem;
+  color: var(--cinza); letter-spacing: 0.5px; font-family: var(--font);
+}
+
+/* ═══ CONEXOES TITULO OVERRIDE ═══ */
+#conexoes > .ato-titulo { font-size: 1.5rem; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.4rem; }
+  .header { padding-left: 46px; padding-right: 46px; }
+  /* Gutter para as abas laterais: sem ele, as abas fixas da borda esquerda
+     cobrem o texto durante a rolagem em tela estreita. */
+  .conteudo { padding: 0 14px 0 46px; }
+  .toc-toggle, .musica-toggle, .ineditismo-toggle, .creditos-toggle, .figuras-toggle { font-size: 0.6rem; padding: 6px 6px; }
+  .toc-sidebar, .musica-sidebar, .ineditismo-sidebar, .creditos-sidebar, .figuras-sidebar { width: 82vw; }
+  .toolbar { padding: 4px 8px; }
+  .ato-titulo { font-size: 1rem; letter-spacing: 2px; }
+  .topico-titulo { font-size: 1.2rem; }
+  .equacao-formula { font-size: 1.2rem; }
+  .atividade { padding: 14px 16px; }
+  .capa-disciplina { font-size: 1.2rem; }
+  .capa-curso { font-size: .85rem; }
+  .capa-trilha { font-size: .95rem; }
+  .capa-titulo { font-size: 2rem; }
+  .capa-img { max-width: 280px; margin: 0 auto; }
+  .audio-hint { margin-left: 32px; }
+}
+
+/* ═══ PRINT ═══ */
+@media print {
+  body { background: white !important; color: #1A1A1A !important; padding-bottom: 0 !important; }
+  .progress-top, .toolbar, .toc-toggle, .toc-sidebar, .creditos-toggle, .creditos-sidebar, .musica-toggle, .musica-sidebar, .ineditismo-toggle, .ineditismo-sidebar, .figuras-toggle, .figuras-sidebar, .capa-scroll, .audio-hint { display: none !important; }
+  .capa { min-height: auto !important; background: none !important; padding: 30px 20px !important; }
+  .header { background: none !important; }
+  .ato-titulo { color: #1F3864 !important; border-top-color: #CCC !important; }
+  .topico-titulo { color: #8B6914 !important; border-bottom-color: #DDD !important; }
+  p { color: #333 !important; }
+  .figura-img { border-color: #CCC !important; }
+  .figura-legenda { color: #333 !important; }
+}
+
+.capa-marca { margin-bottom: 18px; }
+.capa-marca .marca { width: 92px; height: 92px; }
+/* PADRAO-ABAS-CREDITOS (decisao do autor 2026-09-02): cargos dos Creditos na secundaria (verde), caixa normal. */
+.creditos-cargo { color: var(--verde); text-transform: none; }
+/* PADRAO-ABAS-MUSICA (decisao do autor 2026-09-02): album e artistas na cor primaria (ouro). */
+.musica-sidebar .musica-album { color: var(--ouro); }
+.musica-sidebar .musica-detail strong { color: var(--ouro); }
+
+/* ── ILB: lista numerada das cinco perguntas do Ato I ── */
+.lista-perguntas { margin: 18px 0 18px 0; padding-left: 22px; }
+.lista-perguntas li { margin-bottom: 8px; }
+/* o Explore da ILB nao tem figura; o link fica visivel nos dois temas */
+.explore a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-top"><div class="bar" id="progressBar"></div></div>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <button id="btnFontMinus" title="Diminuir fonte">A&minus;</button>
+  <button id="btnFontReset" title="Fonte padrão" class="active">A</button>
+  <button id="btnFontPlus" title="Aumentar fonte">A+</button>
+  <button id="btnTheme" title="Alternar tema claro/escuro">Tema</button>
+</div>
+
+<!-- TOC TOGGLE -->
+<button class="toc-toggle" id="tocToggle">Sumario</button>
+
+<!-- CREDITOS TOGGLE -->
+<button class="creditos-toggle" id="creditosToggle">Creditos</button>
+
+<!-- MUSICA TOGGLE -->
+<button class="musica-toggle" id="musicaToggle">Musica</button>
+
+<!-- INEDITISMO TOGGLE -->
+<button class="ineditismo-toggle" id="ineditismoToggle">Ineditismo</button>
+
+<!-- INEDITISMO SIDEBAR -->
+<aside class="ineditismo-sidebar" id="ineditismoSidebar">
+  <div class="ineditismo-titulo">Ineditismo</div>
+  <p>Trilhas de Aprendizagem é uma metodologia que faz parte do esforço da Coordenadoria da Área de Física do IFMG campus Ouro Preto em inovar na publicação didática da física, fazendo dialogar narrativa, método experimental rigoroso e formação de professores.</p>
+  <p>Até onde a pesquisa do autor alcançou, esta é a primeira apresentação do Sistema Internacional de Unidades para um laboratório de licenciatura que <strong>começa pela bancada</strong>: o estudante mede seis grandezas antes de ver a primeira tabela, e o SI entra como resposta a um problema que a mão já viveu &mdash; não como lista a decorar.</p>
+  <p>O conteúdo tem por fonte primária a publicação do próprio autor sobre o SI para o laboratório de ensino, com o quadro geral de unidades, os prefixos e as unidades fora do Sistema, cada uma com o seu fator de conversão.</p>
+</aside>
+
+<!-- FIGURAS TOGGLE -->
+<button class="figuras-toggle" id="figurasToggle">Figuras</button>
+
+<!-- FIGURAS SIDEBAR -->
+<aside class="figuras-sidebar" id="figurasSidebar">
+  <div class="figuras-titulo">Índice de Figuras</div>
+  <p style="color:var(--cinza);font-size:.85rem;margin-bottom:14px;">As sete figuras desta trilha ainda estão em produção: entram na próxima versão, como aconteceu na T0A. Abaixo, o que cada uma vai mostrar.</p>
+  <p><span class="figura-num">Figura 1</span> &mdash; Capa: a balança de pesar ouro do Museu de Ciência e Técnica, com a régua de hoje ao lado</p>
+  <p><span class="figura-num">Figura 2</span> &mdash; A frase de Condorcet no caderno, entre a balança de dois pratos e a régua</p>
+  <p><span class="figura-num">Figura 3</span> &mdash; Os quatro licenciandos diante da balança de pesar ouro, na Praça Tiradentes</p>
+  <p><span class="figura-num">Figura 4</span> &mdash; As duas estações prontas antes da aula</p>
+  <p><span class="figura-num">Figura 5</span> &mdash; As sete unidades de base, e as três que a bancada de hoje usou</p>
+  <p><span class="figura-num">Figura 6</span> &mdash; As seis medidas escritas duas vezes: como se costuma escrever e como o SI exige</p>
+  <p><span class="figura-num">Figura 7</span> &mdash; A saída do laboratório, com o cartaz dos erros de escrita corrigidos na lousa</p>
+  <p><span class="figura-num">Figura 8</span> &mdash; Ciência e Arte: o Modulor, de Le Corbusier</p>
+</aside>
+
+<!-- MUSICA SIDEBAR -->
+<aside class="musica-sidebar" id="musicaSidebar">
+<!-- PADRAO-ABAS-MUSICA -->
+  <div class="musica-titulo">Música desta trilha</div>
+  <div class="musica-detail">Por que estudar ouvindo? Miguel Nicolelis responde em <em>O Verdadeiro Criador de Tudo</em>: ciência e arte saem do mesmo lugar &mdash; o cérebro humano. E Pierluigi Piazzi, em <em>Aprendendo Inteligência</em>, acrescenta a parte prática: música sem letra não disputa com a leitura as áreas da linguagem. A palavra cantada rouba a palavra lida; a música instrumental sustenta, e some. Daí a regra do projeto: <strong>uma trilha, uma música</strong>.</div>
+  <div class="musica-tags"><span class="musica-tag">Ler</span><span class="musica-tag">Medir</span><span class="musica-tag">Registrar</span></div>
+  <div class="musica-album">&#9733; A desta trilha: J. S. Bach &mdash; O Cravo Bem Temperado (BWV 846&ndash;893)</div>
+  <div class="musica-detail">cravo solo &middot; ouça em repetição enquanto lê. A escolha não é decorativa: o &ldquo;bem temperado&rdquo; do título é um <strong>acordo de padronização</strong> &mdash; afinar o teclado de um jeito que permita tocar em todas as tonalidades, aceitando um erro minúsculo e distribuído. Bach compôs 48 peças para provar que o padrão funcionava. É o mesmo problema do Sistema Internacional, resolvido duzentos anos antes, em música.</div>
+  <a class="musica-link" href="https://music.youtube.com/search?q=Bach+Cravo+Bem+Temperado+BWV+846" target="_blank" rel="noopener">YouTube Music</a>
+
+  <div class="musica-titulo" style="margin-top:20px;">O acervo da ILB &mdash; ciclo de cinco, em duas voltas</div>
+  <div class="musica-detail">As dez trilhas de bancada percorrem cinco playlists, duas vezes cada. As duas trilhas do Tema 0 ficam fora do ciclo, com Bach.</div>
+  <div class="musica-detail"><strong>1 &middot; Baden Powell</strong> (T01 &middot; T06) &mdash; nos Afro-sambas cabem a bossa, o candomblé e a harmonia de câmara. Somar mundos é o ofício de quem mede: a bancada mede, o caderno deduz, a teoria explica por que importa.</div>
+  <div class="musica-detail"><strong>2 &middot; Yamandu Costa</strong> (T02 &middot; T07) &mdash; improvisa porque conhece a estrutura até o último traste. Improviso não é sorte: é o nome da liberdade de quem estudou.</div>
+  <div class="musica-detail"><strong>3 &middot; Orquestra Ouro Preto</strong> (T03 &middot; T08) &mdash; nasceu no ano 2000, por iniciativa do professor Ronaldo R. B. Toffolo e do compositor Rufo Herrera, e é a casa desta escola: Toffolo foi aluno, professor e diretor-geral da Escola Técnica Federal de Ouro Preto, que hoje é o IFMG campus Ouro Preto. Estudar com ela ao fundo é estudar ouvindo a própria instituição.</div>
+  <div class="musica-detail"><strong>4 &middot; Filarmônica de Minas Gerais</strong> (T04 &middot; T09) &mdash; noventa músicos, um único referencial de tempo, erro na casa dos milissegundos: ordem de grandeza, sincronia, medida.</div>
+  <div class="musica-detail"><strong>5 &middot; Marco Antônio Araújo</strong> (T05 &middot; T10) &mdash; violoncelista da Sinfônica de Minas e compositor que fez o barroco mineiro, a modinha e a seresta caberem no rock progressivo. A obra, interrompida aos 36 anos, ficou inacabada &mdash; e é isso que ela ensina: todo caderno fechado deixa uma pergunta aberta.</div>
+  <div class="musica-detail" style="margin-top:8px;"><strong>J. S. Bach</strong> (T0A e T0B) &mdash; a fuga é a definição de sistema físico: muitas vozes, uma lei só; e o cravo bem temperado é um acordo de padronização, que é o assunto desta trilha. As duas aberturas ficam fora do ciclo.</div>
+</aside>
+
+<!-- CREDITOS / CIP SIDEBAR -->
+<aside class="creditos-sidebar" id="creditosSidebar">
+  <div class="creditos-titulo">Créditos</div>
+
+  <div class="creditos-instituicao">Instituto Federal de Minas Gerais</div>
+
+  <div class="creditos-cargo">Reitor</div>
+  <p class="creditos-nome">Rafael Bastos Teixeira</p>
+
+  <div class="creditos-cargo">Pró-Reitor de Ensino</div>
+  <p class="creditos-nome">Mário Luiz Viana Alvarenga</p>
+
+  <div class="creditos-cargo">Diretor-Geral do Campus Ouro Preto</div>
+  <p class="creditos-nome">Reginato Fernandes dos Santos</p>
+
+  <div class="creditos-cargo">Diretora de Ensino</div>
+  <p class="creditos-nome">Talita Valadares</p>
+
+  <div class="creditos-cargo">Coordenador da Área de Física (CODAFIS)</div>
+  <p class="creditos-nome">Lázaro Souza Lima</p>
+
+  <div class="creditos-cargo">Presidente do Colegiado do Curso de Licenciatura em Física</div>
+  <p class="creditos-nome">Daniel da Mota Neri</p>
+
+  <div class="creditos-cargo">Vice-Presidente do Colegiado do Curso de Licenciatura em Física</div>
+  <p class="creditos-nome">Daniel Bretas Roa</p>
+
+  <div class="creditos-subtitulo">Autoria da Trilha</div>
+
+  <p class="creditos-bio"><strong>Júlio Azevedo</strong> &mdash; Autor e organizador. Professor do Ensino Básico, Técnico e Tecnológico do IFMG, atuando na Área de Física do campus Ouro Preto desde 1985. Criador do Núcleo de Inovação de Desenvolvimento de Experimentos Científicos em 2016 (NIDEC). Ex-aluno do Curso de Engenharia de Minas e do Curso de Física, ambos da UFOP.</p>
+
+  <p class="creditos-bio"><strong>Felipe Beato</strong> &mdash; Colaborador. Professor, pesquisador, colaborador do Núcleo de Inovação e Desenvolvimento de Experimentos Científicos do IFMG campus Ouro Preto. Licenciado em Física, Mestre em Física dos Materiais.</p>
+
+  <div class="creditos-subtitulo">Edição</div>
+  <p>1.&ordf; edição &mdash; Ouro Preto, 2026</p>
+  <p>Formato livreto 14 &times; 21 cm. Tipografia composta em LaTeX/Tectonic.</p>
+
+  <div class="cip-section">
+    <div class="cip-titulo">Ficha Catalográfica (CIP)</div>
+    <div class="cip-bloco">A994t
+Azevedo, Julio Cesar Silva.
+    Trilha de aprendizagem T0B &mdash;
+Documentos oficiais, o método, o site /
+Julio Cesar Silva Azevedo, autor e
+organizador; Felipe Beato, colaborador.
+&mdash; 1. ed. &mdash; Ouro Preto, MG:
+Instituto Federal de Minas Gerais &mdash;
+Campus Ouro Preto, 2026.
+    ____ p.: il. color.; 14 x 21 cm.
+(Coleção Trilhas de Aprendizagem de
+Introdução ao Laboratório; T0B)
+
+    ISBN [a definir].
+
+1. Física experimental &mdash; Estudo e
+   ensino.
+2. Professores de física &mdash; Formação.
+3. Medida e incerteza experimental.
+4. Mecânica clássica &mdash; Experimentos.
+5. Laboratório de ensino de física.
+I. Título. II. Série.
+
+26-XXXXX         CDD-530.078
+                 CDU-53:37
+
+Índices para catálogo sistemático:
+1. Física experimental:
+   Estudo e ensino    530.078
+2. Formação de professores
+   de física              53:37
+
+[Bibliotecário(a) a definir
+ &mdash; CRB-X/XXXXX]
+
+Classificação CDD/CDU a confirmar
+antes da submissão à CBL.</div>
+  </div>
+</aside>
+
+<!-- TOC SIDEBAR -->
+<nav class="toc-sidebar" id="tocSidebar">
+  <h3>Sumario</h3>
+  <a href="#capa" class="toc-extra">Capa</a>
+  <a href="#epigrafe" class="toc-extra">Epígrafe</a>
+  <a href="#ato-i" class="toc-ato">Ato I &mdash; O Gancho</a>
+  <a href="#explore" class="toc-extra">Explore &mdash; Google Maps</a>
+  <a href="#ato-ii" class="toc-ato">Ato II &mdash; O Desenvolvimento</a>
+  <a href="#topico-1" class="toc-topico">Tópico 1 &mdash; As duas estações</a>
+  <a href="#topico-2" class="toc-topico">Tópico 2 &mdash; Por que um padrão?</a>
+  <a href="#topico-3" class="toc-topico">Tópico 3 &mdash; As sete que bastam</a>
+  <a href="#topico-4" class="toc-topico">Tópico 4 &mdash; Derivadas e prefixos</a>
+  <a href="#topico-5" class="toc-topico">Tópico 5 &mdash; A grafia é parte da medida</a>
+  <a href="#ato-iii" class="toc-ato">Ato III &mdash; O Fechamento</a>
+  <a href="#ciencia-arte" class="toc-extra">Ciência e Arte</a>
+  <a href="#referencias" class="toc-extra">Referências</a>
+
+</nav>
+
+<!-- ═══════════════════ CAPA ═══════════════════ -->
+<div class="capa" id="capa">
+  <div class="capa-marca"><svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Símbolo das Trilhas de Aprendizagem">
+    <g fill="none" stroke="#3E8E5A" stroke-width="3">
+      <ellipse cx="60" cy="58" rx="46" ry="18"/>
+      <ellipse cx="60" cy="58" rx="46" ry="18" transform="rotate(60 60 58)"/>
+      <ellipse cx="60" cy="58" rx="46" ry="18" transform="rotate(120 60 58)"/>
+    </g>
+    <g fill="#3E8E5A">
+      <circle cx="53" cy="53" r="7"/>
+      <circle cx="67" cy="53" r="7"/>
+      <circle cx="60" cy="64" r="9"/>
+      <circle cx="60" cy="110" r="4"/>
+    </g>
+  </svg></div>
+  <div class="capa-disciplina">Introdução ao Laboratório</div>
+  <div class="capa-curso">Licenciatura em Física &mdash; IFMG campus Ouro Preto</div>
+  <div class="capa-trilha">Trilha de Aprendizagem T0B</div>
+  <div class="capa-titulo">Sistema Internacional de Unidades</div>
+  <div class="capa-autores"><strong>Júlio Azevedo</strong> &middot; <strong>Felipe Beato</strong></div>
+  <div class="capa-inst">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; ILB &middot; T0B &middot; Primeira edição &middot; 2026</div>
+  <div class="capa-scroll">&#x25BC; role para ler</div>
+</div>
+
+<div class="audio-hint" id="audioHint" role="button" tabindex="0">&#9834; <em>Leia ouvindo</em> &mdash; clique aqui ou na aba <strong>MÚSICA</strong> e conheça a recomendação de Piazzi.</div>
+
+<div class="conteudo">
+
+<!-- ═══════════════════ EPIGRAFE ═══════════════════ -->
+<div class="epigrafe" id="epigrafe">
+  <blockquote>&ldquo;A todos os tempos, a todos os povos.&rdquo;</blockquote>
+  <div class="autor">&mdash; Condorcet (1743&ndash;1794)</div>
+  <div class="nota"><strong>Nicolas de Condorcet</strong> (Ribemont, 1743 &mdash; Bourg-la-Reine, 1794). Matemático e filósofo francês, relator da comissão de pesos e medidas da Revolução. A divisa foi gravada no metro-padrão depositado nos Arquivos da República em 1799: a medida deixava de pertencer a um rei, a uma região ou a um ofício, e passava a pertencer a todos &mdash; que é a única forma de ela valer fora de quem mediu.</div>
+</div>
+
+<figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 2</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 2</span> &mdash; A frase de Condorcet escrita à mão na página de um caderno; ao lado, sobre a mesma mesa, uma balança de dois pratos e uma régua &mdash; o padrão antigo e o padrão de hoje.</figcaption>
+  </figure>
+
+<div class="ato" id="ato-i">
+  <div class="ato-titulo">Ato I &mdash; O Gancho</div>
+
+  <p>A quinze minutos a pé desta sala, na Praça Tiradentes, existe uma balança que pesou ouro. Ela está no Museu de Ciência e Técnica da Escola de Minas, e o que ela media não era grama: era <strong>oitava</strong>. Ao lado, o quilate media a pureza. Quem vendia e quem comprava precisavam confiar naquele prato &mdash; e confiavam, porque havia um padrão, guardado e conferido.</p>
+
+  <figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 3</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 3</span> &mdash; Sofia, Pedro, Lucas e Barbara diante da balança de pesar ouro do Museu de Ciência e Técnica: quatro adultos olhando o instrumento que decidia negócios antes de existir o Sistema Internacional.</figcaption>
+  </figure>
+
+  <p>Sofia parou na frente dela e fez a pergunta certa: <em>uma oitava é quanto?</em> A resposta está numa tabela &mdash; 1 oitava &asymp; 3,586 g &mdash; e é aí que a coisa fica interessante. Para responder <em>quanto</em>, foi preciso traduzir a oitava para outra unidade. Toda unidade só significa alguma coisa quando pode ser comparada com outra; e a comparação só é possível se houver um padrão que as duas aceitem.</p>
+
+  <p>Hoje esse padrão existe, é o mesmo em mais de duzentos países e se chama <strong>Sistema Internacional de Unidades (SI)</strong>. Esta trilha é sobre ele. Mas não começa por ele.</p>
+
+  <p><strong>Começa pela sua mão.</strong> No encontro de hoje você vai medir seis coisas em duas bancadas &mdash; a espessura de uma folha de papel, o diâmetro de uma moeda, a inclinação de uma rampa, a massa de um clipe, a força-peso sobre 100 g e o tempo de reação de um colega. Nenhuma delas é difícil. O que é difícil, e é o que esta trilha ensina, é <strong>escrever</strong> o resultado de um jeito que outra pessoa entenda exatamente o que você mediu.</p>
+
+  <p>Porque é isso que uma unidade faz: ela não é enfeite do número. Ela é metade do resultado.</p>
+</div>
+
+<div class="explore" id="explore">
+  <div class="explore-titulo">Explore este lugar no Google Maps</div>
+  <p><strong>Museu de Ciência e Técnica da Escola de Minas &mdash; Praça Tiradentes, Ouro Preto</strong></p>
+  <p>Fundado em 1876 junto com a Escola de Minas, o museu guarda uma das maiores coleções de mineralogia do país &mdash; e, no que interessa a esta trilha, os <strong>instrumentos de medida</strong> de quem pesava, ensaiava e certificava o ouro. Balanças de precisão, pesos-padrão, réguas e goniômetros do século XIX: o mesmo problema de hoje, com a tecnologia de então.</p>
+  <p>Antes de 06/10, vá até lá &mdash; ou percorra a praça pelo Street View. Procure um instrumento de medida e responda a duas perguntas: <em>que grandeza ele media</em> e <em>qual era a menor divisão da escala dele</em>. São as mesmas duas perguntas que você fez ao acervo do laboratório na trilha anterior.</p>
+  <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Museu+de+Ciencia+e+Tecnica+da+Escola+de+Minas+Ouro+Preto" target="_blank" rel="noopener">Abrir no Google Maps</a></p>
+</div>
+
+<div class="ato" id="ato-ii">
+  <div class="ato-titulo">Ato II &mdash; O Desenvolvimento</div>
+  <div class="ato-subtitulo">Cinco tópicos: primeiro a bancada, depois o sistema</div>
+
+  <p>Você mede, descobre que não sabe escrever o que mediu &mdash; e só então o Sistema Internacional aparece, como a resposta que já existia para o seu problema.</p>
+
+  <div class="topico" id="topico-1">
+    <div class="topico-titulo">Tópico 1 &mdash; As duas estações: a mão antes do nome</div>
+
+    <p>O laboratório está montado em duas bancadas, e elas ficam de pé para o encontro seguinte, o da T01. Metade da turma começa em cada uma; na metade do tempo, troca.</p>
+
+    <figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 4</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 4</span> &mdash; As duas estações prontas antes da aula: à esquerda, régua, paquímetro, transferidor e a rampa de fórmica; à direita, balança, dinamômetro, a massa de 100 g e a régua do teste de reação.</figcaption>
+  </figure>
+
+    <p><strong>Estação A &mdash; comprimento e ângulo.</strong> Sofia e Pedro começam aqui, com três tarefas:</p>
+    <ul>
+      <li><strong>A espessura de uma folha de papel.</strong> Nenhuma régua tem divisão para isso. Mede-se a pilha de 100 folhas e divide-se por 100 &mdash; um truque que a metrologia usa há séculos. O resultado sai perto de 0,1 mm, e é aqui que o milímetro começa a ficar desconfortável.</li>
+      <li><strong>O diâmetro de uma moeda.</strong> Com o paquímetro, a leitura chega ao décimo de milímetro. Duas pessoas medem a mesma moeda e obtêm 23,4 mm e 23,5 mm &mdash; guarde essa diferença: ela é o assunto inteiro da próxima trilha.</li>
+      <li><strong>A inclinação da rampa.</strong> Uma ladeira de fórmica e um transferidor. O resultado sai em graus &mdash; e o grau, você vai descobrir no Tópico 5, <em>não é uma unidade do SI</em>.</li>
+    </ul>
+
+    <p><strong>Estação B &mdash; massa, força e tempo.</strong> Lucas e Barbara começam do outro lado:</p>
+    <ul>
+      <li><strong>A massa de um clipe.</strong> Nenhuma balança do laboratório resolve um clipe sozinho. Pesam-se vinte, divide-se por vinte: o mesmo truque da folha de papel, agora em massa.</li>
+      <li><strong>A força-peso sobre 100 g.</strong> O dinamômetro mostra um número &mdash; e o mostrador de muitos deles ainda está graduado em <em>kgf</em>, que não é do SI. A força se mede em <strong>newton</strong>, e 100 g pesam cerca de 0,98 N. Massa e peso não são a mesma grandeza, e a bancada mostra isso em dois instrumentos diferentes.</li>
+      <li><strong>O tempo de reação de um colega.</strong> Um segura a régua na vertical, o outro espera com os dedos abertos; solta-se sem avisar. A distância que a régua caiu diz o tempo. É a primeira <strong>medida indireta</strong> da disciplina: mede-se comprimento, obtém-se tempo.</li>
+    </ul>
+
+    <p><strong>A tabela é o produto do encontro.</strong> As seis medidas entram no Roteiro de Bancada (RB) numa tabela de uma coluna por tarefa &mdash; valor, unidade e instrumento. É a forma de tabela mais simples que a disciplina vai usar, e é de propósito: a partir da T01 ela ganha a coluna da repetição, depois a do par acoplado, depois a do tempo. A tabela cresce com o semestre; o hábito de preenchê-la nasce aqui.</p>
+
+    <p><strong>Aplicação &mdash; prática docente.</strong> Repare no desenho da aula: duas bancadas, materiais de papelaria e nenhum equipamento caro. Uma resma de papel, moedas, clipes, uma régua e um transferidor cabem numa sacola &mdash; e numa escola sem laboratório. O que não cabe na sacola é o método, e é justamente ele que você está levando.</p>
+  </div>
+
+  <div class="topico" id="topico-2">
+    <div class="topico-titulo">Tópico 2 &mdash; Por que um padrão?</div>
+
+    <p>Você acabou de medir com régua, paquímetro e balança. Todas as três dependem de uma coisa que ninguém no laboratório fabricou: um padrão em que todo mundo concorda.</p>
+
+    <p><strong>No começo, a medida era o corpo.</strong> O pé, o palmo, a braça, o côvado. Funcionava dentro da aldeia e falhava entre aldeias &mdash; porque o pé do vizinho não é o seu. Cada região, cada ofício e às vezes cada feira tinham a sua medida, e o comércio vivia de tabelas de conversão que ninguém garantia.</p>
+
+    <p><strong>Nesta cidade, isso tem endereço.</strong> O ouro extraído aqui era pesado em <strong>oitavas</strong> &mdash; e a pureza, medida em <strong>quilates</strong>. As duas ainda estão na tabela de unidades fora do SI que você vai usar no Tópico 5: 1 quilate = 2,0 &times; 10<sup>&minus;4</sup> kg. A Casa dos Contos, a poucos metros do museu, existia para pesar e registrar o quinto que ia para a Coroa: medida, imposto e Estado no mesmo gesto.</p>
+
+    <p><strong>A Revolução Francesa resolve o problema de uma vez.</strong> Em 1791, a comissão de pesos e medidas propõe uma unidade que não pertença a ninguém: o <strong>metro</strong>, definido como a décima milionésima parte do quarto do meridiano terrestre. A ideia por trás da escolha é a divisa que abre este texto &mdash; <em>a todos os tempos, a todos os povos</em>. Não é retórica: é especificação técnica. Um padrão que dependa de um rei morre com o rei.</p>
+
+    <p><strong>De lá até aqui.</strong> Em 1875 a <em>Convenção do Metro</em> cria o Bureau Internacional de Pesos e Medidas (BIPM); a Conferência Geral de Pesos e Medidas (CGPM) passa a decidir as definições. O Brasil é signatário, e quem cuida disso aqui é o Inmetro.</p>
+
+    <p><strong>Aplicação &mdash; metrologia.</strong> O nome disso é <strong>rastreabilidade</strong>: a possibilidade de ligar a sua medida, por uma cadeia sem buracos, a um padrão reconhecido. A régua do laboratório vale porque pode ser comparada a um padrão, que se compara a outro, que termina no BIPM. Sem essa cadeia, o número que você escreveu é uma opinião.</p>
+  </div>
+
+  <div class="topico" id="topico-3">
+    <div class="topico-titulo">Tópico 3 &mdash; As sete que bastam</div>
+
+    <p>O mundo tem um número ilimitado de grandezas. O SI se sustenta em <strong>sete</strong>, e todas as outras se constroem a partir delas.</p>
+
+    <ul>
+      <li><strong>comprimento</strong> &mdash; metro (m)</li>
+      <li><strong>massa</strong> &mdash; kilograma (kg)</li>
+      <li><strong>tempo</strong> &mdash; segundo (s)</li>
+      <li><strong>corrente elétrica</strong> &mdash; ampere (A)</li>
+      <li><strong>temperatura termodinâmica</strong> &mdash; kelvin (K)</li>
+      <li><strong>quantidade de substância</strong> &mdash; mol (mol)</li>
+      <li><strong>intensidade luminosa</strong> &mdash; candela (cd)</li>
+    </ul>
+
+    <p>Na bancada de hoje você usou três delas &mdash; comprimento, massa e tempo. As outras quatro entram nas disciplinas seguintes, e a lista não cresce: são sete desde sempre, e nenhuma nova foi acrescentada.</p>
+
+    <figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 5</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 5</span> &mdash; As sete unidades de base do SI, cada uma com o seu símbolo — e as três que a bancada de hoje usou, destacadas.</figcaption>
+  </figure>
+
+    <p><strong>A revolução de 2019.</strong> Até pouco tempo atrás, o kilograma era um objeto: um cilindro de platina e irídio guardado num cofre em Sèvres, na França, desde 1889. Todas as balanças do mundo dependiam, no fim da cadeia, daquele cilindro &mdash; que perdia massa, muito pouco, mas perdia. Em 20 de maio de 2019 isso acabou: o kilograma passou a ser definido pela <strong>constante de Planck</strong>, um número da natureza que não enferruja nem viaja de avião. As quatro unidades que ainda dependiam de objetos ou de convenções &mdash; kilograma, ampere, kelvin e mol &mdash; foram redefinidas por constantes.</p>
+
+    <p>Hoje, qualquer laboratório suficientemente bom pode <em>realizar</em> o kilograma sem pedir nada a Sèvres. O padrão deixou de ser uma coisa e passou a ser uma lei.</p>
+
+    <p><strong>Aplicação &mdash; prática docente.</strong> Guarde esta como pergunta de aula: <em>por que trocar um cilindro que funcionava por uma constante?</em> A resposta ensina mais sobre ciência do que a definição em si &mdash; porque ela é sobre confiança, não sobre precisão. O cilindro funcionava; o que ele não podia oferecer era a garantia de continuar igual.</p>
+  </div>
+
+  <div class="topico" id="topico-4">
+    <div class="topico-titulo">Tópico 4 &mdash; Quando uma unidade não basta</div>
+
+    <p>Sete unidades não descrevem o mundo sozinhas. Falta a área da bancada, a velocidade do carrinho, a densidade do cilindro, a força que você mediu com o dinamômetro.</p>
+
+    <p><strong>As unidades derivadas</strong> nascem das de base por multiplicação e divisão &mdash; e algumas ganham nome próprio:</p>
+    <ul>
+      <li><strong>área</strong> &mdash; metro quadrado (m<sup>2</sup>); <strong>volume</strong> &mdash; metro cúbico (m<sup>3</sup>)</li>
+      <li><strong>velocidade</strong> &mdash; metro por segundo (m/s); <strong>aceleração</strong> &mdash; metro por segundo ao quadrado (m/s<sup>2</sup>)</li>
+      <li><strong>força</strong> &mdash; <strong>newton</strong> (N), que é m&middot;kg&middot;s<sup>&minus;2</sup>; <strong>energia e trabalho</strong> &mdash; <strong>joule</strong> (J), que é N&middot;m</li>
+      <li><strong>pressão</strong> &mdash; <strong>pascal</strong> (Pa), que é N/m<sup>2</sup>; <strong>densidade</strong> &mdash; kilograma por metro cúbico (kg/m<sup>3</sup>)</li>
+    </ul>
+
+    <p>O newton do seu dinamômetro é o exemplo à mão: por trás do nome curto está uma combinação de três unidades de base. Escrever N é escrever m&middot;kg&middot;s<sup>&minus;2</sup> com menos tinta.</p>
+
+    <p><strong>Os prefixos resolvem a escala.</strong> A espessura da folha de papel deu por volta de 0,1 mm. Escrito assim, o número tem um zero à esquerda que não diz nada. Em micrometros &mdash; 100 &micro;m &mdash; ele fica na escala certa: sem zeros de enfeite e sem notação científica. É para isso que servem os prefixos, de <em>yocto</em> (10<sup>&minus;24</sup>) a <em>yotta</em> (10<sup>24</sup>), todos decimais.</p>
+
+    <div class="quadro">
+      <div class="quadro-titulo">Quadro 1 &mdash; Prefixos que você usa quase todo dia</div>
+      <table class="tabela">
+        <thead><tr><th>Prefixo</th><th>Símbolo</th><th>Fator</th></tr></thead>
+        <tbody>
+          <tr><td>kilo</td><td>k</td><td>10<sup>3</sup> &nbsp; 1 km = 1 000 m</td></tr>
+          <tr><td>centi</td><td>c</td><td>10<sup>&minus;2</sup> &nbsp; 1 cm = 0,01 m</td></tr>
+          <tr><td>mili</td><td>m</td><td>10<sup>&minus;3</sup> &nbsp; 1 mm = 0,001 m</td></tr>
+          <tr><td>micro</td><td>&micro;</td><td>10<sup>&minus;6</sup> &nbsp; 1 &micro;m = 0,000 001 m</td></tr>
+          <tr><td>mega</td><td>M</td><td>10<sup>6</sup> &nbsp; 1 MPa = 1 000 000 Pa</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>A regra de escolha</strong>, que vale para o resto do curso: <em>use o prefixo que deixa o número entre 0,1 e 1 000</em>. Não é estética &mdash; é redução de erro. Número com muitos zeros é número que se copia errado.</p>
+
+    <p><strong>Uma armadilha só do kilograma.</strong> Ele é a única unidade de base que já nasce com prefixo. Por isso os múltiplos e submúltiplos se formam sobre o <em>grama</em>, não sobre o kilograma: escreve-se miligrama (mg), nunca &ldquo;microkilograma&rdquo;.</p>
+
+    <p><strong>Aplicação &mdash; metrologia.</strong> O prefixo não muda a medida, muda a escrita dela. 0,000 1 m, 0,1 mm e 100 &micro;m são exatamente a mesma coisa &mdash; e a terceira é a única que se lê sem contar zeros.</p>
+  </div>
+
+  <div class="topico" id="topico-5">
+    <div class="topico-titulo">Tópico 5 &mdash; A grafia é parte da medida</div>
+
+    <p>Aqui está o tópico que a T01 vai exigir pronto na semana que vem, e o motivo pelo qual esta trilha existe.</p>
+
+    <p><strong>O símbolo não é abreviação.</strong> Abreviação é economia de escrita e admite variação; símbolo é notação internacional e não admite nenhuma. Daí as regras:</p>
+    <ul>
+      <li><strong>Não tem plural:</strong> 5 kg, e nunca 5 kgs.</li>
+      <li><strong>Não tem ponto:</strong> 12 s, e nunca 12 seg.</li>
+      <li><strong>Não vira maiúscula:</strong> 1,6 cm, e nunca 1,6 CM. Maiúscula só quando o símbolo é assim &mdash; N de newton, Pa de pascal, A de ampere &mdash; porque a unidade tem nome de pessoa.</li>
+      <li><strong>Tem espaço:</strong> 23,5 mm, e não 23,5mm.</li>
+      <li><strong>A vírgula é decimal:</strong> 23,5 mm em português; o ponto é dos textos em inglês.</li>
+    </ul>
+
+    <p><strong>A grafia dos nomes formados por prefixo.</strong> Esta disciplina segue a regra de formação do SI, e ela prevalece sobre a regra gramatical do português: <strong>centimetro</strong>, <strong>kilograma</strong>, <strong>kilometro</strong>, <strong>milisegundo</strong> &mdash; prefixo mais unidade, sem acento e sem duplicar consoante. Não é descuido de digitação: é a grafia técnica, e ela vale em todo material desta disciplina, do Roteiro de Bancada ao relatório.</p>
+
+    <figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 6</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 6</span> &mdash; As mesmas seis medidas da bancada escritas duas vezes: à esquerda como se costuma escrever, à direita como o SI exige — e o que mudou em cada linha.</figcaption>
+  </figure>
+
+    <p><strong>As unidades fora do SI que a vida usa.</strong> Minuto, hora, dia, grau, polegada, litro, tonelada, quilate, kgf, km/h, cavalo-vapor: todas são de uso corrente e nenhuma é do SI. Elas não estão proibidas &mdash; estão <em>tabeladas</em>, com o fator de conversão de cada uma. O grau que você mediu na rampa se converte por 1&deg; = &pi;/180 rad; o kgf do dinamômetro, por 1 kgf = 9,81 N; a hora, por 1 h = 3,6 &times; 10<sup>3</sup> s.</p>
+
+    <p>A regra prática do relatório: <strong>mede-se no instrumento que existe, relata-se na unidade do SI</strong>, com a conversão à vista.</p>
+
+    <p><strong>Aplicação &mdash; prática docente.</strong> Esta é a parte do conteúdo que uma turma de ensino médio acha chata &mdash; e que fica interessante quando se mostra o custo do erro. Em 1999 a NASA perdeu a sonda <em>Mars Climate Orbiter</em>, de 125 milhões de dólares, porque uma equipe entregou dados em libra-força-segundo e a outra leu como newton-segundo. A sonda entrou baixo demais na atmosfera de Marte e se desfez. Nenhum dos dois lados errou a conta.</p>
+
+    <p><strong>Aplicação &mdash; história e metrologia.</strong> O vocabulário desta trilha &mdash; unidade, padrão, rastreabilidade, resolução &mdash; é o da <strong>Metrologia</strong>, e está fixado num documento internacional, o VIM (Vocabulário Internacional de Metrologia), publicado no Brasil pelo Inmetro.</p>
+  </div>
+</div>
+
+<div class="ato" id="ato-iii">
+  <div class="ato-titulo">Ato III &mdash; O Fechamento</div>
+
+  <p><strong>Medidas produzem conhecimento.</strong> Esta é a frase que fecha a trilha, e ela é mais forte do que parece. A medida não descreve um mundo que já estava lá, esperando: ela <em>produz</em> o que se pode dizer sobre ele. Uma grandeza que ninguém sabe medir é uma grandeza sobre a qual não se pode decidir nada &mdash; nem em ciência, nem em engenharia, nem em política pública.</p>
+
+  <p>Hoje você mediu seis coisas pequenas e aprendeu a escrevê-las. Parece pouco. Mas repare no que já mudou: quando alguém disser &ldquo;a folha tem 0,1 de espessura&rdquo;, você vai perguntar <em>0,1 o quê</em>. Quando um mostrador disser kgf, você vai saber que aquilo não é newton. Quando vir 12 SEG escrito num quadro, vai saber que está errado &mdash; e por quê.</p>
+
+  <p><strong>O que vem na T01.</strong> Duas pessoas mediram a mesma moeda e acharam 23,4 mm e 23,5 mm. Nesta trilha nós deixamos essa diferença de lado. Na próxima, ela é o assunto: toda medida é um número <em>e uma dúvida</em>, e existe uma forma correta de escrever as duas juntas. As bancadas continuam montadas; muda o que se pergunta a elas.</p>
+
+  <figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 7</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 7</span> &mdash; Sofia, Pedro, Lucas e Barbara saem do laboratório com o Roteiro de Bancada preenchido; na porta, o cartaz com os erros de escrita que a turma corrigiu na lousa.</figcaption>
+  </figure>
+</div>
+
+<div class="separador"></div>
+
+<div class="ciencia-arte" id="ciencia-arte">
+  <div class="ciencia-arte-titulo">Ciência e Arte</div>
+  <div class="ciencia-arte-obra"><strong>Sistema de proporções:</strong> <em>Le Modulor</em>, 1948 &mdash; Le Corbusier (1887&ndash;1965)</div>
+
+  <p>Em 1948, o arquiteto suíço-francês Le Corbusier publicou um sistema de proporções chamado <strong>Modulor</strong>. A ideia: tirar do corpo humano &mdash; de um homem de 1,83 m com o braço erguido &mdash; uma escala de medidas encadeadas pela razão áurea, e projetar com ela portas, degraus, tetos, móveis. Uma medida, nas palavras dele, <em>harmônica à escala humana, aplicável universalmente</em>.</p>
+
+  <figure class="figura">
+    <div class="figura-img" style="display:flex;align-items:center;justify-content:center;min-height:150px;border:1px dashed var(--cinza-borda);color:var(--cinza);font-family:var(--mono);font-size:.85rem;">Figura 8</div>
+    <figcaption class="figura-legenda"><span class="figura-num">Figura 8</span> &mdash; O Modulor, de Le Corbusier: a silhueta humana e a régua de proporções tirada dela.</figcaption>
+  </figure>
+
+  <p>É a mesma tensão desta trilha, e ela dá voltas. A medida começou no corpo &mdash; o pé, o palmo, a braça &mdash; e o SI a tirou de lá justamente porque o corpo varia de pessoa para pessoa. Le Corbusier faz o caminho de volta: pega a medida universal e a devolve ao corpo, agora com método, para que os prédios sirvam a quem mora neles. Não é recuo; é a mesma exigência aplicada duas vezes.</p>
+
+  <blockquote>&ldquo;Uma medida harmônica à escala humana, aplicável universalmente.&rdquo;</blockquote>
+  <div class="ca-autor">&mdash; Le Modulor, Le Corbusier, 1948</div>
+
+  <div class="footnote"><strong>Le Corbusier</strong> (La Chaux-de-Fonds, 1887 &mdash; Roquebrune-Cap-Martin, 1965). Arquiteto e urbanista. O Modulor não é uma frase dele: é a definição do próprio sistema, e por isso entra aqui assinado pela obra, não entre aspas de autor.</div>
+
+  <p style="margin-top:22px;"><em>Condorcet quis um padrão que valesse a todos os tempos e a todos os povos; Lord Kelvin, que abre o seu Roteiro de Bancada, lembrou que quando se pode medir aquilo de que se fala, sabe-se algo sobre isso; e Le Corbusier devolveu a régua ao corpo humano. Padrão, conhecimento e escala humana &mdash; três cérebros, o mesmo gesto.</em></p>
+</div>
+
+<div class="refs" id="referencias">
+  <div class="refs-titulo">Referências &mdash; Bibliografia Básica</div>
+  <p>CAMPOS, A. A.; ALVES, E. S.; SPEZIALI, N. L. <em>Física experimental básica na universidade</em>. 2. ed. Belo Horizonte: Editora UFMG, 2008.</p>
+  <p>PIACENTINI, J. J. et al. <em>Introdução ao laboratório de física</em>. 2. ed. Florianópolis: Editora da UFSC, 2018.</p>
+  <p>SANTORO, A. et al. <em>Estimativas e erros em experimentos de física</em>. 2. ed. Rio de Janeiro: EdUERJ, 2013.</p>
+
+  <div class="refs-titulo" style="margin-top:24px;">Referências &mdash; Bibliografia Complementar</div>
+  <p>HEWITT, P. G. <em>Física conceitual</em>. 12. ed. Porto Alegre: Bookman, 2015.</p>
+  <p>FEYNMAN, R. P.; LEIGHTON, R. B.; SANDS, M. L. <em>Feynman: lições de física</em>. Porto Alegre: Bookman, 2008. v. 1, 2 e 3.</p>
+  <p>HALLIDAY, D.; RESNICK, R.; WALKER, J. <em>Fundamentos de física</em>: mecânica. 10. ed. Rio de Janeiro: LTC, 2016. v. 1.</p>
+
+  <div class="refs-titulo" style="margin-top:24px;">Documentos e normas</div>
+  <p>BUREAU INTERNATIONAL DES POIDS ET MESURES. <em>Le Système international d'unités (SI)</em>. 9. ed. Sèvres: BIPM, 2019.</p>
+  <p>INMETRO. <em>Vocabulário Internacional de Metrologia (VIM)</em>. Duque de Caxias: Inmetro, 2012.</p>
+  <p>AZEVEDO, J. C. S. <em>O Sistema Internacional de Unidades</em>: quadro geral de unidades para o laboratório de ensino. Ouro Preto: NIDEC/IFMG, 2026. (material da disciplina)</p>
+
+  <div class="refs-titulo" style="margin-top:24px;">Epígrafes e obra citada</div>
+  <p>CONDORCET, N. <em>Lema do sistema métrico decimal</em>, 1791&ndash;1799.</p>
+  <p>THOMSON, William (Lord Kelvin). <em>Popular Lectures and Addresses</em>. London: Macmillan, 1889. v. 1, p. 73. (usada no Roteiro de Bancada desta trilha)</p>
+  <p>LE CORBUSIER. <em>Le Modulor</em>. Boulogne: Éditions de l'Architecture d'Aujourd'hui, 1948.</p>
+</div>
+
+</div>
+
+
+<div class="footer-line">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; ILB &middot; T0B &middot; Primeira edição &middot; 2026</div>
+
+
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+<script>
+// ─── READING PROGRESS ───
+window.addEventListener('scroll', function() {
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// ─── SAVE/RESTORE SCROLL POSITION ───
+var STORAGE_KEY = 'ILB-T0B-TT-v1';
+window.addEventListener('beforeunload', function() {
+  try { localStorage.setItem(STORAGE_KEY + '-scroll', window.scrollY); } catch(e) {}
+});
+window.addEventListener('load', function() {
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY + '-scroll');
+    if (saved) { setTimeout(function() { window.scrollTo(0, parseInt(saved)); }, 100); }
+  } catch(e) {}
+});
+
+// ─── FONT SIZE ───
+var fontSteps = [1.0, 1.15, 1.30];
+var fontIdx = 1;
+try {
+  var savedFont = localStorage.getItem(STORAGE_KEY + '-font');
+  if (savedFont !== null) fontIdx = parseInt(savedFont);
+} catch(e) {}
+
+function applyFontSize() {
+  document.documentElement.style.setProperty('--fs-base', fontSteps[fontIdx] + 'rem');
+  document.getElementById('btnFontMinus').classList.toggle('active', fontIdx === 0);
+  document.getElementById('btnFontReset').classList.toggle('active', fontIdx === 1);
+  document.getElementById('btnFontPlus').classList.toggle('active', fontIdx === 2);
+  try { localStorage.setItem(STORAGE_KEY + '-font', fontIdx); } catch(e) {}
+}
+applyFontSize();
+
+document.getElementById('btnFontMinus').addEventListener('click', function() { fontIdx = 0; applyFontSize(); });
+document.getElementById('btnFontReset').addEventListener('click', function() { fontIdx = 1; applyFontSize(); });
+document.getElementById('btnFontPlus').addEventListener('click', function() { fontIdx = 2; applyFontSize(); });
+
+// ─── THEME TOGGLE ───
+function getTheme() {
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY + '-theme');
+    if (saved) return saved;
+  } catch(e) {}
+  return 'dark';
+}
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  try { localStorage.setItem(STORAGE_KEY + '-theme', t); } catch(e) {}
+}
+setTheme(getTheme());
+
+document.getElementById('btnTheme').addEventListener('click', function() {
+  var current = document.documentElement.getAttribute('data-theme');
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// ─── TOC SIDEBAR ───
+var tocBtn = document.getElementById('tocToggle');
+var tocSidebar = document.getElementById('tocSidebar');
+tocBtn.addEventListener('click', function() {
+  tocSidebar.classList.toggle('open');
+  creditosSidebar.classList.remove('open');
+  musicaSidebar.classList.remove('open');
+  ineditismoSidebar.classList.remove('open');
+  figurasSidebar.classList.remove('open');
+});
+tocSidebar.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { tocSidebar.classList.remove('open'); });
+});
+
+// ─── CREDITOS SIDEBAR ───
+var creditosBtn = document.getElementById('creditosToggle');
+var creditosSidebar = document.getElementById('creditosSidebar');
+creditosBtn.addEventListener('click', function() {
+  creditosSidebar.classList.toggle('open');
+  tocSidebar.classList.remove('open');
+  musicaSidebar.classList.remove('open');
+  ineditismoSidebar.classList.remove('open');
+  figurasSidebar.classList.remove('open');
+});
+
+// ─── MUSICA SIDEBAR ───
+var musicaBtn = document.getElementById('musicaToggle');
+var musicaSidebar = document.getElementById('musicaSidebar');
+musicaBtn.addEventListener('click', function() {
+  musicaSidebar.classList.toggle('open');
+  tocSidebar.classList.remove('open');
+  creditosSidebar.classList.remove('open');
+  ineditismoSidebar.classList.remove('open');
+  figurasSidebar.classList.remove('open');
+});
+
+// ─── INEDITISMO SIDEBAR ───
+var ineditismoBtn = document.getElementById('ineditismoToggle');
+var ineditismoSidebar = document.getElementById('ineditismoSidebar');
+ineditismoBtn.addEventListener('click', function() {
+  ineditismoSidebar.classList.toggle('open');
+  tocSidebar.classList.remove('open');
+  creditosSidebar.classList.remove('open');
+  musicaSidebar.classList.remove('open');
+  figurasSidebar.classList.remove('open');
+});
+
+// ─── FIGURAS SIDEBAR ───
+var figurasBtn = document.getElementById('figurasToggle');
+var figurasSidebar = document.getElementById('figurasSidebar');
+figurasBtn.addEventListener('click', function() {
+  figurasSidebar.classList.toggle('open');
+  tocSidebar.classList.remove('open');
+  creditosSidebar.classList.remove('open');
+  musicaSidebar.classList.remove('open');
+  ineditismoSidebar.classList.remove('open');
+});
+
+// Close all sidebars when clicking outside
+document.addEventListener('click', function(e) {
+  if (!tocSidebar.contains(e.target) && e.target !== tocBtn) {
+    tocSidebar.classList.remove('open');
+  }
+  if (!creditosSidebar.contains(e.target) && e.target !== creditosBtn) {
+    creditosSidebar.classList.remove('open');
+  }
+  if (!musicaSidebar.contains(e.target) && e.target !== musicaBtn) {
+    musicaSidebar.classList.remove('open');
+  }
+  if (!ineditismoSidebar.contains(e.target) && e.target !== ineditismoBtn) {
+    ineditismoSidebar.classList.remove('open');
+  }
+  if (!figurasSidebar.contains(e.target) && e.target !== figurasBtn) {
+    figurasSidebar.classList.remove('open');
+  }
+});
+var audioHint = document.getElementById('audioHint');
+if (audioHint) {
+  audioHint.addEventListener('click', function(e) {
+    e.stopPropagation();
+    tocSidebar.classList.remove('open');
+    creditosSidebar.classList.remove('open');
+    ineditismoSidebar.classList.remove('open');
+    figurasSidebar.classList.remove('open');
+    musicaSidebar.classList.add('open');
+  });
+}
+</script>
+<!-- ABA-SITE (injetada na publicacao — nao existe no OA canonico) -->
+<style>
+.aba-site-toggle { position: fixed; top: 56px; left: 0; z-index: 999; background: #1a1b1f; border: 1px solid #444; border-left: none; color: #bbb; font-size: .7rem; padding: 8px 10px; cursor: pointer; font-family: 'Courier New', monospace; writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 1px; text-transform: uppercase; transition: color .15s; border-radius: 0; }
+.aba-site-toggle:hover { color: #3E8E5A; }
+.aba-site-painel { position: fixed; top: 0; left: 0; z-index: 1001; width: 330px; max-width: 86vw; height: 100vh; overflow-y: auto; background: #1a1b1f; border-right: 1px solid #444; padding: 24px 22px 24px 42px; transform: translateX(-100%); transition: transform .25s; font-family: 'Segoe UI', system-ui, sans-serif; font-size: .92rem; color: #c4c4c4; line-height: 1.6; }
+.aba-site-painel.open { transform: translateX(0); }
+.aba-site-painel h3 { font-family: 'Courier New', monospace; font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; color: #3E8E5A; border-bottom: 1px solid #444; padding-bottom: 8px; margin: 0 0 14px; }
+.aba-site-painel a.aba-site-btn { display: block; margin: 10px 0; padding: 11px 14px; border: 1px solid #444; color: #e8e8e8; text-decoration: none; font-family: 'Courier New', monospace; font-size: .85rem; }
+.aba-site-painel a.aba-site-btn:hover { border-color: #3E8E5A; color: #3E8E5A; }
+/* TT: abre espaco no topo do trilho e oculta a aba Figuras (decisao 2026-08-08).
+   Vao vertical uniforme de 30px entre as abas (alturas medidas: 41/55/76/63/65). */
+.musica-toggle { top: 127px !important; }
+.ineditismo-toggle { top: 212px !important; }
+.toc-toggle { top: 318px !important; }
+.creditos-toggle { top: 411px !important; }
+.figuras-toggle, .figuras-sidebar { display: none !important; }
+/* Celular: a aba fica sobre o conteudo, porque em tela estreita o texto ocupa
+   a largura toda e o trilho e `position: fixed` na borda esquerda. Abrir uma
+   faixa no body empurra TUDO para a direita — vale para a aba Site e para o
+   trilho do TT (Musica/Ineditismo/Sumario/Creditos), todos em left: 0.
+   Com `box-sizing: border-box` (padrao nos OAs) nao cria rolagem lateral. */
+@media (max-width: 600px) {
+  body { padding-left: 30px; }
+  .aba-site-toggle { font-size: .6rem; padding: 6px 6px; }
+  .aba-site-painel { width: 86vw; }
+}
+@media print { .aba-site-toggle, .aba-site-painel { display: none !important; } }
+</style>
+<button class="aba-site-toggle" id="abaSiteToggle">Site</button>
+<aside class="aba-site-painel" id="abaSitePainel">
+  <h3>Site</h3>
+  <a class="aba-site-btn" href="https://nidecop-jafb.github.io/ilb-oa/#t0a">Ver todos os OAs da trilha</a>
+  <a class="aba-site-btn" href="https://nidecop-jafb.github.io/ilb-oa/">Início do site</a>
+</aside>
+<script>
+(function () {
+  var t = document.getElementById('abaSiteToggle');
+  var p = document.getElementById('abaSitePainel');
+  var outras = '.musica-sidebar,.ineditismo-sidebar,.toc-sidebar,.creditos-sidebar,.figuras-sidebar';
+  t.addEventListener('click', function () {
+    p.classList.toggle('open');
+    document.querySelectorAll(outras).forEach(function (s) { s.classList.remove('open'); });
+  });
+  document.addEventListener('click', function (e) {
+    if (!p.contains(e.target) && e.target !== t) { p.classList.remove('open'); }
+  });
+})();
+</script>
+</body>
+</html>
