@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/ilb-oa/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/ilb-oa/_icones/app-site-192.png">
+<link rel="apple-touch-icon" href="/ilb-oa/_icones/app-site-512.png">
+<meta name="theme-color" content="#131110">
+<title>Instalar o site da ILB no celular ou no PC</title>
+<style>
+  :root { --verde: #3E8E5A; --aco: #7FB2D6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0d0d; color: #e8e8e8; font-family: Georgia, 'Times New Roman', serif;
+         line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 60px; }
+  h1 { font-family: 'Courier New', monospace; font-size: 1.5rem; color: var(--verde);
+       text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--verde);
+       padding-bottom: 12px; margin-bottom: 10px; }
+  .sub { color: #b8b8b8; font-size: .95rem; margin-bottom: 30px; }
+  h2 { font-family: 'Courier New', monospace; font-size: .95rem; color: var(--aco);
+       text-transform: uppercase; letter-spacing: .12em; margin: 32px 0 10px; }
+  ol { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  .caixa { border: 1px solid #444; padding: 20px 22px; margin-bottom: 22px; }
+  .caixa.destaque { border-color: var(--verde); }
+  .qr { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .qr img { width: 190px; height: 190px; background: #fff; padding: 10px; }
+  .qr .end { font-family: 'Courier New', monospace; color: var(--verde); font-size: 1.05rem;
+             word-break: break-all; }
+  .btn { display: inline-block; margin-top: 14px; padding: 13px 22px; min-height: 48px;
+         background: var(--verde); color: #0d0d0d; font-family: 'Courier New', monospace;
+         font-size: .95rem; font-weight: bold; text-decoration: none; border: none;
+         cursor: pointer; }
+  .btn[hidden] { display: none; }
+  .nota { color: #999; font-size: .88rem; margin-top: 10px; }
+  .voltar { display: inline-block; margin-top: 34px; color: var(--aco);
+            font-family: 'Courier New', monospace; font-size: .85rem; text-decoration: none;
+            border-bottom: 1px solid #444; }
+  .rodape { margin-top: 40px; border-top: 1px solid #333; padding-top: 16px;
+            color: #777; font-size: .82rem; }
+  @media (max-width: 560px) { .qr img { width: 150px; height: 150px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Instalar o site no seu aparelho</h1>
+  <p class="sub">O site da <strong>Introdução ao Laboratório</strong> pode virar um ícone na tela
+  do celular ou na área de trabalho do computador. Abre em tela cheia, como aplicativo, e
+  continua sendo o mesmo site — <strong>não ocupa espaço</strong>, não precisa de loja e não pede
+  senha.</p>
+
+  <div class="caixa destaque">
+    <div class="qr">
+      <img src="ILB-site-qr.png" alt="QR code do site da ILB">
+      <div>
+        <div class="end">https://nidecop-jafb.github.io/ilb-oa/</div>
+        <p class="nota">Aponte a câmera do celular para o QR, ou digite o endereço.</p>
+        <button class="btn" id="btn-instalar" hidden>Instalar agora</button>
+        <p class="nota" id="nota-instalar">Se o seu navegador oferecer a instalação, o botão
+        aparece aqui. Se não aparecer, siga os passos abaixo — dá no mesmo.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Android · Chrome</h2>
+  <ol>
+    <li>Abra <strong>nidecop-jafb.github.io/ilb-oa</strong> no Chrome.</li>
+    <li>Toque nos <strong>três pontos</strong> (canto superior direito).</li>
+    <li>Escolha <strong>Instalar aplicativo</strong> — ou <em>Adicionar à tela inicial</em>.</li>
+    <li>Confirme. O ícone verde da ILB aparece junto dos seus aplicativos.</li>
+  </ol>
+
+  <h2>iPhone e iPad · Safari</h2>
+  <ol>
+    <li>Abra <strong>nidecop-jafb.github.io/ilb-oa</strong> no <strong>Safari</strong> (no iPhone só funciona nele).</li>
+    <li>Toque no botão <strong>Compartilhar</strong> — o quadrado com a seta para cima.</li>
+    <li>Role e escolha <strong>Adicionar à Tela de Início</strong>.</li>
+    <li>Toque em <strong>Adicionar</strong>.</li>
+  </ol>
+
+  <h2>Computador · Chrome ou Edge</h2>
+  <ol>
+    <li>Abra <strong>nidecop-jafb.github.io/ilb-oa</strong>.</li>
+    <li>Na barra de endereço, clique no ícone <strong>instalar</strong> (uma tela com uma seta),
+    à direita — ou no menu <strong>⋮</strong> &rarr; <em>Instalar</em>.</li>
+    <li>Confirme em <strong>Instalar</strong>. O atalho vai para a área de trabalho e para o menu
+    Iniciar.</li>
+  </ol>
+
+  <div class="caixa">
+    <p><strong>Depois de instalado.</strong> O ícone abre direto na lista de trilhas. O conteúdo
+    se atualiza sozinho sempre que houver internet — não é preciso reinstalar quando um OA novo
+    entrar. Sem internet, o aparelho ainda abre a última versão que você viu.</p>
+    <p class="nota">Para remover: toque e segure o ícone (celular) ou clique com o botão direito
+    (computador) e escolha desinstalar. Nada mais fica no aparelho.</p>
+  </div>
+
+  <a class="voltar" href="/ilb-oa/">&larr; voltar para as trilhas</a>
+
+  <div class="rodape">
+    IFMG campus Ouro Preto &middot; CODAFIS &middot; NIDEC &middot; Licenciatura em Física &middot;
+    Introdução ao Laboratório &middot; 2026
+  </div>
+</div>
+
+<script>
+/* Instalacao em um toque, onde o navegador permite. Onde nao permite (iPhone),
+   o botao simplesmente nao aparece e valem os passos da pagina. */
+var adiado = null;
+var btn = document.getElementById('btn-instalar');
+var nota = document.getElementById('nota-instalar');
+
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
+  adiado = e;
+  btn.hidden = false;
+  nota.textContent = 'Um toque e pronto — ou siga os passos abaixo.';
+});
+
+btn.addEventListener('click', function () {
+  if (!adiado) { return; }
+  adiado.prompt();
+  adiado.userChoice.then(function (escolha) {
+    if (escolha.outcome === 'accepted') {
+      btn.hidden = true;
+      nota.textContent = 'Instalado. O ícone já está na sua tela.';
+    }
+    adiado = null;
+  });
+});
+
+window.addEventListener('appinstalled', function () {
+  btn.hidden = true;
+  nota.textContent = 'Instalado. O ícone já está na sua tela.';
+});
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  nota.textContent = 'Você já está usando o site instalado. Tudo certo.';
+}
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  navigator.serviceWorker.register('/ilb-oa/sw.js', { scope: '/ilb-oa/' }).catch(function () {});
+}
+</script>
+</body>
+</html>

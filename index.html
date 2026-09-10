@@ -133,6 +133,7 @@
 <aside class="aba-painel" id="abaSite">
   <h3>Site</h3>
   <p>Endereço: <strong>nidecop-jafb.github.io/ilb-oa</strong> — abre direto, sem senha e sem aplicativo. Nos OAs, a identificação é pelo <strong>RA</strong> (7 dígitos) com confirmação.</p>
+  <a class="aba-btn" href="instalar/">Instalar o site no celular ou no PC &middot; atalho com ícone</a>
   <a class="aba-btn" href="https://nidecop-jafb.github.io/fe1-oa/">Disciplina irmã: FE1 — Física Experimental 1</a>
 </aside>
 
@@ -359,5 +360,17 @@ if (location.protocol === 'file:') {
 })();
 </script>
 <!-- ABAS-JS:FIM -->
+<!-- SW:INICIO -->
+<script>
+/* Atalho com icone: o service worker e o que faz o navegador oferecer
+   "Instalar". Gerado por _scripts/gerar_instalar_ilb.py. */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/ilb-oa/sw.js', { scope: '/ilb-oa/' })
+      .catch(function () { /* sem service worker o site funciona igual */ });
+  });
+}
+</script>
+<!-- SW:FIM -->
 </body>
 </html>
