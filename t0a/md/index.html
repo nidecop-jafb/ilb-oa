@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILB-T0A &middot; Boas-vindas &agrave; F&iacute;sica Experimental &mdash; Resumo em &Aacute;udio</title>
+<style>
+:root {
+  --verde: #3E8E5A; --verde-claro: #5FAE7A; --verde-bg: oklch(0.28 0.05 152);
+  --aco: #7FB2D6; --aco-claro: #A7CCE6; --aco-bg: oklch(0.28 0.05 240);
+  --ok: oklch(0.72 0.15 150); --ok-bg: oklch(0.25 0.05 150);
+  --erro: oklch(0.62 0.20 25); --erro-bg: oklch(0.24 0.06 25);
+  --cinza: oklch(0.62 0.01 260); --cinza-borda: oklch(0.40 0.01 260);
+  --texto: oklch(0.93 0 0); --branco: oklch(0.96 0 0);
+  --superficie: oklch(0.22 0.01 260); --hover: oklch(0.25 0.01 260);
+  --fundo: oklch(0.13 0.01 260); --painel: oklch(0.16 0.01 260);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Courier New', 'Cascadia Code', Consolas, monospace;
+  --serif: Georgia, Cambria, 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--fundo); color: var(--texto); line-height: 1.6; min-height: 100vh; }
+
+.header { background: var(--painel); border-top: 3px solid var(--verde); padding: 14px 20px; }
+.header-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.header .marca { width: 52px; height: 52px; flex-shrink: 0; }
+.header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; flex: 1 1 240px; }
+.header h1 .trilha-code { color: var(--verde); }
+.badge { display: inline-block; background: var(--verde); color: oklch(0.13 0.01 260); padding: 4px 12px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+.header-sub { max-width: 800px; margin: 6px auto 0; font-size: 0.88rem; color: var(--cinza); }
+.progresso { max-width: 800px; margin: 12px auto 0; display: flex; gap: 3px; height: 6px; }
+.progresso .seg { flex: 1; background: var(--cinza-borda); transition: background .3s; }
+.progresso .seg.ouvido { background: var(--ok); }
+
+main { max-width: 800px; margin: 0 auto; padding: 16px; }
+
+.piazzi-bar { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; background:var(--painel); border:1px solid var(--cinza-borda); padding:10px 16px; margin-bottom:16px; font-size:.78rem; }
+.piazzi-bar .piazzi-ref { color:var(--cinza); }
+.piazzi-bar .piazzi-tag { display:inline-block; border:1px solid var(--verde); color:var(--verde); padding:2px 10px; font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.piazzi-bar .piazzi-text { color:var(--texto); font-style:italic; font-size:.74rem; }
+.piazzi-bar .piazzi-yt { display:inline-flex; align-items:center; gap:5px; background:var(--erro); color:var(--branco); padding:4px 12px; font-size:.72rem; font-weight:700; text-decoration:none; }
+.piazzi-bar .piazzi-yt::before { content:'\25B6'; font-size:.6rem; }
+
+.intro-box { background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: 4px solid var(--aco); padding: 16px 18px; margin-bottom: 16px; font-size: .88rem; }
+.intro-box strong { color: var(--verde); }
+
+.player { background: var(--painel); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--verde); padding: 16px 18px; margin-bottom: 16px; }
+.player-topo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.player-titulo { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--verde); flex: 1 1 auto; }
+.faixa-btn { background: transparent; color: var(--texto); border: 1px solid var(--cinza-borda); padding: 6px 14px; font-family: var(--font); font-size: .76rem; font-weight: 600; cursor: pointer; min-height: 36px; }
+.faixa-btn.ativa { border-color: var(--verde); color: var(--verde); background: var(--verde-bg); }
+.player audio { width: 100%; }
+.player .sem-audio { font-size: .78rem; color: var(--cinza); border-left: 3px solid var(--erro); padding: 8px 12px; background: var(--erro-bg); display: none; }
+.player.indisponivel .sem-audio { display: block; }
+
+.secao { background: var(--superficie); margin-bottom: 8px; border-left: 3px solid var(--cinza-borda); transition: border-color .3s; }
+.secao.ouvida { border-left-color: var(--ok); }
+.secao-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; cursor: pointer; user-select: none; }
+.secao-header:hover { background: var(--hover); }
+.secao-num { font-family: var(--mono); font-size: .68rem; font-weight: 700; color: var(--verde); min-width: 20px; }
+.secao-titulo { font-size: .9rem; font-weight: 600; flex: 1; }
+.secao-check { display: flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--cinza); }
+.secao-check input[type="checkbox"] { accent-color: var(--ok); width: 18px; height: 18px; }
+.secao-seta { color: var(--cinza); font-size: .8rem; transition: transform .2s; }
+.secao.aberta .secao-seta { transform: rotate(90deg); }
+.secao-body { display: none; padding: 0 16px 14px 16px; }
+.secao.aberta .secao-body { display: block; }
+.secao-texto { font-size: .88rem; line-height: 1.75; color: oklch(0.84 0 0); }
+.secao-texto p { margin-bottom: 10px; }
+.secao-texto .termo { color: var(--verde); font-weight: 600; }
+.secao-texto .citacao { font-family: var(--serif); font-style: italic; color: var(--aco-claro); }
+.secao-texto strong { color: var(--branco); }
+
+.quiz-section { background: var(--superficie); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--aco); padding: 18px 20px; margin: 20px 0; }
+.quiz-titulo { font-size: .72rem; font-weight: 700; color: var(--aco); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px; }
+.quiz-sub { font-size: .8rem; color: var(--cinza); margin-bottom: 14px; }
+.quiz-q { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--cinza-borda); }
+.quiz-q:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.quiz-enunciado { font-size: .86rem; margin-bottom: 8px; font-weight: 600; }
+.quiz-opcoes { display: flex; flex-direction: column; gap: 4px; }
+.quiz-op { display: flex; align-items: flex-start; gap: 8px; padding: 8px 12px; background: oklch(0.18 0.01 260); cursor: pointer; font-size: .84rem; border: 1px solid transparent; }
+.quiz-op:hover { background: var(--hover); }
+.quiz-op.certa { border-color: var(--ok); background: var(--ok-bg); }
+.quiz-op.errada { border-color: var(--erro); background: var(--erro-bg); }
+.quiz-op.travada { pointer-events: none; }
+.quiz-op input[type="radio"] { margin-top: 3px; accent-color: var(--verde); }
+.quiz-porque { display: none; margin-top: 8px; font-size: .82rem; color: oklch(0.84 0 0); border-left: 3px solid var(--verde); padding: 8px 12px; background: var(--verde-bg); }
+.quiz-porque.visivel { display: block; }
+.quiz-porque strong { color: var(--branco); }
+
+.encerramento { max-width:800px; margin:30px auto 10px; padding:20px 16px; border-top:2px solid var(--verde); text-align:center; }
+.encerramento .fecho-frase { font-family:var(--serif); font-size:1.02rem; line-height:1.5; }
+.encerramento .fecho-acao { color:var(--verde); font-size:.95rem; text-transform:uppercase; font-weight:700; margin-top:10px; }
+.encerramento .fecho-links { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
+.encerramento .fecho-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 18px; min-height:44px; background:var(--verde); color:oklch(0.13 0.01 260); font-family:var(--mono); font-size:.8rem; font-weight:700; text-decoration:none; }
+.encerramento .fecho-btn::before { content:'\25B6'; font-size:.62rem; }
+.encerramento .fecho-btn.secundario { background:transparent; color:var(--aco); border:1px solid var(--aco); }
+.encerramento .fecho-btn.secundario::before { content:'\2630'; font-size:.72rem; }
+.encerramento .fecho-inst { color:var(--cinza); font-size:.85rem; margin-top:16px; }
+.footer-line { text-align:center; font-size:.82rem; color:var(--cinza); padding:16px 12px; line-height:1.5; }
+
+@media (max-width: 600px) { main { padding: 10px; } .header h1 { font-size: 1.15rem; } }
+@media print {
+  body { background: #fff !important; color: #1A1A1A !important; }
+  .header { background: none !important; border-top: 2px solid #1F3864; }
+  .secao { background: #F8F8F8 !important; border-left-color: #D0D0D0 !important; page-break-inside: avoid; }
+  .secao-body { display: block !important; }
+  .progresso, .player, .piazzi-bar { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdu&ccedil;&atilde;o ao Laborat&oacute;rio">
+      <g fill="none" stroke="#3E8E5A" stroke-width="3">
+        <ellipse cx="60" cy="52" rx="46" ry="18"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+      </g>
+      <g fill="#3E8E5A">
+        <circle cx="53" cy="47" r="7"/><circle cx="67" cy="47" r="7"/><circle cx="60" cy="58" r="9"/>
+      </g>
+      <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+        <line x1="26" y1="110" x2="94" y2="110"/>
+        <line x1="30" y1="110" x2="30" y2="104"/><line x1="40" y1="110" x2="40" y2="104"/>
+        <line x1="50" y1="110" x2="50" y2="104"/><line x1="60" y1="110" x2="60" y2="98"/>
+        <line x1="70" y1="110" x2="70" y2="104"/><line x1="80" y1="110" x2="80" y2="104"/>
+        <line x1="90" y1="110" x2="90" y2="104"/>
+      </g>
+    </svg>
+    <h1><span class="trilha-code">ILB-T0A</span> &middot; Boas-vindas &agrave; F&iacute;sica Experimental</h1>
+    <span class="badge">Resumo em &Aacute;udio (MD)</span>
+  </div>
+  <div class="header-sub">Ou&ccedil;a e acompanhe &middot; marque cada trecho &middot; 3 a 5 min &middot; Pr&eacute;-Lab</div>
+  <div class="progresso" id="progresso"></div>
+</header>
+
+<main>
+
+<div class="piazzi-bar">
+  <span class="piazzi-ref">Pierluigi Piazzi recomenda em <em>Aprendendo Intelig&ecirc;ncia</em>:</span>
+  <span class="piazzi-tag">Ouvir</span><span class="piazzi-tag">Ler</span><span class="piazzi-tag">Anotar</span>
+  <span class="piazzi-text">o &aacute;udio primeiro, o texto depois</span>
+  <a class="piazzi-yt" href="https://music.youtube.com/search?q=Bach+Suites+violoncelo+BWV+1007" target="_blank" rel="noopener">YouTube Music</a>
+  <span class="piazzi-text">J. S. Bach &mdash; Su&iacute;tes para violoncelo, BWV 1007 &middot; c. 1720 &middot; ~18 min</span>
+</div>
+
+<div class="intro-box">
+  <strong>Como usar.</strong> Ou&ccedil;a no trajeto at&eacute; o campus, sem ler nada. Depois, com o texto na tela, abra cada trecho, marque o que j&aacute; ouviu e responda a autoavalia&ccedil;&atilde;o do fim &mdash; ela n&atilde;o vale nota e n&atilde;o sai do seu aparelho. S&oacute; ent&atilde;o v&aacute; ao <strong>Texto Tem&aacute;tico</strong>: o &aacute;udio monta o esqueleto, o texto preenche.
+</div>
+
+<div class="player" id="player">
+  <div class="player-topo">
+    <span class="player-titulo">&Aacute;udio da trilha</span>
+    <button class="faixa-btn ativa" data-src="ILB-T0A-MD-v1-padrao.m4a">Vers&atilde;o padr&atilde;o</button><button class="faixa-btn" data-src="ILB-T0A-MD-v1-curto.m4a">Vers&atilde;o curta</button>
+  </div>
+  <audio id="audio" controls preload="none" src="ILB-T0A-MD-v1-padrao.m4a"></audio>
+  <div class="sem-audio">O arquivo de &aacute;udio ainda n&atilde;o foi publicado nesta pasta. O texto abaixo &eacute; o roteiro completo &mdash; d&aacute; para ler enquanto isso.</div>
+</div>
+
+<div class="secao" data-idx="0">
+  <div class="secao-header" data-idx="0">
+    <span class="secao-num">00</span><span class="secao-titulo">Antes de tudo &mdash; onde voc&ecirc; est&aacute;</span><div class="secao-check"><input type="checkbox" id="chk-0" data-idx="0"><label for="chk-0">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p>Voc&ecirc; acabou de atravessar a porta do <span class="termo">Pavilh&atilde;o de F&iacute;sica</span> do IFMG Ouro Preto. Do lado de fora, um pr&eacute;dio retangular que faz 41 anos em 2026. Do lado de dentro, o Laborat&oacute;rio de Mec&acirc;nica: bancadas, r&eacute;guas, trenas, paqu&iacute;metros, cron&ocirc;metros e balan&ccedil;as. Hoje voc&ecirc; n&atilde;o vai medir nada com nenhum deles.</p>
+<p>A <span class="termo">Introdu&ccedil;&atilde;o ao Laborat&oacute;rio (ILB)</span> &eacute; a primeira disciplina experimental da Licenciatura em F&iacute;sica, no 2.&ordm; per&iacute;odo, antes de Mec&acirc;nica I. Ela n&atilde;o ensina um conceito novo de f&iacute;sica: ensina <strong>a medir</strong>, e a fazer isso com rigor suficiente para, um dia, ensinar a fazer o mesmo.</p>
+<p>Em dois anos, algu&eacute;m vai perguntar a voc&ecirc;, na frente de uma turma, por que a r&eacute;gua marca 1,6&nbsp;cm e n&atilde;o 2&nbsp;cm. Voc&ecirc; vai estar do outro lado da bancada. A disciplina come&ccedil;a hoje, deste lado.</p>
+<p class="citacao">&ldquo;A leitura do mundo precede a leitura da palavra.&rdquo; &mdash; Paulo Freire, 1982</p>
+<p>Este resumo est&aacute; organizado em <strong>cinco perguntas</strong> &mdash; as que quem chega a uma disciplina nova traz na cabe&ccedil;a, na ordem em que aparecem. Repare na forma antes do conte&uacute;do: apresentar um plano de ensino pela d&uacute;vida de quem estuda, e n&atilde;o pela lista de quem ensina, &eacute; uma decis&atilde;o did&aacute;tica &mdash; e mat&eacute;ria de licenciatura.</p></div></div>
+</div>
+<div class="secao" data-idx="1">
+  <div class="secao-header" data-idx="1">
+    <span class="secao-num">01</span><span class="secao-titulo">1. O que os documentos oficiais revelam</span><div class="secao-check"><input type="checkbox" id="chk-1" data-idx="1"><label for="chk-1">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p>Toda disciplina existe primeiro no papel. Quatro documentos dizem o que esta &eacute;.</p>
+<p>O <span class="termo">Projeto Pedag&oacute;gico do Curso (PPC)</span> descreve o que a Licenciatura se compromete a formar: um <strong>professor de F&iacute;sica para a educa&ccedil;&atilde;o b&aacute;sica</strong>, e n&atilde;o um pesquisador de bancada. Toda decis&atilde;o desta disciplina se justifica ali.</p>
+<p>A <span class="termo">matriz curricular</span> p&otilde;e a ILB numa posi&ccedil;&atilde;o pouco comum: laborat&oacute;rio <em>sem</em> disciplina te&oacute;rica vinculada, no 2.&ordm; per&iacute;odo. N&atilde;o tem pr&eacute;-requisito &mdash; e &eacute; pr&eacute;-requisito do Laborat&oacute;rio de Mec&acirc;nica, do 4.&ordm;. A ordem &eacute; proposital: quem sabe reconhecer uma incerteza chega &agrave; Mec&acirc;nica com uma pergunta a mais na cabe&ccedil;a.</p>
+<p>A <span class="termo">ementa e o plano de ensino</span>: 30 horas, doze trilhas, dezesseis encontros. E o <span class="termo">Regulamento de Ensino</span> (Resolu&ccedil;&atilde;o n.&ordm; 01/2026 do IFMG) fixa dois n&uacute;meros que n&atilde;o se negociam: <strong>frequ&ecirc;ncia m&iacute;nima de 75%</strong> e <strong>rendimento m&iacute;nimo de 60%</strong>.</p>
+<p>Guarde o gesto, n&atilde;o s&oacute; o conte&uacute;do: ler um documento oficial de forma&ccedil;&atilde;o &eacute; profissional, e n&atilde;o burocr&aacute;tico. Na primeira semana numa escola, algu&eacute;m vai lhe entregar um Projeto Pol&iacute;tico-Pedag&oacute;gico e esperar que voc&ecirc; saiba extrair dele o que a sua disciplina deve fazer.</p></div></div>
+</div>
+<div class="secao" data-idx="2">
+  <div class="secao-header" data-idx="2">
+    <span class="secao-num">02</span><span class="secao-titulo">2. As trilhas, as tr&ecirc;s paradas e os dezesseis OAs</span><div class="secao-check"><input type="checkbox" id="chk-2" data-idx="2"><label for="chk-2">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p>A disciplina n&atilde;o &eacute; dada em aulas soltas: &eacute; dada em <span class="termo">trilhas</span>. S&atilde;o doze &mdash; esta abertura, o Sistema Internacional de Unidades e as dez trilhas de bancada.</p>
+<p>Cada trilha tem sempre as mesmas <strong>tr&ecirc;s paradas</strong>, e elas n&atilde;o trocam de ordem: <span class="termo">Pr&eacute;-Lab</span>, 20 min em casa, antes &middot; <span class="termo">Lab</span>, 100 min na bancada, onde a medi&ccedil;&atilde;o acontece &mdash; e s&oacute; ali &middot; <span class="termo">P&oacute;s-Lab</span>, 40 min em casa, depois: incertezas, tabelas, gr&aacute;ficos, ajuste.</p>
+<p>Dentro das paradas ficam os <span class="termo">Objetos de Aprendizagem (OAs)</span> &mdash; pe&ccedil;as de material com fun&ccedil;&atilde;o &uacute;nica. A disciplina tem <strong>dezesseis</strong>: no Pr&eacute;-Lab, o Ponto de Partida (PP), o Resumo em &Aacute;udio (MD), o Texto Tem&aacute;tico (TT), as Simula&ccedil;&otilde;es (SM) e o Testinho (TN), com CD, MC, IE e CS de apoio; no Lab, o Roteiro de Bancada (RB), a Apresenta&ccedil;&atilde;o do Lab (AP), os Infogr&aacute;ficos (IG) e a Provinha (PR); no P&oacute;s-Lab, o Relat&oacute;rio M&iacute;nimo (RM) e o Completo (RC), com o Desafio Pedag&oacute;gico (DX) opcional.</p>
+<p><strong>Esta trilha &eacute; a exce&ccedil;&atilde;o.</strong> A T0A n&atilde;o mede nada, e entrega <strong>cinco</strong> dos dezesseis: MD, TT e CD no Pr&eacute;-Lab; RB de reconhecimento &mdash; que aqui traz dentro dele o IE e o CS &mdash; e AP no Lab. Sem dado coletado n&atilde;o h&aacute; P&oacute;s-Lab. Os outros onze entram a partir da T01, na aba <em>M&eacute;todo</em> do site.</p>
+<p>E por que n&atilde;o o formato tradicional? No laborat&oacute;rio de roteiro-receita, o estudante executa passos numerados e confere com um gabarito. Aqui o experimento &eacute; <strong>ve&iacute;culo</strong>: mede-se para aprender a avaliar incerteza, tabelar, graficar e ajustar. Muda o experimento dez vezes; <strong>n&atilde;o muda o protocolo de medida</strong>.</p></div></div>
+</div>
+<div class="secao" data-idx="3">
+  <div class="secao-header" data-idx="3">
+    <span class="secao-num">03</span><span class="secao-titulo">3. A sequ&ecirc;ncia de estudo: seguran&ccedil;a, acervo, registro</span><div class="secao-check"><input type="checkbox" id="chk-3" data-idx="3"><label for="chk-3">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p>A sequ&ecirc;ncia &eacute; uma s&oacute;, e &eacute; curta &mdash; mas o ritmo &eacute; seu. Voc&ecirc; escolhe a hora e o lugar; n&atilde;o escolhe a ordem das paradas, porque cada uma prepara a seguinte.</p>
+<p><strong>Antes da aula (20 min).</strong> Ou&ccedil;a este &aacute;udio, leia o Texto Tem&aacute;tico, preveja o resultado do que vai medir e confira o Invent&aacute;rio de Equipamento (IE) e o Checklist de Seguran&ccedil;a (CS). A previs&atilde;o n&atilde;o precisa estar certa &mdash; precisa existir. <em>Chegar sem previs&atilde;o &eacute; chegar sem pergunta.</em></p>
+<p><strong>Na aula &mdash; seguran&ccedil;a primeiro.</strong> Voc&ecirc; vai localizar a sa&iacute;da de emerg&ecirc;ncia e saber onde ficam o extintor e o kit de primeiros socorros: os dois na <span class="termo">sala de perman&ecirc;ncia dos professores</span>, e n&atilde;o dentro do laborat&oacute;rio. &Eacute; para l&aacute; que se corre &mdash; e por isso o caminho se aprende hoje, e n&atilde;o no dia em que for preciso. Tamb&eacute;m o EPI de bancada (cal&ccedil;ado fechado; &oacute;culos onde houver mola ou lan&ccedil;amento) e a norma de organiza&ccedil;&atilde;o ao final. Voc&ecirc; assina o <span class="termo">termo de seguran&ccedil;a</span> no Roteiro de Bancada: &eacute; pr&eacute;-requisito para entrar na bancada na T01.</p>
+<p><strong>Na aula &mdash; o acervo.</strong> Todo instrumento tem um limite: a <span class="termo">menor divis&atilde;o</span>. Voc&ecirc; percorre a bancada e, para cada instrumento, duas perguntas bastam por enquanto: <em>para que serve</em> e <em>qual &eacute; a sua menor divis&atilde;o</em>. Hoje voc&ecirc; n&atilde;o mede: v&ecirc;, nomeia e anota onde fica.</p>
+<p><strong>Na aula &mdash; o registro.</strong> O <span class="termo">Roteiro de Bancada (RB)</span> guarda o dado bruto, datado, com as condi&ccedil;&otilde;es em que foi obtido. E uma regra vale o semestre inteiro: <strong>o dado bruto n&atilde;o se apaga e n&atilde;o se corrige</strong>. Mudou de ideia? Anota-se ao lado &mdash; o que parecia erro na bancada &agrave;s vezes &eacute; o &uacute;nico registro de que alguma coisa mudou na sala.</p>
+<p><strong>Depois da aula (40 min).</strong> Relat&oacute;rio M&iacute;nimo (RM) em at&eacute; 1 dia; Relat&oacute;rio Completo (RC) em at&eacute; 6 dias. Nesta trilha n&atilde;o h&aacute; nenhum dos dois &mdash; sem dado, n&atilde;o h&aacute; o que relatar. O primeiro &eacute; o da T01.</p></div></div>
+</div>
+<div class="secao" data-idx="4">
+  <div class="secao-header" data-idx="4">
+    <span class="secao-num">04</span><span class="secao-titulo">4. Como funciona a avalia&ccedil;&atilde;o</span><div class="secao-check"><input type="checkbox" id="chk-4" data-idx="4"><label for="chk-4">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p>A avalia&ccedil;&atilde;o &eacute; <span class="termo">processual</span>: acompanha as tr&ecirc;s paradas, e os pesos espelham a estrutura da trilha. Quem mede bem na bancada e quem relata bem pesam igual.</p>
+<p>Quatro instrumentos, v&aacute;lidos da T01 &agrave; T10: <strong>Pr&eacute;-Lab 20%</strong> (a ficha do TT avalia preparo, n&atilde;o acerto da previs&atilde;o) &middot; <strong>Lab 40%</strong> (RB preenchido, conduta de seguran&ccedil;a, registro leg&iacute;vel, reprodutibilidade) &middot; <strong>RM 15%</strong> (uma p&aacute;gina, 1 dia, resultado como valor &plusmn; incerteza, com unidade) &middot; <strong>RC 25%</strong> (incertezas, gr&aacute;ficos, lineariza&ccedil;&atilde;o, ajuste, an&aacute;lise cr&iacute;tica).</p>
+<p><strong>Esta trilha &eacute; a exce&ccedil;&atilde;o:</strong> a T0A n&atilde;o vale nota de conte&uacute;do. Cobra-se <strong>presen&ccedil;a</strong> e o <strong>termo de seguran&ccedil;a assinado</strong>.</p>
+<p>Repare onde est&aacute; o peso, porque da&iacute; sai a sua estrat&eacute;gia: <strong>60% da nota se decide antes de voc&ecirc; sair do laborat&oacute;rio</strong>. Quem chega preparado mede melhor; quem registra bem escreve o RM no mesmo dia, enquanto o dado ainda est&aacute; quente &mdash; &eacute; para isso que o RM existe, para impedir o dado de esfriar. Feito isso, o RC vira revis&atilde;o, e n&atilde;o reconstru&ccedil;&atilde;o de uma noite que voc&ecirc; j&aacute; n&atilde;o lembra direito.</p></div></div>
+</div>
+<div class="secao" data-idx="5">
+  <div class="secao-header" data-idx="5">
+    <span class="secao-num">05</span><span class="secao-titulo">5. Como carregar tudo na m&atilde;o</span><div class="secao-check"><input type="checkbox" id="chk-5" data-idx="5"><label for="chk-5">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p>Nenhum material depende de voc&ecirc; estar no campus, e nenhum depende de papel. Foi decis&atilde;o de projeto, n&atilde;o conveni&ecirc;ncia.</p>
+<p>O <span class="termo">site da disciplina</span> &eacute; a porta de entrada: materiais de todas as trilhas, entrega dos relat&oacute;rios e canal da monitoria &mdash; e o endere&ccedil;o est&aacute; no c&oacute;digo QR da primeira p&aacute;gina do TT impresso. O <span class="termo">Resumo em &Aacute;udio</span> (este) monta o esqueleto do assunto e cabe no trajeto at&eacute; o campus. Os <span class="termo">Cart&otilde;es Did&aacute;ticos</span> s&atilde;o revis&atilde;o ativa: voc&ecirc; responde antes de virar o cart&atilde;o. E o <span class="termo">Texto Tem&aacute;tico</span> vem em duas formas &mdash; PDF para anotar &agrave; m&atilde;o e vers&atilde;o de tela &mdash;, sempre na mesma vers&atilde;o.</p>
+<p>Duas coisas mais. A partir da T01, voc&ecirc; pode usar <span class="termo">intelig&ecirc;ncia artificial</span> para ajustar a curva aos seus dados, com duas condi&ccedil;&otilde;es inegoci&aacute;veis: o resultado &eacute; <strong>sempre conferido por voc&ecirc;</strong> (coer&ecirc;ncia dimensional, ordem de grandeza, res&iacute;duos) e o uso &eacute; <strong>declarado no relat&oacute;rio</strong>. Uma resposta que chega pronta &eacute; uma hip&oacute;tese, n&atilde;o um resultado. E a <span class="termo">monitoria</span> &eacute; digital, com presencial agendado pelo site.</p>
+<p>Olhe para estes materiais tamb&eacute;m como quem vai fabric&aacute;-los um dia: &aacute;udio, cart&otilde;es e site se reproduzem numa escola p&uacute;blica sem laborat&oacute;rio. <em>O m&eacute;todo viaja mesmo quando o equipamento n&atilde;o viaja.</em></p></div></div>
+</div>
+<div class="secao" data-idx="6">
+  <div class="secao-header" data-idx="6">
+    <span class="secao-num">06</span><span class="secao-titulo">S&iacute;ntese &mdash; as cinco respostas</span><div class="secao-check"><input type="checkbox" id="chk-6" data-idx="6"><label for="chk-6">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p><strong>1.</strong> O que os documentos obrigam: PPC, matriz, ementa e Regulamento &mdash; 75% de frequ&ecirc;ncia, 60% de rendimento. <strong>2.</strong> Como a disciplina &eacute; feita: doze trilhas, tr&ecirc;s paradas, dezesseis OAs &mdash; e esta trilha entrega cinco. <strong>3.</strong> Como se estuda nela: a ordem das paradas &eacute; fixa, o ritmo &eacute; seu, e a aula de hoje tem tr&ecirc;s blocos &mdash; seguran&ccedil;a, acervo, registro. <strong>4.</strong> Como ela avalia: 20, 40, 15 e 25%, com 60% decidido antes de voc&ecirc; sair do laborat&oacute;rio. <strong>5.</strong> Como ela cabe na sua m&atilde;o: site, &aacute;udio, cart&otilde;es e o texto em duas formas.</p>
+<p>Voc&ecirc; sai deste primeiro encontro com tr&ecirc;s coisas: o <strong>termo de seguran&ccedil;a assinado</strong>, o <strong>Roteiro de Bancada com a primeira entrada feita</strong> e a <strong>lista dos instrumentos do acervo</strong>, cada um com a sua menor divis&atilde;o anotada ao lado. Nenhuma delas &eacute; uma medida &mdash; e &eacute; justamente por isso que, quando a primeira medi&ccedil;&atilde;o chegar, na T01, voc&ecirc; vai chegar a ela sabendo o que fazer com o n&uacute;mero que sair da r&eacute;gua.</p></div></div>
+</div>
+<div class="secao" data-idx="7">
+  <div class="secao-header" data-idx="7">
+    <span class="secao-num">07</span><span class="secao-titulo">Conex&otilde;es &mdash; pr&aacute;tica docente, hist&oacute;ria, metrologia e arte</span><div class="secao-check"><input type="checkbox" id="chk-7" data-idx="7"><label for="chk-7">ouvido</label></div><span class="secao-seta">&#9654;</span>
+  </div>
+  <div class="secao-body"><div class="secao-texto">
+<p><strong>Pr&aacute;tica docente:</strong> ler um documento oficial, desenhar uma aula em tr&ecirc;s tempos, escolher pesos que premiam o processo em vez de uma prova final &mdash; decis&otilde;es que voc&ecirc; vai ter de tomar na sua pr&oacute;pria turma.</p>
+<p><strong>Hist&oacute;ria:</strong> a Escola de Minas, fundada por Claude-Henri Gorceix em 1876, na Pra&ccedil;a Tiradentes &mdash; <strong>150 anos</strong> de <em>medir antes de afirmar</em>, tradi&ccedil;&atilde;o que chega at&eacute; os Pavilh&otilde;es de F&iacute;sica, erguidos a partir de 1982 e inaugurados em 1985. E o roteiro-receita que esta metodologia recusa &eacute; heran&ccedil;a do laborat&oacute;rio demonstrativo do s&eacute;culo XIX, em que o estudante assistia e copiava.</p>
+<p><strong>Metrologia:</strong> menor divis&atilde;o, resolu&ccedil;&atilde;o e rastreabilidade atravessam dois s&eacute;culos. Antes do SI, o ouro desta regi&atilde;o era pesado em oitavas e quilates &mdash; parte desse acervo est&aacute; no Museu de Ci&ecirc;ncia e T&eacute;cnica da Escola de Minas.</p>
+<p><strong>Arte:</strong> Leonardo da Vinci escreveu, num caderno de trabalho e enquanto a m&atilde;o ainda media, que <span class="citacao">a sabedoria &eacute; filha da experi&ecirc;ncia</span>. Os cadernos dele s&atilde;o, ao mesmo tempo, obra de arte e caderno de bancada &mdash; exatamente o que se pede de voc&ecirc; a partir de hoje.</p></div></div>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-titulo">Autoavalia&ccedil;&atilde;o</div>
+  <div class="quiz-sub">Cinco perguntas, sem nota e sem envio. Escolha e veja o porqu&ecirc;.</div>
+  <div class="quiz-q" data-q="0">
+  <div class="quiz-enunciado">1. Quantos Objetos de Aprendizagem tem a disciplina, e quantos esta trilha entrega?</div>
+  <div class="quiz-opcoes"><label class="quiz-op" data-q="0" data-op="0"><input type="radio" name="q0" value="0"><span>Cinco na disciplina, cinco nesta trilha</span></label>
+<label class="quiz-op" data-q="0" data-op="1"><input type="radio" name="q0" value="1"><span>Dezesseis na disciplina, cinco nesta trilha</span></label>
+<label class="quiz-op" data-q="0" data-op="2"><input type="radio" name="q0" value="2"><span>Dezesseis na disciplina, dezesseis nesta trilha</span></label>
+<label class="quiz-op" data-q="0" data-op="3"><input type="radio" name="q0" value="3"><span>Sete na disciplina, tr&ecirc;s nesta trilha</span></label></div>
+  <div class="quiz-porque" id="porque-0">A ILB tem <strong>dezesseis</strong> OAs. A T0A &eacute; exce&ccedil;&atilde;o de trilha: como n&atilde;o mede nada, entrega cinco (MD, TT, CD, RB e AP) e n&atilde;o tem P&oacute;s-Lab.</div>
+</div>
+<div class="quiz-q" data-q="1">
+  <div class="quiz-enunciado">2. Onde ficam o extintor de inc&ecirc;ndio e o kit de primeiros socorros?</div>
+  <div class="quiz-opcoes"><label class="quiz-op" data-q="1" data-op="0"><input type="radio" name="q1" value="0"><span>Na bancada do fundo do laborat&oacute;rio</span></label>
+<label class="quiz-op" data-q="1" data-op="1"><input type="radio" name="q1" value="1"><span>No corredor do Pavilh&atilde;o, ao lado da sa&iacute;da</span></label>
+<label class="quiz-op" data-q="1" data-op="2"><input type="radio" name="q1" value="2"><span>Na sala de perman&ecirc;ncia dos professores</span></label>
+<label class="quiz-op" data-q="1" data-op="3"><input type="radio" name="q1" value="3"><span>Cada laborat&oacute;rio tem o seu, na porta</span></label></div>
+  <div class="quiz-porque" id="porque-1">Ficam <strong>fora do laborat&oacute;rio</strong>, na sala de perman&ecirc;ncia dos professores &mdash; e sempre no mesmo lugar. &Eacute; para l&aacute; que se corre; por isso o caminho se aprende hoje.</div>
+</div>
+<div class="quiz-q" data-q="2">
+  <div class="quiz-enunciado">3. Voc&ecirc; anotou um valor no Roteiro de Bancada e percebeu que leu errado. O que se faz?</div>
+  <div class="quiz-opcoes"><label class="quiz-op" data-q="2" data-op="0"><input type="radio" name="q2" value="0"><span>Apaga e escreve o valor certo por cima</span></label>
+<label class="quiz-op" data-q="2" data-op="1"><input type="radio" name="q2" value="1"><span>Anota o valor certo ao lado, sem rasurar o anterior</span></label>
+<label class="quiz-op" data-q="2" data-op="2"><input type="radio" name="q2" value="2"><span>Rasura o antigo e assina embaixo</span></label>
+<label class="quiz-op" data-q="2" data-op="3"><input type="radio" name="q2" value="3"><span>Come&ccedil;a uma folha nova, s&oacute; com os valores bons</span></label></div>
+  <div class="quiz-porque" id="porque-2"><strong>O dado bruto n&atilde;o se apaga e n&atilde;o se corrige.</strong> O que parecia erro na bancada &agrave;s vezes &eacute; o &uacute;nico registro de que alguma coisa mudou na sala.</div>
+</div>
+<div class="quiz-q" data-q="3">
+  <div class="quiz-enunciado">4. Onde se decide a maior parte da nota, das trilhas T01 a T10?</div>
+  <div class="quiz-opcoes"><label class="quiz-op" data-q="3" data-op="0"><input type="radio" name="q3" value="0"><span>No Relat&oacute;rio Completo, que vale 25%</span></label>
+<label class="quiz-op" data-q="3" data-op="1"><input type="radio" name="q3" value="1"><span>Numa prova final de encerramento</span></label>
+<label class="quiz-op" data-q="3" data-op="2"><input type="radio" name="q3" value="2"><span>Entre o Pr&eacute;-Lab e o Lab: 60% antes de sair do laborat&oacute;rio</span></label>
+<label class="quiz-op" data-q="3" data-op="3"><input type="radio" name="q3" value="3"><span>No Relat&oacute;rio M&iacute;nimo, entregue em 1 dia</span></label></div>
+  <div class="quiz-porque" id="porque-3">Pr&eacute;-Lab (20%) + Lab (40%) = <strong>60%</strong> decididos antes de voc&ecirc; sair da sala. Da&iacute; a estrat&eacute;gia: chegar preparado e registrar bem.</div>
+</div>
+<div class="quiz-q" data-q="4">
+  <div class="quiz-enunciado">5. O que voc&ecirc; leva embora do encontro da T0A?</div>
+  <div class="quiz-opcoes"><label class="quiz-op" data-q="4" data-op="0"><input type="radio" name="q4" value="0"><span>A sua primeira medida, com incerteza</span></label>
+<label class="quiz-op" data-q="4" data-op="1"><input type="radio" name="q4" value="1"><span>O termo de seguran&ccedil;a assinado, a primeira entrada no RB e a lista do acervo</span></label>
+<label class="quiz-op" data-q="4" data-op="2"><input type="radio" name="q4" value="2"><span>O Relat&oacute;rio M&iacute;nimo pronto para enviar</span></label>
+<label class="quiz-op" data-q="4" data-op="3"><input type="radio" name="q4" value="3"><span>O gr&aacute;fico da primeira pr&aacute;tica, ajustado</span></label></div>
+  <div class="quiz-porque" id="porque-4">Nenhuma das tr&ecirc;s &eacute; uma medida &mdash; e &eacute; por isso que, quando a primeira medi&ccedil;&atilde;o chegar na T01, voc&ecirc; vai saber o que fazer com o n&uacute;mero.</div>
+</div>
+</div>
+
+<div class="encerramento">
+  <div class="fecho-frase">Voc&ecirc; ainda n&atilde;o mediu nada &mdash; e essa &eacute; a inten&ccedil;&atilde;o.<br>Hoje se aprende a olhar o laborat&oacute;rio; na T01, a medir dentro dele.</div>
+  <div class="fecho-acao">Agora leia o Texto Tem&aacute;tico</div>
+  <div class="fecho-links">
+    <a class="fecho-btn" href="../tt/">Texto Tem&aacute;tico</a>
+    <a class="fecho-btn secundario" href="../../">Todas as trilhas</a>
+  </div>
+  <div class="fecho-inst">Este resumo em &aacute;udio foi elaborado pelos professores J&uacute;lio Azevedo e Felipe Beato.</div>
+</div>
+
+<div class="footer-line">
+  NIDEC-CODAFIS &middot; IFMG &mdash; Campus Ouro Preto &middot; Licenciatura em F&iacute;sica<br>
+  Introdu&ccedil;&atilde;o ao Laborat&oacute;rio (ILB) &middot; T0A &middot; Resumo em &Aacute;udio v1 &middot; J&uacute;lio Azevedo &middot; Felipe Beato
+</div>
+
+</main>
+<script>var GABARITO = [1, 2, 1, 2, 1];</script>
+
+<script>
+(function () {
+  var CHAVE = 'ILB-T0A-MD-v1';
+  var estado = {};
+  try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { estado = {}; }
+  function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
+
+  /* ---- sanfona + progresso ---- */
+  var secoes = document.querySelectorAll('.secao');
+  var barra = document.getElementById('progresso');
+  for (var i = 0; i < secoes.length; i++) {
+    var s = document.createElement('span');
+    s.className = 'seg'; s.dataset.idx = i; barra.appendChild(s);
+  }
+  function pinta(idx, ouvido) {
+    secoes[idx].classList.toggle('ouvida', ouvido);
+    barra.children[idx].classList.toggle('ouvido', ouvido);
+  }
+  document.querySelectorAll('.secao-header').forEach(function (h) {
+    h.addEventListener('click', function (ev) {
+      if (ev.target.tagName === 'INPUT' || ev.target.tagName === 'LABEL') return;
+      h.parentNode.classList.toggle('aberta');
+    });
+  });
+  document.querySelectorAll('.secao-check input').forEach(function (c) {
+    var idx = +c.dataset.idx;
+    c.checked = !!estado['s' + idx];
+    pinta(idx, c.checked);
+    c.addEventListener('change', function () {
+      estado['s' + idx] = c.checked; grava(); pinta(idx, c.checked);
+    });
+  });
+
+  /* ---- player: duas duracoes, e um aviso honesto se o arquivo faltar ---- */
+  var audio = document.getElementById('audio');
+  var caixa = document.getElementById('player');
+  document.querySelectorAll('.faixa-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.faixa-btn').forEach(function (o) { o.classList.remove('ativa'); });
+      b.classList.add('ativa');
+      caixa.classList.remove('indisponivel');
+      audio.src = b.dataset.src;
+      audio.play().catch(function () {});
+    });
+  });
+  audio.addEventListener('error', function () { caixa.classList.add('indisponivel'); });
+
+  /* ---- autoavaliacao: responde, ve o porque, e nada sai da maquina ---- */
+  document.querySelectorAll('.quiz-op').forEach(function (op) {
+    op.addEventListener('click', function () {
+      var q = +op.dataset.q, escolha = +op.dataset.op, certa = GABARITO[q];
+      var bloco = document.querySelector('.quiz-q[data-q="' + q + '"]');
+      bloco.querySelectorAll('.quiz-op').forEach(function (o) {
+        o.classList.add('travada');
+        var v = +o.dataset.op;
+        if (v === certa) o.classList.add('certa');
+        else if (v === escolha) o.classList.add('errada');
+      });
+      document.getElementById('porque-' + q).classList.add('visivel');
+      estado['q' + q] = escolha; grava();
+    });
+  });
+})();
+</script>
+</body>
+</html>
