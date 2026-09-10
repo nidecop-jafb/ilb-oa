@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILB-T0A &middot; Boas-vindas à Física Experimental &mdash; Cart&otilde;es Did&aacute;ticos</title>
+<style>
+:root {
+  --verde: #3E8E5A; --verde-claro: #5FAE7A; --verde-bg: oklch(0.28 0.05 152);
+  --aco: #7FB2D6; --aco-bg: oklch(0.28 0.05 240);
+  --ouro: oklch(0.80 0.13 85); --ouro-bg: oklch(0.26 0.05 85);
+  --roxo: oklch(0.68 0.13 300); --roxo-bg: oklch(0.25 0.05 300);
+  --erro: oklch(0.62 0.20 25); --erro-bg: oklch(0.24 0.06 25);
+  --cinza: oklch(0.62 0.01 260); --cinza-borda: oklch(0.40 0.01 260);
+  --texto: oklch(0.93 0 0); --branco: oklch(0.96 0 0);
+  --superficie: oklch(0.22 0.01 260); --verso: oklch(0.19 0.01 260);
+  --fundo: oklch(0.13 0.01 260); --painel: oklch(0.16 0.01 260);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Courier New', 'Cascadia Code', Consolas, monospace;
+  --serif: Georgia, Cambria, 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--fundo); color: var(--texto); line-height: 1.6; min-height: 100vh; }
+
+.header { background: var(--painel); border-top: 3px solid var(--verde); padding: 14px 20px; }
+.header-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.header .marca { width: 52px; height: 52px; flex-shrink: 0; }
+.header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; flex: 1 1 240px; }
+.header h1 .trilha-code { color: var(--verde); }
+.badge { display: inline-block; background: var(--verde); color: oklch(0.13 0.01 260); padding: 4px 12px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+.header-sub { max-width: 960px; margin: 6px auto 0; font-size: 0.88rem; color: var(--cinza); }
+
+main { max-width: 960px; margin: 0 auto; padding: 20px 16px; }
+
+.piazzi-bar { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; background:var(--painel); border:1px solid var(--cinza-borda); padding:10px 16px; margin-bottom:16px; font-size:.78rem; }
+.piazzi-bar .piazzi-ref { color:var(--cinza); }
+.piazzi-bar .piazzi-tag { display:inline-block; border:1px solid var(--verde); color:var(--verde); padding:2px 10px; font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.piazzi-bar .piazzi-text { color:var(--texto); font-style:italic; font-size:.74rem; }
+.piazzi-bar .piazzi-yt { display:inline-flex; align-items:center; gap:5px; background:var(--erro); color:var(--branco); padding:4px 12px; font-size:.72rem; font-weight:700; text-decoration:none; }
+.piazzi-bar .piazzi-yt::before { content:'\25B6'; font-size:.6rem; }
+
+.intro-box { background: var(--painel); border-left: 3px solid var(--aco); padding: 14px 16px; margin-bottom: 18px; font-size: .9rem; }
+.intro-box strong { color: var(--verde); }
+
+/* barra de filtros + progresso */
+.toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:14px; }
+.filtros { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.filtros .filtro-rot { font-size:.68rem; color:var(--cinza); text-transform:uppercase; letter-spacing:.5px; font-weight:600; margin-right:4px; }
+.btn-filtro { background: var(--superficie); border:1px solid var(--cinza-borda); color: var(--texto); padding:6px 14px; min-height:34px; font-size:.72rem; font-weight:700; font-family: var(--font); cursor:pointer; text-transform:uppercase; letter-spacing:.3px; }
+.btn-filtro:hover { border-color: var(--verde); }
+.btn-filtro.ativo-all { background: var(--cinza-borda); border-color: var(--branco); color: var(--branco); }
+.btn-filtro.ativo-conceito { background: var(--verde-bg); border-color: var(--verde); color: var(--verde); }
+.btn-filtro.ativo-numero { background: var(--ouro-bg); border-color: var(--ouro); color: var(--ouro); }
+.btn-filtro.ativo-vocabulario { background: var(--aco-bg); border-color: var(--aco); color: var(--aco); }
+.btn-filtro.ativo-conexao { background: var(--roxo-bg); border-color: var(--roxo); color: var(--roxo); }
+.btn-filtro.ativo-aplicacao { background: var(--erro-bg); border-color: var(--erro); color: var(--erro); }
+
+.progresso-area { display:flex; align-items:center; gap:10px; }
+.progresso-conta { font-family: var(--mono); font-size:.82rem; color: var(--verde); font-weight:700; }
+.progresso-trilho { width:120px; height:5px; background: oklch(0.20 0.01 260); overflow:hidden; }
+.progresso-fill { height:100%; background: var(--verde); transition: width .3s; }
+
+.acoes { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.btn-acao { background: var(--superficie); border:1px solid var(--cinza-borda); color: var(--texto); padding:8px 16px; min-height:36px; font-size:.72rem; font-weight:700; font-family: var(--font); cursor:pointer; text-transform:uppercase; letter-spacing:.5px; }
+.btn-acao.embaralhar { border-color: var(--verde); color: var(--verde); }
+.btn-acao.embaralhar:hover { background: var(--verde-bg); }
+.btn-acao.reiniciar { border-color: var(--erro); color: var(--erro); }
+.btn-acao.reiniciar:hover { background: var(--erro-bg); }
+
+/* grade e cartoes */
+.grade { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-bottom:24px; }
+.vaga { perspective: 900px; min-height: 230px; }
+.vaga.oculta { display:none; }
+.cartao { width:100%; height:100%; min-height:230px; position:relative; cursor:pointer; transform-style: preserve-3d; transition: transform .5s cubic-bezier(.4,0,.2,1); }
+.cartao.virado { transform: rotateY(180deg); }
+.face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; display:flex; flex-direction:column; padding:16px 18px 14px; overflow:hidden; }
+.frente { background: var(--superficie); border-left:3px solid var(--cinza-borda); }
+.verso { transform: rotateY(180deg); background: var(--verso); border-left:3px solid var(--cinza-borda); }
+
+.cat-conceito .frente, .cat-conceito .verso { border-left-color: var(--verde); }
+.cat-numero .frente, .cat-numero .verso { border-left-color: var(--ouro); }
+.cat-vocabulario .frente, .cat-vocabulario .verso { border-left-color: var(--aco); }
+.cat-conexao .frente, .cat-conexao .verso { border-left-color: var(--roxo); }
+.cat-aplicacao .frente, .cat-aplicacao .verso { border-left-color: var(--erro); }
+
+.cat-tag { font-size:.6rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:2px 8px; display:inline-block; margin-bottom:10px; align-self:flex-start; }
+.cat-conceito .cat-tag { background: var(--verde-bg); color: var(--verde); }
+.cat-numero .cat-tag { background: var(--ouro-bg); color: var(--ouro); }
+.cat-vocabulario .cat-tag { background: var(--aco-bg); color: var(--aco); }
+.cat-conexao .cat-tag { background: var(--roxo-bg); color: var(--roxo); }
+.cat-aplicacao .cat-tag { background: var(--erro-bg); color: var(--erro); }
+
+.pergunta { flex:1; display:flex; align-items:center; justify-content:center; text-align:center; font-size:.9rem; font-weight:700; line-height:1.45; padding:4px 0; }
+.resposta { flex:1; font-size:.78rem; line-height:1.55; color: oklch(0.86 0 0); overflow-y:auto; }
+.resposta b { color: var(--branco); }
+.resposta .num-line { display:block; font-family: var(--mono); color: var(--ouro); font-weight:700; font-size:.9rem; margin:0 0 8px; letter-spacing:.02em; }
+.cartao-id { font-family: var(--mono); font-size:.6rem; color: var(--cinza); text-align:right; margin-top:8px; font-weight:600; }
+.cartao-dica { font-size:.58rem; color: var(--cinza); text-align:center; margin-top:6px; letter-spacing:.3px; }
+.vaga.revisado .frente::after { content:''; position:absolute; top:8px; right:8px; width:8px; height:8px; background: var(--verde); }
+
+.encerramento { max-width:960px; margin:30px auto 10px; padding:20px 16px; border-top:2px solid var(--verde); text-align:center; }
+.encerramento .fecho-frase { font-family:var(--serif); font-size:1.02rem; line-height:1.5; }
+.encerramento .fecho-acao { color:var(--verde); font-size:.95rem; text-transform:uppercase; font-weight:700; margin-top:10px; }
+.encerramento .fecho-links { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
+.encerramento .fecho-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 18px; min-height:44px; background:var(--verde); color:oklch(0.13 0.01 260); font-family:var(--mono); font-size:.8rem; font-weight:700; text-decoration:none; }
+.encerramento .fecho-btn::before { content:'\25B6'; font-size:.62rem; }
+.encerramento .fecho-btn.secundario { background:transparent; color:var(--aco); border:1px solid var(--aco); }
+.encerramento .fecho-btn.secundario::before { content:'\2630'; font-size:.72rem; }
+.encerramento .fecho-inst { color:var(--cinza); font-size:.85rem; margin-top:16px; }
+.footer-line { text-align:center; font-size:.82rem; color:var(--cinza); padding:16px 12px; line-height:1.5; }
+
+@media (max-width: 900px) { .grade { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.15rem; }
+  .grade { grid-template-columns: 1fr; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .filtros, .progresso-area, .acoes { justify-content: center; }
+}
+
+/* impressao: os 25 cartoes abertos, para recortar */
+@media print {
+  body { background:#fff !important; color:#1A1A1A !important; }
+  .header { background:none !important; border-top:2px solid #1F3864; }
+  .piazzi-bar, .toolbar, .acoes, .cartao-dica, .encerramento .fecho-links { display:none !important; }
+  .grade { grid-template-columns: repeat(2, 1fr); gap:8px; }
+  .vaga, .cartao { min-height:0; perspective:none; }
+  .cartao { transform:none !important; }
+  .face { position:static; backface-visibility:visible; }
+  .frente { background:#F4F4F4 !important; border:1px solid #BBB; border-left:3px solid #777; }
+  .verso { transform:none; background:#FFF !important; border:1px solid #BBB; border-left:3px solid #777; }
+  .vaga { page-break-inside: avoid; border-bottom:1px dashed #999; padding-bottom:6px; }
+  .resposta { color:#1A1A1A !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdu&ccedil;&atilde;o ao Laborat&oacute;rio">
+      <g fill="none" stroke="#3E8E5A" stroke-width="3">
+        <ellipse cx="60" cy="52" rx="46" ry="18"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+      </g>
+      <g fill="#3E8E5A">
+        <circle cx="53" cy="47" r="7"/><circle cx="67" cy="47" r="7"/><circle cx="60" cy="58" r="9"/>
+      </g>
+      <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+        <line x1="26" y1="110" x2="94" y2="110"/>
+        <line x1="30" y1="110" x2="30" y2="104"/><line x1="40" y1="110" x2="40" y2="104"/>
+        <line x1="50" y1="110" x2="50" y2="104"/><line x1="60" y1="110" x2="60" y2="98"/>
+        <line x1="70" y1="110" x2="70" y2="104"/><line x1="80" y1="110" x2="80" y2="104"/>
+        <line x1="90" y1="110" x2="90" y2="104"/>
+      </g>
+    </svg>
+    <h1><span class="trilha-code">ILB-T0A</span> &middot; Boas-vindas à Física Experimental</h1>
+    <span class="badge">Cart&otilde;es Did&aacute;ticos (CD)</span>
+  </div>
+  <div class="header-sub">25 cart&otilde;es &middot; 5 categorias &middot; revis&atilde;o ativa &middot; Pr&eacute;-Lab, apoio &middot; sem nota</div>
+</header>
+
+<main>
+
+<div class="piazzi-bar">
+  <span class="piazzi-ref">Pierluigi Piazzi recomenda em <em>Aprendendo Intelig&ecirc;ncia</em>:</span>
+  <span class="piazzi-tag">Responder</span><span class="piazzi-tag">Virar</span><span class="piazzi-tag">Repetir</span>
+  <span class="piazzi-text">recordar &eacute; mais forte do que reler</span>
+  <a class="piazzi-yt" href="https://music.youtube.com/search?q=Villa-Lobos+Bachianas+Brasileiras+n%C2%BA+5+ária" target="_blank" rel="noopener">YouTube Music</a>
+  <span class="piazzi-text">Villa-Lobos &mdash; Bachianas Brasileiras n.&ordm; 5, &aacute;ria &middot; 1938 &middot; ~6 min</span>
+</div>
+
+<div class="intro-box">
+  <strong>Como usar.</strong> Responda <em>antes</em> de virar &mdash; recordar fixa mais do que
+  reler, e o cartao que voce errar mostra exatamente onde voltar ao <strong>Texto
+  Tem&aacute;tico</strong>. O verso diz de qual pergunta do TT ele saiu. Filtre por categoria,
+  embaralhe quando a ordem come&ccedil;ar a virar decoreba, e recomece quando quiser: nada aqui
+  vale nota e nada sai do seu aparelho. Cinco minutos de fila valem uma revis&atilde;o.
+</div>
+
+<div class="toolbar">
+  <div class="filtros">
+    <span class="filtro-rot">Filtrar:</span>
+    <button class="btn-filtro ativo-all" data-cat="all">Todos (25)</button>
+    <button class="btn-filtro" data-cat="conceito">Conceito (5)</button>
+    <button class="btn-filtro" data-cat="numero">Número e regra (5)</button>
+    <button class="btn-filtro" data-cat="vocabulario">Vocabulário (5)</button>
+    <button class="btn-filtro" data-cat="conexao">Conexão (5)</button>
+    <button class="btn-filtro" data-cat="aplicacao">Aplicação (5)</button>
+  </div>
+  <div class="progresso-area">
+    <span class="progresso-conta" id="progresso-conta">0/25 revisados</span>
+    <div class="progresso-trilho"><div class="progresso-fill" id="progresso-fill" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="acoes">
+  <button class="btn-acao embaralhar" id="btn-embaralhar">Embaralhar</button>
+  <button class="btn-acao reiniciar" id="btn-reiniciar">Reiniciar progresso</button>
+</div>
+
+<div class="grade" id="grade"></div>
+
+</main>
+
+<div class="encerramento">
+  <div class="fecho-frase">Vinte e cinco cart&otilde;es, nenhuma medida ainda.<br>O vocabul&aacute;rio vem primeiro; o instrumento, na bancada.</div>
+  <div class="fecho-acao">Travou em algum? Volte ao Texto Tem&aacute;tico</div>
+  <div class="fecho-links">
+    <a class="fecho-btn" href="../tt/">Texto Tem&aacute;tico</a>
+    <a class="fecho-btn secundario" href="../../">Todas as trilhas</a>
+  </div>
+  <div class="fecho-inst">Estes cart&otilde;es did&aacute;ticos foram elaborados pelos professores J&uacute;lio Azevedo e Felipe Beato.</div>
+</div>
+
+<div class="footer-line">
+  NIDEC-CODAFIS &middot; IFMG &mdash; Campus Ouro Preto &middot; Licenciatura em F&iacute;sica<br>
+  Introdu&ccedil;&atilde;o ao Laborat&oacute;rio (ILB) &middot; T0A &middot; Cart&otilde;es Did&aacute;ticos v1 &middot; J&uacute;lio Azevedo &middot; Felipe Beato
+</div>
+
+<script>var CARTOES = [
+  { id: 'C1', cat: 'conceito', rot: 'Conceito', ancora: 'Pergunta 1', frente: 'Quais documentos definem esta disciplina, e o que cada um fixa?', verso: 'Quatro. O <b>PPC</b> diz o que o curso forma: professor de Física para a educação básica, não pesquisador de bancada. A <b>matriz curricular</b> põe a ILB no 2.º período, sem pré-requisito e como pré-requisito do Laboratório de Mecânica (6088). A <b>ementa e o plano de ensino</b> dão as competências, as datas, os pesos e os prazos. O <b>Regulamento de Ensino</b> (Res. n.º 01/2026) fixa frequência e rendimento mínimos.' },
+  { id: 'C2', cat: 'conceito', rot: 'Conceito', ancora: 'Pergunta 2', frente: 'O que é uma Trilha de Aprendizagem, e quais são as suas três paradas?', verso: 'É a unidade de trabalho da disciplina — são doze. Cada uma tem sempre as mesmas três paradas, e elas não trocam de ordem: <b>Pré-Lab</b> (em casa, antes), <b>Lab</b> (na bancada, onde a medição acontece) e <b>Pós-Lab</b> (em casa, o tratamento dos dados).' },
+  { id: 'C3', cat: 'conceito', rot: 'Conceito', ancora: 'Pergunta 3', frente: 'Existe uma sequência de estudo, ou cada um escolhe por onde começar?', verso: 'A sequência é uma só; o ritmo é seu. Ouvir o <b>Resumo em Áudio (MD)</b>, ler o <b>Texto Temático (TT)</b>, <b>prever</b> o resultado do que vai medir e conferir o Inventário de Equipamento (IE) e o Checklist de Segurança (CS). A previsão não precisa estar certa — precisa existir: chegar sem previsão é chegar sem pergunta.' },
+  { id: 'C4', cat: 'conceito', rot: 'Conceito', ancora: 'Pergunta 4', frente: 'O que significa dizer que a avaliação desta disciplina é processual?', verso: 'Que ela acompanha as três paradas em vez de terminar numa prova final: pesa a preparação, a medição na bancada e o relato depois. Quem mede bem e quem relata bem pesam igual — e isso é uma decisão didática, não uma formalidade administrativa.' },
+  { id: 'C5', cat: 'conceito', rot: 'Conceito', ancora: 'Pergunta 5', frente: 'O que quer dizer "carregar o método na mão"?', verso: 'Que nenhum material depende de papel nem de estar no campus: o <b>site</b> da disciplina distribui tudo e recebe os relatórios; o MD cabe no trajeto; os cartões cabem numa fila; o TT existe em PDF e em versão de tela, sempre na mesma versão; a monitoria é digital, com presencial agendado pelo site.' },
+  { id: 'N1', cat: 'numero', rot: 'Número e regra', ancora: 'Pergunta 1 e Pergunta 4', frente: 'Quais são os dois mínimos para aprovação, e quem os fixa?', verso: '<span class="num-line">75% de frequência · 60% de rendimento</span>Regulamento de Ensino do IFMG, Resolução n.º 01/2026. Valem para todas as disciplinas do curso e não se negociam no meio do semestre.' },
+  { id: 'N2', cat: 'numero', rot: 'Número e regra', ancora: 'Pergunta 4', frente: 'Como se distribuem os pesos da nota, das trilhas T01 a T10?', verso: '<span class="num-line">Pré-Lab 20% · Lab 40% · RM 15% · RC 25%</span>Repare onde está o peso: <b>60% da nota se decide antes de você sair do laboratório</b>, entre a preparação e a bancada. A T0A é exceção — cobra presença e o termo de segurança assinado, e não vale nota de conteúdo.' },
+  { id: 'N3', cat: 'numero', rot: 'Número e regra', ancora: 'Pergunta 4', frente: 'Quais são os prazos dos dois relatórios do Pós-Lab?', verso: '<span class="num-line">RM: até 1 dia · RC: até 6 dias</span>O <b>Relatório Mínimo</b> tem uma página e existe para impedir o dado de esfriar. O <b>Relatório Completo</b> traz incertezas, tabelas, gráficos, ajuste e análise crítica. Os dois são digitais. Na T0A não há nenhum dos dois: sem dado coletado, não há o que relatar.' },
+  { id: 'N4', cat: 'numero', rot: 'Número e regra', ancora: 'Pergunta 2', frente: 'Quanto tempo tem cada uma das três paradas?', verso: '<span class="num-line">Pré-Lab 20 min · Lab 100 min · Pós-Lab 40 min</span>O Pré-Lab e o Pós-Lab são em casa; os 100 minutos do Lab são o único lugar onde a medição acontece.' },
+  { id: 'N5', cat: 'numero', rot: 'Número e regra', ancora: 'Pergunta 2', frente: 'Quantas horas, trilhas, encontros e Objetos de Aprendizagem tem a ILB?', verso: '<span class="num-line">30 h · 12 trilhas · 16 encontros · 16 OAs</span>Os dezesseis OAs são os mesmos da Física Experimental 1, distribuídos pelas três paradas. <b>Esta trilha entrega cinco</b> — MD, TT, CD, Roteiro de Bancada de reconhecimento e Apresentação do Lab —, porque não mede nada; os outros onze entram a partir da T01. Os dezesseis, na ordem, estão na aba <i>Método</i> do site.' },
+  { id: 'P1', cat: 'vocabulario', rot: 'Vocabulário', ancora: 'Pergunta 3', frente: 'Menor divisão', verso: 'A menor distância que a escala de um instrumento consegue distinguir — o limite entre o que ele sabe dizer e o que ele não sabe. É uma das duas perguntas que você faz a cada instrumento da bancada nesta trilha (a outra é: para que serve?).' },
+  { id: 'P2', cat: 'vocabulario', rot: 'Vocabulário', ancora: 'Pergunta 3', frente: 'Dado bruto', verso: 'O número como o instrumento o entregou, datado e com as condições em que foi obtido. Regra do semestre inteiro: <b>o dado bruto não se apaga e não se corrige</b> — mudou de ideia, anota-se ao lado, sem rasurar o que veio antes.' },
+  { id: 'P3', cat: 'vocabulario', rot: 'Vocabulário', ancora: 'Pergunta 3', frente: 'Termo de segurança', verso: 'O documento que você assina no Roteiro de Bancada desta trilha, depois de localizar a saída de emergência, o extintor e o kit de primeiros socorros e de conhecer o EPI de bancada — calçado fechado, e óculos de proteção nas trilhas com mola ou lançamento. É <b>pré-requisito para entrar na bancada na T01</b>.' },
+  { id: 'P4', cat: 'vocabulario', rot: 'Vocabulário', ancora: 'Pergunta 3', frente: 'Roteiro de Bancada (RB)', verso: 'O OA do Lab onde o dado bruto é registrado, datado, com o procedimento. É a memória do laboratório fora da sua cabeça — e, na T0A, traz dentro dele o Inventário de Equipamento (IE) e o Checklist de Segurança (CS). Vale 40% da nota, das trilhas T01 a T10.' },
+  { id: 'P5', cat: 'vocabulario', rot: 'Vocabulário', ancora: 'Pergunta 3', frente: 'Metrologia · rastreabilidade', verso: '<b>Metrologia</b> é a ciência da medida — a área que trata das medidas comerciais, industriais e científicas, e de onde vem este vocabulário. <b>Rastreabilidade</b> é a possibilidade de ligar a sua medida a um padrão reconhecido; um instrumento sem manutenção a perde. Por isso cuidar do acervo é segurança metrológica, não só física.' },
+  { id: 'X1', cat: 'conexao', rot: 'Conexão', ancora: 'Ato I e Pergunta 1', frente: 'Eixo Didático — por que você aprende a medir <i>antes</i> de estudar Mecânica I?', verso: 'Porque a ILB é um laboratório sem disciplina teórica vinculada, e essa ordem é proposital: quem já reconhece uma incerteza chega à Mecânica com uma pergunta a mais na cabeça. É a dobra própria de uma licenciatura — aprender a medir e, ao mesmo tempo, aprender a ensinar a medir.' },
+  { id: 'X2', cat: 'conexao', rot: 'Conexão', ancora: 'Explore (Ato I)', frente: 'Eixo Histórico-Cultural — o que Ouro Preto tem a ver com a sua primeira medida?', verso: 'Em 1876, Claude-Henri Gorceix fundou a Escola de Minas na Praça Tiradentes e trouxe para a cidade uma ciência que não aceitava afirmação sem medida: são <b>150 anos</b> de <i>medir antes de afirmar</i>, em 2026. O Pavilhão de Física, onde as doze trilhas acontecem, foi erguido a partir de 1982 e inaugurado em 1985 — faz <b>41 anos</b>.' },
+  { id: 'X3', cat: 'conexao', rot: 'Conexão', ancora: 'Pergunta 3', frente: 'Eixo Metrológico — como se pesava o ouro desta região antes do SI?', verso: 'Em <b>oitavas e quilates</b>, com instrumentos de precisão muito diferente dos da bancada de hoje; parte desse acervo está no Museu de Ciência e Técnica da Escola de Minas, na Praça Tiradentes. Mudaram as unidades e os instrumentos; a exigência atravessou dois séculos intacta — menor divisão, resolução e rastreabilidade.' },
+  { id: 'X4', cat: 'conexao', rot: 'Conexão', ancora: 'Pergunta 2', frente: 'Eixo Didático — por que esta disciplina recusa o roteiro-receita?', verso: 'No roteiro-receita o estudante executa passos numerados e confere o resultado com um gabarito: se o número bate, "deu certo". Aqui o experimento é <b>veículo</b> — mede-se para aprender a avaliar incerteza, tabelar, graficar e ajustar. Muda o experimento dez vezes; não muda o protocolo de medida. O roteiro-receita é herança do laboratório demonstrativo do século XIX.' },
+  { id: 'X5', cat: 'conexao', rot: 'Conexão', ancora: 'Pergunta 5', frente: 'Eixo Metrológico — o que se pode delegar a uma inteligência artificial, a partir da T01?', verso: 'O <b>cálculo</b> do ajuste da curva, sim; o <b>julgamento</b>, não. Duas condições, não negociáveis: o resultado é sempre conferido por você — coerência dimensional, ordem de grandeza, resíduos — e o uso é declarado no relatório, com o que foi conferido. Uma resposta que chega pronta é uma hipótese, não um resultado.' },
+  { id: 'A1', cat: 'aplicacao', rot: 'Aplicação', ancora: 'Pergunta 3 e Pergunta 4', frente: 'Você faltou hoje e aparece na T01 para medir. O que acontece?', verso: 'Você não entra na bancada: o termo de segurança assinado é pré-requisito. Quem faltou assina antes do encontro de <b>13/10</b>, com a monitoria. A T0A não vale nota de conteúdo, mas cobra presença e esse termo.' },
+  { id: 'A2', cat: 'aplicacao', rot: 'Aplicação', ancora: 'Pergunta 3', frente: 'Alguém se corta na bancada. Para onde você vai, e por que já sabe o caminho?', verso: 'Para a <b>sala de permanência dos professores</b>: é lá que ficam o extintor de incêndio e o kit de primeiros socorros — fora do laboratório, e sempre no mesmo lugar. O caminho se aprende hoje, e não no dia em que for preciso.' },
+  { id: 'A3', cat: 'aplicacao', rot: 'Aplicação', ancora: 'Pergunta 3', frente: 'Você anotou 12,4 cm no RB e percebe que leu errado: era 12,7 cm. O que faz?', verso: 'Anota 12,7 cm <b>ao lado</b>, com a hora, e deixa o 12,4 legível. Não rasura, não apaga, não usa corretivo — o que parecia erro na bancada às vezes é o único registro de que alguma coisa mudou na sala.' },
+  { id: 'A4', cat: 'aplicacao', rot: 'Aplicação', ancora: 'Pergunta 3', frente: 'Percorrendo a bancada nesta trilha, que duas perguntas bastam por instrumento?', verso: '<b>Para que serve</b> e <b>qual é a sua menor divisão</b>. Hoje você não mede nada com eles: vê, nomeia e anota onde ficam — régua, trena, paquímetro, cronômetro, dinamômetro, balança. Ao final da aula, cada instrumento volta ao seu lugar.' },
+  { id: 'A5', cat: 'aplicacao', rot: 'Aplicação', ancora: 'Pergunta 2, 3 e 5', frente: 'Como você levaria esta aula a uma escola pública sem laboratório?', verso: 'Levando o <b>desenho</b>, que é o que viaja inteiro: leitura antes, atividade no tempo de aula, registro depois. Uma régua escolar, um cronômetro de celular e método bastam para uma primeira aula de medição — o que se perde em precisão, ganha-se em ineditismo, se a turma nunca tiver visto isso antes.' }
+];</script>
+
+<script>
+(function () {
+  var CHAVE = 'ILB-T0A-CD-v1';
+  var estado = {};
+  try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { estado = {}; }
+  function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
+
+  var revisados = estado.revisados || {};
+  var ordem = (estado.ordem && estado.ordem.length === CARTOES.length)
+              ? estado.ordem : CARTOES.map(function (c, i) { return i; });
+  var filtro = 'all';
+  var grade = document.getElementById('grade');
+
+  function desenha() {
+    grade.innerHTML = '';
+    ordem.forEach(function (i) {
+      var c = CARTOES[i];
+      var visto = !!revisados[c.id];
+      var oculta = (filtro !== 'all' && c.cat !== filtro);
+
+      var vaga = document.createElement('div');
+      vaga.className = 'vaga cat-' + c.cat + (oculta ? ' oculta' : '') + (visto ? ' revisado' : '');
+      vaga.dataset.cat = c.cat;
+
+      var cartao = document.createElement('div');
+      cartao.className = 'cartao' + (visto ? ' virado' : '');
+      cartao.innerHTML =
+        '<div class="face frente">' +
+          '<span class="cat-tag">' + c.rot + '</span>' +
+          '<div class="pergunta">' + c.frente + '</div>' +
+          '<div class="cartao-id">' + c.id + '</div>' +
+          '<div class="cartao-dica">clique para virar</div>' +
+        '</div>' +
+        '<div class="face verso">' +
+          '<span class="cat-tag">' + c.rot + ' &middot; ' + c.ancora + '</span>' +
+          '<div class="resposta">' + c.verso + '</div>' +
+          '<div class="cartao-id">' + c.id + '</div>' +
+          '<div class="cartao-dica">clique para desvirar</div>' +
+        '</div>';
+      cartao.addEventListener('click', function () {
+        var jaVirado = cartao.classList.toggle('virado');
+        vaga.classList.toggle('revisado', jaVirado);
+        if (jaVirado) { revisados[c.id] = true; } else { delete revisados[c.id]; }
+        estado.revisados = revisados; grava(); conta();
+      });
+      vaga.appendChild(cartao);
+      grade.appendChild(vaga);
+    });
+    conta();
+  }
+
+  function conta() {
+    var visiveis = (filtro === 'all') ? CARTOES : CARTOES.filter(function (c) { return c.cat === filtro; });
+    var vistos = visiveis.filter(function (c) { return !!revisados[c.id]; }).length;
+    document.getElementById('progresso-conta').textContent = vistos + '/' + visiveis.length + ' revisados';
+    document.getElementById('progresso-fill').style.width =
+      (visiveis.length ? (vistos / visiveis.length * 100) : 0) + '%';
+  }
+
+  document.querySelectorAll('.btn-filtro').forEach(function (b) {
+    b.addEventListener('click', function () {
+      filtro = b.dataset.cat;
+      document.querySelectorAll('.btn-filtro').forEach(function (o) { o.className = 'btn-filtro'; });
+      b.classList.add('ativo-' + filtro);
+      document.querySelectorAll('.vaga').forEach(function (v) {
+        v.classList.toggle('oculta', filtro !== 'all' && v.dataset.cat !== filtro);
+      });
+      conta();
+    });
+  });
+
+  document.getElementById('btn-embaralhar').addEventListener('click', function () {
+    for (var i = ordem.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = ordem[i]; ordem[i] = ordem[j]; ordem[j] = t;
+    }
+    estado.ordem = ordem; grava(); desenha();
+  });
+
+  document.getElementById('btn-reiniciar').addEventListener('click', function () {
+    revisados = {}; estado.revisados = revisados; grava(); desenha();
+  });
+
+  desenha();
+})();
+</script>
+</body>
+</html>
