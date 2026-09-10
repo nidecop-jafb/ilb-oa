@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILB-T0B-RB-v1-estudante-impresso</title>
+<style>
+/* ============================================================
+   FE-T04-RB-v5-estudante-impresso.html
+   Roteiro de Bancada — 4 paginas A4, para ESCRITA A MAO na bancada.
+   Formatacao espelhada da Folha de Atividades impressa da FC1
+   (padrao T10-FA-v1-estudante-impressa.html), por decisao do autor
+   em 2026-08-29 — imagem de referencia com os blocos novos:
+     pag 1  cabecalho FA + caixa IDENTIFICACAO + linha Piazzi + epigrafe
+            + Minha Trilha (Pre-Lab/Lab/Pos-Lab) + Seguranca + 4 escolhas
+            + Figura 1 (IT-04)
+     pag 2  Medicao da esfera (Tabelas 1 e 2 + Quadro 1) + Figura 2 (IT-03)
+     pag 3  Medicao da bolha (Tabelas 3 e 4 + Quadro 3) + Figura 3 (IT-06)
+     pag 4  Resolucao Cientifica do Problema — Protocolo C5 + Verificacao
+            + Discussao OBJETIVA + Conclusao + fecho em destaque
+            + Espaco da Equipe de Monitoria
+   Mudancas v5 (2026-09-02, decisao do autor):
+     (1) TIPOGRAFIA DE TELA — bloco @media screen no fim do CSS de
+         tela (piso .8rem, padrao do site FE1); a IMPRESSAO nao muda.
+     (2) IMAGENS DE FUNDO no padrao da FA impressa da T10/FC1
+         (.anot-fundo): absolute + cover + grayscale, opacidade .34
+         na tela e .26 na impressao — o estudante escreve POR CIMA.
+         Referenciam ../_imagens/_web/ (derivadas leves, as mesmas
+         do site — o PDF nao embute os masters de 1200 px).
+     (3) "Resolucao Cientifica do Problema" SEMPRE precede
+         "Protocolo C5 (8 passos)" — regra de toda a FE1.
+     (4) Discussao em questoes OBJETIVAS (2 corretas em 4 opcoes).
+     (5) Fecho "Terminamos por aqui..." em destaque colorido.
+   Sem espaco morto no pe da pagina: a folga vira linha de escrita
+   (classe .cresce — regra da FA/TR), e o rodape cola na base.
+   ============================================================ */
+
+:root {
+  /* --- paleta de TELA (FE: laranja-EPI + azul-aco) --- */
+  --azul: #E07B39;
+  --azul-bg: oklch(0.28 0.06 55);
+  --ouro: #7FB2D6;
+  --ouro-bg: oklch(0.28 0.05 240);
+  --verde: oklch(0.7 0.15 150);
+  --erro: oklch(0.6 0.22 25);
+  --erro-bg: oklch(0.22 0.05 25);
+  --cinza: oklch(0.55 0.02 260);
+  --cinza-borda: oklch(0.38 0.02 260);
+  --texto: oklch(0.93 0 0);
+  --branco: oklch(0.93 0 0);
+  --superficie: oklch(0.24 0.02 260);
+  --fundo: oklch(0.18 0.02 260);
+  --linha: oklch(0.38 0.02 260);
+  --font: 'Century Gothic', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Space Mono', 'Cascadia Code', 'Consolas', monospace;
+  --serif: 'Georgia', 'Cambria', 'Times New Roman', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.45;
+}
+
+.folha { max-width: 760px; margin: 0 auto; padding: 20px 16px; }
+
+/* ── PAGINA ── */
+.pagina { margin-bottom: 28px; }
+.pagina + .pagina { border-top: 2px dashed var(--cinza-borda); padding-top: 24px; }
+
+/* ── CABECALHO (padrao FA) ── */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  border-top: 3px solid var(--azul);
+  border-bottom: 1px solid var(--cinza-borda);
+  padding: 10px 0; margin-bottom: 12px;
+}
+.header-left h1 { font-size: 1.05rem; font-weight: 700; color: var(--azul); }
+.header-left .sub { font-size: .72rem; color: var(--cinza); margin-top: 2px; }
+.header-right { text-align: right; font-size: .7rem; color: var(--cinza); line-height: 1.5; }
+.header-right .badge { font-weight: 700; color: var(--azul); font-size: .75rem; }
+
+/* ── CAIXA IDENTIFICACAO (imagem de referencia) ── */
+.id-box {
+  border: 1.5px solid var(--cinza-borda);
+  padding: 8px 12px 9px;
+  margin-bottom: 10px;
+}
+.id-box-titulo {
+  font-size: .66rem; font-weight: 700; color: var(--cinza);
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 6px;
+}
+.id-box .campo-linha {
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+  font-size: .8rem; border-bottom: 1px solid var(--linha);
+  padding-bottom: 5px; margin-bottom: 7px;
+}
+.id-box .campo-linha:last-child { margin-bottom: 0; }
+.id-box label { font-weight: 700; color: var(--azul); font-size: .74rem; white-space: nowrap; }
+.id-box .linha { flex: 1; min-width: 0; height: 1.3em; }
+.id-box .linha.ra { flex: 0 0 7.5em; }
+.id-box .linha.meia { flex: .6; }
+.opts { display: flex; gap: 12px; font-size: .72rem; color: var(--cinza); margin-right: 12px; white-space: nowrap; }
+.opts .opt { display: flex; align-items: center; gap: 4px; }
+.opts .opt::before {
+  content: '';
+  display: inline-block;
+  width: 13px; height: 13px;
+  border: 1.5px solid var(--cinza-borda);
+  flex-shrink: 0;
+}
+.data-campo { font-size: .78rem; color: var(--cinza); white-space: nowrap; }
+
+/* ── BARRA PIAZZI (linha unica, imagem de referencia) ── */
+.piazzi {
+  display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap;
+  border: 1px solid var(--cinza-borda); padding: 7px 12px; margin-bottom: 10px;
+  font-size: .74rem; color: var(--cinza); text-align: center;
+}
+.piazzi .mao { color: var(--branco); font-weight: 600; }
+.piazzi em { color: var(--ouro); font-style: italic; }
+
+/* ── EPIGRAFE ── */
+.epigrafe {
+  border-left: 3px solid var(--ouro); background: var(--ouro-bg);
+  padding: 8px 12px; margin-bottom: 12px;
+  font-family: var(--serif); font-size: .82rem;
+}
+.epigrafe .cit { font-style: italic; color: var(--ouro); }
+.epigrafe .atrib { font-family: var(--font); font-size: .7rem; color: var(--cinza); }
+
+/* ── MINHA TRILHA (checklist dos OAs, padrao FA) ── */
+.checklist { margin-bottom: 12px; }
+.checklist-titulo {
+  text-align: center; font-size: .68rem; font-weight: 700; color: var(--cinza);
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 7px;
+}
+.checklist-fases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.fase { border: 1px solid var(--cinza-borda); border-top: 2px solid var(--ouro); padding: 6px 8px 7px; }
+.fase-nome {
+  font-size: .66rem; font-weight: 700; color: var(--ouro);
+  text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px;
+}
+.fase-oas { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.oa-item { display: flex; align-items: center; gap: 4px; font-size: .64rem; line-height: 1.2; }
+.oa-box { width: 9px; height: 9px; border: 1px solid var(--cinza); flex-shrink: 0; }
+.oa-sigla { font-family: var(--mono); font-weight: 700; color: var(--texto); }
+.oa-nome { color: var(--cinza); }
+
+/* ── SECAO ── */
+.secao { margin-bottom: 12px; }
+.secao-titulo { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.secao-titulo .num {
+  width: 24px; height: 24px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .78rem; font-weight: 700;
+  background: var(--azul-bg); color: var(--azul); border-radius: 50%;
+}
+.secao-titulo h2 {
+  font-size: .88rem; font-weight: 700; color: var(--azul);
+  text-transform: uppercase; letter-spacing: .4px;
+}
+.secao-titulo .hint { margin-left: auto; font-size: .66rem; color: var(--cinza); font-style: italic; }
+
+/* ── SEGURANCA ── */
+.alerta-seg {
+  background: var(--erro-bg);
+  border: 1px solid var(--erro);
+  padding: 6px 10px;
+  font-size: .72rem;
+  margin-bottom: 6px;
+}
+.alerta-seg strong { color: var(--erro); }
+.check-list { list-style: none; padding: 0; margin: 6px 0; }
+.check-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: .78rem;
+  padding: 3px 0;
+}
+.check-list li::before {
+  content: '';
+  display: inline-block;
+  width: 15px; height: 15px;
+  border: 1.5px solid var(--cinza-borda);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-list.seg li::before { border-color: var(--erro); }
+.assinatura {
+  display: flex; align-items: baseline; gap: 8px;
+  margin: 8px 0 0;
+  font-size: .78rem; font-weight: 700; color: var(--azul);
+}
+.assinatura .linha-ass { flex: 1; border-bottom: 1.5px solid var(--erro); min-height: 1.4em; }
+
+/* ── AS QUATRO ESCOLHAS ── */
+.lembrete {
+  background: var(--ouro-bg);
+  border: 1px solid var(--ouro);
+  padding: 6px 10px;
+  font-size: .72rem;
+  margin-bottom: 8px;
+}
+.lembrete strong { color: var(--ouro); }
+.esc-lista { list-style: none; padding: 0; margin: 0 0 8px; }
+.esc-item { display: flex; flex-direction: column; padding: 4px 0; font-size: .8rem; }
+.esc-item .esc-label { font-weight: 600; color: var(--azul); }
+.esc-item .esc-label .n { font-weight: 700; margin-right: 4px; }
+.esc-linha { border-bottom: 1px dotted var(--cinza-borda); min-height: 22px; }
+.nota-metodo { font-size: .74rem; color: var(--cinza); font-style: italic; margin-top: 4px; }
+
+/* ── IMAGEM DE FUNDO DA SECAO (padrao .anot-fundo da FA impressa
+   da T10/FC1): a ilustracao IT fica ATRAS da area de escrita, em
+   escala de cinza e opacidade baixa — o estudante escreve por cima.
+   Valores de tela e de impressao copiados VERBATIM da FA. ── */
+.com-fundo { position: relative; overflow: hidden; }
+.fundo-ilustra {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: .34; filter: grayscale(1) contrast(.9);
+  pointer-events: none;
+}
+.com-fundo > :not(.fundo-ilustra) { position: relative; }
+
+/* ── TABELAS DE DADOS ── */
+.tabela-rotulo { font-size: .74rem; color: var(--cinza); font-style: italic; margin: 6px 0 3px; }
+table { width: 100%; border-collapse: collapse; font-size: .8rem; margin: 4px 0 8px; }
+th {
+  background: var(--azul-bg);
+  color: var(--azul);
+  padding: 5px 4px;
+  text-align: center;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .2px;
+  font-weight: 700;
+  border: 1px solid var(--cinza-borda);
+}
+th:first-child { text-align: left; padding-left: 8px; }
+th .un { text-transform: none; }
+td {
+  padding: 8px 6px;
+  border: 1px solid var(--cinza-borda);
+  text-align: center;
+  vertical-align: middle;
+  height: 30px;
+}
+td:first-child { text-align: left; padding-left: 8px; }
+
+.resultado-final {
+  border: 1.5px solid var(--azul);
+  background: var(--azul-bg);
+  padding: 8px 12px;
+  text-align: center;
+  margin: 8px 0 0;
+}
+.resultado-final .titulo-res {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--azul); font-weight: 700; margin-bottom: 4px;
+}
+.resultado-final .formula-res { font-size: 1.05rem; font-weight: 700; color: var(--branco); font-family: var(--mono); }
+.resultado-final .campo-res {
+  display: inline-block;
+  border-bottom: 1.5px solid var(--azul);
+  min-width: 70px;
+  height: 1.3em;
+}
+
+/* ── PROTOCOLO C5 ── */
+.c5-lista { list-style: none; padding: 0; margin: 0; }
+.c5-lista li {
+  padding: 4px 0 4px 24px;
+  position: relative;
+  font-size: .8rem;
+  border-bottom: 1px dotted var(--cinza-borda);
+  min-height: 30px;
+}
+.c5-lista li:last-child { border-bottom: none; }
+.c5-lista li .passo-num { position: absolute; left: 0; top: 4px; font-weight: 700; color: var(--azul); font-size: .8rem; }
+.c5-lista li .passo-label { font-weight: 600; color: var(--ouro); }
+.c5-lista li .inline-resp { font-size: .78rem; font-family: var(--mono); color: var(--azul); }
+.c5-esboco {
+  border: 1px dashed var(--cinza-borda);
+  height: 48px;
+  margin: 4px 0 2px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 0 12px 2px;
+  font-size: .74rem; color: var(--cinza);
+  font-family: var(--mono);
+}
+
+/* ── VERIFICACAO ── */
+.calc-bloco { background: var(--superficie); padding: 8px 12px; margin: 6px 0 0; }
+.calc-formula { display: flex; align-items: center; gap: 6px; font-size: .8rem; margin: 6px 0; }
+.calc-formula .label { font-weight: 600; color: var(--azul); white-space: nowrap; }
+.calc-formula .eq { font-family: var(--mono); font-size: .78rem; color: var(--cinza); }
+.calc-formula .campo-calc { border-bottom: 1.5px solid var(--azul); min-width: 80px; height: 1.1em; display: inline-block; }
+.calc-formula .un-m { font-size: .72rem; }
+
+/* ── DISCUSSAO (v5: questoes objetivas — assinalar 2 corretas em 4) ── */
+.disc-item { display: flex; flex-direction: column; margin-bottom: 4px; }
+.disc-q { font-size: .8rem; margin: 4px 0 2px; }
+.disc-q strong { color: var(--azul); }
+.disc-linha { border-bottom: 1px dotted var(--cinza-borda); min-height: 24px; }
+.disc-opts {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4px 14px; padding: 2px 0 4px 4px;
+}
+.disc-opt {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: .78rem; line-height: 1.3;
+}
+.disc-opt::before {
+  content: '';
+  display: inline-block;
+  width: 13px; height: 13px;
+  border: 1.5px solid var(--cinza-borda);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.disc-resp {
+  font-family: var(--mono); font-size: .8rem; color: var(--azul);
+  padding: 4px 0 2px 16px;
+}
+@media (max-width: 560px) {
+  .disc-opts { grid-template-columns: 1fr; }
+}
+
+/* ── FECHAMENTO (padrao FA) ── */
+.fechamento { border-top: 1px solid var(--cinza-borda); margin-top: 10px; padding-top: 9px; }
+.fechamento .frase {
+  text-align: center; font-size: .92rem; font-style: italic; color: var(--texto); line-height: 1.55;
+}
+.fechamento .frase strong { color: var(--ouro); font-style: normal; }
+/* v5: o fecho da despedida ganha destaque de cor e corpo maior */
+.fechamento .fecho-destaque { color: var(--azul); font-weight: 700; font-size: 1.08rem; }
+
+/* ── ESPACO DA EQUIPE DE MONITORIA (padrao FA) ── */
+.monitoria { border: 1.5px solid var(--verde); margin-top: 10px; padding: 8px 10px 9px; }
+.monitoria-titulo {
+  font-size: .8rem; font-weight: 700; color: var(--verde);
+  text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;
+}
+.monitoria-entrega { font-size: .9rem; font-weight: 600; margin-bottom: 7px; }
+.monitoria-marcas { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 7px; }
+.marca { display: flex; align-items: center; gap: 5px; font-size: .8rem; }
+.marca .cx { width: 12px; height: 12px; border: 1px solid var(--cinza); flex-shrink: 0; }
+.marca .data { display: inline-flex; align-items: flex-end; gap: 3px; color: var(--cinza); }
+.marca .data i { display: inline-block; border-bottom: 1px solid var(--linha); height: 1em; font-style: normal; }
+.marca .data .d, .marca .data .m { width: 22px; }
+.marca .data .a { width: 34px; }
+.monitoria-criterios { font-size: .8rem; color: var(--cinza); line-height: 1.55; margin-bottom: 7px; }
+.monitoria-criterios strong { color: var(--texto); font-weight: 600; }
+.monitoria-obs { font-size: .8rem; font-weight: 600; color: var(--cinza); text-transform: uppercase; letter-spacing: .4px; }
+.monitoria-linha { border-bottom: 1px solid var(--linha); height: 22px; }
+.monitoria-assina { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; margin-top: 6px; }
+.monitoria-assina .campo {
+  display: flex; align-items: baseline; gap: 6px;
+  font-size: .8rem; border-bottom: 1px solid var(--linha); padding-bottom: 3px;
+}
+.monitoria-assina label { font-weight: 600; color: var(--verde); white-space: nowrap; font-size: .8rem; }
+.monitoria-assina .linha { flex: 1; min-width: 0; height: 1.2em; }
+
+/* ── RODAPES ── */
+.rodape-print { display: none; }
+.barra-tela { text-align: center; padding: 18px 0 6px; }
+.barra-tela .btn {
+  padding: 11px 26px; background: var(--azul); color: oklch(0.13 0.01 260);
+  border: none; font-family: var(--font); font-size: .85rem; font-weight: 700;
+  cursor: pointer; min-height: 44px;
+}
+.barra-tela .btn:hover { filter: brightness(1.1); }
+.barra-tela .nota { font-size: .8rem; color: var(--cinza); margin-top: 8px; line-height: 1.5; }
+
+/* ============================================================
+   TIPOGRAFIA DE TELA — padrao FE1 movel (v5): piso de .8rem e
+   corpos maiores para leitura no celular, como na atualizacao
+   do indice do site fe1-oa (nome 1.08rem / tag .95rem) e no
+   Espaco da Monitoria (A4.36). SO a tela cresce: o @media print
+   abaixo permanece intacto e a paginacao impressa nao muda.
+   REPLICAR este bloco identico nos RB das demais trilhas.
+   ============================================================ */
+@media screen {
+  body { font-size: 1.02rem; }
+  .header-left h1 { font-size: 1.2rem; }
+  .header-left .sub { font-size: .84rem; }
+  .header-right { font-size: .8rem; }
+  .header-right .badge { font-size: .9rem; }
+  .id-box-titulo { font-size: .8rem; }
+  .id-box .campo-linha { font-size: .92rem; }
+  .id-box label { font-size: .84rem; }
+  .opts { font-size: .84rem; }
+  .data-campo { font-size: .88rem; }
+  .piazzi { font-size: .84rem; }
+  .epigrafe { font-size: .95rem; }
+  .epigrafe .atrib { font-size: .8rem; }
+  .checklist-titulo { font-size: .8rem; }
+  .fase-nome { font-size: .8rem; }
+  .oa-item { font-size: .8rem; }
+  .secao-titulo .num { width: 26px; height: 26px; font-size: .86rem; }
+  .secao-titulo h2 { font-size: 1.02rem; }
+  .secao-titulo .hint { font-size: .8rem; }
+  .alerta-seg { font-size: .86rem; }
+  .check-list li { font-size: .92rem; }
+  .assinatura { font-size: .9rem; }
+  .lembrete { font-size: .86rem; }
+  .esc-item { font-size: .92rem; }
+  .nota-metodo { font-size: .84rem; }
+  .tabela-rotulo { font-size: .84rem; }
+  table { font-size: .92rem; }
+  th { font-size: .8rem; }
+  .resultado-final .titulo-res { font-size: .8rem; }
+  .resultado-final .formula-res { font-size: 1.15rem; }
+  .c5-lista li { font-size: .92rem; }
+  .c5-lista li .passo-num { font-size: .92rem; }
+  .c5-lista li .inline-resp { font-size: .88rem; }
+  .c5-esboco { font-size: .84rem; }
+  .calc-formula { font-size: .92rem; }
+  .calc-formula .eq { font-size: .88rem; }
+  .calc-formula .un-m { font-size: .82rem; }
+  .disc-q { font-size: .92rem; }
+  .disc-opt { font-size: .9rem; }
+  .disc-resp { font-size: .9rem; }
+  .fechamento .frase { font-size: 1.02rem; }
+  .fechamento .fecho-destaque { font-size: 1.2rem; }
+  .barra-tela .nota { font-size: .84rem; }
+}
+
+/* ============================================================
+   IMPRESSAO — paleta azul sobre branco (imagem de referencia:
+   titulos e rotulos em azul #1F3864, como o RB v3 e a FA da era
+   Century Gothic; linhas de escrita em cinza discreto).
+   @page { margin: 0 } suprime o cabecalho/rodape do navegador;
+   a margem real vira o padding de .pagina.
+   ============================================================ */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+
+  body {
+    background: #FFFFFF !important;
+    color: #1A1A1A !important;
+    font-size: 8.8pt;
+    line-height: 1.34;
+  }
+  .folha { max-width: none; padding: 0; }
+
+  /* uma .pagina por folha A4; coluna flex com a altura da folha:
+     a folga vira linha de escrita (.cresce) e o rodape cola na base */
+  .pagina {
+    margin: 0; padding: 11mm 13mm 9mm 13mm;
+    break-after: page; page-break-after: always;
+    display: flex; flex-direction: column; height: 297mm;
+  }
+  .pagina:last-of-type { break-after: auto; page-break-after: auto; }
+  /* ARMADILHA (FA): a regra de tela `.pagina + .pagina` vence dentro do
+     @media print — repetir o padding-top aqui, senao as folhas 2-4 saem
+     com 24px no lugar dos 11mm. */
+  .pagina + .pagina { border-top: none; padding-top: 11mm; }
+  .rodape-print {
+    display: block; text-align: center;
+    font-size: 6.8pt; color: #808080;
+    border-top: .5pt solid #D0D0D0; padding-top: 3pt;
+    margin-top: auto;
+  }
+
+  /* a secao marcada .cresce absorve a folga da pagina */
+  .cresce { flex: 1 1 auto; display: flex; flex-direction: column; }
+
+  .header { border-top: 2.5pt solid #1F3864; border-bottom: .5pt solid #C0C0C0; padding: 5pt 0; margin-bottom: 7pt; }
+  .header-left h1 { color: #1F3864 !important; font-size: 12pt; }
+  .header-left .sub { color: #4D6A96 !important; }
+  .header-right { color: #4D6A96 !important; }
+  .header-right .badge { color: #1F3864 !important; }
+
+  .id-box { border: 1pt solid #1A1A1A !important; padding: 5pt 8pt 6pt; margin-bottom: 6pt; }
+  .id-box-titulo { color: #1A1A1A !important; font-size: 7pt; margin-bottom: 4pt; }
+  .id-box .campo-linha { border-bottom: .75pt solid #7A7A7A !important; padding-bottom: 4pt; margin-bottom: 5pt; }
+  .id-box label { color: #1F3864 !important; }
+  .opts { color: #4D4D4D !important; }
+  .opts .opt::before { border: 1pt solid #808080 !important; width: 10pt; height: 10pt; }
+  .data-campo { color: #4D4D4D !important; }
+
+  .piazzi { border: .5pt solid #C0C0C0 !important; color: #1F3864 !important; padding: 4pt 8pt; margin-bottom: 6pt; font-size: 8pt; }
+  .piazzi .mao { color: #1F3864 !important; font-weight: 700; }
+  .piazzi em { color: #1F3864 !important; }
+
+  .epigrafe {
+    background: #F4F4F4 !important; border-left: 2.5pt solid #1F3864 !important;
+    padding: 5pt 9pt; margin-bottom: 7pt; font-size: 9pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .epigrafe .cit { color: #1F3864 !important; }
+  .epigrafe .atrib { color: #4D4D4D !important; }
+
+  .checklist { margin-bottom: 7pt; }
+  .checklist-titulo { color: #1F3864 !important; font-size: 7.2pt; margin-bottom: 3pt; }
+  .checklist-fases { gap: 6pt; }
+  .fase {
+    border: .5pt solid #B5B5B5 !important; border-top: 1.5pt solid #1F3864 !important;
+    padding: 4pt 6pt 4.5pt; break-inside: avoid;
+  }
+  .fase-nome { color: #1F3864 !important; font-size: 7.4pt; margin-bottom: 3pt; }
+  .fase-oas { gap: 3pt 7pt; }
+  .oa-item { font-size: 7pt; }
+  .oa-box { width: 7pt; height: 7pt; border: .75pt solid #1A1A1A !important; }
+  .oa-sigla { color: #000000 !important; }
+  .oa-nome { color: #4D4D4D !important; }
+
+  .secao { margin-bottom: 7pt; }
+  .secao-titulo { margin-bottom: 5pt; gap: 6pt; }
+  .secao-titulo .num {
+    background: #E8EDF4 !important; color: #1F3864 !important;
+    border: .75pt solid #1F3864;
+    width: 15pt; height: 15pt; font-size: 8pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .secao-titulo h2 { color: #1F3864 !important; font-size: 9.5pt; }
+  .secao-titulo .hint { color: #808080 !important; font-size: 7pt; }
+
+  .alerta-seg {
+    background: #FDEDEC !important; border-color: #C0392B !important;
+    padding: 4pt 8pt; margin-bottom: 4pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .alerta-seg strong { color: #C0392B !important; }
+  .check-list li { font-size: 8.2pt; padding: 2pt 0; }
+  .check-list li::before { width: 10pt; height: 10pt; border: 1pt solid #808080 !important; }
+  .check-list.seg li::before { border-color: #C0392B !important; }
+  .assinatura { color: #1F3864 !important; margin-top: 4pt; }
+  .assinatura .linha-ass { border-bottom-color: #C0392B !important; }
+
+  .lembrete {
+    background: #FFF5E0 !important; border-color: #C8922A !important;
+    padding: 4pt 8pt; margin-bottom: 5pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .lembrete strong { color: #8A6A18 !important; }
+  .esc-lista { flex: 1 1 auto; display: flex; flex-direction: column; }
+  .esc-item { flex: 1 1 auto; padding: 3pt 0; }
+  .esc-item .esc-label { color: #1F3864 !important; }
+  .esc-linha { flex: 1 1 auto; border-bottom: .75pt solid #9AA7BD !important; min-height: 6mm; }
+  .nota-metodo { color: #808080 !important; font-size: 7.4pt; flex: 0 0 auto; }
+
+  /* Imagem de fundo: visivel o bastante para ilustrar, clara o bastante
+     para a caneta passar por cima — mesmos valores calibrados da FA
+     impressa da T10/FC1 (a impressora P&B clareia meios-tons; o valor
+     de tela nao serve aqui). */
+  .fundo-ilustra {
+    opacity: .26 !important;
+    filter: grayscale(1) contrast(.95) brightness(1.02) !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .tabela-rotulo { color: #4D4D4D !important; font-size: 7.6pt; margin: 3pt 0 2pt; }
+  table { font-size: 8.2pt; margin: 2pt 0 5pt; }
+  th {
+    background: #E8EDF4 !important; color: #1F3864 !important;
+    border: .5pt solid #9AA7BD !important; padding: 3pt 3pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  td { border: .5pt solid #9AA7BD !important; height: 11mm; padding: 3pt 4pt; }
+
+  .resultado-final {
+    background: #F4F6FA !important; border: 1pt solid #1F3864 !important;
+    padding: 5pt 9pt; margin-top: 4pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .resultado-final .titulo-res { color: #1F3864 !important; font-size: 7.4pt; }
+  .resultado-final .formula-res { color: #1A1A1A !important; font-size: 10pt; }
+  .resultado-final .campo-res { border-bottom-color: #1F3864 !important; }
+
+  .c5-lista { flex: 1 1 auto; display: flex; flex-direction: column; }
+  .c5-lista li { flex: 1 1 auto; border-bottom: .5pt dotted #9AA7BD !important; min-height: 7mm; }
+  .c5-lista li.fixo { flex: 0 0 auto; }
+  .c5-lista li .passo-num { color: #1F3864 !important; }
+  .c5-lista li .passo-label { color: #2E5A8F !important; }
+  .c5-lista li .inline-resp { color: #1F3864 !important; }
+  .c5-esboco { border-color: #9AA7BD !important; color: #808080 !important; height: 10mm; }
+
+  .calc-bloco { background: #F8F8F8 !important; padding: 4pt 8pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .calc-formula { font-size: 8.4pt; margin: 4pt 0; }
+  .calc-formula .label { color: #1F3864 !important; }
+  .calc-formula .eq { color: #4D4D4D !important; }
+  .calc-formula .campo-calc { border-bottom-color: #1F3864 !important; }
+
+  .disc-item { flex: 1 1 auto; }
+  .disc-q { font-size: 8.2pt; }
+  .disc-q strong { color: #1F3864 !important; }
+  .disc-linha { flex: 1 1 auto; border-bottom: .5pt dotted #9AA7BD !important; min-height: 7mm; }
+  .disc-opts { gap: 1.5pt 10pt; padding: 1pt 0 2pt 2pt; }
+  .disc-opt { font-size: 7.6pt; gap: 5pt; }
+  .disc-opt::before { width: 9pt; height: 9pt; border: .75pt solid #808080 !important; margin-top: .5pt; }
+  .disc-resp { color: #1F3864 !important; font-size: 8.6pt; padding: 2pt 0 2pt 12pt; }
+
+  .fechamento { border-top: .5pt solid #C0C0C0 !important; margin-top: 5pt; padding-top: 5pt; flex: 0 0 auto; }
+  .fechamento .frase { color: #1F3864 !important; font-size: 9.6pt; line-height: 1.4; }
+  .fechamento .frase strong { color: #1F3864 !important; }
+  /* v5: destaque do fecho no laranja de impressao da FE (#AE5314, 4,89:1) */
+  .fechamento .fecho-destaque { color: #AE5314 !important; font-size: 11pt; }
+
+  .monitoria { border: 1pt solid #1A1A1A !important; margin-top: 4pt; padding: 3pt 7pt 3pt; break-inside: avoid; }
+  .monitoria-titulo { color: #1A1A1A !important; font-size: 7.5pt; margin-bottom: 1.5pt; }
+  .monitoria-entrega { color: #000000 !important; font-size: 8.6pt; margin-bottom: 2pt; }
+  .monitoria-marcas { gap: 2pt 12pt; margin-bottom: 2pt; }
+  .marca { font-size: 7.8pt; color: #000000 !important; }
+  .marca .cx { width: 8.5pt; height: 8.5pt; border: .75pt solid #1A1A1A !important; }
+  .marca .data { color: #000000 !important; gap: 2pt; }
+  .marca .data i { border-bottom: .75pt solid #7A7A7A !important; height: .95em; }
+  .marca .data .d, .marca .data .m { width: 16pt; }
+  .marca .data .a { width: 26pt; }
+  .monitoria-criterios { color: #4D4D4D !important; font-size: 7pt; line-height: 1.3; margin-bottom: 2pt; }
+  .monitoria-criterios strong { color: #1A1A1A !important; }
+  .monitoria-obs { color: #4D4D4D !important; font-size: 7.2pt; }
+  .monitoria-linha { border-bottom: .5pt solid #7A7A7A !important; height: 4.5mm; }
+  .monitoria-assina { gap: 16pt; margin-top: 2pt; }
+  .monitoria-assina .campo { border-bottom: .75pt solid #7A7A7A !important; padding-bottom: 2pt; font-size: 7.8pt; }
+  .monitoria-assina label { color: #1A1A1A !important; font-size: 7.5pt; }
+
+  .barra-tela { display: none !important; }
+}
+
+/* ── T0B: a tabela de coleta ── */
+.tab-col { width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: .78rem; }
+.tab-col th {
+  background: var(--azul-bg); color: var(--azul);
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .4px;
+  padding: 5px 6px; border: 1px solid var(--cinza-borda); text-align: left;
+}
+.tab-col td { border: 1px solid var(--cinza-borda); height: 30px; padding: 3px 6px; }
+.tab-col td.rot, .tab-col th.rot { width: 34%; font-weight: 600; text-align: left; }
+.tab-col td.cod { width: 8%; font-family: var(--mono); color: var(--azul); font-weight: 700; }
+
+/* ── T0B: a tarefa de estacao ── */
+.tarefa { border-left: 2px solid var(--azul); padding: 4px 0 4px 10px; margin-bottom: 10px; }
+.tarefa-t { font-size: .82rem; font-weight: 700; }
+.tarefa-t .cod { font-family: var(--mono); color: var(--azul); margin-right: 6px; }
+.tarefa-i { font-size: .74rem; color: var(--cinza); font-style: italic; margin: 1px 0 5px; }
+.tarefa-si { font-size: .74rem; color: var(--cinza); }
+.tarefa-si b { color: var(--texto); }
+.campo-resultado {
+  display: flex; align-items: baseline; gap: 8px; margin: 6px 0 2px; font-size: .8rem;
+}
+.campo-resultado .linha-r { flex: 1; border-bottom: 1px dotted var(--cinza-borda); min-height: 20px; }
+
+/* ── T0B: as linhas a corrigir ── */
+.errada { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; font-size: .8rem; }
+.errada .txt { flex: 0 0 45%; font-family: var(--mono); color: var(--erro); }
+.errada .seta { color: var(--cinza); }
+.errada .linha-c { flex: 1; border-bottom: 1px dotted var(--cinza-borda); min-height: 20px; }
+
+/* o item do checklist e frase corrida com <strong>: fora de um flex, o
+   quadradinho colapsa se ficar inline (licao do RB da T0A). */
+.check-list .esc-item { display: block; line-height: 1.5; }
+.check-list .oa-box { display: inline-block; vertical-align: -1px; margin-right: 6px; }
+
+@media print {
+  .tab-col th { background: #E8E8E8 !important; color: #1F3864 !important; }
+  .tab-col td, .tab-col th { border-color: #999 !important; }
+  .secao.sem-esticar .linha-r, .secao.sem-esticar .linha-c { flex: 0 0 auto; }
+  /* na secao que cresce, quem estica e a TABELA, nao a linha de escrita
+     (mesma licao do IE no RB da T0A) */
+  .secao.sem-esticar .esc-linha { flex: 0 0 auto; height: 22px; }
+  .secao.sem-esticar .tab-col { flex: 1 1 auto; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="folha">
+
+<!-- ═══════════════════════ PÁGINA 1 ═══════════════════════ -->
+<div class="pagina">
+
+  <div class="header">
+    <div class="header-left">
+      <h1>T0B · Sistema Internacional de Unidades</h1>
+      <div class="sub">Introdução ao Laboratório (ILB) · IFMG — Campus Ouro Preto</div>
+    </div>
+    <div class="header-right">
+      <div class="badge">Roteiro de Bancada (RB)</div>
+      <div>Duas estações · 100 min</div>
+    </div>
+  </div>
+
+  <div class="id-box">
+    <div class="id-box-titulo">Identificação</div>
+    <div class="campo-linha">
+      <label>Nome:</label><div class="linha"></div>
+      <label>Matrícula:</label><div class="linha ra"></div>
+    </div>
+    <div class="campo-linha">
+      <label>Curso:</label><div class="linha meia"></div>
+      <label>Professor(a):</label><div class="linha"></div>
+    </div>
+    <div class="campo-linha">
+      <label>Começa na estação:</label>
+      <div class="opts"><span class="opt">A</span><span class="opt">B</span></div>
+      <label>Colegas de bancada:</label><div class="linha"></div>
+    </div>
+    <div class="campo-linha">
+      <label>Encontro:</label><div class="linha meia"></div>
+      <label>Data:</label><span class="data-campo">______/______/_______</span>
+    </div>
+  </div>
+
+  <div class="piazzi">
+    <span>Estude <span class="mao">escrevendo à mão</span>, ouvindo música instrumental.</span>
+    <span>Pierluigi Piazzi, em <em>Aprendendo Inteligência</em></span>
+  </div>
+
+  <!-- EPIGRAFE 2 — a do cientista, sem analise. -->
+  <div class="epigrafe">
+    <span class="cit">"Quando você pode medir aquilo de que fala, e exprimi-lo em números, você sabe algo sobre isso."</span>
+    <span class="atrib">— Lord Kelvin, <em>Electrical Units of Measurement</em>, 1883</span>
+  </div>
+
+  <div class="lembrete">
+    <strong>Hoje você mede.</strong> Seis tarefas, duas bancadas, e um resultado por linha. O que
+    esta trilha cobra não é o valor: é a <strong>escrita</strong> do valor — unidade, símbolo,
+    espaço, vírgula e o prefixo na escala certa. O termo de segurança você já assinou na T0A; ele
+    é o que lhe dá o direito de estar nesta bancada.
+  </div>
+
+  <!-- ─────────── 1. ESTAÇÃO A ─────────── -->
+  <div class="secao cresce sem-esticar">
+    <div class="secao-titulo">1. Estação A — comprimento e ângulo</div>
+    <div class="tarefa-i" style="margin-bottom:8px;">régua milimetrada · paquímetro · transferidor · rampa de fórmica · resma de papel · moedas</div>
+    <div class="tarefa">
+      <div class="tarefa-t"><span class="cod">A1</span>A espessura de uma folha de papel</div>
+      <div class="tarefa-i">régua milimetrada + pilha de 100 folhas</div>
+      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
+      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
+      <div class="tarefa-si">O que o SI ensina aqui: o milímetro não chega lá: o resultado pede o <b>micrometro</b> (µm)</div>
+    </div>
+    <div class="tarefa">
+      <div class="tarefa-t"><span class="cod">A2</span>O diâmetro de uma moeda</div>
+      <div class="tarefa-i">paquímetro</div>
+      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
+      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
+      <div class="tarefa-si">O que o SI ensina aqui: o décimo de milímetro — e duas leituras que não coincidem</div>
+    </div>
+    <div class="tarefa">
+      <div class="tarefa-t"><span class="cod">A3</span>A inclinação da rampa de fórmica</div>
+      <div class="tarefa-i">transferidor</div>
+      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
+      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
+      <div class="tarefa-si">O que o SI ensina aqui: o <b>grau é unidade fora do SI</b>; a do Sistema é o radiano</div>
+    </div>
+    <div class="nota-metodo">
+      Anote o que o instrumento mostrou, na unidade em que ele mostrou. A conversão é da página 3.
+    </div>
+  </div>
+
+  <div class="rodape-print">
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v1 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 1 de 4
+  </div>
+</div><!-- /pagina 1 -->
+
+<!-- ═══════════════════════ PÁGINA 2 ═══════════════════════ -->
+<div class="pagina">
+
+  <!-- ─────────── 2. ESTAÇÃO B ─────────── -->
+  <div class="secao cresce sem-esticar">
+    <div class="secao-titulo">2. Estação B — massa, força e tempo</div>
+    <div class="tarefa-i" style="margin-bottom:8px;">balança (0,1 g) · dinamômetro · massa aferida de 100 g · caixa de clipes · régua para o teste de reação</div>
+    <div class="tarefa">
+      <div class="tarefa-t"><span class="cod">B1</span>A massa de um clipe</div>
+      <div class="tarefa-i">balança + 20 clipes</div>
+      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
+      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
+      <div class="tarefa-si">O que o SI ensina aqui: a única unidade de base que já nasce com prefixo: o <b>kilograma</b></div>
+    </div>
+    <div class="tarefa">
+      <div class="tarefa-t"><span class="cod">B2</span>A força-peso sobre 100 g</div>
+      <div class="tarefa-i">dinamômetro</div>
+      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
+      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
+      <div class="tarefa-si">O que o SI ensina aqui: o <b>newton</b>, unidade derivada; o kgf do mostrador é fora do SI</div>
+    </div>
+    <div class="tarefa">
+      <div class="tarefa-t"><span class="cod">B3</span>O tempo de reação de um colega</div>
+      <div class="tarefa-i">régua em queda</div>
+      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
+      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
+      <div class="tarefa-si">O que o SI ensina aqui: o segundo e o milisegundo — e a primeira <b>medida indireta</b></div>
+    </div>
+    <div class="nota-metodo">
+      Em B1 e B3 você mede muitos e divide — é medida por multiplicação, e ela vale sempre que a
+      grandeza é menor do que a menor divisão do instrumento.
+    </div>
+  </div>
+
+  <div class="secao">
+    <div class="secao-titulo">3. Antes de sair da estação</div>
+    <div class="check-list">
+      <div class="esc-item"><span class="oa-box"></span> Anotei o resultado <strong>e</strong> a menor divisão de cada instrumento que usei.</div>
+      <div class="esc-item"><span class="oa-box"></span> Não apaguei nem corrigi nenhum valor: o que mudou está <strong>anotado ao lado</strong>.</div>
+      <div class="esc-item"><span class="oa-box"></span> Devolvi cada instrumento ao seu lugar.</div>
+    </div>
+  </div>
+
+  <div class="rodape-print">
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v1 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 2 de 4
+  </div>
+</div><!-- /pagina 2 -->
+
+<!-- ═══════════════════════ PÁGINA 3 ═══════════════════════ -->
+<div class="pagina">
+
+  <!-- ─────────── 4. A TABELA DE COLETA ─────────── -->
+  <div class="secao cresce sem-esticar">
+    <div class="secao-titulo">4. A tabela de coleta — as seis medidas juntas</div>
+
+    <div class="lembrete">
+      <strong>Esta tabela é o produto do encontro.</strong> É a forma mais simples que a disciplina
+      vai usar — uma coluna por tarefa. A partir da T01 ela ganha a coluna da repetição, e o
+      resultado passa a ter incerteza.
+    </div>
+
+    <div class="tabela-rotulo">Tabela 1 — as seis medidas, como saíram do instrumento e como vão ao relatório</div>
+    <table class="tab-col">
+      <thead>
+        <tr>
+          <th class="cod">#</th>
+          <th class="rot">O que foi medido</th>
+          <th>Instrumento</th>
+          <th>Valor, como saiu</th>
+          <th>Na unidade do SI</th>
+          <th>Prefixo escolhido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="cod">A1</td><td class="rot">A espessura de uma folha de papel</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="cod">A2</td><td class="rot">O diâmetro de uma moeda</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="cod">A3</td><td class="rot">A inclinação da rampa de fórmica</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="cod">B1</td><td class="rot">A massa de um clipe</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="cod">B2</td><td class="rot">A força-peso sobre 100 g</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="cod">B3</td><td class="rot">O tempo de reação de um colega</td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="esc-lista">
+      <div class="esc-item">
+        <div class="esc-label">Alguma das seis mudou de valor durante a aula? Qual, por quê, e o que ficou registrado ao lado?</div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
+    </div>
+
+    <div class="nota-metodo">
+      Regra do semestre: mede-se no instrumento que existe, relata-se na unidade do SI — com a
+      conversão à vista.
+    </div>
+  </div>
+
+  <div class="rodape-print">
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v1 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 3 de 4
+  </div>
+</div><!-- /pagina 3 -->
+
+<!-- ═══════════════════════ PÁGINA 4 ═══════════════════════ -->
+<div class="pagina">
+
+  <!-- ─────────── 5. A GRAFIA ─────────── -->
+  <div class="secao">
+    <div class="secao-titulo">5. Corrija a escrita — seis linhas erradas</div>
+    <div class="tarefa-i" style="margin-bottom:8px;">Todas dizem um valor plausível. Todas estão escritas errado. Reescreva ao lado.</div>
+    <div class="errada"><span class="txt">A folha tem 0,1 MM de espessura.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
+      <div class="errada"><span class="txt">A moeda mede 23,5mm.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
+      <div class="errada"><span class="txt">A rampa tem 15 Graus.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
+      <div class="errada"><span class="txt">O clipe tem 0,52 Kgs.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
+      <div class="errada"><span class="txt">A força medida foi 0.98 n.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
+      <div class="errada"><span class="txt">O tempo de reação foi 210 mseg.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
+    <div class="nota-metodo">
+      Símbolo não tem plural, não tem ponto e não vira maiúscula; há espaço entre número e símbolo;
+      a vírgula é decimal.
+    </div>
+  </div>
+
+  <!-- ─────────── 6. DISCUSSÃO ─────────── -->
+  <div class="secao cresce sem-esticar">
+    <div class="secao-titulo">6. Discussão</div>
+    <div class="esc-lista">
+      <div class="esc-item">
+        <div class="esc-label"><span class="n">a.</span> Duas pessoas mediram a mesma moeda e acharam valores diferentes. Isso é erro de alguém?</div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
+      <div class="esc-item">
+        <div class="esc-label"><span class="n">b.</span> Qual das seis tarefas você levaria para uma escola sem laboratório — e com o quê, na prática?</div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fechamento">
+    <div class="fecho-destaque">Terminamos por aqui, um abraço, e até o próximo encontro.</div>
+    <div class="frase">
+      O <strong>Relatório Mínimo</strong> desta trilha vence em <strong>1 dia</strong>: as seis
+      medidas escritas na grafia do SI, com a conversão de cada uma. O <strong>Relatório
+      Completo</strong>, em 6 dias. Leve esta tabela — ela é o dado bruto dos dois.
+    </div>
+  </div>
+
+  <div class="rodape-print">
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v1 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 4 de 4
+  </div>
+
+</div><!-- /pagina 4 -->
+
+<div class="barra-tela">
+  <button class="btn" onclick="abrirParaImpressao()">Imprimir em A4</button>
+</div>
+
+</div><!-- /folha -->
+
+<script>
+/* Impressao em janela propria (padrao FA): o <title> vira o nome sugerido do
+   PDF, a barra de botoes fica de fora e o @page { margin: 0 } suprime o
+   cabecalho/rodape que o navegador injeta. */
+var NOME_ARQUIVO_PDF = 'ILB-T0B-RB-v1-estudante-impresso';
+
+function abrirParaImpressao() {
+  var folha = document.querySelector('.folha').cloneNode(true);
+  var barra = folha.querySelector('.barra-tela');
+  if (barra) { barra.parentNode.removeChild(barra); }
+
+  var w = window.open('', '_blank');
+  if (!w) {
+    alert('O navegador bloqueou a janela de impressao.\n' +
+          'Libere os pop-ups para esta pagina e clique de novo.');
+    return;
+  }
+
+  w.document.open();
+  w.document.write(
+    '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">' +
+    '<base href="' + document.baseURI + '">' +
+    '<title>' + NOME_ARQUIVO_PDF + '</title>' +
+    document.querySelector('style').outerHTML +
+    '</head><body>' + folha.outerHTML + '</body></html>'
+  );
+  w.document.close();
+
+  var imprimir = function () { w.focus(); w.print(); };
+  if (w.document.readyState === 'complete') { setTimeout(imprimir, 500); }
+  else { w.addEventListener('load', function () { setTimeout(imprimir, 500); }); }
+}
+</script>
+</body>
+</html>
