@@ -1201,6 +1201,7 @@ html, body {
             <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>Matriz curricular</strong> &mdash; laboratório <em>sem</em> teórica vinculada, no 2.º período; sem pré-requisito, e pré-requisito do Lab de Mecânica (6088).</span></div>
             <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>Ementa e plano de ensino</strong> &mdash; 30 h, doze trilhas, dezesseis encontros; as competências, as datas e os pesos.</span></div>
             <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>Regulamento de Ensino</strong> (Res. n.º 01/2026) &mdash; os dois números que não se negociam.</span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t">Os quatro primeiros, em versão de tela e com PDF: aba <a href="https://nidecop-jafb.github.io/ilb-oa/documentos/" target="_blank" rel="noopener" style="color:inherit"><strong>Documentos</strong></a> do site &mdash; <em>nidecop-jafb.github.io/ilb-oa/documentos</em>.</span></div>
           </div>
           <div class="def">
             <div class="termo">75 % de frequência &middot; 60 % de rendimento</div>
@@ -1509,7 +1510,7 @@ html, body {
 
 <script>
 (function() {
-  var STORAGE_KEY = 'ILB-T0A-AP-v1';
+  var STORAGE_KEY = 'ILB-T0A-AP-v2';
   var slides = document.querySelectorAll('.slide');
   var total = slides.length;
   var atual = 1;
@@ -1876,7 +1877,7 @@ html, body {
 (function () {
   'use strict';
 
-  var KEY = 'ILB-T0A-AP-v1-crono';
+  var KEY = 'ILB-T0A-AP-v2-crono';
 
 
   var slides = document.querySelectorAll('.slide');
@@ -1898,7 +1899,7 @@ html, body {
   window.__AP_PREVISTO_ORIGINAL = previstoOriginal;
 
   try {
-    var tcust = JSON.parse(localStorage.getItem('ILB-T0A-AP-v1-tempos-custom') || '{}');
+    var tcust = JSON.parse(localStorage.getItem('ILB-T0A-AP-v2-tempos-custom') || '{}');
     for (var kc in tcust) { if (tcust.hasOwnProperty(kc)) previsto[parseInt(kc, 10)] = tcust[kc]; }
   } catch(e) {}
 
@@ -2180,7 +2181,7 @@ html, body {
 <script>
 (function() {
   'use strict';
-  var STORAGE_KEY = 'ILB-T0A-AP-v1';
+  var STORAGE_KEY = 'ILB-T0A-AP-v2';
   var KEY_TEMPOS = STORAGE_KEY + '-tempos-custom';
   var allSlides = document.querySelectorAll('.slide');
   var configSlideNum = allSlides.length;

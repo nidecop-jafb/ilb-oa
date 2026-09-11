@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Pedagógico do Curso</title>
+<meta name="description" content="Guia de leitura do Projeto Pedagógico do Curso de Licenciatura em Física do IFMG campus Ouro Preto, com o PDF integral.">
+<style>
+:root { --cor: #3E8E5A; --acento: #7FB2D6;
+--fundo: #0d0d0d; --texto: #e8e8e8; --cinza: #999; --linha: #444; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--fundo); color: var(--texto); font-family: Georgia, 'Times New Roman', serif; line-height: 1.65; }
+.wrap { max-width: 820px; margin: 0 auto; padding: 40px 20px 64px; }
+
+.capa { text-align: center; border: 1px solid var(--linha); padding: 30px 26px 34px; margin-bottom: 40px; }
+.capa img { width: 100%; max-width: 620px; height: auto; display: block; margin: 0 auto 26px; border: 1px solid var(--linha); }
+.capa p { margin: 0 0 10px; color: #c4c4c4; font-size: .95rem; }
+
+.capa p:nth-of-type(2) strong { display: block; font-family: 'Courier New', monospace; font-size: .9rem; letter-spacing: .18em; color: var(--acento); text-transform: uppercase; font-weight: normal; }
+.capa p:nth-of-type(3) strong { display: block; font-family: 'Courier New', monospace; font-size: 1.5rem; letter-spacing: .04em; color: var(--cor); text-transform: uppercase; margin: 6px 0 4px; }
+.capa p:nth-of-type(4) strong { display: block; font-family: 'Courier New', monospace; font-size: .82rem; letter-spacing: .1em; color: #c4c4c4; text-transform: uppercase; font-weight: normal; margin-bottom: 18px; }
+
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 38px; }
+.acoes a { flex: 1 1 220px; display: block; padding: 13px 16px; border: 1px solid var(--linha); color: var(--texto); text-decoration: none; font-family: 'Courier New', monospace; font-size: .86rem; text-align: center; }
+.acoes a:hover { border-color: var(--cor); color: var(--cor); }
+.acoes a.destaque { border-style: dashed; }
+
+h1 { font-family: 'Courier New', monospace; font-size: 1.35rem; color: var(--cor); text-transform: uppercase; letter-spacing: .03em; border-bottom: 2px solid var(--cor); padding-bottom: 10px; margin: 48px 0 18px; scroll-margin-top: 20px; }
+h2 { font-family: 'Courier New', monospace; font-size: 1.02rem; color: var(--acento); margin: 32px 0 12px; letter-spacing: .02em; }
+h3 { font-family: 'Courier New', monospace; font-size: .92rem; color: #fff; margin: 24px 0 10px; }
+p { margin-bottom: 13px; }
+strong { color: #fff; }
+em { color: #ddd; }
+a { color: var(--cor); }
+ul, ol { margin: 0 0 14px 22px; }
+li { margin-bottom: 7px; }
+hr { border: none; border-top: 1px solid var(--linha); margin: 34px 0; }
+blockquote { border-left: 3px solid var(--cor); padding-left: 16px; margin: 0 0 14px; color: #c4c4c4; }
+
+#TOC { border: 1px solid var(--linha); padding: 20px 24px; margin-bottom: 40px; }
+#TOC::before { content: 'Sumário'; display: block; font-family: 'Courier New', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .18em; color: var(--cor); border-bottom: 1px solid var(--linha); padding-bottom: 8px; margin-bottom: 14px; }
+#TOC ul { list-style: none; margin: 0; }
+#TOC li { margin-bottom: 8px; }
+#TOC a { color: var(--texto); text-decoration: none; font-family: 'Courier New', monospace; font-size: .84rem; }
+#TOC a:hover { color: var(--cor); }
+
+.tabela-rolagem { overflow-x: auto; margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { border: 1px solid var(--linha); padding: 9px 11px; text-align: left; vertical-align: top; }
+th { font-family: 'Courier New', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--cor); background: #17171a; font-weight: normal; }
+tbody tr:nth-child(even) { background: #131316; }
+caption { caption-side: bottom; font-size: .78rem; color: var(--cinza); padding-top: 6px; }
+
+table.cip, table.cip td { border-color: var(--linha); }
+table.cip td { border-left: none; border-right: none; border-top: none; border-bottom: none; padding: 2px 14px; font-size: .84rem; }
+table.cip { border: 1px solid var(--linha); padding: 12px 0; }
+table.cip tbody tr { background: none; }
+
+pre { background: #131316; border: 1px solid var(--linha); padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; }
+code { font-family: 'Courier New', Consolas, monospace; font-size: .78rem; color: #c4c4c4; }
+p code, li code, td code { background: #17171a; padding: 1px 5px; font-size: .84rem; color: var(--acento); }
+
+.rodape { margin-top: 56px; padding-top: 16px; border-top: 1px solid #333; font-size: .76rem; color: #888; font-family: 'Courier New', monospace; text-align: center; line-height: 1.7; }
+@media (max-width: 560px) {
+.wrap { padding: 24px 14px 48px; }
+.capa { padding: 20px 16px 24px; }
+.capa p:nth-of-type(3) strong { font-size: 1.15rem; }
+h1 { font-size: 1.12rem; }
+table { font-size: .82rem; }
+
+pre code { font-size: .58rem; }
+}
+
+@media print {
+body { background: #fff; color: #000; }
+.acoes, #TOC { display: none; }
+.wrap { max-width: none; padding: 0; }
+h1 { color: #000; border-bottom-color: #000; page-break-after: avoid; }
+h2, h3 { color: #000; page-break-after: avoid; }
+th { color: #000; background: #eee; }
+tbody tr:nth-child(even) { background: #f6f6f6; }
+pre { background: #f6f6f6; border-color: #999; }
+.capa { page-break-after: always; border-color: #999; }
+table, pre, figure { page-break-inside: avoid; }
+.rodape { color: #444; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+
+
+<div class="capa">
+<p>
+<img role="img" aria-label src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLQogIGljb25lLWxpY2VuY2lhdHVyYS1maXNpY2Euc3ZnCiAgSWNvbmUgZG8gY3Vyc28gZGUgTGljZW5jaWF0dXJhIGVtIEZpc2ljYSDigJQgSUZNRyBDYW1wdXMgT3VybyBQcmV0by4KCiAgQnJpZWZpbmc6IF9wbGFuZWphbWVudG8vX3ByZS9QUkUtaWRlbnRpZGFkZS12aXN1YWwtaWxiLTIwMjYtMDktMDcubWQsIGFwcm92YWRvIDIwMjYtMDktMDguCiAgRGVjaXNhbyAxMDogbyBJQ09ORSBETyBDVVJTTyBlIHBlY2EgZGlzdGludGEgZGEgTUFSQ0EgREEgRElTQ0lQTElOQS4gQSBtYXJjYSAoYXRvbW8gZGUgdHJlcwogIGVsaXBzZXMgc29icmUgcmVndWEgZ3JhZHVhZGEpIGlkZW50aWZpY2EgYSBJTEI7IGVzdGUgaWNvbmUgaWRlbnRpZmljYSBhIExpY2VuY2lhdHVyYSwgZSB2YWxlCiAgcGFyYSB0b2RhcyBhcyBkaXNjaXBsaW5hcyBkbyBjdXJzbyAoZGVjaXNhbyA3KS4KCiAgRGVyaXZhZG8gZGEgbWFyY2EgKGRlY2lzYW8gNCk6IG1hbnRlbSBvIGF0b21vIGUgYSByZWd1YSwgZW0gY29tcG9zaWNhbyBxdWFkcmFkYSwgZmVjaGFkYSBwb3IKICBtb2xkdXJhIOKAlCBmb3JtYXRvIHF1ZSBmdW5jaW9uYSBjb21vIGljb25lIGRlIGFwbGljYXRpdm8gKFBXQSAxOTIgZSA1MTIgcHgpIGUgY29tbyBzZWxvIGVtCiAgZG9jdW1lbnRvLgoKICBDb3JlczogdmVyZGUtcXVhZHJvICMzRThFNUEgKHByaW1hcmlhIGRhIExpY2VuY2lhdHVyYSkgZSBhenVsLWFjbyAjN0ZCMkQ2IChhY2VudG8pLgogIE5hIGNhcGEgZG8gbGl2cmV0byBlbSBMYVRlWCBvIGljb25lIGVudHJhIGVtIHZlcnNhbyBtb25vY3JvbWF0aWNhIOKAlCBvIG1pb2xvIGltcHJlc3NvIHNlZ3VlCiAgbyBhenVsIGluc3RpdHVjaW9uYWwgZG8gSUZNRyAoZGVjaXNhbyA5KS4KLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiCiAgICAgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJMaWNlbmNpYXR1cmEgZW0gRsOtc2ljYSDigJQgSUZNRyBDYW1wdXMgT3VybyBQcmV0byI+CiAgPHRpdGxlPkxpY2VuY2lhdHVyYSBlbSBGw61zaWNhIOKAlCBJRk1HIENhbXB1cyBPdXJvIFByZXRvPC90aXRsZT4KCiAgPCEtLSBmdW5kbzogcXVhZHJvLW5lZ3JvIGVzY29sYXIsIGRlIG9uZGUgdmVtIG8gdmVyZGUgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSI3MiIgZmlsbD0iIzE0MjUxQyIvPgogIDxyZWN0IHg9IjE4IiB5PSIxOCIgd2lkdGg9IjQ3NiIgaGVpZ2h0PSI0NzYiIHJ4PSI1NiIgZmlsbD0ibm9uZSIKICAgICAgICBzdHJva2U9IiMzRThFNUEiIHN0cm9rZS13aWR0aD0iNiIgb3BhY2l0eT0iMC41NSIvPgoKICA8IS0tIGF0b21vOiB0cmVzIG9yYml0YXMgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM0U4RTVBIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgPGVsbGlwc2UgY3g9IjI1NiIgY3k9IjIyMiIgcng9IjE3NiIgcnk9IjY5Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMjIyIiByeD0iMTc2IiByeT0iNjkiIHRyYW5zZm9ybT0icm90YXRlKDYwIDI1NiAyMjIpIi8+CiAgICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMjIyIiByeD0iMTc2IiByeT0iNjkiIHRyYW5zZm9ybT0icm90YXRlKDEyMCAyNTYgMjIyKSIvPgogIDwvZz4KCiAgPCEtLSBudWNsZW86IGNsdXN0ZXIgY29tcGFjdG8gZGUgdHJlcyBwYXJ0aWN1bGFzLCBzb2JyZXBvc3RhcyAtLT4KICA8ZyBmaWxsPSIjM0U4RTVBIj4KICAgIDxjaXJjbGUgY3g9IjIzOCIgY3k9IjIxMSIgcj0iMzAiLz4KICAgIDxjaXJjbGUgY3g9IjI3NCIgY3k9IjIxMSIgcj0iMzAiLz4KICAgIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI0MCIgcj0iMzAiLz4KICA8L2c+CgogIDwhLS0gcmVndWEgZ3JhZHVhZGE6IGEgZGlzY2lwbGluYSBlIHNvYnJlIG1lZGlyIC0tPgogIDxnIHN0cm9rZT0iIzdGQjJENiIgc3Ryb2tlLXdpZHRoPSIxMyIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSI+CiAgICA8bGluZSB4MT0iODYiIHkxPSI0MzAiIHgyPSI0MjYiIHkyPSI0MzAiLz4KICAgIDxsaW5lIHgxPSIxMDYiIHkxPSI0MzAiIHgyPSIxMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIxNTYiIHkxPSI0MzAiIHgyPSIxNTYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIyMDYiIHkxPSI0MzAiIHgyPSIyMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIyNTYiIHkxPSI0MzAiIHgyPSIyNTYiIHkyPSIzNzIiLz4KICAgIDxsaW5lIHgxPSIzMDYiIHkxPSI0MzAiIHgyPSIzMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIzNTYiIHkxPSI0MzAiIHgyPSIzNTYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSI0MDYiIHkxPSI0MzAiIHgyPSI0MDYiIHkyPSI0MDAiLz4KICA8L2c+Cjwvc3ZnPgo=" alt style="width:120px;max-width:120px;border:none;margin:0 auto 18px">
+</p>
+<p>
+<strong>Licenciatura em Física · Introdução ao Laboratório</strong>
+</p>
+<p>
+<strong>Projeto Pedagógico do Curso</strong>
+</p>
+<p>
+<strong>IFMG campus Ouro Preto · 2026</strong>
+</p>
+</div>
+
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#o-curso-em-números" id="toc-o-curso-em-números">1. O curso
+em números</a></li>
+<li><a href="#o-que-o-curso-quer-formar" id="toc-o-que-o-curso-quer-formar">2. O que o curso quer formar</a></li>
+<li><a href="#perfil-do-egresso" id="toc-perfil-do-egresso">3. Perfil do
+egresso</a></li>
+<li><a href="#como-o-curso-se-organiza" id="toc-como-o-curso-se-organiza">4. Como o curso se organiza</a></li>
+<li><a href="#onde-está-a-introdução-ao-laboratório" id="toc-onde-está-a-introdução-ao-laboratório">5. Onde está a Introdução
+ao Laboratório</a></li>
+<li><a href="#estágio-supervisionado" id="toc-estágio-supervisionado">6.
+Estágio supervisionado</a></li>
+<li><a href="#extensão-atividades-complementares-e-tcc" id="toc-extensão-atividades-complementares-e-tcc">7. Extensão,
+atividades complementares e TCC</a></li>
+<li><a href="#avaliação-aprovação-e-reprovação" id="toc-avaliação-aprovação-e-reprovação">8. Avaliação, aprovação e
+reprovação</a></li>
+<li><a href="#apoio-ao-estudante" id="toc-apoio-ao-estudante">9. Apoio
+ao estudante</a></li>
+<li><a href="#onde-ler-mais" id="toc-onde-ler-mais">10. Onde ler
+mais</a></li>
+</ul>
+</nav>
+<p>O Projeto Pedagógico do Curso (PPC) é o documento que define como a
+Licenciatura em Física do IFMG — Campus Ouro Preto funciona: o que o
+curso quer formar, quais disciplinas você cursa e em que ordem, como é
+avaliado e quais regras valem para estágio, extensão e TCC. Este guia
+resume a versão de abril de 2026, implantada a partir de 2026/1, para
+você ler o essencial em 10 minutos. O PDF integral, com 229 páginas,
+está ao final desta página. As páginas citadas são as do PDF (o número
+impresso no documento é uma unidade menor).</p>
+<h1 id="o-curso-em-números">1. O curso em números</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Item</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Título conferido</td>
+<td>Licenciado(a) em Física</td>
+</tr>
+<tr>
+<td>Modalidade</td>
+<td>Licenciatura, presencial, matrícula semestral por disciplina</td>
+</tr>
+<tr>
+<td>Turno</td>
+<td>Noite</td>
+</tr>
+<tr>
+<td>Integralização mínima</td>
+<td>4 anos (8 períodos letivos)</td>
+</tr>
+<tr>
+<td>Integralização máxima</td>
+<td>8 anos (16 períodos letivos)</td>
+</tr>
+<tr>
+<td>Carga horária total</td>
+<td>3.225 h</td>
+</tr>
+<tr>
+<td>Vagas</td>
+<td>25 por processo seletivo (anuais)</td>
+</tr>
+<tr>
+<td>Formas de ingresso</td>
+<td>Processo seletivo, transferência e obtenção de novo título</td>
+</tr>
+<tr>
+<td>Requisito de ingresso</td>
+<td>Ensino Médio concluído no ato da matrícula inicial</td>
+</tr>
+<tr>
+<td>Reconhecimento</td>
+<td>Portaria MEC nº 614, de 30 de outubro de 2014</td>
+</tr>
+<tr>
+<td>Renovação do reconhecimento</td>
+<td>Portaria SERES/MEC nº 152, de 21 de junho de 2023</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Fonte: PPC, seções 1, 7 e 8.1, p. 5–6 e 27.</em></p>
+<h1 id="o-que-o-curso-quer-formar">2. O que o curso quer formar</h1>
+<p>O objetivo geral é formar profissionais qualificados para atuar na
+Educação Básica e em outros espaços educativos, formais ou não formais,
+capazes de seguir para a pós-graduação. O PPC também espera formar
+cidadãos críticos e atuantes, com embasamento científico, tecnológico,
+social e ambiental.</p>
+<p>Os objetivos específicos, em síntese:</p>
+<ul>
+<li>formar professores com forte qualificação científica e
+didático-pedagógica;</li>
+<li>garantir que você domine não só a Física, mas o modo de ensiná-la,
+unindo teoria e prática pedagógica;</li>
+<li>preparar você para desenvolver projetos educacionais, experimentos e
+modelos teóricos;</li>
+<li>construir ferramentas pedagógicas em Matemática, Informática,
+História e Filosofia das Ciências;</li>
+<li>promover o comportamento ético no trabalho coletivo;</li>
+<li>formar licenciados abertos ao diálogo, ao aperfeiçoamento contínuo e
+com perfil investigativo;</li>
+<li>mobilizar você para compreender as relações sociais, científicas e
+tecnológicas.</li>
+</ul>
+<p><em>Fonte: PPC, seção 5, p. 20–21.</em></p>
+<h1 id="perfil-do-egresso">3. Perfil do egresso</h1>
+<p>O PPC descreve o egresso como um
+“professor-educador-interdisciplinar”, com base nas diretrizes nacionais
+dos cursos de Física e da formação de professores.</p>
+<p><strong>Competências</strong> (destaques):</p>
+<ul>
+<li>dominar os fundamentos da Física, clássica e moderna;</li>
+<li>resolver problemas físicos, teóricos ou experimentais, com
+instrumentos de laboratório ou matemáticos;</li>
+<li>relacionar criticamente Física, sociedade e tecnologia;</li>
+<li>dominar o conteúdo pedagógico e o processo de ensino da Física;</li>
+<li>enfrentar, na prática docente, o negacionismo científico e o
+climático.</li>
+</ul>
+<p><strong>Habilidades</strong> (destaques):</p>
+<ul>
+<li>usar a Matemática como linguagem dos fenômenos naturais;</li>
+<li>resolver problemas experimentais, da medição à análise dos
+resultados;</li>
+<li>propor e usar modelos físicos, reconhecendo seus limites de
+validade;</li>
+<li>apresentar resultados em relatórios, seminários e textos
+didáticos;</li>
+<li>planejar atividades de ensino e produzir materiais didáticos.</li>
+</ul>
+<p>Medir, analisar resultados e escrever relatório começam a ser
+treinados já na Introdução ao Laboratório.</p>
+<p><em>Fonte: PPC, seção 6.1, p. 22–25.</em></p>
+<h1 id="como-o-curso-se-organiza">4. Como o curso se organiza</h1>
+<p>O currículo segue a Resolução CNE/CP nº 4/2024 e se divide em quatro
+núcleos:</p>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Núcleo</th>
+<th>Conteúdo</th>
+<th>Carga horária</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I</td>
+<td>Estudos de Formação Geral (educação, parte teórica dos estágios, 90
+h de optativas)</td>
+<td>900 h</td>
+</tr>
+<tr>
+<td>II</td>
+<td>Conteúdos específicos de Física e Matemática, laboratórios, projetos
+de ensino e TCC</td>
+<td>1.605 h</td>
+</tr>
+<tr>
+<td>III</td>
+<td>Atividades Acadêmicas de Extensão</td>
+<td>320 h</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>Estágio Supervisionado (horas na escola)</td>
+<td>400 h</td>
+</tr>
+</tbody>
+</table></div>
+<p>A soma dos quatro núcleos dá as 3.225 h do curso. Alguns números para
+você se situar:</p>
+<ul>
+<li><strong>Obrigatórias e optativas:</strong> as optativas somam 90 h
+(Optativa I, 30 h, e Optativa II, 60 h, ambas previstas no 8.º
+período).</li>
+<li><strong>TCC:</strong> TCC I (30 h, 7.º período) e TCC II (60 h, 8.º
+período).</li>
+<li><strong>Estágio:</strong> 400 h na escola mais 150 h de aulas de
+orientação, do 1.º ao 7.º período.</li>
+<li><strong>Extensão:</strong> 320 h, 10 % da carga horária, dentro de
+seis disciplinas.</li>
+<li><strong>Atividades complementares:</strong> não previstas (0
+h).</li>
+<li><strong>Ensino a distância:</strong> 390 h, 12,09 % do total,
+concentradas em poucas disciplinas; a Introdução ao Laboratório é
+inteiramente presencial.</li>
+<li><strong>Hora-aula:</strong> 50 min.</li>
+</ul>
+<p>O PPC usa o rótulo “Prática-PCC” (prática como componente curricular)
+na abordagem metodológica de algumas ementas, mas não informa a carga
+horária total de PCC do curso.</p>
+<p><em>Fonte: PPC, seções 8.1, 8.1.1 e 8.1.1.3, p. 27–42 e
+47–49.</em></p>
+<h1 id="onde-está-a-introdução-ao-laboratório">5. Onde está a Introdução
+ao Laboratório</h1>
+<p>A Introdução ao Laboratório (OPLFISI.6086) é obrigatória, fica no
+<strong>2.º período</strong>, tem <strong>30 h</strong>, todas práticas
+de laboratório (36 aulas de 50 min, 2 por semana), e <strong>não tem
+pré-requisito</strong>. O 2.º período soma 375 h.</p>
+<p><strong>Ementa vigente:</strong> introdução às medidas, ordens de
+grandeza, algarismos significativos e operações, erros e tolerâncias,
+tipos de gráficos, linearização e ajustes de curvas.</p>
+<p><strong>Objetivos:</strong> compreender códigos, símbolos e unidades
+de medida; familiarizar-se com instrumentos e com o tratamento de
+medidas; escrever relatório científico; desenvolver a capacidade de
+investigar; usar tabelas, gráficos e equações para expressar o saber
+físico e elaborar sínteses.</p>
+<p><strong>Por que ela importa:</strong> ela é <strong>pré-requisito do
+Laboratório de Mecânica</strong> (6088, 4.º período), junto com Mecânica
+I. Os quatro laboratórios seguintes têm 30 h cada e a mesma estrutura:
+experimentos ligados à disciplina teórica correspondente, análise e
+apresentação de resultados, e escrita de relatório.</p>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Laboratório</th>
+<th>Período</th>
+<th>Vínculo exigido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6088 Mecânica</td>
+<td>4.º</td>
+<td>Pré-requisitos: Introdução ao Laboratório e Mecânica I</td>
+</tr>
+<tr>
+<td>6026 Oscilações, Ondas e Termodinâmica</td>
+<td>5.º</td>
+<td>Correquisito: Oscilações, Ondas e Termodinâmica</td>
+</tr>
+<tr>
+<td>6031 Eletromagnetismo</td>
+<td>6.º</td>
+<td>Pré-requisito: Eletromagnetismo I</td>
+</tr>
+<tr>
+<td>6039 Física Moderna e Ótica</td>
+<td>8.º</td>
+<td>Pré-requisitos: Ótica e Física Moderna I; correquisito: Física
+Moderna II</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Onde as aulas acontecem:</strong> o Pavilhão de Física tem
+quatro laboratórios de 71,40 m² cada: Mecânica, Ondas, Ótica e Física
+Moderna; Eletricidade, Magnetismo e Termologia; Projetos para o Ensino
+de Física; e Informática. A seção 8.4.1.2 lista os equipamentos (planos
+inclinados, colchão de ar linear, pêndulos, bancos óticos, calorímetros,
+entre outros), mas não cita instrumentos básicos de medida, como
+paquímetro, micrômetro ou multímetro, nem diz em qual sala a Introdução
+ao Laboratório é oferecida.</p>
+<p><em>Fonte: PPC, seções 8.1.1, 8.1.2, 8.4.1 e 8.4.1.2 e Anexo IV,
+p. 35–40, 65–66, 79, 90, 105, 127, 187–190 e 224.</em></p>
+<h1 id="estágio-supervisionado">6. Estágio supervisionado</h1>
+<p>O estágio totaliza <strong>550 h</strong>: 400 h de estágio na escola
+e 150 h de aulas regulares de orientação. Ele <strong>começa no 1.º
+período</strong> e vai até o 7.º, em sete etapas encadeadas (cada uma é
+pré-requisito da seguinte):</p>
+<div class="tabela-rolagem"><table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Período</th>
+<th>Carga (estágio + aula)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I, II</td>
+<td>1.º, 2.º</td>
+<td>75 h cada (45 h + 30 h)</td>
+</tr>
+<tr>
+<td>III</td>
+<td>3.º</td>
+<td>85 h (55 h + 30 h)</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>4.º</td>
+<td>90 h (75 h + 15 h)</td>
+</tr>
+<tr>
+<td>V, VI, VII</td>
+<td>5.º, 6.º, 7.º</td>
+<td>75 h cada (60 h + 15 h)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A progressão vai da observação participante (I) à observação e
+participação em escolas de Educação Básica (II, a sua etapa agora),
+passando por coparticipação e projetos de intervenção (III a VI, com a
+Educação Inclusiva no VI), até a regência de aulas com sequência
+didática (VII). O relatório de estágio começa a ser elaborado no Estágio
+V. O estágio não é atividade laboral: quando reger aulas, você será
+acompanhado pelo professor da escola e pelo docente do IFMG. Quem
+participa do PIBID pode aproveitar essa carga horária nos Estágios I a
+VII, nas condições do Colegiado e da Instrução Normativa PROEN/IFMG nº
+8/2025. As regras detalhadas estão no Manual de Estágio das
+Licenciaturas do campus.</p>
+<p><em>Fonte: PPC, seção 8.1.5, p. 169–173.</em></p>
+<h1 id="extensão-atividades-complementares-e-tcc">7. Extensão,
+atividades complementares e TCC</h1>
+<p><strong>Extensão.</strong> Você deve cumprir obrigatoriamente
+<strong>320 h</strong> nas disciplinas Projetos Integradores de Práticas
+em Extensão I a VI, do 2.º ao 7.º período (30 h, 30 h, 60 h, 60 h, 60 h
+e 80 h). Toda ação de extensão precisa estar vinculada a uma dessas
+disciplinas, ser aprovada pelo setor de extensão, registrada no SUAP e
+envolver escolas de Educação Básica e a comunidade externa. O PPC cita
+iniciativas que podem ser contabilizadas: Semana de Física, Semana de
+Ciência e Tecnologia, O Céu ao Alcance de Todos (astronomia), Pré-Enem e
+Pré-IFMG, Café com Física e o projeto de aproximação com estudantes da
+Educação Básica. O PPC não explica como as horas dessas iniciativas são
+convertidas nas horas das disciplinas.</p>
+<p><strong>Atividades complementares.</strong> A matriz curricular não
+prevê atividades complementares.</p>
+<p><strong>TCC.</strong> É um trabalho individual, em formato de
+monografia, com orientador do quadro docente do campus (coorientação é
+possível). No <strong>TCC I</strong> (7.º período, 30 h) você redige o
+projeto e o defende numa qualificação oral, que é obrigatoriamente a
+última avaliação e vale 40 % da nota. No <strong>TCC II</strong> (8.º
+período, 60 h) você conclui e defende a monografia perante uma banca de
+no mínimo três membros, presidida pelo orientador, com pelo menos um
+membro externo ao campus e composição aprovada pelo Colegiado.</p>
+<p><em>Fonte: PPC, seções 8.1, 8.1.6, 8.1.7 e 8.1.8, p. 32,
+174–180.</em></p>
+<h1 id="avaliação-aprovação-e-reprovação">8. Avaliação, aprovação e
+reprovação</h1>
+<ul>
+<li>A avaliação é contínua e cumulativa, e os aspectos qualitativos
+prevalecem sobre os quantitativos.</li>
+<li>Cada disciplina tem uma única etapa semestral, com <strong>100
+pontos</strong> distribuídos.</li>
+<li>Nenhum instrumento pode valer mais de <strong>40 %</strong> do
+total, o que resulta em pelo menos <strong>3 notas</strong> (o limite
+não se aplica ao exame final).</li>
+<li>Deve haver pelo menos <strong>2 tipos</strong> de instrumento
+(provas, trabalhos, relatórios, seminários, portfólio, entre
+outros).</li>
+<li><strong>Revisão</strong> de prova escrita ou de frequência: pedido
+formal em até <strong>2 dias úteis</strong> após você ter acesso à
+avaliação corrigida; a prova é revista por outro professor.</li>
+<li><strong>Segunda chamada:</strong> pedido em até <strong>2 dias
+úteis</strong> após o fim do impedimento, com atestado ou outro
+documento.</li>
+<li><strong>Aprovação:</strong> frequência de pelo menos <strong>75
+%</strong> e rendimento de pelo menos <strong>60 %</strong>.</li>
+<li><strong>Reprovação:</strong> frequência abaixo de 75 % ou rendimento
+abaixo de 60 % após o exame final.</li>
+<li>Abono de faltas só nos casos previstos em lei, pedido em até 2 dias
+úteis após o fim do afastamento.</li>
+</ul>
+<p>O PPC menciona o exame final, mas não diz quem tem direito a ele,
+quanto vale nem como entra na nota.</p>
+<p><em>Fonte: PPC, seção 8.3, p. 183–185.</em></p>
+<h1 id="apoio-ao-estudante">9. Apoio ao estudante</h1>
+<p>O IFMG mantém o <strong>Programa de Assistência Estudantil
+(PAE)</strong>, para favorecer a permanência e reduzir a evasão, com
+três frentes:</p>
+<ul>
+<li><strong>universal:</strong> acompanhamento social, pedagógico,
+psicológico e de saúde;</li>
+<li><strong>apoio pedagógico:</strong> bolsas de monitoria e de apoio a
+projetos;</li>
+<li><strong>socioeconômico:</strong> bolsa permanência, alimentação,
+moradia estudantil (nos campi com alojamento) e auxílio emergencial,
+mediante análise do Núcleo de Assistentes Sociais (NASIFMG) pelo sistema
+SSAE.</li>
+</ul>
+<p>O campus conta ainda com o <strong>NAPNEE</strong> (Núcleo de Apoio
+às Pessoas com Necessidades Educacionais Específicas), com recursos como
+livros em Braille, audiolivros e materiais em Libras, e com 4
+tradutores/intérpretes de Libras. Há também ambulatório com serviços
+médicos, odontológicos, psicológicos e de serviço social, restaurante
+escolar e biblioteca aberta de segunda a sexta, das 8 h às 23 h. Para a
+formação docente, o PPC destaca o PIBID e a Residência Pedagógica.</p>
+<p><em>Fonte: PPC, seções 8.1.5, 8.2, 8.4 e 8.4.1.3, p. 172–174,
+180–183, 186 e 190.</em></p>
+<h1 id="onde-ler-mais">10. Onde ler mais</h1>
+<div class="tabela-rolagem"><table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Seção do PPC</th>
+<th>Página do PDF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dados do curso</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Objetivos</td>
+<td>5</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Perfil do egresso</td>
+<td>6</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Núcleos e carga horária</td>
+<td>8.1</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Matriz curricular e pré-requisitos</td>
+<td>8.1.1</td>
+<td>34</td>
+</tr>
+<tr>
+<td>Disciplinas optativas</td>
+<td>8.1.1.1 e 8.1.1.2</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Ementário (ILB na p. 65)</td>
+<td>8.1.2</td>
+<td>53</td>
+</tr>
+<tr>
+<td>Aproveitamento de estudos</td>
+<td>8.1.3</td>
+<td>166</td>
+</tr>
+<tr>
+<td>Estágio supervisionado</td>
+<td>8.1.5</td>
+<td>169</td>
+</tr>
+<tr>
+<td>TCC</td>
+<td>8.1.7</td>
+<td>175</td>
+</tr>
+<tr>
+<td>Extensão</td>
+<td>8.1.8</td>
+<td>177</td>
+</tr>
+<tr>
+<td>Apoio ao discente</td>
+<td>8.2</td>
+<td>180</td>
+</tr>
+<tr>
+<td>Avaliação, aprovação e reprovação</td>
+<td>8.3</td>
+<td>183</td>
+</tr>
+<tr>
+<td>Laboratórios específicos</td>
+<td>8.4.1.2</td>
+<td>188</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Fonte: PPC, sumário, p. 3–4, conferido com as páginas do
+PDF.</em></p>
+
+<div class="acoes" style="margin-top:44px">
+  <a href="LFI-PPC-Licenciatura-em-Fisica.pdf">Baixar em PDF (229 páginas)</a>
+  <a href="_qr/">QR desta página · projetar ou imprimir</a>
+  <a href="../">Todos os documentos</a>
+  <a class="destaque" href="../../">Voltar ao índice das Trilhas</a>
+</div>
+
+<div class="rodape">
+  IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) · Primeira edição · 2026
+</div>
+
+</div>
+</body>
+</html>

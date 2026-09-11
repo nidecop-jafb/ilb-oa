@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matriz Curricular</title>
+<meta name="description" content="Matriz curricular 2654 da Licenciatura em Física do IFMG campus Ouro Preto, com a Introdução ao Laboratório em destaque.">
+<style>
+:root { --cor: #3E8E5A; --acento: #7FB2D6;
+--fundo: #0d0d0d; --texto: #e8e8e8; --cinza: #999; --linha: #444; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--fundo); color: var(--texto); font-family: Georgia, 'Times New Roman', serif; line-height: 1.65; }
+.wrap { max-width: 820px; margin: 0 auto; padding: 40px 20px 64px; }
+
+.capa { text-align: center; border: 1px solid var(--linha); padding: 30px 26px 34px; margin-bottom: 40px; }
+.capa img { width: 100%; max-width: 620px; height: auto; display: block; margin: 0 auto 26px; border: 1px solid var(--linha); }
+.capa p { margin: 0 0 10px; color: #c4c4c4; font-size: .95rem; }
+
+.capa p:nth-of-type(2) strong { display: block; font-family: 'Courier New', monospace; font-size: .9rem; letter-spacing: .18em; color: var(--acento); text-transform: uppercase; font-weight: normal; }
+.capa p:nth-of-type(3) strong { display: block; font-family: 'Courier New', monospace; font-size: 1.5rem; letter-spacing: .04em; color: var(--cor); text-transform: uppercase; margin: 6px 0 4px; }
+.capa p:nth-of-type(4) strong { display: block; font-family: 'Courier New', monospace; font-size: .82rem; letter-spacing: .1em; color: #c4c4c4; text-transform: uppercase; font-weight: normal; margin-bottom: 18px; }
+
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 38px; }
+.acoes a { flex: 1 1 220px; display: block; padding: 13px 16px; border: 1px solid var(--linha); color: var(--texto); text-decoration: none; font-family: 'Courier New', monospace; font-size: .86rem; text-align: center; }
+.acoes a:hover { border-color: var(--cor); color: var(--cor); }
+.acoes a.destaque { border-style: dashed; }
+
+h1 { font-family: 'Courier New', monospace; font-size: 1.35rem; color: var(--cor); text-transform: uppercase; letter-spacing: .03em; border-bottom: 2px solid var(--cor); padding-bottom: 10px; margin: 48px 0 18px; scroll-margin-top: 20px; }
+h2 { font-family: 'Courier New', monospace; font-size: 1.02rem; color: var(--acento); margin: 32px 0 12px; letter-spacing: .02em; }
+h3 { font-family: 'Courier New', monospace; font-size: .92rem; color: #fff; margin: 24px 0 10px; }
+p { margin-bottom: 13px; }
+strong { color: #fff; }
+em { color: #ddd; }
+a { color: var(--cor); }
+ul, ol { margin: 0 0 14px 22px; }
+li { margin-bottom: 7px; }
+hr { border: none; border-top: 1px solid var(--linha); margin: 34px 0; }
+blockquote { border-left: 3px solid var(--cor); padding-left: 16px; margin: 0 0 14px; color: #c4c4c4; }
+
+#TOC { border: 1px solid var(--linha); padding: 20px 24px; margin-bottom: 40px; }
+#TOC::before { content: 'Sumário'; display: block; font-family: 'Courier New', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .18em; color: var(--cor); border-bottom: 1px solid var(--linha); padding-bottom: 8px; margin-bottom: 14px; }
+#TOC ul { list-style: none; margin: 0; }
+#TOC li { margin-bottom: 8px; }
+#TOC a { color: var(--texto); text-decoration: none; font-family: 'Courier New', monospace; font-size: .84rem; }
+#TOC a:hover { color: var(--cor); }
+
+.tabela-rolagem { overflow-x: auto; margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { border: 1px solid var(--linha); padding: 9px 11px; text-align: left; vertical-align: top; }
+th { font-family: 'Courier New', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--cor); background: #17171a; font-weight: normal; }
+tbody tr:nth-child(even) { background: #131316; }
+caption { caption-side: bottom; font-size: .78rem; color: var(--cinza); padding-top: 6px; }
+
+table.cip, table.cip td { border-color: var(--linha); }
+table.cip td { border-left: none; border-right: none; border-top: none; border-bottom: none; padding: 2px 14px; font-size: .84rem; }
+table.cip { border: 1px solid var(--linha); padding: 12px 0; }
+table.cip tbody tr { background: none; }
+
+pre { background: #131316; border: 1px solid var(--linha); padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; }
+code { font-family: 'Courier New', Consolas, monospace; font-size: .78rem; color: #c4c4c4; }
+p code, li code, td code { background: #17171a; padding: 1px 5px; font-size: .84rem; color: var(--acento); }
+
+.rodape { margin-top: 56px; padding-top: 16px; border-top: 1px solid #333; font-size: .76rem; color: #888; font-family: 'Courier New', monospace; text-align: center; line-height: 1.7; }
+@media (max-width: 560px) {
+.wrap { padding: 24px 14px 48px; }
+.capa { padding: 20px 16px 24px; }
+.capa p:nth-of-type(3) strong { font-size: 1.15rem; }
+h1 { font-size: 1.12rem; }
+table { font-size: .82rem; }
+
+pre code { font-size: .58rem; }
+}
+
+@media print {
+body { background: #fff; color: #000; }
+.acoes, #TOC { display: none; }
+.wrap { max-width: none; padding: 0; }
+h1 { color: #000; border-bottom-color: #000; page-break-after: avoid; }
+h2, h3 { color: #000; page-break-after: avoid; }
+th { color: #000; background: #eee; }
+tbody tr:nth-child(even) { background: #f6f6f6; }
+pre { background: #f6f6f6; border-color: #999; }
+.capa { page-break-after: always; border-color: #999; }
+table, pre, figure { page-break-inside: avoid; }
+.rodape { color: #444; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+
+
+<div class="capa">
+<p>
+<img role="img" aria-label src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLQogIGljb25lLWxpY2VuY2lhdHVyYS1maXNpY2Euc3ZnCiAgSWNvbmUgZG8gY3Vyc28gZGUgTGljZW5jaWF0dXJhIGVtIEZpc2ljYSDigJQgSUZNRyBDYW1wdXMgT3VybyBQcmV0by4KCiAgQnJpZWZpbmc6IF9wbGFuZWphbWVudG8vX3ByZS9QUkUtaWRlbnRpZGFkZS12aXN1YWwtaWxiLTIwMjYtMDktMDcubWQsIGFwcm92YWRvIDIwMjYtMDktMDguCiAgRGVjaXNhbyAxMDogbyBJQ09ORSBETyBDVVJTTyBlIHBlY2EgZGlzdGludGEgZGEgTUFSQ0EgREEgRElTQ0lQTElOQS4gQSBtYXJjYSAoYXRvbW8gZGUgdHJlcwogIGVsaXBzZXMgc29icmUgcmVndWEgZ3JhZHVhZGEpIGlkZW50aWZpY2EgYSBJTEI7IGVzdGUgaWNvbmUgaWRlbnRpZmljYSBhIExpY2VuY2lhdHVyYSwgZSB2YWxlCiAgcGFyYSB0b2RhcyBhcyBkaXNjaXBsaW5hcyBkbyBjdXJzbyAoZGVjaXNhbyA3KS4KCiAgRGVyaXZhZG8gZGEgbWFyY2EgKGRlY2lzYW8gNCk6IG1hbnRlbSBvIGF0b21vIGUgYSByZWd1YSwgZW0gY29tcG9zaWNhbyBxdWFkcmFkYSwgZmVjaGFkYSBwb3IKICBtb2xkdXJhIOKAlCBmb3JtYXRvIHF1ZSBmdW5jaW9uYSBjb21vIGljb25lIGRlIGFwbGljYXRpdm8gKFBXQSAxOTIgZSA1MTIgcHgpIGUgY29tbyBzZWxvIGVtCiAgZG9jdW1lbnRvLgoKICBDb3JlczogdmVyZGUtcXVhZHJvICMzRThFNUEgKHByaW1hcmlhIGRhIExpY2VuY2lhdHVyYSkgZSBhenVsLWFjbyAjN0ZCMkQ2IChhY2VudG8pLgogIE5hIGNhcGEgZG8gbGl2cmV0byBlbSBMYVRlWCBvIGljb25lIGVudHJhIGVtIHZlcnNhbyBtb25vY3JvbWF0aWNhIOKAlCBvIG1pb2xvIGltcHJlc3NvIHNlZ3VlCiAgbyBhenVsIGluc3RpdHVjaW9uYWwgZG8gSUZNRyAoZGVjaXNhbyA5KS4KLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiCiAgICAgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJMaWNlbmNpYXR1cmEgZW0gRsOtc2ljYSDigJQgSUZNRyBDYW1wdXMgT3VybyBQcmV0byI+CiAgPHRpdGxlPkxpY2VuY2lhdHVyYSBlbSBGw61zaWNhIOKAlCBJRk1HIENhbXB1cyBPdXJvIFByZXRvPC90aXRsZT4KCiAgPCEtLSBmdW5kbzogcXVhZHJvLW5lZ3JvIGVzY29sYXIsIGRlIG9uZGUgdmVtIG8gdmVyZGUgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSI3MiIgZmlsbD0iIzE0MjUxQyIvPgogIDxyZWN0IHg9IjE4IiB5PSIxOCIgd2lkdGg9IjQ3NiIgaGVpZ2h0PSI0NzYiIHJ4PSI1NiIgZmlsbD0ibm9uZSIKICAgICAgICBzdHJva2U9IiMzRThFNUEiIHN0cm9rZS13aWR0aD0iNiIgb3BhY2l0eT0iMC41NSIvPgoKICA8IS0tIGF0b21vOiB0cmVzIG9yYml0YXMgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM0U4RTVBIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgPGVsbGlwc2UgY3g9IjI1NiIgY3k9IjIyMiIgcng9IjE3NiIgcnk9IjY5Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMjIyIiByeD0iMTc2IiByeT0iNjkiIHRyYW5zZm9ybT0icm90YXRlKDYwIDI1NiAyMjIpIi8+CiAgICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMjIyIiByeD0iMTc2IiByeT0iNjkiIHRyYW5zZm9ybT0icm90YXRlKDEyMCAyNTYgMjIyKSIvPgogIDwvZz4KCiAgPCEtLSBudWNsZW86IGNsdXN0ZXIgY29tcGFjdG8gZGUgdHJlcyBwYXJ0aWN1bGFzLCBzb2JyZXBvc3RhcyAtLT4KICA8ZyBmaWxsPSIjM0U4RTVBIj4KICAgIDxjaXJjbGUgY3g9IjIzOCIgY3k9IjIxMSIgcj0iMzAiLz4KICAgIDxjaXJjbGUgY3g9IjI3NCIgY3k9IjIxMSIgcj0iMzAiLz4KICAgIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI0MCIgcj0iMzAiLz4KICA8L2c+CgogIDwhLS0gcmVndWEgZ3JhZHVhZGE6IGEgZGlzY2lwbGluYSBlIHNvYnJlIG1lZGlyIC0tPgogIDxnIHN0cm9rZT0iIzdGQjJENiIgc3Ryb2tlLXdpZHRoPSIxMyIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSI+CiAgICA8bGluZSB4MT0iODYiIHkxPSI0MzAiIHgyPSI0MjYiIHkyPSI0MzAiLz4KICAgIDxsaW5lIHgxPSIxMDYiIHkxPSI0MzAiIHgyPSIxMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIxNTYiIHkxPSI0MzAiIHgyPSIxNTYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIyMDYiIHkxPSI0MzAiIHgyPSIyMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIyNTYiIHkxPSI0MzAiIHgyPSIyNTYiIHkyPSIzNzIiLz4KICAgIDxsaW5lIHgxPSIzMDYiIHkxPSI0MzAiIHgyPSIzMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIzNTYiIHkxPSI0MzAiIHgyPSIzNTYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSI0MDYiIHkxPSI0MzAiIHgyPSI0MDYiIHkyPSI0MDAiLz4KICA8L2c+Cjwvc3ZnPgo=" alt style="width:120px;max-width:120px;border:none;margin:0 auto 18px">
+</p>
+<p>
+<strong>Licenciatura em Física · Introdução ao Laboratório</strong>
+</p>
+<p>
+<strong>Matriz Curricular</strong>
+</p>
+<p>
+<strong>IFMG campus Ouro Preto · 2026</strong>
+</p>
+</div>
+
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#a-matriz-em-números" id="toc-a-matriz-em-números">A matriz
+em números</a></li>
+<li><a href="#a-introdução-ao-laboratório-e-os-laboratórios-seguintes" id="toc-a-introdução-ao-laboratório-e-os-laboratórios-seguintes">A
+Introdução ao Laboratório e os laboratórios seguintes</a></li>
+<li><a href="#º-período" id="toc-º-período">1º período</a></li>
+<li><a href="#º-período-1" id="toc-º-período-1">2º período</a></li>
+<li><a href="#º-período-2" id="toc-º-período-2">3º período</a></li>
+<li><a href="#º-período-3" id="toc-º-período-3">4º período</a></li>
+<li><a href="#º-período-4" id="toc-º-período-4">5º período</a></li>
+<li><a href="#º-período-5" id="toc-º-período-5">6º período</a></li>
+<li><a href="#º-período-6" id="toc-º-período-6">7º período</a></li>
+<li><a href="#º-período-7" id="toc-º-período-7">8º período</a></li>
+<li><a href="#optativas" id="toc-optativas">Optativas</a></li>
+</ul>
+</nav>
+<h1 id="a-matriz-em-números">A matriz em números</h1>
+<p>Transcrição do anexo 5 do PPC — matriz <strong>2654 · Matriz 2026.1
+Oplfisi</strong>, do curso de Licenciatura em Física (DIAC/OP), ativa
+desde 2026/1, regime de crédito, periodicidade semestral, 8
+períodos.</p>
+<div class="tabela-rolagem"><table>
+<thead>
+<tr>
+<th>Carga horária</th>
+<th>Horas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Componentes obrigatórios</td>
+<td>3075 h</td>
+</tr>
+<tr>
+<td>Componentes optativos</td>
+<td>90 h</td>
+</tr>
+<tr>
+<td>Trabalho de Conclusão de Curso (TCC)</td>
+<td>60 h</td>
+</tr>
+<tr>
+<td><strong>Total do curso</strong></td>
+<td><strong>3225 h</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Como ler as tabelas.</strong> <em>Pré-requisito</em> é o
+componente que precisa estar cursado antes; <em>co-requisito</em> é o
+que se cursa antes ou junto. Em destaque (◆), a Introdução ao
+Laboratório e os quatro laboratórios que vêm depois dela.</p>
+<h1 id="a-introdução-ao-laboratório-e-os-laboratórios-seguintes">A
+Introdução ao Laboratório e os laboratórios seguintes</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Período</th>
+<th>Componente</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2º</td>
+<td>◆ <strong>OPLFISI.6086 · Introdução ao Laboratório</strong> · 30
+h</td>
+<td>nenhum</td>
+</tr>
+<tr>
+<td>4º</td>
+<td>◆ <strong>OPLFISI.6088 · Laboratório de Mecânica</strong> · 30
+h</td>
+<td>pré: <strong>6086</strong> (Introdução ao Laboratório) e 6018
+(Mecânica I)</td>
+</tr>
+<tr>
+<td>5º</td>
+<td>◆ <strong>OPLFISI.6026 · Laboratório de Oscilações, Ondas e
+Termodinâmica</strong> · 30 h</td>
+<td>co: 6025</td>
+</tr>
+<tr>
+<td>6º</td>
+<td>◆ <strong>OPLFISI.6031 · Laboratório de Eletromagnetismo</strong> ·
+30 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>8º</td>
+<td>◆ <strong>OPLFISI.6039 · Laboratório de Física Moderna e
+Ótica</strong> · 30 h</td>
+<td>co: 6044 · pré: 6037, 6038</td>
+</tr>
+</tbody>
+</table></div>
+<p>A Introdução ao Laboratório é o único laboratório sem disciplina
+teórica vinculada e o único sem requisito — e é pré-requisito do
+Laboratório de Mecânica.</p>
+<h1 id="º-período">1º período</h1>
+<div class="tabela-rolagem"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6015</td>
+<td>Geometria Analítica</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6101</td>
+<td>Introdução ao Cálculo Diferencial e Integral</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6102</td>
+<td>Leitura e Produção de Texto</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6104</td>
+<td>Psicologia da Educação</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6103</td>
+<td>Estágio Supervisionado I</td>
+<td>75 h</td>
+<td>co: 6104</td>
+</tr>
+<tr>
+<td>6142</td>
+<td>Tópicos em Física Conceitual I</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-1">2º período</h1>
+<div class="tabela-rolagem"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4095</td>
+<td>Álgebra Linear</td>
+<td>60 h</td>
+<td>pré: 6015</td>
+</tr>
+<tr>
+<td>6078</td>
+<td>Cálculo Diferencial e Integral I</td>
+<td>90 h</td>
+<td>pré: 6101</td>
+</tr>
+<tr>
+<td>6105</td>
+<td>Estágio Supervisionado II</td>
+<td>75 h</td>
+<td>pré: 6103</td>
+</tr>
+<tr>
+<td>6107</td>
+<td>Filosofia da Educação</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>6086</strong></td>
+<td>◆ <strong>Introdução ao Laboratório</strong></td>
+<td><strong>30 h</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>6106</td>
+<td>Projetos Integradores de Práticas em Extensão I</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6143</td>
+<td>Tópicos em Física Conceitual II</td>
+<td>30 h</td>
+<td>pré: 6142</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-2">3º período</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6111</td>
+<td>Biologia Geral</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6090</td>
+<td>Cálculo Diferencial e Integral II</td>
+<td>90 h</td>
+<td>pré: 6078</td>
+</tr>
+<tr>
+<td>6110</td>
+<td>Estágio Supervisionado III</td>
+<td>85 h</td>
+<td>pré: 6105</td>
+</tr>
+<tr>
+<td>6108</td>
+<td>Iniciação Científica e Metodologia de Trabalhos Acadêmicos</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6018</td>
+<td>Mecânica I</td>
+<td>60 h</td>
+<td>pré: 6078</td>
+</tr>
+<tr>
+<td>6112</td>
+<td>Projetos Integradores de Práticas em Extensão II</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6109</td>
+<td>Sociologia da Educação</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-3">4º período</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6114</td>
+<td>Didática</td>
+<td>60 h</td>
+<td>pré: 6104</td>
+</tr>
+<tr>
+<td>6118</td>
+<td>Epistemologia e Filosofia da Ciência</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6027</td>
+<td>Equações Diferenciais Ordinárias</td>
+<td>60 h</td>
+<td>pré: 6078</td>
+</tr>
+<tr>
+<td>6115</td>
+<td>Estágio Supervisionado IV</td>
+<td>90 h</td>
+<td>pré: 6110</td>
+</tr>
+<tr>
+<td>6116</td>
+<td>História da Física</td>
+<td>30 h</td>
+<td>pré: 6143</td>
+</tr>
+<tr>
+<td><strong>6088</strong></td>
+<td>◆ <strong>Laboratório de Mecânica</strong></td>
+<td><strong>30 h</strong></td>
+<td>pré: <strong>6086</strong>, 6018</td>
+</tr>
+<tr>
+<td>6022</td>
+<td>Mecânica II</td>
+<td>60 h</td>
+<td>pré: 6018</td>
+</tr>
+<tr>
+<td>6117</td>
+<td>Projetos Integradores de Práticas em Extensão III</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6113</td>
+<td>Projetos para o Ensino de Mecânica</td>
+<td>30 h</td>
+<td>pré: 6018</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-4">5º período</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6080</td>
+<td>Eletromagnetismo I</td>
+<td>60 h</td>
+<td>pré: 6090</td>
+</tr>
+<tr>
+<td>6120</td>
+<td>Estágio Supervisionado V</td>
+<td>75 h</td>
+<td>pré: 6115</td>
+</tr>
+<tr>
+<td><strong>6026</strong></td>
+<td>◆ <strong>Laboratório de Oscilações, Ondas e
+Termodinâmica</strong></td>
+<td><strong>30 h</strong></td>
+<td>co: 6025</td>
+</tr>
+<tr>
+<td>6025</td>
+<td>Oscilações, Ondas e Termodinâmica</td>
+<td>60 h</td>
+<td>pré: 6018</td>
+</tr>
+<tr>
+<td>6121</td>
+<td>Políticas e Gestão da Educação</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6122</td>
+<td>Projetos Integradores de Práticas em Extensão IV</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6119</td>
+<td>Projetos para o Ensino de Oscilações, Ondas e Termodinâmica</td>
+<td>30 h</td>
+<td>co: 6025</td>
+</tr>
+<tr>
+<td>6035</td>
+<td>Química Geral I</td>
+<td>30 h</td>
+<td>pré: 6078</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-5">6º período</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6124</td>
+<td>Didática do Ensino de Ciências Naturais</td>
+<td>45 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6126</td>
+<td>Educação Inclusiva</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6030</td>
+<td>Eletromagnetismo II</td>
+<td>60 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6123</td>
+<td>Estágio Supervisionado VI</td>
+<td>75 h</td>
+<td>pré: 6120</td>
+</tr>
+<tr>
+<td>6127</td>
+<td>Física do Corpo Humano</td>
+<td>60 h</td>
+<td>pré: 6111, 6080</td>
+</tr>
+<tr>
+<td><strong>6031</strong></td>
+<td>◆ <strong>Laboratório de Eletromagnetismo</strong></td>
+<td><strong>30 h</strong></td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6128</td>
+<td>Projetos Integradores de Práticas em Extensão V</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6125</td>
+<td>Projetos para Ensino de Eletromagnetismo</td>
+<td>30 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6042</td>
+<td>Química Geral II</td>
+<td>30 h</td>
+<td>pré: 6035</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-6">7º período</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6130</td>
+<td>Avaliação Educacional e Trabalho Docente</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6131</td>
+<td>Currículo, Diversidade, Gênero e Raça</td>
+<td>60 h</td>
+<td>co: 6130 · pré: 6104, 6107, 6109, 6121, 6126</td>
+</tr>
+<tr>
+<td>6129</td>
+<td>Estágio Supervisionado VII</td>
+<td>75 h</td>
+<td>pré: 6123</td>
+</tr>
+<tr>
+<td>6037</td>
+<td>Física Moderna I</td>
+<td>60 h</td>
+<td>pré: 6018, 6025, 6030</td>
+</tr>
+<tr>
+<td>6132</td>
+<td>Libras</td>
+<td>60 h</td>
+<td>pré: 6126</td>
+</tr>
+<tr>
+<td>6038</td>
+<td>Ótica</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6134</td>
+<td>Projetos Integradores de Práticas em Extensão VI</td>
+<td>80 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6133</td>
+<td>Trabalho de Conclusão de Curso I</td>
+<td>30 h</td>
+<td>pré: 6030</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="º-período-7">8º período</h1>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6140</td>
+<td>Ciência, Tecnologia, Sociedade e Ambiente</td>
+<td>30 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6136</td>
+<td>Educação e Direitos Humanos</td>
+<td>60 h</td>
+<td>pré: 6107</td>
+</tr>
+<tr>
+<td>6044</td>
+<td>Física Moderna II</td>
+<td>60 h</td>
+<td>pré: 6037</td>
+</tr>
+<tr>
+<td><strong>6039</strong></td>
+<td>◆ <strong>Laboratório de Física Moderna e Ótica</strong></td>
+<td><strong>30 h</strong></td>
+<td>co: 6044 · pré: 6037, 6038</td>
+</tr>
+<tr>
+<td>6135</td>
+<td>Projetos para Ensino de Física Moderna e Ótica</td>
+<td>30 h</td>
+<td>co: 6044 · pré: 6037</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="optativas">Optativas</h1>
+<p>Componentes optativos, sem período fixo — o curso exige 90 h
+deles.</p>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Componente</th>
+<th>CH</th>
+<th>Requisitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6141</td>
+<td>Educação de Jovens e Adultos (EJA)</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6100</td>
+<td>Ensino de Física Quântica para a Educação Básica</td>
+<td>30 h</td>
+<td>pré: 6037</td>
+</tr>
+<tr>
+<td>6053</td>
+<td>Estrutura da Matéria I</td>
+<td>60 h</td>
+<td>pré: 6059</td>
+</tr>
+<tr>
+<td>3365</td>
+<td>Estrutura da Matéria II</td>
+<td>60 h</td>
+<td>pré: 6053</td>
+</tr>
+<tr>
+<td>6138</td>
+<td>Física Aplicada ao Meio Ambiente</td>
+<td>60 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6081</td>
+<td>Física dos Polímeros</td>
+<td>30 h</td>
+<td>co: 6037</td>
+</tr>
+<tr>
+<td>6054</td>
+<td>Física e Música</td>
+<td>60 h</td>
+<td>pré: 6025</td>
+</tr>
+<tr>
+<td>6055</td>
+<td>Física Solar Terrestre</td>
+<td>30 h</td>
+<td>pré: 6030</td>
+</tr>
+<tr>
+<td>6076</td>
+<td>Físico-Química</td>
+<td>30 h</td>
+<td>pré: 6035</td>
+</tr>
+<tr>
+<td>6077</td>
+<td>História e Políticas Públicas em Educação</td>
+<td>60 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6056</td>
+<td>Introdução à Física do Estado Sólido</td>
+<td>60 h</td>
+<td>co: 6044</td>
+</tr>
+<tr>
+<td>6144</td>
+<td>Introdução à Física Estatística</td>
+<td>60 h</td>
+<td>co: 6044</td>
+</tr>
+<tr>
+<td>6059</td>
+<td>Introdução à Mecânica Quântica</td>
+<td>60 h</td>
+<td>pré: 6027, 6037</td>
+</tr>
+<tr>
+<td>6058</td>
+<td>Introdução a Técnicas de Microscopia</td>
+<td>30 h</td>
+<td>co: 6037</td>
+</tr>
+<tr>
+<td>6060</td>
+<td>Mecânica Avançada I</td>
+<td>60 h</td>
+<td>pré: 6018, 6027</td>
+</tr>
+<tr>
+<td>6061</td>
+<td>Mecânica Avançada II</td>
+<td>60 h</td>
+<td>pré: 6060</td>
+</tr>
+<tr>
+<td>6062</td>
+<td>Mecânica Quântica I</td>
+<td>60 h</td>
+<td>pré: 6059</td>
+</tr>
+<tr>
+<td>6063</td>
+<td>Mecânica Quântica II</td>
+<td>60 h</td>
+<td>pré: 6062</td>
+</tr>
+<tr>
+<td>6064</td>
+<td>Métodos Matemáticos</td>
+<td>60 h</td>
+<td>pré: 6090, 6027</td>
+</tr>
+<tr>
+<td>6065</td>
+<td>Microscopia de Varredura por Sonda</td>
+<td>60 h</td>
+<td>co: 6037</td>
+</tr>
+<tr>
+<td>6066</td>
+<td>Microscopia Eletrônica</td>
+<td>60 h</td>
+<td>co: 6044</td>
+</tr>
+<tr>
+<td>6067</td>
+<td>Neurociência Aplicada à Docência</td>
+<td>30 h</td>
+<td>pré: 6111</td>
+</tr>
+<tr>
+<td>6082</td>
+<td>Os Africanos e os Afrobrasileiros na Construção do Brasil (Séculos
+XVI-XIX)</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6068</td>
+<td>Planejamento e Abordagem Prática do Ensino de Física</td>
+<td>30 h</td>
+<td>co: 6080</td>
+</tr>
+<tr>
+<td>6069</td>
+<td>Problematização a partir das Atividades Experimentais</td>
+<td>30 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6139</td>
+<td>Tecnologias Digitais Aplicadas ao Ensino de Física</td>
+<td>60 h</td>
+<td>pré: 6080</td>
+</tr>
+<tr>
+<td>6070</td>
+<td>Teoria Eletromagnética</td>
+<td>60 h</td>
+<td>pré: 6090, 6030</td>
+</tr>
+<tr>
+<td>6071</td>
+<td>Teoria Quântica de Campos</td>
+<td>60 h</td>
+<td>pré: 6090, 6037</td>
+</tr>
+<tr>
+<td>6072</td>
+<td>Termodinâmica</td>
+<td>60 h</td>
+<td>pré: 6027, 6025</td>
+</tr>
+<tr>
+<td>6137</td>
+<td>Tópicos em Relatividade</td>
+<td>60 h</td>
+<td>pré: 6037</td>
+</tr>
+<tr>
+<td>6001</td>
+<td>Tópicos Especiais em Avaliação</td>
+<td>30 h</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6075</td>
+<td>Tópicos Especiais em Teoria Eletromagnética</td>
+<td>60 h</td>
+<td>pré: 6070</td>
+</tr>
+<tr>
+<td>6074</td>
+<td>Tópicos Especiais em Teoria Quântica de Campos</td>
+<td>30 h</td>
+<td>pré: 6071</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Fonte: PPC da Licenciatura em Física, anexo 5 — Matriz Curricular
+em vigor (matriz 2654), 12 páginas. Todos os códigos têm o prefixo
+OPLFISI. O PDF oficial está no botão ao final da página.</em></p>
+
+<div class="acoes" style="margin-top:44px">
+  <a href="LFI-Matriz-Curricular-2654.pdf">Baixar em PDF (12 páginas)</a>
+  <a href="_qr/">QR desta página · projetar ou imprimir</a>
+  <a href="../">Todos os documentos</a>
+  <a class="destaque" href="../../">Voltar ao índice das Trilhas</a>
+</div>
+
+<div class="rodape">
+  IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) · Primeira edição · 2026
+</div>
+
+</div>
+</body>
+</html>

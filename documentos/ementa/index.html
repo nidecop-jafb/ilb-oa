@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ementa</title>
+<meta name="description" content="Ementa em vigor e proposta de nova ementa da Introdução ao Laboratório (OPLFISI.6086).">
+<style>
+:root { --cor: #3E8E5A; --acento: #7FB2D6;
+--fundo: #0d0d0d; --texto: #e8e8e8; --cinza: #999; --linha: #444; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--fundo); color: var(--texto); font-family: Georgia, 'Times New Roman', serif; line-height: 1.65; }
+.wrap { max-width: 820px; margin: 0 auto; padding: 40px 20px 64px; }
+
+.capa { text-align: center; border: 1px solid var(--linha); padding: 30px 26px 34px; margin-bottom: 40px; }
+.capa img { width: 100%; max-width: 620px; height: auto; display: block; margin: 0 auto 26px; border: 1px solid var(--linha); }
+.capa p { margin: 0 0 10px; color: #c4c4c4; font-size: .95rem; }
+
+.capa p:nth-of-type(2) strong { display: block; font-family: 'Courier New', monospace; font-size: .9rem; letter-spacing: .18em; color: var(--acento); text-transform: uppercase; font-weight: normal; }
+.capa p:nth-of-type(3) strong { display: block; font-family: 'Courier New', monospace; font-size: 1.5rem; letter-spacing: .04em; color: var(--cor); text-transform: uppercase; margin: 6px 0 4px; }
+.capa p:nth-of-type(4) strong { display: block; font-family: 'Courier New', monospace; font-size: .82rem; letter-spacing: .1em; color: #c4c4c4; text-transform: uppercase; font-weight: normal; margin-bottom: 18px; }
+
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 38px; }
+.acoes a { flex: 1 1 220px; display: block; padding: 13px 16px; border: 1px solid var(--linha); color: var(--texto); text-decoration: none; font-family: 'Courier New', monospace; font-size: .86rem; text-align: center; }
+.acoes a:hover { border-color: var(--cor); color: var(--cor); }
+.acoes a.destaque { border-style: dashed; }
+
+h1 { font-family: 'Courier New', monospace; font-size: 1.35rem; color: var(--cor); text-transform: uppercase; letter-spacing: .03em; border-bottom: 2px solid var(--cor); padding-bottom: 10px; margin: 48px 0 18px; scroll-margin-top: 20px; }
+h2 { font-family: 'Courier New', monospace; font-size: 1.02rem; color: var(--acento); margin: 32px 0 12px; letter-spacing: .02em; }
+h3 { font-family: 'Courier New', monospace; font-size: .92rem; color: #fff; margin: 24px 0 10px; }
+p { margin-bottom: 13px; }
+strong { color: #fff; }
+em { color: #ddd; }
+a { color: var(--cor); }
+ul, ol { margin: 0 0 14px 22px; }
+li { margin-bottom: 7px; }
+hr { border: none; border-top: 1px solid var(--linha); margin: 34px 0; }
+blockquote { border-left: 3px solid var(--cor); padding-left: 16px; margin: 0 0 14px; color: #c4c4c4; }
+
+#TOC { border: 1px solid var(--linha); padding: 20px 24px; margin-bottom: 40px; }
+#TOC::before { content: 'Sumário'; display: block; font-family: 'Courier New', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .18em; color: var(--cor); border-bottom: 1px solid var(--linha); padding-bottom: 8px; margin-bottom: 14px; }
+#TOC ul { list-style: none; margin: 0; }
+#TOC li { margin-bottom: 8px; }
+#TOC a { color: var(--texto); text-decoration: none; font-family: 'Courier New', monospace; font-size: .84rem; }
+#TOC a:hover { color: var(--cor); }
+
+.tabela-rolagem { overflow-x: auto; margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { border: 1px solid var(--linha); padding: 9px 11px; text-align: left; vertical-align: top; }
+th { font-family: 'Courier New', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--cor); background: #17171a; font-weight: normal; }
+tbody tr:nth-child(even) { background: #131316; }
+caption { caption-side: bottom; font-size: .78rem; color: var(--cinza); padding-top: 6px; }
+
+table.cip, table.cip td { border-color: var(--linha); }
+table.cip td { border-left: none; border-right: none; border-top: none; border-bottom: none; padding: 2px 14px; font-size: .84rem; }
+table.cip { border: 1px solid var(--linha); padding: 12px 0; }
+table.cip tbody tr { background: none; }
+
+pre { background: #131316; border: 1px solid var(--linha); padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; }
+code { font-family: 'Courier New', Consolas, monospace; font-size: .78rem; color: #c4c4c4; }
+p code, li code, td code { background: #17171a; padding: 1px 5px; font-size: .84rem; color: var(--acento); }
+
+.rodape { margin-top: 56px; padding-top: 16px; border-top: 1px solid #333; font-size: .76rem; color: #888; font-family: 'Courier New', monospace; text-align: center; line-height: 1.7; }
+@media (max-width: 560px) {
+.wrap { padding: 24px 14px 48px; }
+.capa { padding: 20px 16px 24px; }
+.capa p:nth-of-type(3) strong { font-size: 1.15rem; }
+h1 { font-size: 1.12rem; }
+table { font-size: .82rem; }
+
+pre code { font-size: .58rem; }
+}
+
+@media print {
+body { background: #fff; color: #000; }
+.acoes, #TOC { display: none; }
+.wrap { max-width: none; padding: 0; }
+h1 { color: #000; border-bottom-color: #000; page-break-after: avoid; }
+h2, h3 { color: #000; page-break-after: avoid; }
+th { color: #000; background: #eee; }
+tbody tr:nth-child(even) { background: #f6f6f6; }
+pre { background: #f6f6f6; border-color: #999; }
+.capa { page-break-after: always; border-color: #999; }
+table, pre, figure { page-break-inside: avoid; }
+.rodape { color: #444; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+
+
+<div class="capa">
+<p>
+<img role="img" aria-label src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLQogIGljb25lLWxpY2VuY2lhdHVyYS1maXNpY2Euc3ZnCiAgSWNvbmUgZG8gY3Vyc28gZGUgTGljZW5jaWF0dXJhIGVtIEZpc2ljYSDigJQgSUZNRyBDYW1wdXMgT3VybyBQcmV0by4KCiAgQnJpZWZpbmc6IF9wbGFuZWphbWVudG8vX3ByZS9QUkUtaWRlbnRpZGFkZS12aXN1YWwtaWxiLTIwMjYtMDktMDcubWQsIGFwcm92YWRvIDIwMjYtMDktMDguCiAgRGVjaXNhbyAxMDogbyBJQ09ORSBETyBDVVJTTyBlIHBlY2EgZGlzdGludGEgZGEgTUFSQ0EgREEgRElTQ0lQTElOQS4gQSBtYXJjYSAoYXRvbW8gZGUgdHJlcwogIGVsaXBzZXMgc29icmUgcmVndWEgZ3JhZHVhZGEpIGlkZW50aWZpY2EgYSBJTEI7IGVzdGUgaWNvbmUgaWRlbnRpZmljYSBhIExpY2VuY2lhdHVyYSwgZSB2YWxlCiAgcGFyYSB0b2RhcyBhcyBkaXNjaXBsaW5hcyBkbyBjdXJzbyAoZGVjaXNhbyA3KS4KCiAgRGVyaXZhZG8gZGEgbWFyY2EgKGRlY2lzYW8gNCk6IG1hbnRlbSBvIGF0b21vIGUgYSByZWd1YSwgZW0gY29tcG9zaWNhbyBxdWFkcmFkYSwgZmVjaGFkYSBwb3IKICBtb2xkdXJhIOKAlCBmb3JtYXRvIHF1ZSBmdW5jaW9uYSBjb21vIGljb25lIGRlIGFwbGljYXRpdm8gKFBXQSAxOTIgZSA1MTIgcHgpIGUgY29tbyBzZWxvIGVtCiAgZG9jdW1lbnRvLgoKICBDb3JlczogdmVyZGUtcXVhZHJvICMzRThFNUEgKHByaW1hcmlhIGRhIExpY2VuY2lhdHVyYSkgZSBhenVsLWFjbyAjN0ZCMkQ2IChhY2VudG8pLgogIE5hIGNhcGEgZG8gbGl2cmV0byBlbSBMYVRlWCBvIGljb25lIGVudHJhIGVtIHZlcnNhbyBtb25vY3JvbWF0aWNhIOKAlCBvIG1pb2xvIGltcHJlc3NvIHNlZ3VlCiAgbyBhenVsIGluc3RpdHVjaW9uYWwgZG8gSUZNRyAoZGVjaXNhbyA5KS4KLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiCiAgICAgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJMaWNlbmNpYXR1cmEgZW0gRsOtc2ljYSDigJQgSUZNRyBDYW1wdXMgT3VybyBQcmV0byI+CiAgPHRpdGxlPkxpY2VuY2lhdHVyYSBlbSBGw61zaWNhIOKAlCBJRk1HIENhbXB1cyBPdXJvIFByZXRvPC90aXRsZT4KCiAgPCEtLSBmdW5kbzogcXVhZHJvLW5lZ3JvIGVzY29sYXIsIGRlIG9uZGUgdmVtIG8gdmVyZGUgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSI3MiIgZmlsbD0iIzE0MjUxQyIvPgogIDxyZWN0IHg9IjE4IiB5PSIxOCIgd2lkdGg9IjQ3NiIgaGVpZ2h0PSI0NzYiIHJ4PSI1NiIgZmlsbD0ibm9uZSIKICAgICAgICBzdHJva2U9IiMzRThFNUEiIHN0cm9rZS13aWR0aD0iNiIgb3BhY2l0eT0iMC41NSIvPgoKICA8IS0tIGF0b21vOiB0cmVzIG9yYml0YXMgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM0U4RTVBIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgPGVsbGlwc2UgY3g9IjI1NiIgY3k9IjIyMiIgcng9IjE3NiIgcnk9IjY5Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMjIyIiByeD0iMTc2IiByeT0iNjkiIHRyYW5zZm9ybT0icm90YXRlKDYwIDI1NiAyMjIpIi8+CiAgICA8ZWxsaXBzZSBjeD0iMjU2IiBjeT0iMjIyIiByeD0iMTc2IiByeT0iNjkiIHRyYW5zZm9ybT0icm90YXRlKDEyMCAyNTYgMjIyKSIvPgogIDwvZz4KCiAgPCEtLSBudWNsZW86IGNsdXN0ZXIgY29tcGFjdG8gZGUgdHJlcyBwYXJ0aWN1bGFzLCBzb2JyZXBvc3RhcyAtLT4KICA8ZyBmaWxsPSIjM0U4RTVBIj4KICAgIDxjaXJjbGUgY3g9IjIzOCIgY3k9IjIxMSIgcj0iMzAiLz4KICAgIDxjaXJjbGUgY3g9IjI3NCIgY3k9IjIxMSIgcj0iMzAiLz4KICAgIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI0MCIgcj0iMzAiLz4KICA8L2c+CgogIDwhLS0gcmVndWEgZ3JhZHVhZGE6IGEgZGlzY2lwbGluYSBlIHNvYnJlIG1lZGlyIC0tPgogIDxnIHN0cm9rZT0iIzdGQjJENiIgc3Ryb2tlLXdpZHRoPSIxMyIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSI+CiAgICA8bGluZSB4MT0iODYiIHkxPSI0MzAiIHgyPSI0MjYiIHkyPSI0MzAiLz4KICAgIDxsaW5lIHgxPSIxMDYiIHkxPSI0MzAiIHgyPSIxMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIxNTYiIHkxPSI0MzAiIHgyPSIxNTYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIyMDYiIHkxPSI0MzAiIHgyPSIyMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIyNTYiIHkxPSI0MzAiIHgyPSIyNTYiIHkyPSIzNzIiLz4KICAgIDxsaW5lIHgxPSIzMDYiIHkxPSI0MzAiIHgyPSIzMDYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIzNTYiIHkxPSI0MzAiIHgyPSIzNTYiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSI0MDYiIHkxPSI0MzAiIHgyPSI0MDYiIHkyPSI0MDAiLz4KICA8L2c+Cjwvc3ZnPgo=" alt style="width:120px;max-width:120px;border:none;margin:0 auto 18px">
+</p>
+<p>
+<strong>Licenciatura em Física · Introdução ao Laboratório</strong>
+</p>
+<p>
+<strong>Ementa</strong>
+</p>
+<p>
+<strong>IFMG campus Ouro Preto · 2026</strong>
+</p>
+</div>
+
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ementa-em-vigor" id="toc-ementa-em-vigor">Ementa em
+vigor</a></li>
+<li><a href="#proposta-de-nova-ementa-v2" id="toc-proposta-de-nova-ementa-v2">Proposta de nova ementa
+(v2)</a></li>
+</ul>
+</nav>
+<p>Duas versões, uma depois da outra: a <strong>ementa em
+vigor</strong>, texto oficial do PPC, e a <strong>proposta de nova
+ementa</strong>, em análise pela Coordenação do Curso.</p>
+<h1 id="ementa-em-vigor">Ementa em vigor</h1>
+<p>Transcrição do quadro da Introdução ao Laboratório no ementário do
+Projeto Pedagógico do Curso (PPC) de Licenciatura em Física, anexo 4,
+p. 64-65 — o texto oficial em vigor.</p>
+<div class="tabela-rolagem"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Período</td>
+<td>2º período</td>
+</tr>
+<tr>
+<td>Código</td>
+<td>OPLFISI.6086</td>
+</tr>
+<tr>
+<td>Nome da disciplina</td>
+<td>Introdução ao Laboratório</td>
+</tr>
+<tr>
+<td>Carga horária total</td>
+<td>30 h</td>
+</tr>
+<tr>
+<td>CH teórica · CH prática-laboratório</td>
+<td>0 h · 30 h</td>
+</tr>
+<tr>
+<td>Abordagem metodológica</td>
+<td>Prática-laboratório</td>
+</tr>
+<tr>
+<td>Natureza</td>
+<td>Obrigatória</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ementa.</strong> Introdução às medidas, ordens de grandeza,
+algarismos significativos e operações, erros e tolerâncias, tipos de
+gráficos, linearização e ajustes de curvas.</p>
+<p><strong>Objetivos.</strong></p>
+<ul>
+<li>Compreender códigos, símbolos e unidades de medida;</li>
+<li>Familiarizar os estudantes com instrumentos de medidas e tratamento
+de medidas;</li>
+<li>Desenvolver habilidades de escrita de relatório científico;</li>
+<li>Desenvolver a capacidade de investigar;</li>
+<li>Desenvolver a capacidade de utilizar tabelas, gráficos, equações
+para expressão do saber físico e de elaborar sínteses.</li>
+</ul>
+<p><strong>Bibliografia básica.</strong></p>
+<ol type="1">
+<li>CAMPOS, A. A.; ALVES, E. S.; SPEZIALI, N. L. <strong>Física
+experimental básica na universidade</strong>. 2. ed. Belo Horizonte:
+UFMG, 2008.</li>
+<li>HALLIDAY, D.; RESNICK, R.; WALKER, J. <strong>Fundamentos de
+física</strong>. 10. ed. Rio de Janeiro: LTC, 2016. v. 1.</li>
+<li>TIPLER, P. A.; MOSCA, G. <strong>Física para cientistas e
+engenheiros</strong>. 6. ed. Rio de Janeiro: LTC, 2009. v. 1.</li>
+</ol>
+<p><strong>Bibliografia complementar.</strong></p>
+<ol type="1">
+<li>FEYNMAN, R. P.; LEIGHTON, R. B.; SANDS, M. L. <strong>Feynman:
+lições de física</strong>. Porto Alegre: Bookman, 2008. v. 1, 2 e
+3.</li>
+<li>HEWITT, P. G. <strong>Física conceitual</strong>. 12. ed. Porto
+Alegre: Bookman, 2015.</li>
+<li>CHAVES, A.; SAMPAIO, J. F. <strong>Física básica</strong>. Rio de
+Janeiro: LTC, 2011. v. 1.</li>
+<li>ALONSO, M.; FINN, E. J. <strong>Física</strong>: um curso
+universitário. 2. ed. São Paulo: Edgard Blücher, 2014. v. 1.</li>
+<li>NUSSENZVEIG, H. M. <strong>Curso de física básica</strong>. 5.
+ed. São Paulo: Edgard Blücher, 2014. v. 1.</li>
+</ol>
+<h1 id="proposta-de-nova-ementa-v2">Proposta de nova ementa (v2)</h1>
+<blockquote>
+<p><strong>Proposta — em análise pela Coordenação do Curso de
+Licenciatura em Física.</strong> Proponente: Julio Azevedo, 07/09/2026.
+Até a aprovação, vale a ementa em vigor.</p>
+</blockquote>
+<h2 id="quadro-da-ementa-proposta">1. Quadro da ementa proposta</h2>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>2º período</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Código:</strong> OPLFISI.6086</td>
+<td><strong>Nome da disciplina:</strong> Introdução ao Laboratório</td>
+</tr>
+<tr>
+<td><strong>Carga horária total:</strong> 30</td>
+<td><strong>Abordagem metodológica:</strong> Prática-laboratório ·
+<strong>Natureza:</strong> Obrigatória</td>
+</tr>
+<tr>
+<td><strong>CH teórica:</strong> 0</td>
+<td><strong>CH prática lab:</strong> 30</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ementa:</strong> Metodologia experimental. Avaliação e
+expressão de medições e de suas incertezas: unidades, ordens de
+grandeza, instrumentos de medida, algarismos significativos e operações,
+erros, tolerâncias e propagação de incertezas. Apresentação de tabelas e
+tipos de gráficos; linearização e ajuste de curvas aos dados
+experimentais, assistido por inteligência artificial. Redação de
+relatório científico. Aplicação desses procedimentos a experimentos de
+Mecânica Clássica: grandezas escalares e vetoriais, estática, cinemática
+e dinâmica do MRU, MRUV e MCU, quedas, lançamentos e colisões.</p>
+<p><strong>Objetivo(s):</strong> - Compreender códigos, símbolos e
+unidades de medida do Sistema Internacional (SI); - Operar os
+instrumentos de medida do laboratório de ensino e aplicar procedimentos
+de medição, distinguindo precisão e exatidão; - Avaliar e expressar
+medições e suas incertezas, com algarismos significativos, estimativa de
+erros, tolerâncias e propagação de incertezas; - Apresentar resultados
+em tabelas e gráficos, linearizar dados e ajustar curvas a conjuntos de
+medidas; - Utilizar recursos de inteligência artificial como ferramenta
+de ajuste de curvas e de análise de dados experimentais, avaliando
+criticamente os resultados obtidos; - Redigir relatório científico
+segundo a estrutura e as convenções da comunicação em Física; -
+Desenvolver a capacidade de investigar, formulando hipóteses, planejando
+a medida e avaliando a plausibilidade dos resultados; - Aplicar esse
+conjunto de procedimentos a experimentos de Mecânica Clássica,
+elaborando sínteses.</p>
+<p><strong>Bibliografia básica:</strong> 1. CAMPOS, A. A.; ALVES, E. S.;
+SPEZIALI, N. L. <strong>Física experimental básica na
+universidade</strong>. 2. ed. Belo Horizonte: Editora UFMG, 2008. 2.
+PIACENTINI, J. J. et al. <strong>Introdução ao laboratório de
+física</strong>. 2. ed. Florianópolis: Editora da UFSC, 2018. 3.
+SANTORO, A. et al. <strong>Estimativas e erros em experimentos de
+física</strong>. 2. ed. Rio de Janeiro: EdUERJ, 2013.</p>
+<p><strong>Bibliografia complementar:</strong> 1. HEWITT, P. G.
+<strong>Física conceitual</strong>. 12. ed. Porto Alegre: Bookman, 2015.
+2. FEYNMAN, R. P.; LEIGHTON, R. B.; SANDS, M. L. <strong>Feynman: lições
+de física</strong>. Porto Alegre: Bookman, 2008. v. 1, 2 e 3. 3.
+HALLIDAY, D.; RESNICK, R.; WALKER, J. <strong>Fundamentos de
+física</strong>: mecânica. 10. ed. Rio de Janeiro: LTC, 2016. v. 1.</p>
+<hr />
+<h2 id="o-que-muda-e-por-quê">2. O que muda e por quê</h2>
+<p>Nada muda no cabeçalho: período, código, nome, carga horária (30 h,
+com CH teórica 0 e CH prática-laboratório 30), abordagem metodológica e
+natureza permanecem exatamente como estão na matriz em vigor. A proposta
+altera apenas ementa, objetivos e bibliografia.</p>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Item</th>
+<th>Vigente</th>
+<th>Proposto</th>
+<th>Por quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Núcleo da ementa</td>
+<td>Medidas, ordens de grandeza, algarismos significativos e operações,
+erros e tolerâncias, tipos de gráficos, linearização e ajustes de
+curvas</td>
+<td>Preservado integralmente e reorganizado em três blocos —
+<strong>avaliação e expressão de medições e de suas incertezas</strong>,
+<strong>apresentação de tabelas e gráficos</strong>, <strong>ajuste de
+curvas aos dados experimentais</strong> —, com o acréscimo de unidades,
+instrumentos de medida e propagação de incertezas</td>
+<td>O núcleo vigente está correto; a reorganização adota a nomenclatura
+da bibliografia básica proposta e explicita os três procedimentos que a
+disciplina de fato ensina</td>
+</tr>
+<tr>
+<td>Metodologia experimental</td>
+<td>Ausente do texto</td>
+<td>Abre a ementa</td>
+<td>É o que a disciplina inaugura no curso: o modo de proceder no
+laboratório, antes de qualquer conteúdo de área</td>
+</tr>
+<tr>
+<td>Ajuste de curvas</td>
+<td>Sem indicação de meio</td>
+<td><strong>Assistido por inteligência artificial</strong></td>
+<td>Ver seção 5</td>
+</tr>
+<tr>
+<td>Relatório científico</td>
+<td>Só nos objetivos</td>
+<td>Também no parágrafo da ementa</td>
+<td>Sendo produto avaliativo central de uma disciplina 100 % prática,
+deve constar do conteúdo, não apenas da intenção</td>
+</tr>
+<tr>
+<td>Campo experimental</td>
+<td>Ausente</td>
+<td><strong>Mecânica Clássica</strong></td>
+<td>Os procedimentos de medida só se aprendem medindo algo; a Mecânica
+Clássica é o único campo acessível a quem está no 2º período, com
+montagens simples, grandezas diretamente mensuráveis e modelos que o
+estudante já traz da educação básica — ver seção 3</td>
+</tr>
+<tr>
+<td>Objetivos</td>
+<td>5 itens</td>
+<td>8 itens</td>
+<td>Os 5 vigentes preservados em sentido e reescritos com verbo de ação;
+os acrescentados cobrem instrumentos e precisão/exatidão, expressão de
+incertezas e uso crítico de inteligência artificial</td>
+</tr>
+<tr>
+<td>Bibliografia</td>
+<td>3 básicas + 5 complementares, quase todas de Física teórica
+geral</td>
+<td>3 básicas + 3 complementares, com dois manuais de laboratório e de
+erros na base</td>
+<td>Ver seção 4</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="relação-com-o-laboratório-de-mecânica-e-com-os-demais-laboratórios">3.
+Relação com o Laboratório de Mecânica e com os demais laboratórios</h2>
+<p>A matriz em vigor tem quatro laboratórios obrigatórios de 30 h além
+da ILB, todos vinculados a uma disciplina teórica e todos com a mesma
+redação de ementa — “realização de experimentos em congruência com a
+disciplina X; análise e apresentação de resultados”:</p>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Disciplina</th>
+<th>Período</th>
+<th>Vinculada a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPLFISI.6088</td>
+<td>Laboratório de Mecânica</td>
+<td>4º</td>
+<td>Mecânica I e II</td>
+</tr>
+<tr>
+<td>OPLFISI.6026</td>
+<td>Laboratório de Oscilações, Ondas e Termodinâmica</td>
+<td>5º</td>
+<td>Oscilações, Ondas e Termodinâmica</td>
+</tr>
+<tr>
+<td>OPLFISI.6031</td>
+<td>Laboratório de Eletromagnetismo</td>
+<td>6º</td>
+<td>Eletromagnetismo I e II</td>
+</tr>
+<tr>
+<td>OPLFISI.6039</td>
+<td>Laboratório de Física Moderna e Ótica</td>
+<td>8º</td>
+<td>Física Moderna I, II e Ótica</td>
+</tr>
+</tbody>
+</table></div>
+<p>A ILB é o <strong>único laboratório da matriz sem vínculo com uma
+disciplina teórica</strong> — não tem pré-requisito e ocorre no 2º
+período — e é <strong>pré-requisito do Laboratório de Mecânica
+(6088)</strong>. Sua função é propedêutica: instalar o método
+experimental que os quatro laboratórios seguintes vão supor pronto.</p>
+<p><strong>Método vs. teoria.</strong> A ILB e o 6088 trabalham a mesma
+área, com finalidades distintas:</p>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>ILB (6086) — 2º período</th>
+<th>Laboratório de Mecânica (6088) — 4º período</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finalidade</td>
+<td>Aprender a <strong>medir</strong>: avaliar e expressar incertezas,
+tabelar, traçar gráficos, ajustar curvas</td>
+<td>Compreender o <strong>conteúdo teórico</strong>, por ementa “em
+congruência com Mecânica I e II”</td>
+</tr>
+<tr>
+<td>Papel do experimento</td>
+<td>Veículo — dá objeto à medida</td>
+<td>Objeto — verifica e ilustra a teoria</td>
+</tr>
+<tr>
+<td>Pré-requisito teórico</td>
+<td>Nenhum: o estudante ainda não cursou Mecânica I</td>
+<td>Mecânica I cursada, formalismo do cálculo disponível</td>
+</tr>
+<tr>
+<td>O que se avalia</td>
+<td>Qualidade da medida e do relatório</td>
+<td>Compreensão do fenômeno mecânico</td>
+</tr>
+</tbody>
+</table></div>
+<p>Mede-se o encontro de dois móveis para aprender a linearizar; mede-se
+a densidade de cilindros para aprender propagação de incertezas. A
+física de fundo é a que o estudante já traz da educação básica — daí a
+escolha da Mecânica Clássica e não de áreas que exigiriam teoria ainda
+não cursada.</p>
+<p>Por isso a proposta <strong>não redistribui conteúdo entre
+disciplinas</strong> e <strong>não altera nenhuma outra ementa da
+matriz</strong>. Ao contrário: ao explicitar o método na ementa da ILB,
+ela evita que 6088, 6026, 6031 e 6039 precisem reensinar tratamento de
+incertezas e construção de gráficos no lugar do seu próprio
+conteúdo.</p>
+<hr />
+<h2 id="reformulação-da-bibliografia">4. Reformulação da
+bibliografia</h2>
+<p><strong>Diagnóstico — incompatibilidade da lista vigente.</strong> A
+bibliografia atual apoia-se quase toda em manuais gerais de Física
+teórica (Halliday, Tipler, Nussenzveig, Feynman, Hewitt, Alonso &amp;
+Finn). São obras excelentes para cursos de teoria, mas não cobrem com a
+profundidade e o foco necessários os tópicos centrais desta ementa:</p>
+<ul>
+<li>introdução às medidas, ordens de grandeza e algarismos
+significativos;</li>
+<li>tratamento de erros, tolerâncias e propagação de incertezas;</li>
+<li>construção e análise de tipos de gráficos, linearização de dados e
+ajustes de curvas;</li>
+<li>redação de relatórios científicos.</li>
+</ul>
+<p>Nesses manuais, a teoria de erros aparece em apêndices sucintos —
+suficiente para uma disciplina teórica que ocasionalmente estima
+incerteza, insuficiente para uma disciplina cujo conteúdo
+<strong>é</strong> a estimativa de incerteza.</p>
+<p><strong>Argumento de natureza e carga horária.</strong> Sendo a ILB
+uma disciplina 100 % prática de laboratório (CH teórica 0 · CH prática
+30 h), o estudante necessita de <strong>guias metodológicos práticos de
+instrumentalização e tratamento de dados experimentais</strong>, e não
+de livros-texto teóricos de tópicos gerais da Física. A bibliografia
+básica deve espelhar a natureza da disciplina — e é dela que sai a
+nomenclatura usada em todas as trilhas.</p>
+<p><strong>Obras incluídas na bibliografia básica:</strong></p>
+<p><strong>1. PIACENTINI, J. J. et al. <em>Introdução ao laboratório de
+física</em>. 2. ed. Florianópolis: Editora da UFSC, 2018.</strong>
+<em>Alinhamento com a ementa:</em> obra voltada especificamente às
+metodologias de laboratório de ensino. Trata de forma didática o
+manuseio de instrumentos, os procedimentos de medida, os conceitos de
+precisão e exatidão e o processo de confecção de relatórios científicos.
+<em>Justificativa:</em> atende diretamente aos objetivos de familiarizar
+os estudantes com instrumentos de medida e de desenvolver habilidades de
+escrita de relatório científico, servindo como manual prático de conduta
+e experimentação no laboratório.</p>
+<p><strong>2. SANTORO, A. et al. <em>Estimativas e erros em experimentos
+de física</em>. 2. ed. Rio de Janeiro: EdUERJ, 2013.</strong>
+<em>Alinhamento com a ementa:</em> foco direto e aprofundado em
+tratamento estatístico de dados, incertezas, erros operacionais e
+sistemáticos, tolerâncias, representação gráfica, métodos de
+linearização e ajustes de curvas. <em>Justificativa:</em> supre o núcleo
+duro da ementa — “erros e tolerâncias, tipos de gráficos, linearização e
+ajustes de curvas” — com o rigor que os manuais gerais apenas
+tangenciam.</p>
+<p><strong>Obra mantida na básica.</strong> CAMPOS; ALVES; SPEZIALI
+(<em>Física experimental básica na universidade</em>, UFMG) permanece: é
+a referência de física experimental básica já adotada por todos os
+laboratórios da matriz e garante continuidade de linguagem entre a ILB e
+as disciplinas 6088, 6026, 6031 e 6039.</p>
+<p><strong>Obras que descem para a complementar.</strong> Hewitt,
+Feynman e Halliday (v. 1, mecânica) seguem úteis como consulta da física
+de fundo dos experimentos — o estudante do 2º período ainda não cursou
+Mecânica I —, mas na condição de apoio conceitual, não de referência
+metodológica. Halliday v. 1 atende a todas as trilhas, já que o campo
+experimental é integralmente a Mecânica Clássica. Tipler &amp; Mosca,
+Chaves &amp; Sampaio, Alonso &amp; Finn e Nussenzveig saem da lista: são
+redundantes com Halliday para essa função e continuam disponíveis nas
+ementas das disciplinas teóricas correspondentes.</p>
+<hr />
+<h2 id="ajuste-de-curvas-assistido-por-inteligência-artificial">5.
+Ajuste de curvas assistido por inteligência artificial</h2>
+<p>O ajuste de uma curva a um conjunto de medidas é conteúdo da ementa
+vigente e permanece. O que a proposta acrescenta é o
+<strong>meio</strong> pelo qual esse ajuste é feito e discutido em
+aula.</p>
+<p><strong>Por que na ementa, em redação genérica.</strong> O parágrafo
+da ementa diz “assistido por inteligência artificial”, sem nomear
+fornecedor: assim o texto oficial não envelhece a cada mudança de
+mercado nem endossa marca — decisão coerente com um documento de PPC,
+que dura anos.</p>
+<p><strong>Escolha tecnológica (registro para o colegiado).</strong> Na
+execução da disciplina, o ajuste assistido será feito preferencialmente
+com tecnologias da <strong>Anthropic</strong> e do
+<strong>Google</strong>, pelas razões seguintes: - o estudante descreve
+o problema em linguagem natural, submete a tabela de medidas e obtém o
+ajuste com o raciocínio explicitado — o que transforma a ferramenta em
+objeto de análise, e não em caixa-preta que devolve um coeficiente; - é
+possível pedir à ferramenta que justifique o modelo escolhido, estime as
+incertezas dos parâmetros e critique o próprio resultado, exercício
+diretamente alinhado ao objetivo de avaliar a plausibilidade dos
+resultados; - são recursos disponíveis pelo navegador, sem instalação,
+licença de laboratório ou requisito de máquina — condição relevante para
+uma disciplina de 30 h no 2º período.</p>
+<p><strong>Formação crítica, não delegação.</strong> O uso é sempre
+acompanhado da conferência do resultado pelo estudante: verificação da
+coerência dimensional, da ordem de grandeza e do comportamento dos
+resíduos. A ferramenta acelera o cálculo; a responsabilidade pelo
+resultado é de quem assina o relatório. Como se trata de futuros
+professores de Física, o exame do que a inteligência artificial faz bem
+e do que ela erra é, em si, conteúdo de formação.</p>
+<p><strong>Aplicativos dedicados ficam para os períodos
+seguintes.</strong> Programas específicos de ajuste e análise (por
+exemplo SciDAVis e videoanálise) serão abordados nas disciplinas de
+laboratório dos períodos posteriores, quando o estudante já dominar o
+significado do que está sendo ajustado.</p>
+
+<div class="acoes" style="margin-top:44px">
+  <a href="ILB-Ementa.pdf">Baixar em PDF (5 páginas)</a>
+  <a href="_qr/">QR desta página · projetar ou imprimir</a>
+  <a href="../">Todos os documentos</a>
+  <a class="destaque" href="../../">Voltar ao índice das Trilhas</a>
+</div>
+
+<div class="rodape">
+  IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) · Primeira edição · 2026
+</div>
+
+</div>
+</body>
+</html>
