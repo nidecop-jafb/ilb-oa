@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILB-T0B &middot; Sistema Internacional de Unidades &mdash; Relatório Mínimo</title>
+<style>
+:root {
+  --verde: #3E8E5A; --verde-claro: #5FAE7A; --verde-bg: oklch(0.28 0.05 152);
+  --aco: #7FB2D6; --aco-claro: #A7CCE6; --aco-bg: oklch(0.28 0.05 240);
+  --ok: oklch(0.72 0.15 150); --ok-bg: oklch(0.25 0.05 150);
+  --erro: oklch(0.62 0.20 25); --erro-bg: oklch(0.24 0.06 25);
+  --cinza: oklch(0.62 0.01 260); --cinza-borda: oklch(0.40 0.01 260);
+  --texto: oklch(0.93 0 0); --branco: oklch(0.96 0 0);
+  --superficie: oklch(0.22 0.01 260); --hover: oklch(0.25 0.01 260);
+  --fundo: oklch(0.13 0.01 260); --painel: oklch(0.16 0.01 260);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Courier New', 'Cascadia Code', Consolas, monospace;
+  --serif: Georgia, Cambria, 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--fundo); color: var(--texto); line-height: 1.6; min-height: 100vh; }
+
+.header { background: var(--painel); border-top: 3px solid var(--verde); padding: 14px 20px; }
+.header-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.header .marca { width: 52px; height: 52px; flex-shrink: 0; }
+.header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; flex: 1 1 240px; }
+.header h1 .trilha-code { color: var(--verde); }
+.badge { display: inline-block; background: var(--verde); color: oklch(0.13 0.01 260); padding: 4px 12px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+.header-sub { max-width: 800px; margin: 6px auto 0; font-size: 0.88rem; color: var(--cinza); }
+.progresso { max-width: 800px; margin: 12px auto 0; display: flex; gap: 3px; height: 6px; }
+.progresso .seg { flex: 1; background: var(--cinza-borda); transition: background .3s; }
+.progresso .seg.ouvido { background: var(--ok); }
+
+main { max-width: 800px; margin: 0 auto; padding: 16px; }
+
+.piazzi-bar { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; background:var(--painel); border:1px solid var(--cinza-borda); padding:10px 16px; margin-bottom:16px; font-size:.78rem; }
+.piazzi-bar .piazzi-ref { color:var(--cinza); }
+.piazzi-bar .piazzi-tag { display:inline-block; border:1px solid var(--verde); color:var(--verde); padding:2px 10px; font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.piazzi-bar .piazzi-text { color:var(--texto); font-style:italic; font-size:.74rem; }
+.piazzi-bar .piazzi-yt { display:inline-flex; align-items:center; gap:5px; background:var(--erro); color:var(--branco); padding:4px 12px; font-size:.72rem; font-weight:700; text-decoration:none; }
+.piazzi-bar .piazzi-yt::before { content:'\25B6'; font-size:.6rem; }
+
+.intro-box { background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: 4px solid var(--aco); padding: 16px 18px; margin-bottom: 16px; font-size: .88rem; }
+.intro-box strong { color: var(--verde); }
+
+.player { background: var(--painel); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--verde); padding: 16px 18px; margin-bottom: 16px; }
+.player-topo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.player-titulo { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--verde); flex: 1 1 auto; }
+.faixa-btn { background: transparent; color: var(--texto); border: 1px solid var(--cinza-borda); padding: 6px 14px; font-family: var(--font); font-size: .76rem; font-weight: 600; cursor: pointer; min-height: 36px; }
+.faixa-btn.ativa { border-color: var(--verde); color: var(--verde); background: var(--verde-bg); }
+.player audio { width: 100%; }
+.player .sem-audio { font-size: .78rem; color: var(--cinza); border-left: 3px solid var(--erro); padding: 8px 12px; background: var(--erro-bg); display: none; }
+.player.indisponivel .sem-audio { display: block; }
+
+.secao { background: var(--superficie); margin-bottom: 8px; border-left: 3px solid var(--cinza-borda); transition: border-color .3s; }
+.secao.ouvida { border-left-color: var(--ok); }
+.secao-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; cursor: pointer; user-select: none; }
+.secao-header:hover { background: var(--hover); }
+.secao-num { font-family: var(--mono); font-size: .68rem; font-weight: 700; color: var(--verde); min-width: 20px; }
+.secao-titulo { font-size: .9rem; font-weight: 600; flex: 1; }
+.secao-check { display: flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--cinza); }
+.secao-check input[type="checkbox"] { accent-color: var(--ok); width: 18px; height: 18px; }
+.secao-seta { color: var(--cinza); font-size: .8rem; transition: transform .2s; }
+.secao.aberta .secao-seta { transform: rotate(90deg); }
+.secao-body { display: none; padding: 0 16px 14px 16px; }
+.secao.aberta .secao-body { display: block; }
+.secao-texto { font-size: .88rem; line-height: 1.75; color: oklch(0.84 0 0); }
+.secao-texto p { margin-bottom: 10px; }
+.secao-texto .termo { color: var(--verde); font-weight: 600; }
+.secao-texto .citacao { font-family: var(--serif); font-style: italic; color: var(--aco-claro); }
+.secao-texto strong { color: var(--branco); }
+
+.quiz-section { background: var(--superficie); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--aco); padding: 18px 20px; margin: 20px 0; }
+.quiz-titulo { font-size: .72rem; font-weight: 700; color: var(--aco); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px; }
+.quiz-sub { font-size: .8rem; color: var(--cinza); margin-bottom: 14px; }
+.quiz-q { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--cinza-borda); }
+.quiz-q:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.quiz-enunciado { font-size: .86rem; margin-bottom: 8px; font-weight: 600; }
+.quiz-opcoes { display: flex; flex-direction: column; gap: 4px; }
+.quiz-op { display: flex; align-items: flex-start; gap: 8px; padding: 8px 12px; background: oklch(0.18 0.01 260); cursor: pointer; font-size: .84rem; border: 1px solid transparent; }
+.quiz-op:hover { background: var(--hover); }
+.quiz-op.certa { border-color: var(--ok); background: var(--ok-bg); }
+.quiz-op.errada { border-color: var(--erro); background: var(--erro-bg); }
+.quiz-op.travada { pointer-events: none; }
+.quiz-op input[type="radio"] { margin-top: 3px; accent-color: var(--verde); }
+.quiz-porque { display: none; margin-top: 8px; font-size: .82rem; color: oklch(0.84 0 0); border-left: 3px solid var(--verde); padding: 8px 12px; background: var(--verde-bg); }
+.quiz-porque.visivel { display: block; }
+.quiz-porque strong { color: var(--branco); }
+
+.encerramento { max-width:800px; margin:30px auto 10px; padding:20px 16px; border-top:2px solid var(--verde); text-align:center; }
+.encerramento .fecho-frase { font-family:var(--serif); font-size:1.02rem; line-height:1.5; }
+.encerramento .fecho-acao { color:var(--verde); font-size:.95rem; text-transform:uppercase; font-weight:700; margin-top:10px; }
+.encerramento .fecho-links { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
+.encerramento .fecho-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 18px; min-height:44px; background:var(--verde); color:oklch(0.13 0.01 260); font-family:var(--mono); font-size:.8rem; font-weight:700; text-decoration:none; }
+.encerramento .fecho-btn::before { content:'\25B6'; font-size:.62rem; }
+.encerramento .fecho-btn.secundario { background:transparent; color:var(--aco); border:1px solid var(--aco); }
+.encerramento .fecho-btn.secundario::before { content:'\2630'; font-size:.72rem; }
+.encerramento .fecho-inst { color:var(--cinza); font-size:.85rem; margin-top:16px; }
+.footer-line { text-align:center; font-size:.82rem; color:var(--cinza); padding:16px 12px; line-height:1.5; }
+
+@media (max-width: 600px) { main { padding: 10px; } .header h1 { font-size: 1.15rem; } }
+@media print {
+  body { background: #fff !important; color: #1A1A1A !important; }
+  .header { background: none !important; border-top: 2px solid #1F3864; }
+  .secao { background: #F8F8F8 !important; border-left-color: #D0D0D0 !important; page-break-inside: avoid; }
+  .secao-body { display: block !important; }
+  .progresso, .player, .piazzi-bar { display: none !important; }
+}
+
+.bloco { background: var(--painel); border-left: 3px solid var(--verde); padding: 14px 16px; margin-bottom: 14px; }
+.bloco-num { font-family: var(--mono); font-size: .72rem; letter-spacing: 1.5px; color: var(--aco); text-transform: uppercase; }
+.bloco-tit { font-size: 1rem; font-weight: 700; margin: 2px 0 6px; }
+.bloco-dica { font-size: .84rem; color: var(--cinza); margin-bottom: 10px; }
+.ident { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.campo label { display: block; font-size: .76rem; color: var(--cinza); margin-bottom: 3px; }
+.campo input, .campo textarea { width: 100%; padding: 10px 12px; min-height: 44px; background: var(--superficie); border: 1px solid var(--cinza-borda); color: var(--texto); font-family: var(--font); font-size: .92rem; }
+.campo textarea { min-height: 120px; resize: vertical; line-height: 1.55; }
+.campo input:focus, .campo textarea:focus { outline: none; border-color: var(--verde); }
+.medida { border: 1px solid var(--cinza-borda); padding: 12px; margin-bottom: 10px; background: var(--fundo); }
+.medida-tit { font-size: .9rem; font-weight: 700; margin-bottom: 2px; }
+.medida-tit .cod { font-family: var(--mono); color: var(--verde); margin-right: 6px; }
+.medida-instr { font-size: .78rem; color: var(--cinza); margin-bottom: 8px; }
+.medida-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.aviso { display: none; margin-top: 8px; font-size: .82rem; padding: 8px 12px; }
+.aviso.tem { display: block; border-left: 3px solid var(--erro); background: var(--erro-bg); }
+.aviso.ok { display: block; border-left: 3px solid var(--ok); background: var(--ok-bg); }
+.aviso ul { margin-left: 16px; }
+.acoes { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 4px; }
+.acao-btn { flex: 1 1 200px; padding: 12px 16px; min-height: 48px; background: transparent; border: 1px solid var(--aco); color: var(--aco); font-family: var(--mono); font-size: .88rem; font-weight: 700; cursor: pointer; }
+.acao-btn.forte { background: var(--verde); border-color: var(--verde); color: oklch(0.13 0.01 260); }
+.resumo-grafia { font-size: .86rem; margin-top: 6px; color: var(--cinza); }
+.rubrica { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.rubrica th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--aco); border-bottom: 1px solid var(--cinza-borda); padding: 6px 4px; }
+.rubrica td { border-bottom: 1px solid var(--cinza-borda); padding: 8px 4px; vertical-align: top; }
+.rubrica td.pts { text-align: center; font-family: var(--mono); font-weight: 700; color: var(--verde); width: 56px; }
+.rubrica tr.total td { border-bottom: none; font-weight: 700; }
+.impresso { display: none; }
+.so-print { display: none; }
+@media print {
+  * { color: #111 !important; background: transparent !important; }
+  .nao-imprime, .intro-box, .acoes, .encerramento, .aviso, .rubrica-bloco { display: none !important; }
+  .so-print { display: block !important; font-size: 10pt; margin-bottom: 8px; }
+  .campo input, .campo textarea { display: none !important; }
+  .impresso { display: block; white-space: pre-wrap; border-bottom: .5pt solid #999; min-height: 1.3em; font-size: 10.5pt; }
+  .bloco, .medida { border: .6pt solid #BBB !important; page-break-inside: avoid; }
+  .header .marca { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdu&ccedil;&atilde;o ao Laborat&oacute;rio">
+      <g fill="none" stroke="#3E8E5A" stroke-width="3">
+        <ellipse cx="60" cy="52" rx="46" ry="18"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+      </g>
+      <g fill="#3E8E5A">
+        <circle cx="53" cy="47" r="7"/><circle cx="67" cy="47" r="7"/><circle cx="60" cy="58" r="9"/>
+      </g>
+      <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+        <line x1="26" y1="110" x2="94" y2="110"/>
+        <line x1="30" y1="110" x2="30" y2="104"/><line x1="40" y1="110" x2="40" y2="104"/>
+        <line x1="50" y1="110" x2="50" y2="104"/><line x1="60" y1="110" x2="60" y2="98"/>
+        <line x1="70" y1="110" x2="70" y2="104"/><line x1="80" y1="110" x2="80" y2="104"/>
+        <line x1="90" y1="110" x2="90" y2="104"/>
+      </g>
+    </svg>
+    <h1><span class="trilha-code">ILB-T0B</span> &middot; Sistema Internacional de Unidades</h1>
+    <span class="badge">Relatório Mínimo (RM)</span>
+  </div>
+  <div class="header-sub">Pós-Lab &middot; até 07/10 (1 dia após o Lab) &middot; uma página &middot; 15 pontos (15 %)</div>
+</header>
+
+<main>
+
+<div class="so-print">Introdução ao Laboratório (ILB) &middot; ILB-T0B &middot; Relatório Mínimo v1</div>
+
+<div class="intro-box">
+  <strong>O primeiro relatório da disciplina.</strong> Uma página, até <strong>07/10</strong> —
+  um dia depois do Lab. Cobra exatamente o que a trilha ensina: <strong>escrever a medida certa</strong>.
+  Para cada uma das seis medidas do Roteiro de Bancada, quatro campos: como saiu no instrumento, a
+  menor divisão, a escrita no SI e a conversão para a unidade de base, com a conta à vista. A
+  incerteza ainda não entra — ela chega na T01, sobre um hábito de escrita já instalado.
+  O que você digita fica <strong>só neste aparelho</strong>. No fim, <strong>gere o PDF</strong> e
+  entregue ao professor.
+</div>
+
+
+<section class="bloco"><div class="bloco-num">1</div><div class="bloco-tit">Identificação</div><div class="bloco-dica nao-imprime">Quem mediu, e quando.</div><div class="ident"><div class="campo"><label>Nome</label><input type="text" data-k="nome" placeholder=""></div><div class="campo"><label>RA</label><input type="text" data-k="ra" placeholder="0000000"></div><div class="campo"><label>Colegas de bancada</label><input type="text" data-k="colegas" placeholder=""></div><div class="campo"><label>Data do encontro</label><input type="text" data-k="data" placeholder="06/10/2026"></div></div></section>
+<section class="bloco"><div class="bloco-num">2</div><div class="bloco-tit">As seis medidas</div><div class="bloco-dica nao-imprime">Uma linha por tarefa do Roteiro de Bancada. Na última coluna, a conta aparece: força em N = kg·m·s⁻², ângulo em rad = m/m.</div><div class="medida"><div class="medida-tit"><span class="cod">A1</span>A espessura de uma folha de papel</div><div class="medida-instr">régua milimetrada + pilha de 100 folhas</div><div class="medida-grade"><div class="campo"><label>Como saiu no instrumento</label><input type="text" data-k="d-A1-bruto" placeholder="valor e unidade do mostrador" data-col="bruto"></div><div class="campo"><label>Menor divisão do instrumento</label><input type="text" data-k="d-A1-div" placeholder="ex.: 1 mm" data-col="div"></div><div class="campo"><label>Escrito no SI, prefixo adequado</label><input type="text" data-k="d-A1-si" placeholder="ex.: 23,5 mm" data-col="si"></div><div class="campo"><label>Na unidade de base, com a conta</label><input type="text" data-k="d-A1-base" placeholder="ex.: 23,5 mm = 0,0235 m" data-col="base"></div></div><div class="aviso"></div></div>
+<div class="medida"><div class="medida-tit"><span class="cod">A2</span>O diâmetro de uma moeda</div><div class="medida-instr">paquímetro</div><div class="medida-grade"><div class="campo"><label>Como saiu no instrumento</label><input type="text" data-k="d-A2-bruto" placeholder="valor e unidade do mostrador" data-col="bruto"></div><div class="campo"><label>Menor divisão do instrumento</label><input type="text" data-k="d-A2-div" placeholder="ex.: 1 mm" data-col="div"></div><div class="campo"><label>Escrito no SI, prefixo adequado</label><input type="text" data-k="d-A2-si" placeholder="ex.: 23,5 mm" data-col="si"></div><div class="campo"><label>Na unidade de base, com a conta</label><input type="text" data-k="d-A2-base" placeholder="ex.: 23,5 mm = 0,0235 m" data-col="base"></div></div><div class="aviso"></div></div>
+<div class="medida"><div class="medida-tit"><span class="cod">A3</span>A inclinação da rampa de fórmica</div><div class="medida-instr">transferidor</div><div class="medida-grade"><div class="campo"><label>Como saiu no instrumento</label><input type="text" data-k="d-A3-bruto" placeholder="valor e unidade do mostrador" data-col="bruto"></div><div class="campo"><label>Menor divisão do instrumento</label><input type="text" data-k="d-A3-div" placeholder="ex.: 1 mm" data-col="div"></div><div class="campo"><label>Escrito no SI, prefixo adequado</label><input type="text" data-k="d-A3-si" placeholder="ex.: 23,5 mm" data-col="si"></div><div class="campo"><label>Na unidade de base, com a conta</label><input type="text" data-k="d-A3-base" placeholder="ex.: 23,5 mm = 0,0235 m" data-col="base"></div></div><div class="aviso"></div></div>
+<div class="medida"><div class="medida-tit"><span class="cod">B1</span>A massa de um clipe</div><div class="medida-instr">balança + 20 clipes</div><div class="medida-grade"><div class="campo"><label>Como saiu no instrumento</label><input type="text" data-k="d-B1-bruto" placeholder="valor e unidade do mostrador" data-col="bruto"></div><div class="campo"><label>Menor divisão do instrumento</label><input type="text" data-k="d-B1-div" placeholder="ex.: 1 mm" data-col="div"></div><div class="campo"><label>Escrito no SI, prefixo adequado</label><input type="text" data-k="d-B1-si" placeholder="ex.: 23,5 mm" data-col="si"></div><div class="campo"><label>Na unidade de base, com a conta</label><input type="text" data-k="d-B1-base" placeholder="ex.: 23,5 mm = 0,0235 m" data-col="base"></div></div><div class="aviso"></div></div>
+<div class="medida"><div class="medida-tit"><span class="cod">B2</span>A força-peso sobre 100 g</div><div class="medida-instr">dinamômetro</div><div class="medida-grade"><div class="campo"><label>Como saiu no instrumento</label><input type="text" data-k="d-B2-bruto" placeholder="valor e unidade do mostrador" data-col="bruto"></div><div class="campo"><label>Menor divisão do instrumento</label><input type="text" data-k="d-B2-div" placeholder="ex.: 1 mm" data-col="div"></div><div class="campo"><label>Escrito no SI, prefixo adequado</label><input type="text" data-k="d-B2-si" placeholder="ex.: 23,5 mm" data-col="si"></div><div class="campo"><label>Na unidade de base, com a conta</label><input type="text" data-k="d-B2-base" placeholder="ex.: 23,5 mm = 0,0235 m" data-col="base"></div></div><div class="aviso"></div></div>
+<div class="medida"><div class="medida-tit"><span class="cod">B3</span>O tempo de reação de um colega</div><div class="medida-instr">régua em queda</div><div class="medida-grade"><div class="campo"><label>Como saiu no instrumento</label><input type="text" data-k="d-B3-bruto" placeholder="valor e unidade do mostrador" data-col="bruto"></div><div class="campo"><label>Menor divisão do instrumento</label><input type="text" data-k="d-B3-div" placeholder="ex.: 1 mm" data-col="div"></div><div class="campo"><label>Escrito no SI, prefixo adequado</label><input type="text" data-k="d-B3-si" placeholder="ex.: 23,5 mm" data-col="si"></div><div class="campo"><label>Na unidade de base, com a conta</label><input type="text" data-k="d-B3-base" placeholder="ex.: 23,5 mm = 0,0235 m" data-col="base"></div></div><div class="aviso"></div></div>
+<div class="acoes nao-imprime"><button class="acao-btn" id="conferir" type="button">Conferir a grafia</button></div><div class="resumo-grafia nao-imprime" id="resumo-grafia"></div></section>
+
+<div class="acoes nao-imprime">
+  <button class="acao-btn forte" id="pdf" type="button">Gerar o PDF para entregar</button>
+</div>
+
+<section class="bloco rubrica-bloco"><div class="bloco-num">Rubrica</div><div class="bloco-tit">Como o RM é corrigido — 15 pontos</div><table class="rubrica"><thead><tr><th>Critério</th><th>O que se avalia</th><th>Pontos</th></tr></thead><tbody><tr><td><strong>Dado bruto</strong></td><td>Os seis valores como saíram do instrumento, com a unidade do mostrador e a menor divisão de cada um</td><td class="pts">5</td></tr><tr><td><strong>Grafia do SI</strong></td><td>Símbolo certo, sem plural e sem ponto · espaço entre número e símbolo · vírgula decimal · prefixo que deixa o número entre 0,1 e 1 000</td><td class="pts">7</td></tr><tr><td><strong>Conversão à vista</strong></td><td>A conta de cada conversão para a unidade de base aparece — inclusive grau → rad e kgf → N</td><td class="pts">3</td></tr><tr class="total"><td>Total</td><td></td><td class="pts">15</td></tr></tbody></table></section>
+
+<div class="encerramento">
+  <div class="fecho-frase">O que é revisto logo depois da prática entra na fila de consolidação da noite.</div>
+  <div class="fecho-acao">Relatório Completo até 12/10 &mdash; seis dias</div>
+  <div class="fecho-links">
+    <a class="fecho-btn" href="../rc/">Relatório Completo</a>
+    <a class="fecho-btn secundario" href="../../">Todas as trilhas</a>
+  </div>
+  <div class="fecho-inst">Este relatório segue o modelo e a rubrica da disciplina, elaborados pelos professores Júlio Azevedo e Felipe Beato.</div>
+</div>
+
+<div class="footer-line">
+  NIDEC-CODAFIS &middot; IFMG &mdash; Campus Ouro Preto &middot; Licenciatura em Física<br>
+  Introdução ao Laboratório (ILB) &middot; T0B &middot; Relatório Mínimo v1 &middot; Júlio Azevedo &middot; Felipe Beato
+</div>
+
+</main>
+
+<script>
+(function () {
+  var CHAVE = 'ILB-T0B-RM-v1';
+  var CHAVE_RM = 'ILB-T0B-RM-v1';
+  var est = {};
+  try { est = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
+  function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(est)); } catch (e) {} }
+
+  var campos = document.querySelectorAll('[data-k]');
+  campos.forEach(function (c) {
+    if (est[c.dataset.k] != null) { c.value = est[c.dataset.k]; }
+    c.addEventListener('input', function () { est[c.dataset.k] = c.value; grava(); });
+  });
+
+  /* ---- RC: traz do RM o que ja foi digitado neste aparelho ---- */
+  var tr = document.getElementById('trazer');
+  if (tr) {
+    tr.addEventListener('click', function () {
+      var rm = {};
+      try { rm = JSON.parse(localStorage.getItem(CHAVE_RM) || '{}'); } catch (e) {}
+      var n = 0;
+      campos.forEach(function (c) {
+        var k = c.dataset.k;
+        if ((/^d-/.test(k) || k === 'nome' || k === 'ra' || k === 'colegas') && rm[k] && !c.value) {
+          c.value = rm[k]; est[k] = rm[k]; n++;
+        }
+      });
+      grava();
+      tr.textContent = n ? n + ' campo(s) trazido(s) do RM' : 'nada novo a trazer do RM neste aparelho';
+    });
+  }
+
+  /* ---- conferidor de grafia: avisa, nao da nota ---- */
+  var REGRAS = [
+    [/\d(mm|cm|km|mg|kg|g|ms|s|m|N|rad)(?![A-Za-z])/, 'falta o espaço entre o número e o símbolo'],
+    [/\b(MM|CM|KM|KG|Kg|MG|MS)\b/, 'símbolo de unidade não vira maiúscula'],
+    [/\b[Kk]gs\b|\bmms\b|\bcms\b|\bgs\b/, 'símbolo não tem plural'],
+    [/\b(m?seg|segs?)\b/i, 'o símbolo do segundo é s (e o do milisegundo, ms), sem ponto'],
+    [/\bgrs?\b/i, 'o símbolo do grama é g'],
+    [/\d\.\d/, 'em português o separador decimal é a vírgula'],
+    [/\d\s*n\b/, 'o símbolo do newton é N, maiúsculo'],
+    [/\b(mm|cm|kg|g|ms|s|m|N)\./, 'símbolo não é abreviação: sem ponto'],
+    [/\bgraus?\b/i, 'use o símbolo ° — e registre também em rad'],
+    [/\bkgf\b/, 'kgf é fora do SI: escreva em N (1 kgf = 9,81 N)']
+  ];
+  var BASE = [
+    [/\d\s*(µm|um|mm|cm|km|mg|ms|µs)\b/, 'na unidade de base não há prefixo: m, kg, s'],
+    [/\d\s*g\b/, 'a unidade de base de massa é o kg, não o g'],
+    [/°/, 'converta o ângulo para rad: 1° = π/180 rad']
+  ];
+  var conf = document.getElementById('conferir');
+  if (conf) {
+    conf.addEventListener('click', function () {
+      var total = 0, vazias = 0;
+      document.querySelectorAll('.medida').forEach(function (m) {
+        var av = [];
+        m.querySelectorAll('[data-col="si"],[data-col="base"]').forEach(function (c) {
+          var v = c.value || '';
+          if (!v.trim()) { return; }
+          REGRAS.forEach(function (r) { if (r[0].test(v) && av.indexOf(r[1]) < 0) { av.push(r[1]); } });
+          if (c.dataset.col === 'base') {
+            /* a conta vem antes do '=': so o resultado final precisa estar na unidade de base */
+            var fim = v.split('=').pop();
+            BASE.forEach(function (r) { if (r[0].test(fim) && av.indexOf(r[1]) < 0) { av.push(r[1]); } });
+          }
+        });
+        var preenchida = m.querySelector('[data-col="si"]').value.trim();
+        var box = m.querySelector('.aviso');
+        if (!preenchida) { vazias++; box.className = 'aviso'; return; }
+        box.innerHTML = av.length ? '<ul><li>' + av.join('</li><li>') + '</li></ul>'
+                                  : 'nenhum erro de escrita encontrado';
+        box.className = 'aviso ' + (av.length ? 'tem' : 'ok');
+        total += av.length;
+      });
+      document.getElementById('resumo-grafia').textContent =
+        (total ? total + ' aviso(s) de escrita' : 'nenhum aviso de escrita') +
+        (vazias ? ' · ' + vazias + ' medida(s) ainda sem a escrita no SI' : '') +
+        ' — o conferidor não dá nota: aponta o que vale revisar.';
+    });
+  }
+
+  /* ---- PDF: o que foi digitado vira texto na impressao ---- */
+  function espelha() {
+    campos.forEach(function (c) {
+      var s = c.nextElementSibling;
+      if (!s || !s.classList.contains('impresso')) {
+        s = document.createElement('div'); s.className = 'impresso';
+        c.parentNode.insertBefore(s, c.nextSibling);
+      }
+      s.textContent = c.value || '—';
+    });
+  }
+  window.addEventListener('beforeprint', espelha);
+  document.getElementById('pdf').addEventListener('click', function () { espelha(); window.print(); });
+})();
+</script>
+</body>
+</html>

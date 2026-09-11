@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILB-T0B &middot; Sistema Internacional de Unidades &mdash; Provinha</title>
+<style>
+:root {
+  --verde: #3E8E5A; --verde-claro: #5FAE7A; --verde-bg: oklch(0.28 0.05 152);
+  --aco: #7FB2D6; --aco-claro: #A7CCE6; --aco-bg: oklch(0.28 0.05 240);
+  --ok: oklch(0.72 0.15 150); --ok-bg: oklch(0.25 0.05 150);
+  --erro: oklch(0.62 0.20 25); --erro-bg: oklch(0.24 0.06 25);
+  --cinza: oklch(0.62 0.01 260); --cinza-borda: oklch(0.40 0.01 260);
+  --texto: oklch(0.93 0 0); --branco: oklch(0.96 0 0);
+  --superficie: oklch(0.22 0.01 260); --hover: oklch(0.25 0.01 260);
+  --fundo: oklch(0.13 0.01 260); --painel: oklch(0.16 0.01 260);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Courier New', 'Cascadia Code', Consolas, monospace;
+  --serif: Georgia, Cambria, 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--fundo); color: var(--texto); line-height: 1.6; min-height: 100vh; }
+
+.header { background: var(--painel); border-top: 3px solid var(--verde); padding: 14px 20px; }
+.header-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.header .marca { width: 52px; height: 52px; flex-shrink: 0; }
+.header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; flex: 1 1 240px; }
+.header h1 .trilha-code { color: var(--verde); }
+.badge { display: inline-block; background: var(--verde); color: oklch(0.13 0.01 260); padding: 4px 12px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+.header-sub { max-width: 800px; margin: 6px auto 0; font-size: 0.88rem; color: var(--cinza); }
+.progresso { max-width: 800px; margin: 12px auto 0; display: flex; gap: 3px; height: 6px; }
+.progresso .seg { flex: 1; background: var(--cinza-borda); transition: background .3s; }
+.progresso .seg.ouvido { background: var(--ok); }
+
+main { max-width: 800px; margin: 0 auto; padding: 16px; }
+
+.piazzi-bar { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; background:var(--painel); border:1px solid var(--cinza-borda); padding:10px 16px; margin-bottom:16px; font-size:.78rem; }
+.piazzi-bar .piazzi-ref { color:var(--cinza); }
+.piazzi-bar .piazzi-tag { display:inline-block; border:1px solid var(--verde); color:var(--verde); padding:2px 10px; font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.piazzi-bar .piazzi-text { color:var(--texto); font-style:italic; font-size:.74rem; }
+.piazzi-bar .piazzi-yt { display:inline-flex; align-items:center; gap:5px; background:var(--erro); color:var(--branco); padding:4px 12px; font-size:.72rem; font-weight:700; text-decoration:none; }
+.piazzi-bar .piazzi-yt::before { content:'\25B6'; font-size:.6rem; }
+
+.intro-box { background: var(--superficie); border: 1px solid var(--cinza-borda); border-left: 4px solid var(--aco); padding: 16px 18px; margin-bottom: 16px; font-size: .88rem; }
+.intro-box strong { color: var(--verde); }
+
+.player { background: var(--painel); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--verde); padding: 16px 18px; margin-bottom: 16px; }
+.player-topo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.player-titulo { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--verde); flex: 1 1 auto; }
+.faixa-btn { background: transparent; color: var(--texto); border: 1px solid var(--cinza-borda); padding: 6px 14px; font-family: var(--font); font-size: .76rem; font-weight: 600; cursor: pointer; min-height: 36px; }
+.faixa-btn.ativa { border-color: var(--verde); color: var(--verde); background: var(--verde-bg); }
+.player audio { width: 100%; }
+.player .sem-audio { font-size: .78rem; color: var(--cinza); border-left: 3px solid var(--erro); padding: 8px 12px; background: var(--erro-bg); display: none; }
+.player.indisponivel .sem-audio { display: block; }
+
+.secao { background: var(--superficie); margin-bottom: 8px; border-left: 3px solid var(--cinza-borda); transition: border-color .3s; }
+.secao.ouvida { border-left-color: var(--ok); }
+.secao-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; cursor: pointer; user-select: none; }
+.secao-header:hover { background: var(--hover); }
+.secao-num { font-family: var(--mono); font-size: .68rem; font-weight: 700; color: var(--verde); min-width: 20px; }
+.secao-titulo { font-size: .9rem; font-weight: 600; flex: 1; }
+.secao-check { display: flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--cinza); }
+.secao-check input[type="checkbox"] { accent-color: var(--ok); width: 18px; height: 18px; }
+.secao-seta { color: var(--cinza); font-size: .8rem; transition: transform .2s; }
+.secao.aberta .secao-seta { transform: rotate(90deg); }
+.secao-body { display: none; padding: 0 16px 14px 16px; }
+.secao.aberta .secao-body { display: block; }
+.secao-texto { font-size: .88rem; line-height: 1.75; color: oklch(0.84 0 0); }
+.secao-texto p { margin-bottom: 10px; }
+.secao-texto .termo { color: var(--verde); font-weight: 600; }
+.secao-texto .citacao { font-family: var(--serif); font-style: italic; color: var(--aco-claro); }
+.secao-texto strong { color: var(--branco); }
+
+.quiz-section { background: var(--superficie); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--aco); padding: 18px 20px; margin: 20px 0; }
+.quiz-titulo { font-size: .72rem; font-weight: 700; color: var(--aco); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px; }
+.quiz-sub { font-size: .8rem; color: var(--cinza); margin-bottom: 14px; }
+.quiz-q { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--cinza-borda); }
+.quiz-q:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.quiz-enunciado { font-size: .86rem; margin-bottom: 8px; font-weight: 600; }
+.quiz-opcoes { display: flex; flex-direction: column; gap: 4px; }
+.quiz-op { display: flex; align-items: flex-start; gap: 8px; padding: 8px 12px; background: oklch(0.18 0.01 260); cursor: pointer; font-size: .84rem; border: 1px solid transparent; }
+.quiz-op:hover { background: var(--hover); }
+.quiz-op.certa { border-color: var(--ok); background: var(--ok-bg); }
+.quiz-op.errada { border-color: var(--erro); background: var(--erro-bg); }
+.quiz-op.travada { pointer-events: none; }
+.quiz-op input[type="radio"] { margin-top: 3px; accent-color: var(--verde); }
+.quiz-porque { display: none; margin-top: 8px; font-size: .82rem; color: oklch(0.84 0 0); border-left: 3px solid var(--verde); padding: 8px 12px; background: var(--verde-bg); }
+.quiz-porque.visivel { display: block; }
+.quiz-porque strong { color: var(--branco); }
+
+.encerramento { max-width:800px; margin:30px auto 10px; padding:20px 16px; border-top:2px solid var(--verde); text-align:center; }
+.encerramento .fecho-frase { font-family:var(--serif); font-size:1.02rem; line-height:1.5; }
+.encerramento .fecho-acao { color:var(--verde); font-size:.95rem; text-transform:uppercase; font-weight:700; margin-top:10px; }
+.encerramento .fecho-links { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
+.encerramento .fecho-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 18px; min-height:44px; background:var(--verde); color:oklch(0.13 0.01 260); font-family:var(--mono); font-size:.8rem; font-weight:700; text-decoration:none; }
+.encerramento .fecho-btn::before { content:'\25B6'; font-size:.62rem; }
+.encerramento .fecho-btn.secundario { background:transparent; color:var(--aco); border:1px solid var(--aco); }
+.encerramento .fecho-btn.secundario::before { content:'\2630'; font-size:.72rem; }
+.encerramento .fecho-inst { color:var(--cinza); font-size:.85rem; margin-top:16px; }
+.footer-line { text-align:center; font-size:.82rem; color:var(--cinza); padding:16px 12px; line-height:1.5; }
+
+@media (max-width: 600px) { main { padding: 10px; } .header h1 { font-size: 1.15rem; } }
+@media print {
+  body { background: #fff !important; color: #1A1A1A !important; }
+  .header { background: none !important; border-top: 2px solid #1F3864; }
+  .secao { background: #F8F8F8 !important; border-left-color: #D0D0D0 !important; page-break-inside: avoid; }
+  .secao-body { display: block !important; }
+  .progresso, .player, .piazzi-bar { display: none !important; }
+}
+
+.escolha { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.escolha-btn { flex: 1 1 150px; padding: 14px 18px; min-height: 52px; background: var(--painel); border: 1px solid var(--cinza-borda); color: var(--texto); font-family: var(--mono); font-size: .95rem; font-weight: 700; cursor: pointer; }
+.escolha-btn:hover { border-color: var(--verde); color: var(--verde); }
+.escolha-btn.ativa { background: var(--verde); color: oklch(0.13 0.01 260); border-color: var(--verde); }
+.versao { display: none; }
+.versao.ativa { display: block; }
+
+.q { background: var(--painel); border-left: 3px solid var(--verde); padding: 14px 16px; margin-bottom: 14px; }
+.q-topo { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.q-num { font-family: var(--mono); font-size: .72rem; letter-spacing: 1.5px; color: var(--aco); text-transform: uppercase; }
+.q-peso { font-family: var(--mono); font-size: .72rem; color: var(--cinza); }
+.q-enunciado { font-size: .96rem; font-weight: 600; margin-bottom: 10px; }
+.q-op { display: flex; align-items: flex-start; gap: 9px; padding: 9px 12px; min-height: 44px; border: 1px solid var(--cinza-borda); margin-bottom: 7px; cursor: pointer; font-size: .9rem; }
+.q-op:hover { border-color: var(--verde); }
+.q-op input { margin-top: 3px; accent-color: var(--verde); }
+.q-op.certa { border-color: var(--ok); background: var(--ok-bg); }
+.q-op.errada { border-color: var(--erro); background: var(--erro-bg); }
+.vf-linha { display: flex; align-items: center; gap: 10px; padding: 8px 12px; min-height: 44px; border: 1px solid var(--cinza-borda); margin-bottom: 7px; font-size: .9rem; }
+.vf-linha .txt { flex: 1; }
+.vf-btn { padding: 6px 14px; min-height: 36px; border: 1px solid var(--cinza-borda); background: transparent; color: var(--texto); font-family: var(--mono); font-size: .8rem; cursor: pointer; }
+.vf-btn.sel { background: var(--verde); color: oklch(0.13 0.01 260); border-color: var(--verde); }
+.vf-linha.certa { border-color: var(--ok); }
+.vf-linha.errada { border-color: var(--erro); }
+.assoc-linha { display: flex; align-items: center; gap: 10px; padding: 8px 12px; min-height: 44px; border: 1px solid var(--cinza-borda); margin-bottom: 7px; font-size: .9rem; }
+.assoc-linha .item { flex: 0 0 140px; font-weight: 600; }
+.assoc-linha select { flex: 1; padding: 8px; background: var(--superficie); color: var(--texto); border: 1px solid var(--cinza-borda); font-family: var(--font); font-size: .88rem; }
+.assoc-linha.certa { border-color: var(--ok); }
+.assoc-linha.errada { border-color: var(--erro); }
+.q-porque { display: none; margin-top: 8px; font-size: .86rem; color: oklch(0.86 0 0); border-left: 3px solid var(--verde); padding: 9px 12px; background: var(--verde-bg); }
+.q-porque.visivel { display: block; }
+
+.btn-corrigir { display: block; width: 100%; padding: 15px; min-height: 54px; background: var(--verde); color: oklch(0.13 0.01 260); border: none; font-family: var(--mono); font-size: 1rem; font-weight: 700; cursor: pointer; margin: 18px 0; }
+.cartao { display: none; background: var(--painel); border: 1px solid var(--cinza-borda); border-top: 3px solid var(--aco); padding: 18px; margin: 18px 0; }
+.cartao.visivel { display: block; }
+.cartao-nota { font-family: var(--mono); font-size: 2rem; color: var(--verde); font-weight: 700; }
+.cartao-txt { font-size: .92rem; margin: 6px 0 12px; }
+.cartao-copia { font-family: var(--mono); font-size: .85rem; background: var(--fundo); border: 1px dashed var(--cinza-borda); padding: 12px; white-space: pre-wrap; }
+.cartao-btn { margin-top: 10px; padding: 11px 18px; min-height: 44px; background: transparent; border: 1px solid var(--aco); color: var(--aco); font-family: var(--mono); font-size: .85rem; cursor: pointer; }
+.ra-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+.ra-box input { flex: 1 1 200px; padding: 11px 12px; min-height: 44px; background: var(--superficie); border: 1px solid var(--cinza-borda); color: var(--texto); font-family: var(--mono); font-size: .95rem; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdu&ccedil;&atilde;o ao Laborat&oacute;rio">
+      <g fill="none" stroke="#3E8E5A" stroke-width="3">
+        <ellipse cx="60" cy="52" rx="46" ry="18"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+        <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+      </g>
+      <g fill="#3E8E5A">
+        <circle cx="53" cy="47" r="7"/><circle cx="67" cy="47" r="7"/><circle cx="60" cy="58" r="9"/>
+      </g>
+      <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+        <line x1="26" y1="110" x2="94" y2="110"/>
+        <line x1="30" y1="110" x2="30" y2="104"/><line x1="40" y1="110" x2="40" y2="104"/>
+        <line x1="50" y1="110" x2="50" y2="104"/><line x1="60" y1="110" x2="60" y2="98"/>
+        <line x1="70" y1="110" x2="70" y2="104"/><line x1="80" y1="110" x2="80" y2="104"/>
+        <line x1="90" y1="110" x2="90" y2="104"/>
+      </g>
+    </svg>
+    <h1><span class="trilha-code">ILB-T0B</span> &middot; Sistema Internacional de Unidades</h1>
+    <span class="badge">Provinha (PR)</span>
+  </div>
+  <div class="header-sub">Fecha o Lab &middot; 15 min &middot; 10 pontos &middot; tentativa única &middot; sem consulta</div>
+</header>
+
+<main>
+
+<div class="intro-box">
+  <strong>Como funciona.</strong> Escolha <em>uma</em> das três versões — elas são equivalentes.
+  Duas questões, 10 pontos, quinze minutos, sobre o que você mediu e escreveu hoje. A Q1 pede
+  uma conversão; a Q2 acompanha uma medida da pergunta à decisão, em cinco passos. A correção é
+  imediata e acontece <strong>no seu aparelho</strong>: nada é enviado. Ao final, mostre o
+  <strong>cartão de resultado</strong> ao professor antes de sair da bancada.
+</div>
+
+<div class="ra-box">
+  <label for="ra" style="font-size:.9rem;">Seu RA (fica só neste aparelho):</label>
+  <input id="ra" type="text" inputmode="numeric" placeholder="0000000" maxlength="12">
+</div>
+
+<div class="escolha"><button class="escolha-btn" data-v="A">Versão A</button><button class="escolha-btn" data-v="B">Versão B</button><button class="escolha-btn" data-v="C">Versão C</button></div>
+
+<div id="provas">
+<div class="versao" data-v="A">
+<div class="q" data-q="0" data-tipo="simples">
+  <div class="q-topo"><span class="q-num">Q1 &middot; Pense e use</span><span class="q-peso">4 pontos</span></div>
+  <div class="q-enunciado">Na Estação A, a pilha de 100 folhas mediu 9 mm. A espessura de <b>uma</b> folha, escrita no SI com o prefixo adequado, é:</div>
+  <label class="q-op" data-op="0"><input type="radio" name="A0-0"><span>0,09 MM</span></label>
+  <label class="q-op" data-op="1"><input type="radio" name="A0-0"><span>9 µm</span></label>
+  <label class="q-op" data-op="2"><input type="radio" name="A0-0"><span>90 µm</span></label>
+  <label class="q-op" data-op="3"><input type="radio" name="A0-0"><span>0,9 mm</span></label>
+  <div class="q-porque">9 mm ÷ 100 = 0,09 mm = 90 µm. O prefixo adequado deixa o número entre 0,1 e 1 000 — e o símbolo nunca vira maiúscula.</div>
+</div>
+<div class="q" data-q="1" data-tipo="vf">
+  <div class="q-topo"><span class="q-num">Q2 &middot; Da medida à decisão</span><span class="q-peso">6 pontos</span></div>
+  <div class="q-enunciado">A régua caiu 20 cm entre os dedos do colega antes de ser agarrada. Com t = √(2d/g), ele escreveu no Roteiro: <b>"tempo de reação = 0,2 seg."</b> Julgue cada passo:</div>
+  <div class="vf-linha" data-af="0"><span class="txt"><i>Interpretação.</i> Pede-se um tempo, e o que se mediu diretamente foi uma distância.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="1"><span class="txt"><i>Inventário.</i> Os dados, no SI, são d = 0,20 m e g = 9,8 m/s².</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="2"><span class="txt"><i>Cálculo.</i> t = √(2 · 0,20 / 9,8) ≈ 0,20 s, ou cerca de 200 ms.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="3"><span class="txt"><i>Plausibilidade.</i> Um tempo de reação de 2 s seria plausível para um estudante atento.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="4"><span class="txt"><i>Decisão.</i> A escrita "0,2 seg." está correta segundo o SI.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="q-porque">O tempo de reação é a primeira medida indireta da disciplina: mede-se distância, obtém-se tempo. Fica perto de 0,2 s — 2 s é dez vezes demais. E o símbolo do segundo é s, sem ponto: 0,20 s ou 200 ms.</div>
+</div>
+<button class="btn-corrigir">Corrigir e ver a nota</button>
+</div>
+<div class="versao" data-v="B">
+<div class="q" data-q="0" data-tipo="simples">
+  <div class="q-topo"><span class="q-num">Q1 &middot; Pense e use</span><span class="q-peso">4 pontos</span></div>
+  <div class="q-enunciado">O dinamômetro marcou 0,5 kgf ao sustentar uma massa. Com 1 kgf = 9,81 N, a força escrita no SI é:</div>
+  <label class="q-op" data-op="0"><input type="radio" name="B0-0"><span>0,5 N</span></label>
+  <label class="q-op" data-op="1"><input type="radio" name="B0-0"><span>4,9 N</span></label>
+  <label class="q-op" data-op="2"><input type="radio" name="B0-0"><span>49 N</span></label>
+  <label class="q-op" data-op="3"><input type="radio" name="B0-0"><span>4,9 Kgf</span></label>
+  <div class="q-porque">0,5 × 9,81 = 4,905 ≈ 4,9 N. O kgf do mostrador é unidade fora do SI: mede-se com o instrumento que existe e relata-se em newton, com a conversão à vista.</div>
+</div>
+<div class="q" data-q="1" data-tipo="vf">
+  <div class="q-topo"><span class="q-num">Q2 &middot; Da medida à decisão</span><span class="q-peso">6 pontos</span></div>
+  <div class="q-enunciado">O transferidor marcou 30° na rampa de fórmica. Um grupo escreveu no relatório <b>"inclinação = 0,52 rad"</b>. Julgue cada passo:</div>
+  <div class="vf-linha" data-af="0"><span class="txt"><i>Interpretação.</i> O grau é unidade fora do SI; a unidade do Sistema para ângulo plano é o radiano.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="1"><span class="txt"><i>Inventário.</i> O fator de conversão é 1° = 180/π rad.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="2"><span class="txt"><i>Cálculo.</i> 30° = 30 · π/180 rad ≈ 0,52 rad.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="3"><span class="txt"><i>Plausibilidade.</i> 0,52 rad é menor que um ângulo reto, que vale π/2 ≈ 1,57 rad.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="4"><span class="txt"><i>Decisão.</i> O grupo errou ao escrever em radiano, porque o transferidor mede em grau.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="q-porque">O fator é 1° = π/180 rad — o outro está de cabeça para baixo. E escrever em radiano é justamente o que o SI pede: lê-se em grau no instrumento, relata-se em rad com a conta.</div>
+</div>
+<button class="btn-corrigir">Corrigir e ver a nota</button>
+</div>
+<div class="versao" data-v="C">
+<div class="q" data-q="0" data-tipo="simples">
+  <div class="q-topo"><span class="q-num">Q1 &middot; Pense e use</span><span class="q-peso">4 pontos</span></div>
+  <div class="q-enunciado">Vinte clipes somaram 10,4 g na balança. A massa de <b>um</b> clipe, na unidade de base do SI, é:</div>
+  <label class="q-op" data-op="0"><input type="radio" name="C0-0"><span>0,52 Kg</span></label>
+  <label class="q-op" data-op="1"><input type="radio" name="C0-0"><span>5,2 × 10⁻⁴ kg</span></label>
+  <label class="q-op" data-op="2"><input type="radio" name="C0-0"><span>5,2 × 10⁻² kg</span></label>
+  <label class="q-op" data-op="3"><input type="radio" name="C0-0"><span>0,52 kgs</span></label>
+  <div class="q-porque">10,4 g ÷ 20 = 0,52 g = 0,000 52 kg = 5,2 × 10⁻⁴ kg. A unidade de base é o kilograma — sem maiúscula e sem plural.</div>
+</div>
+<div class="q" data-q="1" data-tipo="vf">
+  <div class="q-topo"><span class="q-num">Q2 &middot; Da medida à decisão</span><span class="q-peso">6 pontos</span></div>
+  <div class="q-enunciado">Duas leituras do diâmetro da moeda com o paquímetro: 23,4 mm e 23,5 mm. No relatório, escreveu-se <b>"diâmetro = 0,0235 m"</b>. Julgue cada passo:</div>
+  <div class="vf-linha" data-af="0"><span class="txt"><i>Interpretação.</i> Pede-se um comprimento, e a unidade de base do SI para comprimento é o metro.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="1"><span class="txt"><i>Inventário.</i> O paquímetro lê décimos de milímetro, e as duas leituras diferem só no último algarismo.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="2"><span class="txt"><i>Cálculo.</i> 23,5 mm = 0,235 m.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="3"><span class="txt"><i>Plausibilidade.</i> Um diâmetro de 23,5 cm seria plausível para uma moeda.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="vf-linha" data-af="4"><span class="txt"><i>Decisão.</i> As duas leituras se registram: a diferença é a dúvida da medida, não erro de alguém.</span><button class="vf-btn" data-r="V">V</button><button class="vf-btn" data-r="F">F</button></div>
+  <div class="q-porque">23,5 mm = 0,0235 m: são três casas para ir do milímetro ao metro. Uma moeda de 23,5 cm teria o tamanho de um prato. E as leituras que não coincidem são o assunto da T01.</div>
+</div>
+<button class="btn-corrigir">Corrigir e ver a nota</button>
+</div>
+
+<div class="cartao">
+  <div class="cartao-nota">&mdash;</div>
+  <div class="cartao-txt">Mostre este cartão ao professor antes de sair da bancada. A Provinha entra
+  na nota do Lab, dentro dos 40 %. A correção detalhada ficou aberta acima.</div>
+  <div class="cartao-copia"></div>
+  <button class="cartao-btn">copiar o cartao</button>
+</div>
+</div>
+
+<div class="encerramento">
+  <div class="fecho-frase">O Lab termina aqui.<br>O que você mediu hoje vira relatório amanhã.</div>
+  <div class="fecho-acao">Relatório Mínimo até 07/10 &mdash; um dia</div>
+  <div class="fecho-links">
+    <a class="fecho-btn" href="../rm/">Relatório Mínimo</a>
+    <a class="fecho-btn secundario" href="../../">Todas as trilhas</a>
+  </div>
+  <div class="fecho-inst">Esta Provinha foi elaborada pelos professores Júlio Azevedo e Felipe Beato.</div>
+</div>
+
+<div class="footer-line">
+  NIDEC-CODAFIS &middot; IFMG &mdash; Campus Ouro Preto &middot; Licenciatura em Física<br>
+  Introdução ao Laboratório (ILB) &middot; T0B &middot; Provinha v1 &middot; Júlio Azevedo &middot; Felipe Beato
+</div>
+
+</main>
+<script>var GABARITO = {"A":[{t:"simples",c:2},{t:"vf",c:[true,true,true,false,false]}],"B":[{t:"simples",c:1},{t:"vf",c:[true,false,true,true,false]}],"C":[{t:"simples",c:1},{t:"vf",c:[true,true,false,false,true]}]};
+var PESOS = [4, 6];</script>
+
+<script>
+(function () {
+  var CHAVE = 'ILB-T0B-PR-v1';
+  var estado = {};
+  try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
+  function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
+
+  /* ---- escolha da versao ---- */
+  function abre(letra) {
+    document.querySelectorAll('.escolha-btn').forEach(function (b) {
+      b.classList.toggle('ativa', b.dataset.v === letra);
+    });
+    document.querySelectorAll('.versao').forEach(function (v) {
+      v.classList.toggle('ativa', v.dataset.v === letra);
+    });
+    estado.versao = letra; grava();
+  }
+  document.querySelectorAll('.escolha-btn').forEach(function (b) {
+    b.addEventListener('click', function () { abre(b.dataset.v); });
+  });
+  if (estado.versao) { abre(estado.versao); }
+
+  /* ---- V/F: dois botoes por afirmacao ---- */
+  document.querySelectorAll('.vf-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var linha = b.closest('.vf-linha');
+      linha.querySelectorAll('.vf-btn').forEach(function (o) { o.classList.remove('sel'); });
+      b.classList.add('sel');
+    });
+  });
+
+  /* ---- correcao ---- */
+  document.querySelectorAll('.btn-corrigir').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var bloco = btn.closest('.versao');
+      var letra = bloco.dataset.v;
+      var gab = GABARITO[letra];
+      var nota = 0;
+      bloco.querySelectorAll('.q').forEach(function (q, i) {
+        var g = gab[i], peso = PESOS[i], ponto = 0;
+        if (g.t === 'simples') {
+          var marc = -1;
+          q.querySelectorAll('.q-op').forEach(function (op, j) {
+            if (op.querySelector('input').checked) { marc = j; }
+            op.classList.remove('certa', 'errada');
+          });
+          q.querySelectorAll('.q-op').forEach(function (op, j) {
+            if (j === g.c) { op.classList.add('certa'); }
+            else if (j === marc) { op.classList.add('errada'); }
+          });
+          if (marc === g.c) { ponto = peso; }
+        } else if (g.t === 'multipla') {
+          var certos = 0, errados = 0;
+          q.querySelectorAll('.q-op').forEach(function (op, j) {
+            var m = op.querySelector('input').checked;
+            var e = g.c.indexOf(j) >= 0;
+            if (e) { op.classList.add('certa'); }
+            if (m && !e) { op.classList.add('errada'); errados++; }
+            if (m && e) { certos++; }
+          });
+          ponto = Math.max(0, (certos - errados)) / g.c.length * peso;
+        } else if (g.t === 'vf') {
+          var acertos = 0;
+          q.querySelectorAll('.vf-linha').forEach(function (l, j) {
+            var sel = l.querySelector('.vf-btn.sel');
+            var resp = sel ? (sel.dataset.r === 'V') : null;
+            if (resp === g.c[j]) { l.classList.add('certa'); acertos++; }
+            else { l.classList.add('errada'); }
+          });
+          ponto = acertos / g.c.length * peso;
+        } else {
+          var ok = 0;
+          q.querySelectorAll('.assoc-linha').forEach(function (l, j) {
+            var v = parseInt(l.querySelector('select').value, 10);
+            if (v === g.c[j]) { l.classList.add('certa'); ok++; }
+            else { l.classList.add('errada'); }
+          });
+          ponto = ok / g.c.length * peso;
+        }
+        nota += ponto;
+        q.querySelector('.q-porque').classList.add('visivel');
+      });
+      nota = Math.round(nota * 10) / 10;
+      var ra = (document.getElementById('ra').value || '').trim();
+      var cartao = bloco.parentNode.querySelector('.cartao');
+      cartao.querySelector('.cartao-nota').textContent = nota.toString().replace('.', ',') + ' / 10';
+      var hoje = new Date().toLocaleDateString('pt-BR');
+      cartao.querySelector('.cartao-copia').textContent =
+        'ILB T0B - Provinha v1 - versao ' + letra + '\n' +
+        'RA: ' + (ra || '(preencha o RA acima)') + '\n' +
+        'Nota: ' + nota.toString().replace('.', ',') + ' / 10\n' +
+        'Data: ' + hoje;
+      cartao.classList.add('visivel');
+      cartao.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      estado.nota = nota; estado.ra = ra; grava();
+      btn.disabled = true;
+    });
+  });
+
+  document.querySelectorAll('.cartao-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.parentNode.querySelector('.cartao-copia').textContent;
+      navigator.clipboard.writeText(txt).then(function () {
+        b.textContent = 'copiado';
+        setTimeout(function () { b.textContent = 'copiar o cartao'; }, 1800);
+      });
+    });
+  });
+
+  var ra = document.getElementById('ra');
+  if (estado.ra) { ra.value = estado.ra; }
+  ra.addEventListener('input', function () { estado.ra = ra.value; grava(); });
+})();
+</script>
+</body>
+</html>
