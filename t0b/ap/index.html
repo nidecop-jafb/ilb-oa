@@ -695,8 +695,10 @@ html, body {
 [data-theme="light"] .ca-provinha p { color: oklch(0.18 0 0); }
 
 /* ── DESPEDIDA ── */
+/* Texto descia na altura do pescoco da Sofia (bloco centralizado na vertical);
+   movido para perto do joelho — bloco ancorado embaixo (2026-09-13). */
 .despedida {
-  padding: 0; justify-content: center; align-items: center;
+  padding: 0 0 5vh; justify-content: flex-end; align-items: center;
   text-align: center;
 }
 /* ── Slide 16 em duas colunas, sobre imagem de fundo ──
@@ -713,7 +715,9 @@ html, body {
 /* Veu que protege o lado do texto sem apagar a cena do lado direito. */
 .desp-bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.64) 0%, rgba(0,0,0,0.48) 52%, rgba(0,0,0,0.20) 100%);
+  background:
+    linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 40%),
+    linear-gradient(90deg, rgba(0,0,0,0.64) 0%, rgba(0,0,0,0.48) 52%, rgba(0,0,0,0.20) 100%);
 }
 .despedida .desp-body {
   position: relative; z-index: 1;
@@ -818,6 +822,11 @@ html, body {
   transition: color 0.15s, border-color 0.15s;
 }
 .rodape-nav button:hover, .rodape-nav a:hover { color: var(--ouro); border-color: var(--ouro); }
+.rodape-nav-oa {
+  width: auto !important; padding: 0 12px; font-family: var(--mono);
+  font-size: .78rem; font-weight: 700; white-space: nowrap;
+}
+@media (max-width: 700px) { .rodape-nav-oa { display: none; } }
 .rodape-nav .contador {
   font-family: var(--mono); font-size: 0.85rem;
   color: var(--cinza); min-width: 60px; text-align: center; font-weight: 700;
@@ -1002,17 +1011,19 @@ html, body {
 .chk-t { font-size: 1rem; line-height: 1.4; }
 
 
-/* figuras inteiras — cartaz (s3), reguas (s4) e simbolo (s10): cover cortava 16-37% */
+/* figuras inteiras (corrigido 2026-09-13): a lista de seletores abaixo tinha
+   ficado sem chave de declaracao — os comentarios entre ela e .cred-cargo
+   faziam as duas regras se fundirem, e as figuras 2-9 continuavam cortadas
+   pelo object-fit:cover da regra-base. Cortava 16-57% das fotos. */
 .slide[data-slide="2"] .col-img img,
 .slide[data-slide="3"] .col-img img,
 .slide[data-slide="4"] .col-img img,
-.slide[data-slide="9"] .col-img img,
-
-/* ajuste de transbordo — slides 4 e 11 (com botao de revelacao) */
-
-/* ajuste de transbordo — slide 10 (Normas) em 1366x768 */
-/* PADRAO-ABAS-CREDITOS (decisao do autor 2026-09-02): cargos na secundaria (aco --azul), caixa normal. */
-.cred-cargo { color: var(--azul); text-transform: none; }
+.slide[data-slide="5"] .col-img img,
+.slide[data-slide="6"] .col-img img,
+.slide[data-slide="9"] .col-img img {
+  object-fit: contain;
+  background: var(--input-bg);
+}
 .fecho-marcas { display: flex; width: fit-content; gap: 14px; align-items: center; margin: 0 auto 10px; }
 .fecho-marcas svg { width: 30px; height: 30px; display: block; }
 .fecho-marcas a, .fa-marcas a { display: flex; }
@@ -1508,6 +1519,7 @@ html, body {
     <button id="btn-anterior" title="Slide anterior (←)">&#9664;</button>
     <div class="contador"><span id="num-atual">1</span> / <span id="num-total">18</span></div>
     <button id="btn-proximo" title="Próximo slide (→)">&#9654;</button>
+    <a class="rodape-nav-oa" href="../pr/">OA seguinte: Provinha &#8594;</a>
   </div>
 </div>
 

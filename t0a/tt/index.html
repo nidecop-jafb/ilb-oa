@@ -1177,17 +1177,12 @@ window.addEventListener('scroll', function() {
   document.getElementById('progressBar').style.width = pct + '%';
 });
 
-// ─── SAVE/RESTORE SCROLL POSITION ───
+// ─── SEMPRE ABRE NO TOPO ───
+// Restauracao de scroll REMOVIDA (2026-09-13): computador de laboratorio e
+// compartilhado entre turmas — o scroll salvo por um estudante reabria a
+// pagina de todo o proximo estudante ja no final do TT.
 var STORAGE_KEY = 'ILB-T0A-TT-v5';
-window.addEventListener('beforeunload', function() {
-  try { localStorage.setItem(STORAGE_KEY + '-scroll', window.scrollY); } catch(e) {}
-});
-window.addEventListener('load', function() {
-  try {
-    var saved = localStorage.getItem(STORAGE_KEY + '-scroll');
-    if (saved) { setTimeout(function() { window.scrollTo(0, parseInt(saved)); }, 100); }
-  } catch(e) {}
-});
+window.scrollTo(0, 0);
 
 // ─── FONT SIZE ───
 var fontSteps = [1.0, 1.15, 1.30];
