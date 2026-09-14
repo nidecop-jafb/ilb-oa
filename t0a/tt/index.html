@@ -278,6 +278,19 @@ p strong { color: var(--branco); }
 .figura-num {
   font-weight: 700; color: var(--ouro); text-transform: uppercase; letter-spacing: 0.5px;
 }
+/* Figura em destaque (2026-09-14, mesma ideia da LME): quando a
+   citacao da epigrafe fica so na imagem (sem repetir o texto ao
+   lado), a figura ganha mais espaco do que uma figura comum. */
+.figura-destaque .figura-img { max-width: 880px; border-width: 2px; border-color: var(--ouro);
+  box-shadow: 0 10px 32px rgba(0,0,0,.28); }
+/* Biografia do autor da epigrafe: abaixo da legenda da figura, com
+   espaco de respiro para nao prender o olhar junto da imagem —
+   funciona como uma nota de rodape, nao como legenda extra. */
+.figura-bio {
+  font-size: 0.8rem; color: var(--cinza); font-style: normal;
+  max-width: 480px; margin: 40px auto 0; text-align: center;
+  padding-top: 20px; border-top: 1px solid var(--cinza-borda);
+}
 
 /* ═══ COVER / CAPA (padrao FE-T04-TT-v5-digital) ═══ */
 .capa { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; background: linear-gradient(180deg, oklch(0.14 0.03 95) 0%, oklch(0.12 0.02 260) 100%); }
@@ -879,16 +892,18 @@ antes da submissão à CBL.</div>
 <div class="conteudo">
 
 <!-- ═══════════════════ EPIGRAFE ═══════════════════ -->
-<div class="epigrafe" id="epigrafe">
-  <blockquote>&ldquo;A leitura do mundo precede a leitura da palavra.&rdquo;</blockquote>
-  <div class="autor">&mdash; Paulo Freire (1921&ndash;1997)</div>
-  <div class="nota"><strong>Paulo Freire</strong> (Recife, 1921 &mdash; São Paulo, 1997). Educador brasileiro, patrono da educação nacional. A frase abre <em>A importância do ato de ler</em> (São Paulo: Cortez, 1982), ensaio em que ele descreve a própria infância: antes de decifrar as letras, já lia o quintal, o vento e os bichos. Numa disciplina que começa sem medir nada, ela diz exatamente o que se pede de você na primeira noite &mdash; olhar o laboratório antes de operá-lo.</div>
-</div>
-
-<figure class="figura">
+<!-- A citacao em si fica so na imagem (Figura 2, ja desenhada com a
+     frase de Freire) — texto removido daqui para nao duplicar a
+     informacao (mesma ideia da LME, 2026-09-14); a figura ganha
+     destaque (maior). A biografia do autor vem DEPOIS da legenda da
+     figura, com espaco acima para nao competir pela atencao de quem
+     acabou de olhar a imagem. -->
+<figure class="figura figura-destaque" id="epigrafe">
   <img class="figura-img" src="../_imagens/_web/ILB-T0A-Figura-02-v1-web.jpg" alt="Caderno de laboratório aberto: na página esquerda, a frase de Paulo Freire; na direita, uma folha, um seixo e uma pena" loading="lazy">
   <figcaption class="figura-legenda"><span class="figura-num">Figura 2</span> &mdash; A frase de Freire escrita na página esquerda de um caderno de laboratório; na direita, ainda em branco, três objetos do mundo &mdash; e, em volta, o mundo de onde eles vieram.</figcaption>
 </figure>
+
+<div class="figura-bio"><strong>Paulo Freire</strong> (Recife, 1921 &mdash; São Paulo, 1997). Educador brasileiro, patrono da educação nacional. A frase abre <em>A importância do ato de ler</em> (São Paulo: Cortez, 1982), ensaio em que ele descreve a própria infância: antes de decifrar as letras, já lia o quintal, o vento e os bichos. Numa disciplina que começa sem medir nada, ela diz exatamente o que se pede de você na primeira noite &mdash; olhar o laboratório antes de operá-lo.</div>
 
 <!-- ═══════════════════ ATO I ═══════════════════ -->
 <div class="ato" id="ato-i">
