@@ -1174,7 +1174,7 @@ html, body {
 
   <!-- SLIDE 1 - CAPA -->
   <section class="slide capa-slide ativo" data-slide="1" data-titulo="Capa">
-    <div class="capa-bg" style="background-image: url('../_imagens/_web/ILB-T0A-Figura-01-v1-web.jpg');"></div>
+    <div class="capa-bg" style="background-image: url('../_imagens/_web/ILB-T0A-Figura-01-v1-web-claro.jpg');"></div>
     <div class="capa-conteudo">
       <div class="capa-disciplina">Introdução ao Laboratório</div>
       <div class="capa-curso">Licenciatura em Física &middot; 2.º período</div>
@@ -1314,7 +1314,7 @@ html, body {
           </div>
         </div>
         <div class="col-img">
-          <img src="../_imagens/_web/ILB-T0A-Figura-05-v1-web.jpg" alt="Figura 5">
+          <img src="../_imagens/_web/ILB-T0A-Figura-05-v1-web-claro.jpg" alt="Figura 5">
           <div class="col-img-legenda"><span class="fig-num">Figura 5</span>O extintor e o kit ficam na sala de permanência dos professores &mdash; sempre no mesmo lugar</div>
         </div>
       </div>
@@ -1435,7 +1435,7 @@ html, body {
     <div class="slide-body">
       <div class="cols img-l">
         <div class="col-img">
-          <img src="../_imagens/_web/ILB-T0A-Figura-09-v1-web.jpg" alt="Figura 9">
+          <img src="../_imagens/_web/ILB-T0A-Figura-09-v1-web-claro.jpg" alt="Figura 9">
           <div class="col-img-legenda"><span class="fig-num">Figura 9</span>O gabinete de quem mede e desenha ao mesmo tempo</div>
         </div>
         <div class="col-text">
@@ -2461,6 +2461,136 @@ document.addEventListener('click', function (ev) {
 });
 
 </script>
+
+<!-- AP-REVELA:INICIO -->
+<style>
+/* Revelacao por bloco (ap_revelacao.py) */
+.rv-item { transition: opacity .28s ease; }
+.rv-oculto { visibility: hidden !important; opacity: 0 !important; }
+.rv-passo { font-family: var(--mono); font-size: .75rem; color: var(--cinza); margin-left: 10px; }
+@media print { .rv-oculto { visibility: visible !important; opacity: 1 !important; } .rv-passo { display: none; } }
+/* Imagem clara: sem escurecimento fixo; na capa, gradiente so sob o texto */
+.capa-bg, [data-theme="light"] .capa-bg { filter: none; }
+.capa-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 62% at 50% 50%, rgba(0,0,0,.60) 0%, rgba(0,0,0,.38) 55%, rgba(0,0,0,0) 100%);
+}
+.desp-bg { filter: none; }
+</style>
+<script>
+(function () {
+  'use strict';
+  var CONTEINER = ['slide-body', 'cols', 'col-text', 'desp-body', 'c5-solucao'];
+  var GRUPO = ['tl', 'chk'];
+  var FUNDO = ['slide-titulo', 'capa-bg', 'desp-bg'];
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var passos = {}, pos = {};
+
+  function tem(el, lista) { for (var i = 0; i < lista.length; i++) if (el.classList.contains(lista[i])) return lista[i]; return null; }
+  function excluido(sl) { return sl.classList.contains('capa-slide') || sl.dataset.ocultoPadrao === 'true' || !!sl.querySelector('.config-wrap'); }
+
+  function blocos(raiz, out) {
+    var grupo = null, gcls = null;
+    [].slice.call(raiz.children).forEach(function (el) {
+      var tag = el.tagName;
+      if (tag === 'BUTTON' || tag === 'SCRIPT' || tag === 'STYLE' || tem(el, FUNDO)) { grupo = null; gcls = null; return; }
+      var g = tem(el, GRUPO);
+      if (g) {
+        if (g === gcls && grupo) grupo.push(el); else { grupo = [el]; gcls = g; out.push(grupo); }
+        return;
+      }
+      grupo = null; gcls = null;
+      if (tem(el, CONTEINER)) { blocos(el, out); return; }
+      if (el.classList.contains('c5-ap')) {           /* C5: etapa por etapa */
+        var par = null;
+        [].slice.call(el.children).forEach(function (f) {
+          if (f.classList.contains('c5-ap-etapa') || !par) { par = [f]; out.push(par); } else par.push(f);
+        });
+        return;
+      }
+      out.push([el]);
+    });
+  }
+
+  slides.forEach(function (sl, i) {
+    if (excluido(sl)) return;
+    /* a revelacao antiga sai: botoes removidos, tudo o que ela escondeu volta */
+    [].slice.call(sl.querySelectorAll('.btn-reveal-icon, .btn-solucao')).forEach(function (b) { b.parentNode.removeChild(b); });
+    [].slice.call(sl.querySelectorAll('[hidden]')).forEach(function (el) { el.removeAttribute('hidden'); });
+    var lista = [];
+    blocos(sl, lista);
+    if (!sl.querySelector('.slide-titulo') && lista.length) lista.shift();   /* sem titulo (despedida): a 1a frase faz o papel */
+    lista.forEach(function (p) { p.forEach(function (el) { el.classList.add('rv-item'); }); });
+    if (lista.length) passos[i + 1] = lista;
+  });
+
+  var marca = document.createElement('span');
+  marca.className = 'rv-passo';
+  var contador = document.querySelector('.rodape .contador');
+  if (contador) contador.appendChild(marca);
+
+  function pintar(n) {
+    var lista = passos[n];
+    if (lista) lista.forEach(function (p, k) {
+      p.forEach(function (el) { el.classList.toggle('rv-oculto', k >= pos[n]); });
+    });
+    marca.textContent = lista ? '· ' + pos[n] + '/' + lista.length : '';
+  }
+  function ativoN() {
+    for (var i = 0; i < slides.length; i++) if (slides[i].classList.contains('ativo')) return i + 1;
+    return 0;
+  }
+  var atual = ativoN();
+  function entrar(n, voltando) {
+    if (passos[n]) pos[n] = voltando ? passos[n].length : 0;
+    atual = n;
+    pintar(n);
+  }
+  entrar(atual, false);
+
+  var obs = new MutationObserver(function () {
+    var n = ativoN();
+    if (n && n !== atual) entrar(n, n < atual);
+  });
+  slides.forEach(function (sl) { obs.observe(sl, { attributes: true, attributeFilter: ['class'] }); });
+
+  /* devolve true se consumiu o gesto dentro do slide */
+  function passo(dir) {
+    var ov = document.getElementById('overview');
+    if (ov && ov.classList.contains('aberto')) return false;
+    var lista = passos[atual];
+    if (!lista) return false;
+    if (dir > 0 && pos[atual] < lista.length) { pos[atual]++; pintar(atual); return true; }
+    if (dir < 0 && pos[atual] > 0) { pos[atual]--; pintar(atual); return true; }
+    return false;
+  }
+  function parar(e) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); }
+
+  window.addEventListener('keydown', function (e) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+    var k = e.key;
+    if ((k === 'ArrowRight' || k === ' ' || k === 'PageDown') && passo(1)) parar(e);
+    else if ((k === 'ArrowLeft' || k === 'PageUp') && passo(-1)) parar(e);
+  }, true);
+
+  window.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('#btn-proximo, #btn-anterior');
+    if (b && passo(b.id === 'btn-proximo' ? 1 : -1)) parar(e);
+  }, true);
+
+  var x0 = 0;
+  window.addEventListener('touchstart', function (e) { x0 = e.changedTouches[0].screenX; }, true);
+  window.addEventListener('touchend', function (e) {
+    var d = e.changedTouches[0].screenX - x0;
+    if (Math.abs(d) > 60 && passo(d < 0 ? 1 : -1)) e.stopImmediatePropagation();
+  }, true);
+
+  window.__APRV = { passos: passos, pos: pos, passo: passo };
+})();
+</script>
+<!-- AP-REVELA:FIM -->
 
 </body>
 </html>
