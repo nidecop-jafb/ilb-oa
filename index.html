@@ -127,9 +127,10 @@
   @media (max-width: 560px) { details.trilha > summary { font-size: 1.28rem; } }
 /* METODO:CSS-FIM */
 
+  .footer-marcas svg { width: 30px; height: 30px; display: block; } .footer-marcas a { display: flex; } .ilb-agr-marca { display: flex; justify-content: center; margin: 0 auto 8px; } .ilb-agr-marca a { display: flex; } .ilb-agr-marca svg { width: 30px; height: 30px; display: block; }
 </style>
 </head>
-<body>
+<body data-pagina="inicio">
 <!-- ABAS:INICIO -->
 <!-- ABAS LATERAIS -->
 <button class="aba-toggle" id="abaSiteT">Site</button>
@@ -257,6 +258,7 @@
   <h1>Introdução ao Laboratório · Licenciatura em Física</h1>
   <div class="sub">
     <figure class="marcas">
+      <img class="curso" src="_icones/icon-prisma.png" alt="Prisma decompondo a luz branca no arco-íris — ícone da Licenciatura em Física" width="200" height="200">
       <svg class="marca" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
         <g fill="none" stroke="#3E8E5A" stroke-width="3">
           <ellipse cx="60" cy="52" rx="46" ry="18"/>
@@ -279,7 +281,6 @@
           <line x1="90" y1="110" x2="90" y2="104"/>
         </g>
       </svg>
-      <img class="curso" src="_icones/icon-prisma.png" alt="Prisma decompondo a luz branca no arco-íris — ícone da Licenciatura em Física" width="200" height="200">
     </figure>
     <section>
       <h2 class="intro-t">Trilhas de Aprendizagem</h2>
@@ -355,11 +356,11 @@
   </ul>
 
   <div class="footer">
-    <div class="footer-marcas">
-      <img src="_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto">
-      <img src="_icones/icon-nidec.png" alt="NIDEC — Nucleo de Inovacao e Desenvolvimento de Experimentos Cientificos">
-    </div>
+    <div class="footer-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
     IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) · Primeira edição · 2026
+    <!-- SELO:INICIO -->
+    <div style="margin-top:10px;"><span id="seloAcessos" style="display:none;"></span></div>
+    <!-- SELO:FIM -->
   </div>
 </div>
 
@@ -433,5 +434,9 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 }
 </script>
 <!-- SW:FIM -->
+<!-- CONTADOR:INICIO -->
+<script src="contador-config.js"></script>
+<script src="acessos.js"></script>
+<!-- CONTADOR:FIM -->
 </body>
 </html>

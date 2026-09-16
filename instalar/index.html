@@ -42,7 +42,7 @@
   @media (max-width: 560px) { .qr img { width: 150px; height: 150px; } }
 </style>
 </head>
-<body>
+<body data-pagina="instalar">
 <div class="wrap">
 
   <h1>Instalar o site no seu aparelho</h1>
@@ -144,5 +144,9 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   navigator.serviceWorker.register('/ilb-oa/sw.js', { scope: '/ilb-oa/' }).catch(function () {});
 }
 </script>
+<!-- CONTADOR:INICIO -->
+<script src="../contador-config.js"></script>
+<script src="../acessos.js"></script>
+<!-- CONTADOR:FIM -->
 </body>
 </html>
