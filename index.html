@@ -434,6 +434,74 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 }
 </script>
 <!-- SW:FIM -->
+<!-- ABA-REFERENCIA-ILB (abas_oa_ilb.py) -->
+<style>
+.aba-painel .ref-i-ilb { font-size: .84rem; color: #a8a8a8; margin: 0 0 9px;
+  padding-left: 14px; text-indent: -14px; word-break: break-word; }
+</style>
+<button class="aba-toggle" id="abaReferenciaT">Referência</button>
+<aside class="aba-painel" id="abaReferencia">
+  <h3>Referência</h3>
+  <div class="aba-sec">Bibliografia Básica</div>
+  <p class="ref-i-ilb">CAMPOS, A. A.; ALVES, E. S.; SPEZIALI, N. L. <em>Física experimental básica na universidade</em>. 2. ed. Belo Horizonte: Editora UFMG, 2008.</p>
+  <p class="ref-i-ilb">PIACENTINI, J. J. et al. <em>Introdução ao laboratório de física</em>. 2. ed. Florianópolis: Editora da UFSC, 2018.</p>
+  <p class="ref-i-ilb">SANTORO, A. et al. <em>Estimativas e erros em experimentos de física</em>. 2. ed. Rio de Janeiro: EdUERJ, 2013.</p>
+  <div class="aba-sec">Bibliografia Complementar</div>
+  <p class="ref-i-ilb">HEWITT, P. G. <em>Física conceitual</em>. 12. ed. Porto Alegre: Bookman, 2015.</p>
+  <p class="ref-i-ilb">FEYNMAN, R. P.; LEIGHTON, R. B.; SANDS, M. L. <em>Feynman: lições de física</em>. Porto Alegre: Bookman, 2008. v. 1, 2 e 3.</p>
+  <p class="ref-i-ilb">HALLIDAY, D.; RESNICK, R.; WALKER, J. <em>Fundamentos de física</em>: mecânica. 10. ed. Rio de Janeiro: LTC, 2016. v. 1.</p>
+  <div class="aba-sec">Bibliografia Pedagógica Científica</div>
+  <p class="ref-i-ilb">BLOOM, Benjamin S. (org.). <em>O desenvolvimento de talentos na juventude</em>. Porto Alegre: Globo, 1988.</p>
+  <p class="ref-i-ilb">HEWITT, Paul G. <em>Física conceitual</em>. 12. ed. Porto Alegre: Bookman, 2015.</p>
+  <p class="ref-i-ilb">NICOLELIS, Miguel. <em>O verdadeiro criador de tudo</em>: como o cérebro humano esculpiu o universo que conhecemos. São Paulo: Planeta, 2020.</p>
+  <p class="ref-i-ilb">PIAZZI, Pierluigi. <em>Aprendendo inteligência</em>: manual de instruções do cérebro para estudantes em geral. São Paulo: Aleph, 2008.</p>
+  <div class="aba-sec">Documentos e normas</div>
+  <p class="ref-i-ilb">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Legislação e normas de ensino</em>. Ouro Preto: IFMG, [202-?]. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/ensino/legislacao-e-normas-de-ensino. Acesso em: 16 set. 2026.</p>
+  <p class="ref-i-ilb">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Calendário acadêmico 2026</em>. Ouro Preto: IFMG, 2026. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/ensino/calendario-escolar/2026/. Acesso em: 16 set. 2026.</p>
+  <p class="ref-i-ilb">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Curso de Licenciatura em Física</em>. Ouro Preto: IFMG, [202-?]. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/cursos/graduacao/licenciatura-em-fisica. Acesso em: 16 set. 2026.</p>
+  <p class="ref-i-ilb">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Projeto Pedagógico do Curso de Licenciatura em Física</em>. Ouro Preto: IFMG, 2026. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/cursos/graduacao/licenciatura-em-fisica. Acesso em: 16 set. 2026.</p>
+</aside>
+<script>
+(function () {
+  'use strict';
+  var meu = document.getElementById('abaReferencia');
+  var minha = document.getElementById('abaReferenciaT');
+  if (!meu || !minha) { return; }
+  var toggles = [].slice.call(document.querySelectorAll('.aba-toggle'));
+  var paineis = [].slice.call(document.querySelectorAll('.aba-painel'));
+  function empilhar() {
+    var y = 56;
+    toggles.forEach(function (t) {
+      t.style.top = y + 'px';
+      y += t.offsetHeight + 14;
+    });
+  }
+  empilhar();
+  window.addEventListener('resize', empilhar);
+  function fecharOutros() {
+    paineis.forEach(function (p) { if (p !== meu) { p.classList.remove('open'); } });
+  }
+  minha.addEventListener('click', function (e) {
+    e.stopPropagation();
+    fecharOutros();
+    meu.classList.toggle('open');
+  });
+  toggles.forEach(function (t) {
+    if (t !== minha) {
+      t.addEventListener('click', function () { meu.classList.remove('open'); });
+    }
+  });
+  document.addEventListener('click', function (e) {
+    if (!meu.contains(e.target) && e.target !== minha) {
+      meu.classList.remove('open');
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { meu.classList.remove('open'); }
+  });
+})();
+</script>
+<!-- /ABA-REFERENCIA-ILB -->
 <!-- CONTADOR:INICIO -->
 <script src="contador-config.js"></script>
 <script src="acessos.js"></script>
