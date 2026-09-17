@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Projeto Trilhas de Aprendizagem — Introdução ao Laboratório ·
+Versão Executiva v1</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style>
+
+input, button, select, textarea { font-family: inherit; }
+:root {
+--cor: #3E8E5A; 
+--acento: #7FB2D6; 
+--fundo: #0d0d0d;
+--texto: #e8e8e8;
+--cinza: #999;
+--linha: #444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+
+max-width: none;
+margin: 0;
+padding: 0;
+background: var(--fundo);
+color: var(--texto);
+font-family: 'Courier New', Courier, monospace;
+line-height: 1.65;
+}
+.wrap { max-width: 820px; margin: 0 auto; padding: 40px 20px 64px;
+
+display: flex; flex-direction: column; }
+.wrap > * { order: 3; }
+.wrap > .capa { order: 1; }
+.wrap > nav#TOC { order: 2; }
+
+.capa { text-align: center; border: 1px solid var(--linha); padding: 30px 26px 34px; margin-bottom: 40px; }
+.capa img { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto 26px; border: 1px solid var(--linha); }
+.capa p { margin: 0 0 10px; color: #c4c4c4; font-size: .95rem; }
+.capa p:nth-of-type(2) strong { display: block; font-size: .9rem; letter-spacing: .18em; color: var(--acento); text-transform: uppercase; font-weight: normal; }
+.capa p:nth-of-type(3) strong { display: block; font-size: 1.5rem; letter-spacing: .04em; color: var(--cor); text-transform: uppercase; margin: 6px 0 4px; }
+.capa p:nth-of-type(4) strong { display: block; font-size: .82rem; letter-spacing: .1em; color: #c4c4c4; text-transform: uppercase; font-weight: normal; margin-bottom: 18px; }
+
+h1 { font-size: 1.35rem; color: var(--cor); text-transform: uppercase; letter-spacing: .03em; border-bottom: 2px solid var(--cor); padding-bottom: 10px; margin: 48px 0 18px; scroll-margin-top: 20px; }
+h2 { font-size: 1.02rem; color: var(--acento); margin: 32px 0 12px; letter-spacing: .02em; }
+h3 { font-size: .92rem; color: #fff; margin: 24px 0 10px; }
+p { margin-bottom: 13px; }
+strong { color: #fff; }
+em { color: #ddd; }
+a { color: var(--cor); }
+ul, ol { margin: 0 0 14px 22px; }
+li { margin-bottom: 7px; }
+hr { border: none; border-top: 1px solid var(--linha); margin: 34px 0; }
+blockquote { border-left: 3px solid var(--cor); padding-left: 16px; margin: 0 0 14px; color: #c4c4c4; }
+
+#TOC { border: 1px solid var(--linha); padding: 20px 24px; margin-bottom: 40px; }
+#TOC::before { content: 'Sumário'; display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .18em; color: var(--cor); border-bottom: 1px solid var(--linha); padding-bottom: 8px; margin-bottom: 14px; }
+#TOC ul { list-style: none; margin: 0; }
+#TOC li { margin-bottom: 8px; }
+#TOC a { color: var(--texto); text-decoration: none; font-size: .84rem; }
+#TOC a:hover { color: var(--cor); }
+
+.tabela-rolagem, .table-wrap { overflow-x: auto; margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; margin-bottom: 20px; }
+th, td { border: 1px solid var(--linha); padding: 9px 11px; text-align: left; vertical-align: top; }
+
+th { font-size: .78rem; letter-spacing: .04em; color: var(--cor); background: #17171a; font-weight: normal; text-transform: none; }
+tbody tr:nth-child(even) { background: #131316; }
+caption { caption-side: bottom; font-size: .78rem; color: var(--cinza); padding-top: 6px; }
+
+table:has(td:only-child) td { border: none; padding: 2px 14px; font-size: .84rem; }
+table:has(td:only-child) { border: 1px solid var(--linha); padding: 12px 0; }
+table:has(td:only-child) tbody tr { background: none; }
+table:has(td:only-child) thead { display: none; }
+
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; margin: 44px 0 18px; }
+.acoes button, .acoes a { flex: 1 1 220px; display: block; padding: 13px 16px; border: 1px solid var(--linha); background: none; color: var(--texto); text-decoration: none; font-size: .86rem; text-align: center; cursor: pointer; }
+.acoes button:hover, .acoes a:hover { border-color: var(--cor); color: var(--cor); }
+.rodape { border-top: 1px solid var(--linha); margin-top: 18px; padding-top: 16px; color: var(--cinza); font-size: .76rem; line-height: 1.8; }
+.rodape a { color: var(--cinza); }
+.rodape a:hover { color: var(--cor); }
+
+@page { size: A4; margin: 0; }
+@media print {
+
+body { background: #fff; color: #000; font-size: 12.5px; line-height: 1.5; }
+.acoes, #TOC { display: none; }
+.wrap { max-width: none; padding: 12mm 16mm; }
+table { font-size: 11px; }
+
+p, li, blockquote { padding-top: 7mm; margin-top: -7mm; }
+
+h1 { color: #000; border-bottom-color: #000; break-after: avoid; break-before: page; padding-top: 12mm; font-size: 1.25rem; margin: 0 0 14px; }
+h2, h3 { color: #000; break-after: avoid; }
+h2 { border-bottom: 1px solid #bbb; padding-bottom: 4px; }
+h3, strong, em { color: #000; }
+a { color: #000; text-decoration: none; }
+th { color: #000; background: #eee; }
+tbody tr:nth-child(even) { background: #f6f6f6; }
+blockquote { border-left-color: #666; color: #333; }
+table, figure, blockquote { break-inside: avoid; }
+tr, li, p { break-inside: avoid; }
+.capa { break-after: page; border-color: #999; padding-top: 10mm; }
+.capa p { color: #000; }
+.capa p:nth-of-type(3) strong { color: #000; }
+.capa p:nth-of-type(2) strong, .capa p:nth-of-type(4) strong { color: #333; }
+.capa img { border-color: #999; max-width: 420px; }
+.capa + h2, .capa ~ h2:first-of-type { break-before: avoid; }
+.rodape { color: #444; border-top-color: #999; }
+}
+</style>
+  <meta name="description" content="Versao executiva do projeto Trilhas de Aprendizagem da disciplina Introducao ao Laboratorio (ILB) — Licenciatura em Fisica, IFMG campus Ouro Preto.">
+</head>
+<body>
+<div class="wrap">
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#nota-de-leitura-para-quem-é-este-documento" id="toc-nota-de-leitura-para-quem-é-este-documento">NOTA DE LEITURA —
+para quem é este documento</a></li>
+<li><a href="#sumário-executivo" id="toc-sumário-executivo">SUMÁRIO
+EXECUTIVO</a></li>
+<li><a href="#a-disciplina-em-uma-página" id="toc-a-disciplina-em-uma-página">1. A DISCIPLINA EM UMA
+PÁGINA</a></li>
+<li><a href="#o-acervo-cumulativo-a-restrição-que-virou-arquitetura" id="toc-o-acervo-cumulativo-a-restrição-que-virou-arquitetura">2. O
+ACERVO CUMULATIVO — A RESTRIÇÃO QUE VIROU ARQUITETURA</a></li>
+<li><a href="#a-anatomia-de-uma-trilha" id="toc-a-anatomia-de-uma-trilha">3. A ANATOMIA DE UMA TRILHA</a></li>
+<li><a href="#as-12-trilhas" id="toc-as-12-trilhas">4. AS 12
+TRILHAS</a></li>
+<li><a href="#a-incerteza-como-conteúdo-não-como-ressalva" id="toc-a-incerteza-como-conteúdo-não-como-ressalva">5. A INCERTEZA COMO
+CONTEÚDO, NÃO COMO RESSALVA</a></li>
+<li><a href="#o-ecossistema-digital-da-ilb" id="toc-o-ecossistema-digital-da-ilb">6. O ECOSSISTEMA DIGITAL DA
+ILB</a></li>
+<li><a href="#avaliação" id="toc-avaliação">7. AVALIAÇÃO</a></li>
+<li><a href="#o-eixo-metrológico-o-protocolo-comum-às-dez-trilhas-de-bancada" id="toc-o-eixo-metrológico-o-protocolo-comum-às-dez-trilhas-de-bancada">8.
+O EIXO METROLÓGICO — O PROTOCOLO COMUM ÀS DEZ TRILHAS DE
+BANCADA</a></li>
+<li><a href="#a-proposta-a-dobra-da-licenciatura" id="toc-a-proposta-a-dobra-da-licenciatura">9. A PROPOSTA — A DOBRA DA
+LICENCIATURA</a></li>
+<li><a href="#onde-a-ilb-toca-o-curso" id="toc-onde-a-ilb-toca-o-curso">10. ONDE A ILB TOCA O CURSO</a></li>
+<li><a href="#como-adotar-o-modelo-em-outra-disciplina" id="toc-como-adotar-o-modelo-em-outra-disciplina">11. COMO ADOTAR O
+MODELO EM OUTRA DISCIPLINA</a></li>
+<li><a href="#estado-atual-e-próximos-passos" id="toc-estado-atual-e-próximos-passos">12. ESTADO ATUAL E PRÓXIMOS
+PASSOS</a></li>
+<li><a href="#ficha-técnica" id="toc-ficha-técnica">13. FICHA
+TÉCNICA</a></li>
+<li><a href="#anexo-a-glossário-de-siglas" id="toc-anexo-a-glossário-de-siglas">ANEXO A — GLOSSÁRIO DE
+SIGLAS</a></li>
+<li><a href="#anexo-b-endereços" id="toc-anexo-b-endereços">ANEXO B —
+ENDEREÇOS</a></li>
+<li><a href="#anexo-c-a-grafia-do-si" id="toc-anexo-c-a-grafia-do-si">ANEXO C — A GRAFIA DO SI</a></li>
+<li><a href="#anexo-d-acervo-de-instrumentos-por-tema" id="toc-anexo-d-acervo-de-instrumentos-por-tema">ANEXO D — ACERVO DE
+INSTRUMENTOS POR TEMA</a></li>
+</ul>
+</nav>
+<div class="capa">
+<p><img role="img" src="data:image/jpeg;base64,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" /></p>
+<p><strong>INTRODUÇÃO AO LABORATÓRIO</strong></p>
+<p><strong>TRILHAS DE APRENDIZAGEM</strong></p>
+<p><strong>PROJETO — VERSÃO EXECUTIVA v1</strong></p>
+<p>Licenciatura em Física<br />
+IFMG — <em>Campus</em> Ouro Preto</p>
+<p>Julio Azevedo</p>
+<p>Coordenadoria da Área de Física (CODAFIS)<br />
+Núcleo de Inovação e Desenvolvimento de Experimentos Científicos
+(NIDEC)</p>
+<p>Ouro Preto, setembro de 2026</p>
+</div>
+<h2 class="unnumbered unlisted" id="a-ciência-e-a-arte">A Ciência e a
+Arte</h2>
+<p>Uma escala graduada, vista de muito perto. As marcas maiores a cada
+centimetro, as menores a cada milimetro, e entre duas marcas menores um
+vão de metal liso onde não há marca nenhuma. É aí, nesse vão, que esta
+disciplina começa.</p>
+<p>A imagem da capa não é decorativa: é a pergunta central posta em uma
+fotografia. <strong>Toda escala termina em algum lugar.</strong> A menor
+divisão de um instrumento é o limite do que ele consegue afirmar — e o
+que fica além dela não é ignorância do estudante, é o silêncio do
+instrumento. Quem mede tem de dizer o número e dizer também até onde ele
+vale. Um valor sozinho, sem essa segunda informação, é uma afirmação que
+ninguém pode conferir.</p>
+<p>Há uma segunda leitura na imagem, mais silenciosa. Aquelas marcas
+foram postas ali por uma decisão: alguém escolheu <strong>onde cortar o
+contínuo</strong>. Entre o zero e o um existe uma infinidade de pontos,
+e a graduação é o acordo humano que transforma essa infinidade em algo
+que se lê, se anota e se comunica. O Sistema Internacional de Unidades é
+esse acordo levado ao limite — sete unidades de base que hoje sustentam
+a medição em mais de duzentos países, e que começaram, no fim do século
+XVIII, com uma divisa: <em>a todos os tempos, a todos os povos</em>.</p>
+<p>Não é coincidência que a mesma palavra — <strong>escala</strong> —
+sirva à música e à metrologia. Nas duas, ela é a decisão de onde cortar
+o contínuo; nas duas, o que se ganha em legibilidade se paga em
+resolução. O ouvido que aprende a distinguir um quarto de tom e o olho
+que aprende a estimar o dígito duvidoso entre duas marcas estão fazendo
+a mesma coisa: refinando o julgamento sobre um limite que o instrumento
+não declara sozinho.</p>
+<p>O estudante que entra no laboratório no primeiro dia de aula recebe
+uma régua e uma pergunta que parece simples: <em>quanto mede isto?</em>
+A resposta honesta nunca é um número sozinho. É um número, uma unidade e
+uma dúvida declarada. E há aqui uma dobra a mais, que é a razão de ser
+deste curso: <strong>quem responde é um futuro professor.</strong> Daqui
+a alguns anos será ele quem entregará a régua — e o que ele levar para
+aquela sala não será a fórmula da densidade, mas o gesto de declarar a
+dúvida.</p>
+<blockquote>
+<p><em>Freire viu que se lê o mundo antes da palavra; Galileu disse que
+esse mundo está escrito em língua matemática; Leonardo lembrou que a
+sabedoria é filha da experiência. Três cérebros, o mesmo gesto.</em></p>
+</blockquote>
+<h2 class="unnumbered unlisted" id="ficha-catalográfica">Ficha
+catalográfica</h2>
+<p><strong>DADOS INTERNACIONAIS DE CATALOGAÇÃO NA PUBLICAÇÃO
+(CIP)</strong></p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr>
+<td>A994t</td>
+</tr>
+<tr>
+<td>Azevedo, Julio.</td>
+</tr>
+<tr>
+<td>      Trilhas de aprendizagem na introdução ao laboratório de
+física: curso de licenciatura em física / Julio Azevedo. – Versão
+executiva. – Ouro Preto, MG : IFMG Campus Ouro Preto, 2026.</td>
+</tr>
+<tr>
+<td>      20 f. : il. color.</td>
+</tr>
+<tr>
+<td>      Material didático e instrucional – Instituto Federal de
+Educação, Ciência e Tecnologia de Minas Gerais, Campus Ouro Preto,
+2026.</td>
+</tr>
+<tr>
+<td>      1. Física experimental - Estudo e ensino. 2. Metrologia -
+Ensino. 3. Incerteza de medição. 4. Formação de professores de física.
+5. Metodologia de ensino - Trilhas de aprendizagem. I. Instituto Federal
+de Minas Gerais. II. Título.</td>
+</tr>
+<tr>
+<td>                                        CDD: 530.078</td>
+</tr>
+<tr>
+<td>                                        CDU: 53.08:37</td>
+</tr>
+</tbody>
+</table>
+<p><em>Classificação provisória, a conferir com bibliotecário antes de
+qualquer submissão.</em></p>
+<h1 id="nota-de-leitura-para-quem-é-este-documento">NOTA DE LEITURA —
+para quem é este documento</h1>
+<p>Este documento descreve o projeto da disciplina <strong>Introdução ao
+Laboratório (ILB)</strong>, código <code>OPLFISI.6086</code>, do 2.º
+período da <strong>Licenciatura em Física</strong> do IFMG,
+<em>Campus</em> Ouro Preto. Ele é uma peça só, escrita para quatro
+leitores diferentes.</p>
+<p><strong>À Coordenação e ao Colegiado do curso</strong>, ele responde
+o que a disciplina faz com as suas 30 horas, como se articula com o
+Laboratório de Mecânica (6088), do qual é pré-requisito, e o que já
+existe pronto. Acompanha a proposta de ementa v2 e o Plano de Ensino
+2026.2-v5, encaminhados em separado.</p>
+<p><strong>Aos estudantes da ILB</strong>, ele mostra o desenho inteiro
+antes do primeiro encontro: o que se mede em cada trilha, o que se
+entrega, quanto vale e por quê. A versão de leitura fica no site da
+disciplina, em <code>nidecop-jafb.github.io/ilb-oa/projeto/</code>.</p>
+<p><strong>A quem avalia projetos</strong> — editais, agências de
+fomento, bancas —, ele reúne em vinte páginas o que costuma ficar
+espalhado: método, material produzido, estado de execução e a proposta
+pedagógica que sustenta o conjunto.</p>
+<p><strong>Aos colegas professores</strong>, ele oferece o modelo para
+reúso. A seção 11 descreve como adotá-lo em outra disciplina, e a
+resposta curta é que o que se copia não é o conteúdo de Mecânica: é a
+arquitetura de três paradas e o eixo de medida que atravessa todas as
+trilhas.</p>
+<p>Os números deste documento têm data: <strong>17 de setembro de
+2026</strong>. O que estiver escrito como pronto foi conferido no disco
+e no site nessa data; o que estiver escrito como previsto é previsão, e
+está marcado como tal.</p>
+<h1 id="sumário-executivo">SUMÁRIO EXECUTIVO</h1>
+<p>A ILB é o primeiro laboratório do curso e o único sem disciplina
+teórica vinculada. Ela não ensina Mecânica: ensina <strong>a
+medir</strong> — e usa a Mecânica Clássica porque é o único campo cujas
+grandezas um estudante de 2.º período consegue medir diretamente, com
+montagens simples e modelos que ele já traz da educação básica. O
+experimento aqui é <strong>veículo</strong>, não objeto. Dois períodos
+depois, no Laboratório de Mecânica, a relação se inverte.</p>
+<p>O semestre está organizado em <strong>12 trilhas</strong> — T0A e T0B
+de ambientação, T01 a T10 de bancada —, agrupadas em <strong>5 temas
+mais o Tema 0</strong>. O critério de agrupamento não é o capítulo do
+livro: duas trilhas ficam no mesmo tema quando compartilham <strong>a
+forma da tabela de coleta e o tratamento que ela exige</strong>. O
+acervo de instrumentos é cumulativo e a tabela cresce com ele, de uma
+coluna repetida até os estados de antes e depois de uma colisão.</p>
+<p>Cada trilha é percorrida em <strong>três paradas</strong> — Pré-Lab,
+Lab e Pós-Lab —, com até <strong>16 objetos de aprendizagem</strong>
+distribuídos entre elas. Nenhum é escrito à mão duas vezes: a lista
+canônica vive em código, e dela saem a página do método, a folha de QR e
+o cartaz.</p>
+<p>O que atravessa as dez trilhas de bancada, sem exceção, é o
+<strong>eixo metrológico</strong>: avaliar e expressar a medição e a sua
+incerteza, apresentar tabelas e gráficos, ajustar uma curva aos dados.
+Muda o experimento; não muda o protocolo. É por isso que um erro
+corrigido na devolutiva da T02 tem onde ser aproveitado na T03.</p>
+<p>A proposta pedagógica própria deste projeto está na seção 9 e se
+chama <strong>a dobra da licenciatura</strong>: em toda trilha, o
+licenciando mede como estudante e, no mesmo material, projeta como
+levaria aquela medida para uma turma de ensino médio. Medir e ensinar a
+medir não são duas etapas em série — são o mesmo ato visto de dois
+lados, e a ILB entrega os dois.</p>
+<p><strong>Em 17/09/2026 já existem, publicados e no ar:</strong> o site
+da disciplina, as 12 trilhas planejadas em detalhe, a T0A completa com 5
+objetos de aprendizagem, a T0B completa com 9, 17 figuras próprias
+aprovadas, os templates de Roteiro de Bancada e de relatório com
+rubrica, e a infraestrutura de publicação. A primeira aula é em
+<strong>29/09/2026</strong>.</p>
+<h1 id="a-disciplina-em-uma-página">1. A DISCIPLINA EM UMA PÁGINA</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disciplina</td>
+<td>Introdução ao Laboratório (ILB)</td>
+</tr>
+<tr>
+<td>Código</td>
+<td><code>OPLFISI.6086</code></td>
+</tr>
+<tr>
+<td>Curso</td>
+<td>Licenciatura em Física — DIAC/OP, matriz 2654</td>
+</tr>
+<tr>
+<td>Período</td>
+<td>2.º</td>
+</tr>
+<tr>
+<td>Natureza</td>
+<td>Obrigatória, regular, sem pré-requisito e sem co-requisito</td>
+</tr>
+<tr>
+<td>Carga horária</td>
+<td>30 h — teórica 0 · prática-laboratório 30</td>
+</tr>
+<tr>
+<td>Campo experimental</td>
+<td>Mecânica Clássica, exclusivamente</td>
+</tr>
+<tr>
+<td>Papel do experimento</td>
+<td><strong>Veículo</strong> — mede-se para aprender a medir</td>
+</tr>
+<tr>
+<td>É pré-requisito de</td>
+<td>Laboratório de Mecânica (<code>OPLFISI.6088</code>), 4.º
+período</td>
+</tr>
+<tr>
+<td>Semestre</td>
+<td>2026.2 — terças, 19:00 às 20:40 · 29/09/2026 a 02/02/2027</td>
+</tr>
+<tr>
+<td>Encontros</td>
+<td>16 — 2 de ambientação · 10 de bancada · 4 de fechamento</td>
+</tr>
+<tr>
+<td>Avaliação</td>
+<td>Pré-Lab 20 % · Lab 40 % · Pós-Lab 40 % (RM 15 % + RC 25 %)</td>
+</tr>
+<tr>
+<td>Aprovação</td>
+<td>75 % de frequência e 60 % de rendimento</td>
+</tr>
+<tr>
+<td>Autor</td>
+<td>Julio Azevedo</td>
+</tr>
+<tr>
+<td>Site</td>
+<td><code>nidecop-jafb.github.io/ilb-oa/</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>A pergunta da disciplina é uma só, e não muda de trilha para
+trilha:</strong> como se mede, e quanta confiança se tem no que se
+mediu?</p>
+<p>O que muda é o acervo de instrumentos que o estudante tem na mão, e a
+forma da tabela que ele precisa preencher. Em dezesseis encontros, ele
+sai de uma régua milimetrada e uma coluna de leituras repetidas e chega
+a fotogates duplos e a uma comparação de estados antes e depois de uma
+colisão — passando, no meio do caminho, pelo primeiro gráfico com reta
+ajustada.</p>
+<p>A ILB é o <strong>único laboratório da matriz sem vínculo com uma
+disciplina teórica</strong>. Os outros quatro — Mecânica,
+Oscilações/Ondas/Termodinâmica, Eletromagnetismo, Física Moderna e Ótica
+— têm todos a mesma redação de ementa: realização de experimentos em
+congruência com a disciplina X. A ILB não tem um X. A sua função é
+propedêutica: instalar o método experimental que os quatro seguintes vão
+supor pronto.</p>
+<h1 id="o-acervo-cumulativo-a-restrição-que-virou-arquitetura">2. O
+ACERVO CUMULATIVO — A RESTRIÇÃO QUE VIROU ARQUITETURA</h1>
+<p>Um laboratório de ensino de graduação não tem tudo, e não tem tudo ao
+mesmo tempo. Esse é o fato material com que qualquer plano precisa
+conviver. Em vez de tratá-lo como limitação a contornar, o projeto o
+adotou como <strong>princípio de organização do semestre</strong>.</p>
+<p>O acervo entra em camadas, e nenhuma camada abandona a anterior. Quem
+chega ao Tema 5 mede com régua, paquímetro, transferidor, dinamômetro,
+cronômetro e sensor de força ao mesmo tempo, porque cada tema anterior
+lhe entregou instrumentos que continuam na bancada. O semestre ganha
+assim a forma de uma trajetória, e não de uma lista de práticas
+independentes.</p>
+<p>E há uma consequência que não é óbvia: <strong>junto com o
+instrumento cresce a tabela</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Instrumentos que entram</th>
+<th>Forma da tabela de coleta</th>
+<th>Produto do tratamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>— (reconhecimento do laboratório)</td>
+<td>Caderno de laboratório: registro bruto, data, condições</td>
+<td>Um registro que outra pessoa consegue repetir</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Régua milimetrada, trena, paquímetro, micrômetro, balança</td>
+<td>Uma coluna repetida — n leituras da mesma grandeza</td>
+<td>Um número com incerteza</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Transferidor, dinamômetro, mesa de forças, roldanas</td>
+<td>Duas colunas acopladas — módulo e ângulo, ou componentes</td>
+<td>Uma soma vetorial verificada dentro da incerteza</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Cronômetro, sensores fotoelétricos, trilho, carrinhos</td>
+<td>Duas grandezas independentes — posição e tempo</td>
+<td>Um gráfico com reta ajustada, e o coeficiente lido como
+grandeza</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Plataforma giratória, sensor de queda, lançador, papel-carbono</td>
+<td>Grandeza periódica e par acoplado</td>
+<td>Uma incerteza reduzida pelo procedimento, não pelo instrumento</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Sensor de força, para-choques, fotogates duplos</td>
+<td>Antes e depois — a tabela ganha estados</td>
+<td>Uma decisão: conservou-se, dentro da incerteza?</td>
+</tr>
+</tbody>
+</table>
+<p>A coluna da direita é a que importa para quem lê este documento de
+fora. O produto do tratamento <strong>muda de natureza</strong> ao longo
+do semestre: começa como um número, vira um gráfico e termina como um
+juízo. No Tema 1 o estudante responde <em>quanto vale</em>. No Tema 3
+responde <em>qual é a lei</em>. No Tema 5 responde <em>esta lei se
+sustenta nos meus dados?</em> — que é a pergunta que a Física faz de
+verdade.</p>
+<p>É por isso que a ordem das trilhas não é negociável, e é por isso que
+o Tema 3 é o ponto sensível do acervo: sem um meio confiável de medir
+tempo em movimento — fotogates ou, na falta deles, registrador de tempo
+com fita —, o gráfico posição × tempo perde a qualidade que o ajuste
+exige, e o semestre não vira o que promete ser.</p>
+<h1 id="a-anatomia-de-uma-trilha">3. A ANATOMIA DE UMA TRILHA</h1>
+<p>Uma trilha é o percurso completo de um experimento, do que se faz em
+casa antes de tocar no equipamento até o relatório entregue dias depois.
+São três paradas, e elas existem porque o tempo de bancada é curto e
+caro: os 100 minutos do encontro precisam ser gastos
+<strong>medindo</strong>, e não descobrindo o que se ia medir.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parada</th>
+<th>Quando</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pré-Lab</strong></td>
+<td>Em casa, antes do encontro</td>
+<td>Chegar à bancada sabendo o que será medido, com qual instrumento e
+com quais cuidados</td>
+</tr>
+<tr>
+<td><strong>Lab</strong></td>
+<td>Na bancada, com o professor — 100 min</td>
+<td>Montar, medir e registrar, com o professor sustentando o passo que o
+estudante ainda não dá sozinho</td>
+</tr>
+<tr>
+<td><strong>Pós-Lab</strong></td>
+<td>A partir do mesmo dia da prática</td>
+<td>Transformar dado bruto em resultado: incerteza, tabela, gráfico,
+ajuste e relatório</td>
+</tr>
+</tbody>
+</table>
+<h2 id="os-16-objetos-de-aprendizagem">3.1 Os 16 objetos de
+aprendizagem</h2>
+<p>A disciplina tem <strong>16 tipos de objeto de aprendizagem
+(OA)</strong> distribuídos pelas três paradas. A lista abaixo descreve
+<strong>a disciplina</strong>, não uma trilha: cada trilha publica o que
+a sua natureza pede, e nenhuma publica os dezesseis.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parada</th>
+<th>Passos do percurso</th>
+<th>Apoio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pré-Lab</strong></td>
+<td><strong>PP</strong> Ponto de Partida · <strong>MD</strong> Resumo em
+Áudio · <strong>TT</strong> Texto Temático · <strong>SM</strong>
+Simulações · <strong>TN</strong> Testinho</td>
+<td><strong>CD</strong> Cartões Didáticos · <strong>MC</strong> Mapa
+Conceitual · <strong>IE</strong> Inventário de Equipamento ·
+<strong>CS</strong> Checklist de Segurança</td>
+</tr>
+<tr>
+<td><strong>Lab</strong></td>
+<td><strong>RB</strong> Roteiro de Bancada · <strong>AP</strong>
+Apresentação do Lab · <strong>IG</strong> Infográficos de Bancada ·
+<strong>PR</strong> Provinha</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Pós-Lab</strong></td>
+<td><strong>RM</strong> Relatório Mínimo · <strong>RC</strong> Relatório
+Completo</td>
+<td><strong>DX</strong> Desafio Pedagógico</td>
+</tr>
+</tbody>
+</table>
+<p>Três observações que evitam mal-entendidos de leitura:</p>
+<p><strong>A T0A é exceção de trilha, não de disciplina.</strong> Por
+ser encontro de ambientação, em que não se mede nada, ela entrega
+<strong>cinco</strong> dos dezesseis — Texto Temático, Resumo em Áudio,
+Cartões Didáticos, Roteiro de Bancada de reconhecimento e Apresentação —
+e não tem Pós-Lab. Nela, o Inventário de Equipamento e o Checklist de
+Segurança vivem dentro do próprio Roteiro de Bancada.</p>
+<p><strong>A lista canônica vive em código, não em prosa.</strong> Ela
+está em <code>metodo_estudo.py</code>, e é dela que saem a página do
+método no site, a folha de QR e o cartaz da disciplina. Isso não é
+detalhe de implementação: é o que garante que o método descrito ao
+estudante na parede do laboratório, no celular e no papel seja
+literalmente o mesmo texto.</p>
+<p><strong>Vale nota o que está marcado como tal.</strong> Ponto de
+Partida, Testinho, Roteiro de Bancada, Provinha e os dois relatórios
+contam para a média; os objetos de apoio não. A distribuição está na
+seção 7.</p>
+<h2 id="o-texto-temático-e-os-três-eixos-da-ilb">3.2 O Texto Temático e
+os três eixos da ILB</h2>
+<p>O Texto Temático é a peça mais longa do Pré-Lab e a que carrega a
+identidade do projeto: é a prática explicada por escrito, antes de
+acontecer. Cada tópico dele integra <strong>simultaneamente</strong>
+três eixos, próprios desta disciplina.</p>
+<p><strong>Eixo Didático</strong> — a dobra da licenciatura. Como o
+licenciando levaria aquele instrumento para uma escola? Que montagem
+cabe numa sala sem laboratório? Que erro o aluno de ensino médio comete
+primeiro?</p>
+<p><strong>Eixo Histórico-Cultural</strong> — Ouro Preto, a Escola de
+Minas, a mineração colonial, o Quadrilátero Ferrífero, aplicados aqui à
+<strong>história da própria medição</strong> e do método científico. A
+balança de pesar ouro do Museu de Ciência e Técnica decidia negócios
+antes de existir o Sistema Internacional; esse é o tipo de ligação que o
+eixo faz — não mineração como conteúdo técnico.</p>
+<p><strong>Eixo Metrológico</strong> — a Metrologia como a área que
+abrange os aspectos teóricos e práticos das medidas comerciais,
+industriais e científicas. É o eixo que ancora o vocabulário formal —
+incerteza, resolução, rastreabilidade, SI — que sustenta o protocolo da
+seção 8.</p>
+<p>Os três entram juntos no mesmo tópico, nunca isolados. Escrever num
+Texto Temático da ILB “a vivência do estudante de 15 a 16 anos” é erro
+de disciplina: aqui o leitor é adulto e é futuro professor.</p>
+<p>Cada trilha carrega ainda <strong>três epígrafes</strong> — uma de
+pensador ou educador, que abre o Texto Temático; uma de cientista, que
+abre o Roteiro de Bancada no instante em que a mão vai medir; e uma de
+artista, que fecha a trilha na seção Ciência e Arte. As três dizem a
+mesma ideia em três linguagens, e o entrelaçamento é dito ao estudante
+em uma linha, no fecho. São 36 epígrafes, de autores distintos, nas 12
+trilhas.</p>
+<h2 id="o-roteiro-de-bancada">3.3 O Roteiro de Bancada</h2>
+<p>O Roteiro de Bancada é o documento que vai para a mesa e volta com os
+dados. Ele é impresso — porque na bancada há mão ocupada, líquido e peso
+—, mas a entrega é digital, e ele é a peça de maior peso avaliativo da
+trilha (40 %). O que se avalia nele não é o acerto do resultado: é a
+conduta de segurança, a qualidade da montagem, o registro completo e
+legível dos dados e a reprodutibilidade.</p>
+<p>Uma regra aprendida na prática e hoje embutida no template: <strong>a
+coluna de coleta nunca convive com a coluna de resultado.</strong> O
+dado bruto entra na unidade do instrumento, na Parte 1; a conversão e o
+cálculo ficam na Parte 2, que abre com a linha de conversão. Sem essa
+separação, o estudante soma leituras em unidades diferentes e chega a um
+absurdo sem perceber.</p>
+<h1 id="as-12-trilhas">4. AS 12 TRILHAS</h1>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Nome</th>
+<th>Trilhas</th>
+<th>O que o estudante é capaz de fazer ao terminar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>Antes da primeira medida</td>
+<td><strong>T0A</strong> Boas-vindas à Física Experimental ·
+<strong>T0B</strong> Sistema Internacional de Unidades</td>
+<td>Circular com segurança, nomear os instrumentos do acervo, registrar
+de forma rastreável e escrever qualquer medida na grafia do SI</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Um número e sua dúvida</td>
+<td><strong>T01</strong> Qual é a sua altura? · <strong>T02</strong>
+Qual é a densidade dos cilindros?</td>
+<td>Expressar uma medida como valor e incerteza, com algarismos
+significativos coerentes com a menor divisão; propagar incertezas até o
+resultado de uma medida indireta</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Quando o número não basta</td>
+<td><strong>T03</strong> Principais forças da Mecânica Clássica ·
+<strong>T04</strong> Equilíbrio estático de ponto material</td>
+<td>Medir uma força com módulo, direção e sentido; compor e decompor
+vetores a partir de dados próprios; julgar, com a incerteza na mão, se o
+equilíbrio foi verificado</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>O mesmo encontro, duas causas</td>
+<td><strong>T05</strong> Encontro de pontos materiais ·
+<strong>T06</strong> Movimento produzido por forças constantes</td>
+<td>Construir um gráfico posição × tempo com dados próprios; ajustar
+reta e parábola; linearizar; ler o coeficiente ajustado como grandeza
+física, com unidade e incerteza</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Movimento que não é reto</td>
+<td><strong>T07</strong> Movimento Circular Uniforme ·
+<strong>T08</strong> Queda e lançamentos</td>
+<td>Reduzir a incerteza de uma grandeza periódica por contagem múltipla;
+tratar uma trajetória bidimensional como duas descrições
+independentes</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>O que sobrevive à colisão</td>
+<td><strong>T09</strong> Forças impulsivas · <strong>T10</strong> Leis
+de conservação nas colisões</td>
+<td>Medir estados antes e depois de uma interação; propagar as
+incertezas até a comparação; decidir, com critério quantitativo, se uma
+grandeza se conservou</td>
+</tr>
+</tbody>
+</table>
+<p>Três passagens merecem destaque, porque são as que dão forma ao
+semestre.</p>
+<p><strong>T01 e T02 são um tema só</strong>, embora uma meça
+comprimento e a outra massa e volume. O que as une é a forma da tabela —
+uma coluna de leituras repetidas de uma grandeza escalar — e o produto:
+valor ± incerteza. A T01 mede a altura do próprio estudante, uma
+grandeza que ele julga conhecer, e mostra que quatro pessoas medindo a
+mesma altura obtêm quatro valores. A T02 é a primeira medida
+<strong>indireta</strong>: a densidade não se lê em instrumento nenhum,
+calcula-se — e a incerteza de cada uma das três medidas se transmite ao
+resultado. O fecho é uma identificação: comparando com o valor tabelado,
+de que material é o cilindro?</p>
+<p><strong>T05 e T06 são o mesmo experimento com duas causas.</strong> A
+tabela é a mesma, posição × tempo; o que muda é a curva que se ajusta a
+ela. Sem força resultante, reta, e o coeficiente angular é a velocidade.
+Com força constante, parábola — e entra a linearização, que devolve a
+reta e entrega a aceleração. É a passagem central do semestre: até aqui
+o estudante media grandezas; daqui em diante ele <strong>ajusta um
+modelo a um conjunto de pontos</strong>.</p>
+<p><strong>T09 e T10 fecham com a pergunta mais exigente que a
+disciplina sabe fazer.</strong> Não “quanto vale”, mas “esta grandeza se
+conservou?”. A resposta correta nunca é sim ou não: é “as duas somas são
+compatíveis dentro da incerteza medida” — uma frase de outra natureza,
+que só é possível porque as nove trilhas anteriores instalaram o hábito
+de carregar a dúvida junto com o número. Aqui o ajuste de curvas termina
+de virar o que sempre foi: um teste de hipótese.</p>
+<h1 id="a-incerteza-como-conteúdo-não-como-ressalva">5. A INCERTEZA COMO
+CONTEÚDO, NÃO COMO RESSALVA</h1>
+<p>Há um modo comum de tratar a incerteza no ensino de laboratório:
+mede-se, calcula-se e, no fim, acrescenta-se uma frase sobre erros
+experimentais que explica por que o resultado não deu o valor do livro.
+A incerteza aparece como desculpa — o que sobra quando a medida não sai
+perfeita.</p>
+<p>Este projeto inverte isso. <strong>A incerteza é o conteúdo</strong>,
+e o valor central é o que a acompanha.</p>
+<p>A razão não é filosófica, é operacional. Um número sem incerteza não
+pode ser conferido, comparado nem contestado: ele não diz se a diferença
+para outro número é real ou é ruído. É a incerteza que transforma a
+medida em afirmação científica, porque é ela que diz <strong>em que
+condições a afirmação poderia ser derrubada</strong>. Um estudante que
+declara 1,62 m está dizendo algo que ninguém pode avaliar; um estudante
+que declara (1,620 ± 0,005) m está dizendo algo que qualquer pessoa pode
+testar.</p>
+<p>Daí decorrem três decisões que atravessam todo o material.</p>
+<p><strong>O dígito duvidoso é ensinado, não tolerado.</strong> A
+leitura de escala se faz com todos os algarismos corretos mais um
+estimado, uma casa além da menor divisão. Numa régua de divisão
+milimetrada, 16,6 mm é leitura correta; 17 mm é leitura pobre; 16,63 mm
+é leitura inventada. O gabarito do professor reprova os três casos pelo
+mesmo critério, e um deles — o do meio — é o que os estudantes trazem da
+educação básica.</p>
+<p><strong>A comparação substitui o gabarito.</strong> Quase nenhuma
+trilha tem um valor certo a ser atingido. O que se pede é uma
+comparação: entre repetições, entre instrumentos de resoluções
+diferentes, entre o medido e o tabelado, entre antes e depois. Quem
+avalia um resultado por proximidade de um número de referência ensina a
+ajustar o dado; quem o avalia por coerência com a incerteza declarada
+ensina a medir.</p>
+<p><strong>O polígono que não fecha não reprova o experimento —
+quantifica-o.</strong> É o caso explícito da T04, e é a atitude que o
+semestre inteiro cultiva: o desvio não é falha moral do experimentador,
+é informação sobre o processo de medida.</p>
+<h2 id="segurança-e-inventário-pré-condição-não-etapa">5.1 Segurança e
+inventário: pré-condição, não etapa</h2>
+<p>Segurança não é um aviso no começo da aula nem um item de checklist
+que se assina e se esquece. Ela entra como <strong>pré-condição de
+bancada</strong>, em duas peças próprias do Pré-Lab.</p>
+<p>O <strong>Inventário de Equipamento (IE)</strong> apresenta cada
+instrumento antes do encontro: nome, função e menor divisão. Quem chega
+sabendo o que vai na bancada gasta os 100 minutos medindo, e não
+descobrindo.</p>
+<p>O <strong>Checklist de Segurança (CS)</strong> lista os cuidados e os
+equipamentos de proteção individual da prática específica. Quem entra
+sabendo os riscos libera a atenção para o experimento — e protege os
+colegas de bancada, que é o ponto que raramente se diz.</p>
+<p>Na T0A os dois vivem dentro do Roteiro de Bancada de reconhecimento,
+junto com o termo de segurança assinado. Localizar o extintor e o kit de
+primeiros socorros — que ficam na sala de permanência dos professores,
+fora do laboratório e sempre no mesmo lugar — é conteúdo do primeiro
+encontro, com figura própria no Texto Temático.</p>
+<h1 id="o-ecossistema-digital-da-ilb">6. O ECOSSISTEMA DIGITAL DA
+ILB</h1>
+<p>Todo o material da disciplina é digital por padrão e impresso por
+exceção. O que vai para a bancada se imprime; o resto vive no site,
+aberto, sem senha e sem plataforma intermediária.</p>
+<p><strong>O site.</strong> <code>nidecop-jafb.github.io/ilb-oa/</code>
+é a porta de entrada. O índice lista as trilhas em sanfona, cada uma
+abrindo para os seus objetos de aprendizagem; há ainda as páginas de
+Documentos (PPC, matriz, ementa, plano e regulamento), Agradecimentos,
+instalação e sugestões. O site é um aplicativo instalável: quem abre no
+celular pode adicioná-lo à tela inicial, com ícone próprio, e as páginas
+já visitadas continuam disponíveis sem rede — o que importa num
+laboratório onde o sinal é ruim.</p>
+<p><strong>O trilho de sete abas.</strong> Todo objeto de aprendizagem
+digital carrega a mesma navegação lateral, na mesma ordem: Site, Método,
+Documentos, Música, Ineditismo, Créditos e Referência. O estudante que
+aprendeu a se mover em um deles sabe se mover em todos. O conteúdo
+dessas abas tem fonte única em código; nenhuma é escrita à mão no
+HTML.</p>
+<p><strong>A aba Método sai do método, não de um texto sobre
+ele.</strong> Ela é gerada a partir da mesma lista canônica das três
+paradas que a seção 3.1 descreve. Quando o método muda, a aba muda
+junto, em todos os objetos, sem reescrita.</p>
+<p><strong>Cabeçalho e rodapé são padronizados por script.</strong> O
+cabeçalho traz o ícone do curso — o prisma da Licenciatura —, a marca da
+ILB, o código e o título da trilha, o selo do objeto e uma linha de
+orientação com instrução, tempo e parada. O rodapé traz IFMG e NIDEC, o
+link de Agradecimentos, a linha institucional e o contador de acessos da
+página. Nada disso é escrito à mão: a regra vale para os três sites do
+ecossistema.</p>
+<p><strong>Identidade visual.</strong> Verde-quadro <code>#3E8E5A</code>
+e azul-aço <code>#7FB2D6</code>, com a marca própria da disciplina — um
+átomo sobre uma régua — e o prisma como ícone do curso, comum a todas as
+disciplinas da Licenciatura.</p>
+<p><strong>O que ainda não existe.</strong> Não há coletor de respostas
+por matrícula na ILB: ele depende da turma atribuída no sistema
+acadêmico e será herdado do que já roda nas disciplinas do curso
+técnico. Até lá, os objetos que valem nota são entregues pelos meios
+combinados no primeiro encontro.</p>
+<h1 id="avaliação">7. AVALIAÇÃO</h1>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parada</th>
+<th>Peso</th>
+<th>Instrumento</th>
+<th>O que se avalia</th>
+<th>Devolutiva</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pré-Lab</strong></td>
+<td><strong>20 %</strong></td>
+<td>Ficha de preparação do Texto Temático: previsão do resultado,
+conferência do Inventário de Equipamento e do Checklist de
+Segurança</td>
+<td>Preparo — não o acerto da previsão</td>
+<td>No próprio encontro, na abertura</td>
+</tr>
+<tr>
+<td><strong>Lab</strong></td>
+<td><strong>40 %</strong></td>
+<td>Roteiro de Bancada preenchido, com a tabela de dados brutos e o
+registro do procedimento</td>
+<td>Conduta de segurança · montagem · registro completo e legível ·
+reprodutibilidade</td>
+<td>Ao final do encontro, na conferência da bancada</td>
+</tr>
+<tr>
+<td><strong>Pós-Lab · RM</strong></td>
+<td><strong>15 %</strong></td>
+<td><strong>Relatório Mínimo</strong> — 1 página, digital, até <strong>1
+dia</strong> após a prática</td>
+<td>Dado bruto completo · cálculo visível · resultado como ( valor ±
+incerteza ) unidade</td>
+<td>No encontro seguinte</td>
+</tr>
+<tr>
+<td><strong>Pós-Lab · RC</strong></td>
+<td><strong>25 %</strong></td>
+<td><strong>Relatório Completo</strong> — digital, até <strong>6
+dias</strong> após a prática</td>
+<td>Tratamento de incertezas · tabelas e gráficos · ajuste de curva com
+conferência crítica · estrutura e redação</td>
+<td>No encontro de fechamento seguinte</td>
+</tr>
+</tbody>
+</table>
+<p>Os pesos valem das trilhas T01 a T10. <strong>T0A e T0B são encontros
+de ambientação</strong>: valem presença e, na T0A, a assinatura do termo
+de segurança, sem a qual o estudante não entra na bancada em 13/10.</p>
+<p>Três decisões de desenho merecem justificativa.</p>
+<p><strong>O peso maior está na bancada, não no relatório.</strong> São
+40 % para o Roteiro de Bancada, contra 40 % somados nos dois relatórios.
+A razão é simples: é na bancada que acontece o que só acontece ali.
+Relatório se refaz; medida perdida não se recupera. Dar peso ao registro
+é dar peso ao dado — e é o modo de dizer ao estudante que anotar direito
+é trabalho científico, não burocracia.</p>
+<p><strong>São dois relatórios, com prazos deliberadamente
+desiguais.</strong> O Relatório Mínimo tem uma página e vence em um dia,
+enquanto a memória da prática ainda está quente; ele obriga o estudante
+a fechar o dado bruto antes de esquecer as condições da medida. O
+Relatório Completo vence em seis dias e é onde entram o tratamento, os
+gráficos e a discussão. Um protege o dado; o outro forma o texto.</p>
+<p><strong>A devolutiva tem data no calendário.</strong> Os encontros
+E5, E9 e E13 são de fechamento, e existem para que os relatórios voltem
+comentados a cada três ou quatro trilhas. Como o eixo metrológico se
+repete em toda trilha, o erro corrigido em uma é imediatamente
+reaproveitável na seguinte — o que não seria verdade se cada prática
+ensinasse um procedimento diferente. O E16 é de relatório final,
+devolutiva geral e recuperação, esta última aplicada sobre o eixo
+metodológico da disciplina, com um conjunto de dados fornecido.</p>
+<p>Aprovação: <strong>75 % de frequência e 60 % de rendimento</strong>,
+conforme o Regulamento de Ensino do IFMG. Estudante que perder um
+encontro de bancada por motivo justificado repõe a coleta em horário
+combinado com a monitoria, usando o mesmo Roteiro de Bancada.</p>
+<h1 id="o-eixo-metrológico-o-protocolo-comum-às-dez-trilhas-de-bancada">8. O
+EIXO METROLÓGICO — O PROTOCOLO COMUM ÀS DEZ TRILHAS DE BANCADA</h1>
+<p>Se este documento tivesse de ser resumido em uma frase, seria esta:
+<strong>muda o experimento, não muda o protocolo de medida.</strong></p>
+<p>Toda trilha de bancada, da T01 à T10, apresenta e aplica os mesmos
+três procedimentos, na nomenclatura da bibliografia básica:</p>
+<p><strong>1. Avaliação e expressão de medições e de suas
+incertezas.</strong> Unidades e ordens de grandeza; instrumentos e sua
+resolução; algarismos significativos e operações; erros, tolerâncias e
+propagação de incertezas. É o que transforma uma leitura em uma
+medida.</p>
+<p><strong>2. Apresentação de tabelas e gráficos.</strong> A tabela de
+coleta com dado bruto na unidade do instrumento; o gráfico com eixos
+rotulados, unidade declarada e barras de incerteza. É o que transforma
+uma medida em um conjunto legível por outra pessoa.</p>
+<p><strong>3. Ajuste de uma curva aos dados experimentais.</strong>
+Linearização quando cabe, ajuste de reta ou parábola, leitura do
+coeficiente como grandeza física — com unidade e com incerteza. É o que
+transforma um conjunto de pontos em uma afirmação sobre o mundo.</p>
+<p>O estudante encontra os três na primeira trilha de bancada e volta a
+encontrá-los em todas as outras, com o mesmo vocabulário e a mesma
+ordem. A repetição é intencional e é a principal economia pedagógica do
+projeto: dez experimentos diferentes, um só método a aprender.</p>
+<h2 id="a-grafia-do-si">8.1 A grafia do SI</h2>
+<p>Uma medida mal escrita é uma medida que não se pode conferir, e a
+disciplina trata a grafia como parte do conteúdo — não como preciosismo.
+A regra vale em todo o material: <strong>a norma do SI prevalece sobre o
+hábito de escrita</strong>, sem exceção.</p>
+<p>O símbolo não é abreviação: escreve-se <code>5 kg</code>, nunca
+<code>5 kgs</code>, <code>5 Kg</code> ou <code>5 KG</code>. Há espaço
+entre o número e o símbolo. A vírgula é o separador decimal. Prefixo e
+unidade se juntam sem acento e sem duplicar consoante. O Anexo C traz o
+cartão de bancada com a regra inteira.</p>
+<p>Essa exigência tem uma consequência técnica que vale registrar,
+porque já custou correção: nenhum título, cabeçalho de tabela ou botão
+do material pode ser maiusculizado automaticamente, porque a maiúscula
+silenciosa transforma <code>cm</code> em <code>CM</code> e
+<code>mm</code> em <code>MM</code>, que estão errados. A regra de estilo
+se subordina à regra de medida.</p>
+<h2 id="ajuste-de-curvas-assistido-por-inteligência-artificial">8.2
+Ajuste de curvas assistido por inteligência artificial</h2>
+<p>O ajuste de curvas nesta disciplina é <strong>assistido por
+inteligência artificial</strong>, e isso consta da proposta de ementa. A
+decisão não é de conveniência: ela reconhece o instrumento que o
+estudante já usa e o traz para dentro do método, com a conferência que o
+torna legítimo.</p>
+<p>O estudante submete os seus dados, obtém o ajuste e é obrigado a
+conferir três coisas antes de aceitar o resultado: <strong>a coerência
+dimensional</strong> do coeficiente — o que a inclinação de posição
+contra tempo tem de ser, em unidade; <strong>a ordem de
+grandeza</strong> do valor obtido, contra o que a montagem permitia; e
+<strong>o comportamento dos resíduos</strong>, que denuncia modelo
+errado mesmo quando o coeficiente parece razoável.</p>
+<p>A conferência é o conteúdo. Um licenciando que aprende a interrogar
+um ajuste automático leva para a escola exatamente a competência que os
+seus futuros alunos vão precisar — e que ninguém ensina explicitamente.
+Aplicativos dedicados de análise ficam para os laboratórios dos períodos
+seguintes; aqui o que se ensina é o julgamento, não a ferramenta.</p>
+<h1 id="a-proposta-a-dobra-da-licenciatura">9. A PROPOSTA — A DOBRA DA
+LICENCIATURA</h1>
+<h2 id="o-problema-que-ela-resolve">9.1 O problema que ela resolve</h2>
+<p>Um curso de licenciatura em Física ensina Física e ensina a ensinar
+Física, e quase sempre em disciplinas separadas, por professores
+diferentes, em períodos diferentes. O conteúdo vem cedo; a didática vem
+depois. A sutura entre os dois fica por conta do estudante, e costuma
+acontecer tarde — no estágio, diante de uma turma, quando já não há
+tempo de refazer o modo como ele aprendeu aquilo.</p>
+<p>No laboratório o problema é mais agudo, por uma razão material:
+<strong>a maioria das escolas em que esses licenciandos vão trabalhar
+não tem laboratório.</strong> Um curso que forma para a bancada ideal e
+cala sobre a sala real entrega uma competência que não terá onde ser
+exercida.</p>
+<h2 id="o-que-é-a-dobra">9.2 O que é a dobra</h2>
+<p>A proposta deste projeto é não separar. Em toda trilha, o mesmo
+material que ensina a medir pede ao estudante que <strong>projete como
+levaria aquela medida para uma turma de ensino médio</strong>. Não como
+apêndice nem como sugestão ao final: como um dos três eixos que todo
+tópico do Texto Temático integra ao mesmo tempo.</p>
+<p>É isso que se chama aqui <strong>a dobra da licenciatura</strong>. O
+licenciando mede como estudante e, no mesmo gesto, olha a própria
+medição do ponto de vista de quem vai ensiná-la. Medir e ensinar a medir
+não são duas etapas em série: são o mesmo ato visto de dois lados.</p>
+<h2 id="o-ponto-exato-da-sutura">9.3 O ponto exato da sutura</h2>
+<p>A dobra não acontece em qualquer lugar do material — ela tem um ponto
+definido, e é o que a torna verificável.</p>
+<p>Ela acontece <strong>no tópico do Texto Temático</strong>, junto ao
+instrumento, não na conclusão da trilha. É ali que a pergunta didática
+tem conteúdo: com o paquímetro na mão e a incerteza declarada, perguntar
+que montagem substituiria aquele paquímetro numa sala sem laboratório é
+uma pergunta técnica, não retórica. Deslocada para o fim, vira apelo
+genérico à criatividade do futuro professor.</p>
+<p>E ela acontece <strong>na turma imaginada</strong>. As trilhas do
+curso técnico do mesmo ecossistema têm protagonistas adolescentes; na
+ILB, esses adolescentes não são os estudantes — são <strong>a turma-alvo
+que o licenciando projeta</strong>. A mudança de papel é a dobra em
+forma narrativa.</p>
+<h2 id="três-níveis-de-implementação">9.4 Três níveis de
+implementação</h2>
+<p><strong>Nível 1 — a pergunta didática em cada tópico.</strong> Já
+implementado: está no eixo didático do Texto Temático, em todas as
+trilhas escritas. Custo zero de infraestrutura.</p>
+<p><strong>Nível 2 — a variante de sala sem laboratório.</strong> Cada
+trilha de bancada descreve uma montagem alternativa com material
+acessível, que sustenta a mesma medida com incerteza maior — e diz
+quanto maior. Isso é conteúdo metrológico legítimo: comparar resoluções
+é exatamente o que a disciplina ensina. Implementação prevista a partir
+da T01.</p>
+<p><strong>Nível 3 — o objeto de aprendizagem que o licenciando
+produz.</strong> No fecho do semestre, cada estudante entrega uma
+proposta de atividade experimental para a educação básica, derivada de
+uma das trilhas, com a sua tabela de coleta, a sua incerteza esperada e
+o erro que ele prevê que os alunos cometerão primeiro. Proposta a
+avaliar com a Coordenação; não está no plano de 2026.2.</p>
+<h2 id="as-dobras-já-escritas">9.5 As dobras já escritas</h2>
+<p>A dobra não é intenção: ela já está no material publicado, e pode ser
+conferida.</p>
+<p>Na <strong>T0A</strong>, o primeiro encontro não apresenta apenas o
+laboratório: apresenta o método das três paradas ao estudante e, ao
+mesmo tempo, o método como objeto — o licenciando vê a estrutura
+pedagógica por dentro, no momento em que a experimenta.</p>
+<p>Na <strong>T0B</strong>, a grafia do SI é ensinada pelo erro: a turma
+corrige na lousa medidas escritas de forma errada, e o cartaz dos erros
+corrigidos fica na porta do laboratório. O licenciando aprende a norma
+e, junto, uma técnica de aula — corrigir a partir do erro do grupo, não
+do enunciado do professor.</p>
+<p>Nas trilhas de bancada, a dobra tem endereço fixo em cada tema: a
+densidade que transforma uma fórmula decorada em coisa medida (Tema 1);
+a mesa de forças que faz o vetor deixar de ser seta no quadro (Tema 2);
+o gráfico que separa velocidade como distância sobre tempo de velocidade
+como inclinação (Tema 3); o lançamento que mostra que a componente
+horizontal não sabe da vertical (Tema 4); a colisão que dá sentido
+físico a uma lei de conservação (Tema 5).</p>
+<h2 id="o-que-o-licenciando-leva-para-a-escola">9.6 O que o licenciando
+leva para a escola</h2>
+<p>Não é o experimento — é o gesto. Três coisas, em ordem de
+importância:</p>
+<p><strong>Declarar a dúvida.</strong> Um professor que escreve no
+quadro um resultado com incerteza está ensinando ciência antes de
+ensinar o conteúdo. É a transferência mais barata e mais rara.</p>
+<p><strong>Medir antes de formular.</strong> A sequência da ILB é sempre
+dado primeiro, modelo depois. Numa escola sem laboratório, isso ainda é
+possível: mede-se com régua, com celular, com o que houver, e a fórmula
+chega como síntese do que se mediu.</p>
+<p><strong>Tratar o erro do aluno como dado.</strong> É a consequência
+direta da seção 5: o desvio informa, não condena. Um professor formado
+assim corrige de outro jeito.</p>
+<h2 id="o-que-muda-na-avaliação">9.7 O que muda na avaliação</h2>
+<p>Nada, em 2026.2 — e isso é deliberado. Os níveis 1 e 2 são conteúdo
+do material, não instrumento avaliativo novo, e cabem na distribuição de
+pesos já aprovada. O nível 3 exigiria peso próprio e por isso está
+marcado como proposta a avaliar, e não como plano. Uma proposta
+pedagógica que começa pedindo mudança de regulamento costuma morrer na
+primeira reunião.</p>
+<h2 id="riscos-o-que-pode-dar-errado">9.8 Riscos — o que pode dar
+errado</h2>
+<p><strong>A dobra virar enfeite.</strong> O risco maior. Se a pergunta
+didática for genérica — “como você ensinaria isto?” —, ela não custa
+nada e não ensina nada. A salvaguarda é a ancoragem no instrumento e na
+incerteza: a pergunta tem de ter resposta técnica.</p>
+<p><strong>O tempo de bancada ser consumido pela discussão
+didática.</strong> São 100 minutos e eles são da medida. A dobra mora no
+Pré-Lab e no Pós-Lab, por escrito, não na bancada.</p>
+<p><strong>O estudante de 2.º período ainda não ter repertório de
+ensino.</strong> É verdade, e é a razão de os níveis serem progressivos.
+No nível 1 ele responde com o que tem — a memória do próprio ensino
+médio, que é justamente o repertório que a licenciatura precisa
+problematizar cedo.</p>
+<h2 id="o-piloto">9.9 O piloto</h2>
+<p>O piloto já está rodando, sem custo adicional: <strong>T0A e
+T0B</strong>, nos encontros de 29/09 e 06/10, com o nível 1 implementado
+e publicado. O que se observa nelas — se a pergunta didática produz
+resposta técnica ou resposta genérica — decide se o nível 2 entra na
+T01, em 13/10, ou espera o semestre seguinte. A avaliação é qualitativa
+e cabe em uma página de registro do professor.</p>
+<h1 id="onde-a-ilb-toca-o-curso">10. ONDE A ILB TOCA O CURSO</h1>
+<h2 id="mecânica-i-e-o-laboratório-de-mecânica">10.1 Mecânica I e o
+Laboratório de Mecânica</h2>
+<p>A ILB é <strong>pré-requisito</strong> do Laboratório de Mecânica
+(6088), do 4.º período, que por sua vez caminha em congruência com
+Mecânica I e II. A relação entre as duas é a inversão que este documento
+já enunciou: aqui o experimento é veículo — mede-se para aprender a
+medir; lá ele é objeto — mede-se para pôr o modelo da Mecânica à prova
+contra o dado e a incerteza.</p>
+<p>Isso define o que a ILB deve e o que não deve fazer. Ela deve
+entregar ao 4.º período estudantes que sabem ler uma escala, declarar
+uma incerteza, montar uma tabela, traçar um gráfico e ajustar uma curva.
+Ela não deve exigir formalismo de cálculo nem tratar a Mecânica como
+conteúdo a ser cobrado: quem cursa a ILB ainda não cursou Mecânica
+I.</p>
+<h2 id="instrumentação-e-prática-de-ensino">10.2 Instrumentação e
+Prática de Ensino</h2>
+<p>O que a seção 9 chama de dobra é, em substância, uma antecipação leve
+do que as disciplinas de Instrumentação e de Prática de Ensino farão com
+profundidade. A ILB não disputa esse espaço: ela planta a pergunta dois
+anos antes, no momento em que o licenciando ainda está aprendendo o
+gesto que mais tarde vai ensinar. Quando a Prática de Ensino chegar, a
+matéria-prima já existe — inclusive por escrito, nos relatórios do 2.º
+período.</p>
+<h2 id="matemática-e-tratamento-de-dados">10.3 Matemática e tratamento
+de dados</h2>
+<p>Média, dispersão, propagação de incertezas, linearização e ajuste por
+mínimos quadrados são conteúdo matemático usado aqui com sentido físico
+e com unidade. A ILB é, para muitos estudantes, o primeiro lugar em que
+um coeficiente angular tem dimensão e incerteza — e isso muda o que a
+palavra função significa para eles. Há espaço de articulação com as
+disciplinas de Cálculo e de Estatística do curso; ele não está
+formalizado e é candidato natural a uma conversa de colegiado.</p>
+<h2 id="a-escola-básica-estágio-pibid-e-residência">10.4 A escola
+básica: estágio, PIBID e residência</h2>
+<p>O destino declarado da disciplina está fora do IFMG. As atividades de
+estágio, os programas de iniciação à docência e a residência pedagógica
+levam esses estudantes a escolas que, na maioria, não têm laboratório.
+As variantes de sala sem laboratório do nível 2 da proposta nascem
+exatamente daí, e é nesse ponto que a ILB pode deixar de ser uma
+disciplina propedêutica interna e virar contribuição do curso para a
+rede.</p>
+<h1 id="como-adotar-o-modelo-em-outra-disciplina">11. COMO ADOTAR O
+MODELO EM OUTRA DISCIPLINA</h1>
+<p>O que se reusa deste projeto não é o conteúdo de Mecânica. É a
+arquitetura. Ela já foi instanciada quatro vezes no mesmo ecossistema —
+Física Conceitual 1, Física Experimental 1, esta disciplina e o
+Laboratório de Mecânica —, e o que se repete, sem exceção, é isto:</p>
+<p><strong>1. Uma pergunta única para a disciplina inteira.</strong> Na
+ILB, <em>como se mede e quanta confiança se tem no que se mediu?</em>.
+Ela precede a lista de conteúdos e é o que dá ordem às trilhas.</p>
+<p><strong>2. Um eixo que se repete em toda trilha.</strong> Aqui é o
+protocolo metrológico da seção 8. Sem um eixo repetido, cada prática
+vira um curso curto e nada se acumula.</p>
+<p><strong>3. Três paradas por trilha, com a de bancada no
+meio.</strong> O que se faz antes existe para que o tempo do encontro
+seja gasto no que só acontece no encontro.</p>
+<p><strong>4. Uma lista canônica de objetos de aprendizagem, em
+código.</strong> É o que impede que o método descrito no site, no cartaz
+e no papel se separem com o tempo.</p>
+<p><strong>5. Um critério explícito de agrupamento das trilhas.</strong>
+Na ILB, a forma da tabela de coleta. Em outra disciplina será outro —
+mas precisa ser dito, ou o agrupamento vira sumário de livro.</p>
+<p><strong>6. Publicação aberta, sem plataforma.</strong> Site próprio,
+endereço estável, material acessível sem senha.</p>
+<p>O custo de entrada é menor do que parece, porque a maior parte da
+infraestrutura é compartilhada: geradores, publicador, templates e as
+skills de autoria já servem quatro disciplinas, e cada nova entra por
+uma linha de configuração. O que não se compartilha — e é onde está o
+trabalho real — é a pergunta da disciplina e o eixo que se repete.</p>
+<h1 id="estado-atual-e-próximos-passos">12. ESTADO ATUAL E PRÓXIMOS
+PASSOS</h1>
+<h2 id="números-em-17-de-setembro-de-2026">12.1 Números em 17 de
+setembro de 2026</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Item</th>
+<th>Situação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ementa</td>
+<td>Proposta <strong>v2</strong> pronta, a encaminhar à Coordenação</td>
+</tr>
+<tr>
+<td>Plano de Ensino 2026.2</td>
+<td><strong>v5</strong> pronto, com os 16 encontros datados</td>
+</tr>
+<tr>
+<td>Temas e trilhas</td>
+<td><strong>v1</strong> aprovado — 12 trilhas em 5 temas mais o Tema
+0</td>
+</tr>
+<tr>
+<td>Trilhas com Camada 2 aprovada</td>
+<td><strong>2</strong> — T0A (v4) e T0B (v2)</td>
+</tr>
+<tr>
+<td>Objetos de aprendizagem publicados</td>
+<td><strong>14</strong> — 5 da T0A e 9 da T0B</td>
+</tr>
+<tr>
+<td>Figuras próprias aprovadas</td>
+<td><strong>17</strong> — 9 da T0A e 8 da T0B</td>
+</tr>
+<tr>
+<td>Epígrafes escolhidas e conferidas</td>
+<td><strong>36</strong>, em 12 trilhas, sem autor repetido</td>
+</tr>
+<tr>
+<td>Site</td>
+<td>No ar, com índice, Documentos, Agradecimentos, instalação e
+sugestões</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Roteiro de Bancada · Relatório Mínimo e Completo com rubrica de 40
+pontos</td>
+</tr>
+<tr>
+<td>Áudios gravados</td>
+<td>T0A: 2 de 2 · T0B: 1 de 2</td>
+</tr>
+<tr>
+<td>Primeira aula</td>
+<td><strong>29/09/2026</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Os cinco objetos da T0A são Texto Temático, Resumo em Áudio, Cartões
+Didáticos, Roteiro de Bancada de reconhecimento e Apresentação. Os nove
+da T0B cobrem as três paradas: Ponto de Partida, Resumo em Áudio, Texto
+Temático e Testinho no Pré-Lab; Roteiro de Bancada, Apresentação e
+Provinha no Lab; Relatório Mínimo e Relatório Completo no Pós-Lab — e
+são a <strong>primeira entrega de relatório da disciplina</strong>, em
+07/10 e 12/10.</p>
+<h2 id="o-que-vem-a-seguir">12.2 O que vem a seguir</h2>
+<p><strong>Até 24/09</strong> — encaminhamento da ementa v2 e do Plano
+de Ensino v5 à Coordenação do curso.</p>
+<p><strong>Até 06/10</strong> — conferência do acervo real do
+laboratório contra o que as duas estações da T0B pedem, e a gravação que
+falta do Resumo em Áudio da T0B.</p>
+<p><strong>A partir de 13/10</strong> — as trilhas de bancada, na ordem
+do plano, a começar pela T01. Cada uma exige Camada 2 aprovada antes de
+qualquer objeto ser gerado; é a regra que protege o material de nascer
+sem critério.</p>
+<p><strong>Sem data definida</strong> — o Inventário de Equipamento
+conferido contra o acervo real, a classificação catalográfica com
+bibliotecário, o cartaz A3 com QR da disciplina e o coletor de respostas
+por matrícula, que depende da turma atribuída no sistema acadêmico.</p>
+<h1 id="ficha-técnica">13. FICHA TÉCNICA</h1>
+<p><strong>Projeto:</strong> Trilhas de Aprendizagem — Introdução ao
+Laboratório (ILB) <strong>Disciplina:</strong> <code>OPLFISI.6086</code>
+· Licenciatura em Física · IFMG, <em>Campus</em> Ouro Preto
+<strong>Autoria:</strong> Julio Azevedo <strong>Vínculo
+institucional:</strong> Coordenadoria da Área de Física (CODAFIS) ·
+Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC)
+<strong>Versão:</strong> executiva v1 · <strong>Data-base dos
+dados:</strong> 17 de setembro de 2026 <strong>Primeira edição:</strong>
+2026</p>
+<p><strong>Bibliografia básica da disciplina</strong></p>
+<p>CAMPOS, A. A.; ALVES, E. S.; SPEZIALI, N. L. <strong>Física
+experimental básica na universidade</strong>. 2. ed. Belo Horizonte:
+Editora UFMG, 2008.</p>
+<p>PIACENTINI, J. J. et al. <strong>Introdução ao laboratório de
+física</strong>. 2. ed. Florianópolis: Editora da UFSC, 2018.</p>
+<p>SANTORO, A. et al. <strong>Estimativas e erros em experimentos de
+física</strong>. 2. ed. Rio de Janeiro: EdUERJ, 2013.</p>
+<p><strong>Bibliografia complementar</strong></p>
+<p>HEWITT, P. G. <strong>Física conceitual</strong>. 12. ed. Porto
+Alegre: Bookman, 2015.</p>
+<p>FEYNMAN, R. P.; LEIGHTON, R. B.; SANDS, M. L. <strong>Feynman: lições
+de física</strong>. Porto Alegre: Bookman, 2008. v. 1, 2 e 3.</p>
+<p>HALLIDAY, D.; RESNICK, R.; WALKER, J. <strong>Fundamentos de
+física</strong>: mecânica. 10. ed. Rio de Janeiro: LTC, 2016. v. 1.</p>
+<p><strong>Nota sobre o uso de inteligência artificial.</strong> Este
+projeto e o material didático a que ele se refere foram escritos com
+assistência de inteligência artificial, sob concepção, revisão e
+responsabilidade do autor. O mesmo recurso é ensinado aos estudantes
+como instrumento de ajuste de curvas, sempre com a conferência crítica
+descrita na seção 8.2 — coerência dimensional, ordem de grandeza e
+análise de resíduos.</p>
+<p><strong>Ineditismo.</strong> Não se conhece, no ensino de laboratório
+introdutório de cursos de licenciatura em Física, material que reúna
+simultaneamente: percurso de três paradas por experimento, eixo
+metrológico repetido em todas as trilhas, contextualização em três eixos
+próprios da licenciatura e publicação aberta do conjunto completo dos
+objetos de aprendizagem. O projeto é de primeira edição e está aberto a
+crítica, correção e reúso.</p>
+<h1 id="anexo-a-glossário-de-siglas">ANEXO A — GLOSSÁRIO DE SIGLAS</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sigla</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AP</strong></td>
+<td>Apresentação do Lab — os slides que conduzem os 100 minutos de
+bancada</td>
+</tr>
+<tr>
+<td><strong>CD</strong></td>
+<td>Cartões Didáticos — revisão ativa, pergunta de um lado, resposta do
+outro</td>
+</tr>
+<tr>
+<td><strong>CODAFIS</strong></td>
+<td>Coordenadoria da Área de Física do IFMG, <em>Campus</em> Ouro
+Preto</td>
+</tr>
+<tr>
+<td><strong>CS</strong></td>
+<td>Checklist de Segurança — cuidados e EPI da prática, obrigatório
+antes da bancada</td>
+</tr>
+<tr>
+<td><strong>DX</strong></td>
+<td>Desafio Pedagógico — atividade lúdica de fixação, opcional</td>
+</tr>
+<tr>
+<td><strong>EPI</strong></td>
+<td>Equipamento de Proteção Individual</td>
+</tr>
+<tr>
+<td><strong>IE</strong></td>
+<td>Inventário de Equipamento — nome, função e menor divisão de cada
+instrumento</td>
+</tr>
+<tr>
+<td><strong>IG</strong></td>
+<td>Infográficos de Bancada — painel de consulta visual durante a
+prática</td>
+</tr>
+<tr>
+<td><strong>ILB</strong></td>
+<td>Introdução ao Laboratório — esta disciplina,
+<code>OPLFISI.6086</code></td>
+</tr>
+<tr>
+<td><strong>LME</strong></td>
+<td>Laboratório de Mecânica — <code>OPLFISI.6088</code>, 4.º
+período</td>
+</tr>
+<tr>
+<td><strong>MC</strong></td>
+<td>Mapa Conceitual — a rede de conceitos da trilha</td>
+</tr>
+<tr>
+<td><strong>MD</strong></td>
+<td>Resumo em Áudio — narração de 3 a 5 minutos, ouvida antes da
+leitura</td>
+</tr>
+<tr>
+<td><strong>NIDEC</strong></td>
+<td>Núcleo de Inovação e Desenvolvimento de Experimentos
+Científicos</td>
+</tr>
+<tr>
+<td><strong>OA</strong></td>
+<td>Objeto de Aprendizagem — cada peça do percurso de uma trilha</td>
+</tr>
+<tr>
+<td><strong>PP</strong></td>
+<td>Ponto de Partida — diagnóstico respondido antes de estudar</td>
+</tr>
+<tr>
+<td><strong>PPC</strong></td>
+<td>Projeto Pedagógico do Curso</td>
+</tr>
+<tr>
+<td><strong>PR</strong></td>
+<td>Provinha — teste curto no fechamento do Lab</td>
+</tr>
+<tr>
+<td><strong>RB</strong></td>
+<td>Roteiro de Bancada — o documento que vai à mesa e volta com os
+dados</td>
+</tr>
+<tr>
+<td><strong>RC</strong></td>
+<td>Relatório Completo — entrega até 6 dias após a prática</td>
+</tr>
+<tr>
+<td><strong>RM</strong></td>
+<td>Relatório Mínimo — 1 página, entrega até 1 dia após a prática</td>
+</tr>
+<tr>
+<td><strong>SI</strong></td>
+<td>Sistema Internacional de Unidades</td>
+</tr>
+<tr>
+<td><strong>SM</strong></td>
+<td>Simulações — exploração virtual antes do gesto real</td>
+</tr>
+<tr>
+<td><strong>TN</strong></td>
+<td>Testinho — verificação do Pré-Lab, com correção imediata</td>
+</tr>
+<tr>
+<td><strong>TT</strong></td>
+<td>Texto Temático — a prática explicada por escrito</td>
+</tr>
+</tbody>
+</table>
+<h1 id="anexo-b-endereços">ANEXO B — ENDEREÇOS</h1>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>O quê</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site da disciplina</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/</code></td>
+</tr>
+<tr>
+<td>Este documento</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/projeto/</code></td>
+</tr>
+<tr>
+<td>Documentos oficiais (PPC, matriz, ementa, plano, regulamento)</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/documentos/</code></td>
+</tr>
+<tr>
+<td>Instalar o site como aplicativo</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/instalar/</code></td>
+</tr>
+<tr>
+<td>Sugestões de aprimoramento</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/sugestoes/</code></td>
+</tr>
+<tr>
+<td>Agradecimentos · Física e Poesia</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/agradecimentos/</code></td>
+</tr>
+<tr>
+<td>Trilha T0A — Boas-vindas à Física Experimental</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/t0a/</code></td>
+</tr>
+<tr>
+<td>Trilha T0B — Sistema Internacional de Unidades</td>
+<td><code>https://nidecop-jafb.github.io/ilb-oa/t0b/</code></td>
+</tr>
+<tr>
+<td>Disciplinas irmãs do ecossistema</td>
+<td><code>fc1-oa</code> · <code>fe1-oa</code> · <code>lme-oa</code>, no
+mesmo domínio</td>
+</tr>
+</tbody>
+</table>
+<h1 id="anexo-c-a-grafia-do-si">ANEXO C — A GRAFIA DO SI</h1>
+<p>Cartão de bancada. A norma do SI prevalece sobre o hábito de escrita,
+sem exceção.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Regra</th>
+<th>Certo</th>
+<th>Errado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O símbolo não é abreviação — não leva ponto nem plural</td>
+<td><code>5 kg</code></td>
+<td><code>5 kg.</code> · <code>5 kgs</code></td>
+</tr>
+<tr>
+<td>A caixa do símbolo é fixa</td>
+<td><code>kg</code> · <code>cm</code> · <code>mm</code> ·
+<code>s</code></td>
+<td><code>Kg</code> · <code>KG</code> · <code>CM</code></td>
+</tr>
+<tr>
+<td>Espaço entre o número e o símbolo</td>
+<td><code>16,6 mm</code></td>
+<td><code>16,6mm</code></td>
+</tr>
+<tr>
+<td>Vírgula decimal</td>
+<td><code>1,620 m</code></td>
+<td><code>1.620 m</code></td>
+</tr>
+<tr>
+<td>Prefixo + unidade, sem acento e sem duplicar consoante</td>
+<td><code>centimetro</code> · <code>kilograma</code> ·
+<code>milisegundo</code></td>
+<td><code>centímetro</code> · <code>quilograma</code></td>
+</tr>
+<tr>
+<td>Nome da unidade em minúscula, mesmo derivado de nome próprio</td>
+<td><code>newton</code> · <code>kelvin</code></td>
+<td><code>Newton</code> · <code>Kelvin</code></td>
+</tr>
+<tr>
+<td>Símbolo derivado de nome próprio em maiúscula</td>
+<td><code>N</code> · <code>K</code> · <code>Pa</code></td>
+<td><code>n</code> · <code>k</code> · <code>pa</code></td>
+</tr>
+<tr>
+<td>Um só símbolo por grandeza, sem mistura de nome e símbolo</td>
+<td><code>m/s</code> ou <code>metro por segundo</code></td>
+<td><code>metro/s</code></td>
+</tr>
+<tr>
+<td>O resultado traz valor e incerteza na mesma unidade</td>
+<td><code>(1,620 ± 0,005) m</code></td>
+<td><code>1,620 m ± 5 mm</code></td>
+</tr>
+<tr>
+<td>A incerteza tem um algarismo significativo, e o valor termina na
+mesma casa</td>
+<td><code>(9,79 ± 0,04) m/s²</code></td>
+<td><code>(9,7943 ± 0,04) m/s²</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leitura de escala.</strong> Todos os algarismos corretos mais
+um estimado, uma casa além da menor divisão. Régua de divisão
+milimetrada: <code>16,6 mm</code> é leitura correta; <code>17 mm</code>
+é leitura pobre; <code>16,63 mm</code> é leitura inventada.</p>
+<p><strong>Nota de estilo que decorre da norma.</strong> Nenhum título,
+cabeçalho de tabela ou botão pode ser maiusculizado automaticamente em
+texto que contenha unidade: a maiúscula silenciosa transforma
+<code>cm</code> em <code>CM</code>, que está errado.</p>
+<h1 id="anexo-d-acervo-de-instrumentos-por-tema">ANEXO D — ACERVO DE
+INSTRUMENTOS POR TEMA</h1>
+<p>O acervo é cumulativo: cada linha acrescenta à anterior, e nada sai
+da bancada.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Entram</th>
+<th>Continuam da linha anterior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>Caderno de laboratório · EPI · armário e bancada reconhecidos</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Régua milimetrada · trena · paquímetro · micrômetro · balança</td>
+<td>Caderno, EPI</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Transferidor · dinamômetro · mesa de forças · roldanas · massas
+aferidas</td>
+<td>Tudo do Tema 1</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Cronômetro · sensores fotoelétricos · trilho · carrinhos</td>
+<td>Tudo dos Temas 1 e 2</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Plataforma giratória · sensor de queda · lançador de projéteis ·
+papel-carbono</td>
+<td>Tudo dos Temas 1 a 3</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Sensor de força · para-choques de mola, ímã e velcro · fotogates
+duplos</td>
+<td>Tudo dos Temas 1 a 4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota de viabilidade.</strong> A progressão é executável com
+acervo de laboratório de ensino de graduação e não exige equipamento de
+pesquisa. O ponto sensível é o Tema 3, que depende de um meio confiável
+de medir tempo em movimento; sem fotogates, a alternativa é o
+registrador de tempo com fita, que sustenta a mesma análise com
+incerteza maior — e comparar as duas resoluções é, ele próprio, conteúdo
+da disciplina. O Tema 5 admite degradação controlada: sem sensor de
+força, a T09 se apoia no dinamômetro e no impulso calculado pela
+variação da quantidade de movimento, e a T10 permanece integralmente
+viável com fotogates e balança.</p>
+<p>A conferência item a item contra o acervo real do campus está
+pendente e é pré-requisito do encontro de 13/10.</p>
+<div class="acoes">
+  <button type="button" onclick="window.print()">Imprimir / Salvar A4</button>
+  <a href="https://nidecop-jafb.github.io/ilb-oa/">Site da disciplina</a>
+  <a href="https://nidecop-jafb.github.io/ilb-oa/documentos/">Documentos oficiais</a>
+</div>
+
+<div class="rodape">
+  <p><a href="https://www.ifmg.edu.br/ouropreto" target="_blank" rel="noopener">IFMG</a> · NIDEC ·
+  <a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" target="_blank" rel="noopener">Agradecimentos</a></p>
+  <p>IFMG campus Ouro Preto - Coordenadoria da Area de Fisica (CODAFIS) - Nucleo de Inovacao e
+  Desenvolvimento de Experimentos Cientificos (NIDEC) · Primeira edicao · 2026</p>
+  <p>Projeto Trilhas de Aprendizagem — Introdução ao Laboratório · versão executiva v1 · dados de 17/09/2026</p>
+</div>
+</div>
+</body>
+</html>
