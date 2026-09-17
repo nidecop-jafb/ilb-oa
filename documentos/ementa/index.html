@@ -142,6 +142,99 @@ table, pre, figure { page-break-inside: avoid; }
 .ilb-rodape a { color: inherit; }
 /* /ICONES-ILB */
 </style>
+<style>
+
+:root {
+--mono: 'Courier New', Courier, monospace;
+--sup1: #131417; 
+--sup2: #191b1f; 
+--sup3: #1f2328; 
+}
+
+body, .capa p, p, li, td, th, blockquote, figcaption, caption,
+h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
+/* --- capa: o icones_ilb.py troca o <p> da imagem por uma <div> de marcas,
+         e as tres linhas de titulo deslizam de nth-of-type 2..4 para 1..3 --- */
+  .capa { background: var(--sup1); border-color: #555; }
+  .capa p:nth-of-type(1) strong {
+    display: block; font-size: .9rem; letter-spacing: .14em; color: var(--acento);
+    text-transform: uppercase; font-weight: normal;
+  }
+  .capa p:nth-of-type(2) strong {
+    display: block; font-size: clamp(1rem, 4.6vw, 1.4rem); letter-spacing: .04em;
+    color: var(--cor); text-transform: uppercase; margin: 8px 0 6px; font-weight: bold;
+  }
+  .capa p:nth-of-type(3) strong {
+    display: block; font-size: .82rem; letter-spacing: .1em; color: #c4c4c4;
+    text-transform: uppercase; font-weight: normal; margin-bottom: 4px;
+  }
+
+  /* --- metrica de leitura do paragrafo corrido --- */
+  body { font-size: 1.05rem; line-height: 1.85; letter-spacing: .005em; }
+  .wrap { max-width: 780px; }
+  p, li { max-width: 68ch; }
+  p { margin-bottom: 16px; }
+  li { margin-bottom: 9px; }
+  ul, ol { margin: 0 0 18px 24px; }
+
+  /* --- faixa de fundo por secao (sem numerar: os titulos ja vem
+         numerados do proprio .md) --- */
+  h1 {
+    background: linear-gradient(90deg, rgba(62,142,90,.22), rgba(62,142,90,0) 78%);
+    border-bottom: 2px solid var(--cor);
+    border-left: 4px solid var(--cor);
+    padding: 14px 16px 12px; margin: 52px 0 22px;
+    font-size: 1.22rem; line-height: 1.35;
+  }
+  h2 { border-left: 3px solid var(--acento); padding-left: 11px; }
+
+  /* --- Sumario: fica como esta (autor, 2026-09-17) --- */
+  #TOC li { max-width: none; }
+
+  /* --- caixas de destaque --- */
+  blockquote {
+    background: var(--sup2); border-left: 4px solid var(--acento);
+    padding: 14px 18px; margin: 0 0 18px; color: #d4d4d4;
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+
+  /* --- tabelas com preenchimento --- */
+  th { background: var(--sup3); color: var(--cor); border-color: #555; font-size: .8rem; }
+  tbody tr:nth-child(even) { background: var(--sup1); }
+  tbody tr:hover { background: #1b1d21; }
+  td, th { padding: 10px 12px; }
+  table.cip tbody tr, table.cip tbody tr:hover { background: none; }
+
+  /* --- botoes com fundo --- */
+  .acoes a {
+    background: var(--sup2); border-color: #555;
+    padding: 14px 16px; letter-spacing: .02em;
+  }
+  .acoes a:hover { background: var(--cor); border-color: var(--cor); color: #0d0d0d; }
+  .acoes a.destaque { background: transparent; border-style: dashed; }
+  .acoes a.destaque:hover { background: var(--cor); color: #0d0d0d; }
+
+  /* --- rodape --- */
+  .rodape { font-size: .78rem; line-height: 1.8; }
+
+  @media (max-width: 560px) {
+    body { font-size: .98rem; line-height: 1.75; }
+    h1 { font-size: 1.05rem; padding: 11px 12px 10px; }
+    #TOC { padding: 16px 16px 14px; }
+  }
+
+  @media print {
+    body { font-size: 11pt; line-height: 1.55; }
+    h1 { background: none; border-left-color: #000; color: #000; }
+    h1::before { color: #444; }
+    h2 { border-left-color: #999; }
+    blockquote { background: #f2f2f2; border-left-color: #999; color: #000; }
+    th { background: #e8e8e8; color: #000; }
+    tbody tr:nth-child(even) { background: #f6f6f6; }
+    tbody tr:hover { background: #f6f6f6; }
+    .acoes a { background: none; }
+  }
+</style>
 </head>
 <body data-pagina="documentos:ementa">
 <div class="wrap">
