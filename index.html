@@ -438,7 +438,42 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 <style>
 .aba-painel .ref-i-ilb { font-size: .84rem; color: #a8a8a8; margin: 0 0 9px;
   padding-left: 14px; text-indent: -14px; word-break: break-word; }
+.aba-painel .ilb-aba-rodape { display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 12px 20px; margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid oklch(0.40 0.02 260); }
+.aba-painel .ilb-aba-rodape a { display: block; line-height: 0; }
+.aba-painel .ilb-aba-agr { flex-basis: 100%; display: flex; justify-content: center; }
+.aba-painel .ilb-aba-agr svg { width: 40px; height: 40px; display: block; }
+.aba-painel .ilb-aba-selo { height: 40px; width: auto; display: block; }
+/* Paleta de destaque das abas do indice (autor, 2026-09-16 — trazida da
+   LME): por cima do CSS do abas_indice.py, que fica intocado (vale para
+   FC1 e FE1). Mesmos valores de verde-quadro/azul-aco da identidade da ILB. */
+.aba-toggle { background: oklch(0.20 0.02 260); border-color: oklch(0.40 0.02 260);
+  border-left: 3px solid transparent; color: oklch(0.72 0.02 260);
+  font-family: 'Space Mono', 'Courier New', monospace; }
+.aba-toggle:hover { color: #7FB2D6; border-left-color: #7FB2D6; }
+.aba-toggle.ilb-ativa { color: oklch(0.13 0.02 260); background: #3E8E5A; border-color: #3E8E5A; font-weight: 700; }
+.aba-painel { background: oklch(0.13 0.02 260); border-right: 3px solid #3E8E5A;
+  box-shadow: 8px 0 32px rgba(0,0,0,.55); color: oklch(0.90 0 0); }
+.aba-painel h3 { color: #7FB2D6; font-size: .9rem; font-weight: 700; border-bottom: 2px solid #3E8E5A; }
+.aba-painel .aba-sec { color: #3E8E5A; border-bottom-color: oklch(0.40 0.02 260); }
+.aba-painel a.aba-btn { background: oklch(0.20 0.02 260); border-color: oklch(0.40 0.02 260);
+  border-left: 4px solid #3E8E5A; color: oklch(0.98 0 0); }
+.aba-painel a.aba-btn:hover { border-color: #7FB2D6; color: #7FB2D6; }
+.aba-painel .aba-nota { color: oklch(0.90 0 0); font-style: italic; background: oklch(0.26 0.05 105);
+  border-left: 4px solid oklch(0.85 0.15 105); padding: 8px 12px; }
+.aba-painel .regra { background: oklch(0.26 0.05 105); border: none; border-left: 4px solid oklch(0.85 0.15 105); }
+.aba-painel .aba-tag { background: #3E8E5A; color: oklch(0.13 0.02 260); }
+.aba-painel .aba-cargo { color: #3E8E5A; }
+.aba-painel .parada-t { color: #7FB2D6; }
 </style>
+<template id="ilbRodapeAbas">
+<div class="ilb-aba-rodape">
+  <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
+  <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
+  <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
+</div>
+</template>
 <button class="aba-toggle" id="abaReferenciaT">Referência</button>
 <aside class="aba-painel" id="abaReferencia">
   <h3>Referência</h3>
@@ -469,6 +504,16 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   if (!meu || !minha) { return; }
   var toggles = [].slice.call(document.querySelectorAll('.aba-toggle'));
   var paineis = [].slice.call(document.querySelectorAll('.aba-painel'));
+  /* Rodape das abas do indice igual ao das abas dos OAs: Agradecimentos
+     abaixo de IFMG + NIDEC, em CADA painel (autor, 2026-09-16, trazido da
+     LME). Pelo JS, e nao no HTML, porque as zonas das abas sao do
+     abas_indice.py (compartilhado) e sao reescritas a cada publicacao. */
+  var modelo = document.getElementById('ilbRodapeAbas');
+  paineis.forEach(function (p) {
+    if (modelo && !p.querySelector('.ilb-aba-rodape')) {
+      p.appendChild(modelo.content.cloneNode(true));
+    }
+  });
   function empilhar() {
     var y = 56;
     toggles.forEach(function (t) {
@@ -499,6 +544,29 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { meu.classList.remove('open'); }
   });
+})();
+/* Qualquer clique fecha a aba aberta do indice — inclusive dentro do painel
+   (trazido da LME, 2026-09-16). So o clique numa lingueta passa: abrir e
+   fechar a propria aba continua com quem ja cuida disso. Tambem marca a
+   lingueta ativa (fundo verde-quadro). */
+(function () {
+  'use strict';
+  function marcar() {
+    [].slice.call(document.querySelectorAll('.aba-toggle')).forEach(function (t) {
+      var p = document.getElementById(t.id.replace(/T$/, ''));
+      t.classList.toggle('ilb-ativa', !!(p && p.classList.contains('open')));
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('.aba-toggle') : null;
+    if (!t) {
+      [].slice.call(document.querySelectorAll('.aba-painel.open')).forEach(function (p) {
+        p.classList.remove('open');
+      });
+    }
+    setTimeout(marcar, 0);
+  }, true);
+  document.addEventListener('keydown', function () { setTimeout(marcar, 0); });
 })();
 </script>
 <!-- /ABA-REFERENCIA-ILB -->
