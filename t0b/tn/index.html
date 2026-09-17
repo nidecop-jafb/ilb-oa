@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ILB-T0B &middot; Sistema Internacional de Unidades &mdash; Testinho</title>
 <style>
+  input, button, select, textarea { font-family: inherit; }
 :root {
   --verde: #3E8E5A; --verde-claro: #5FAE7A; --verde-bg: oklch(0.28 0.05 152);
   --aco: #7FB2D6; --aco-claro: #A7CCE6; --aco-bg: oklch(0.28 0.05 240);
@@ -14,7 +15,7 @@
   --texto: oklch(0.93 0 0); --branco: oklch(0.96 0 0);
   --superficie: oklch(0.22 0.01 260); --hover: oklch(0.25 0.01 260);
   --fundo: oklch(0.13 0.01 260); --painel: oklch(0.16 0.01 260);
-  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font: 'Courier New', Courier, monospace;
   --mono: 'Courier New', 'Cascadia Code', Consolas, monospace;
   --serif: Georgia, Cambria, 'Times New Roman', serif;
 }
@@ -529,7 +530,7 @@ var PESOS = [1, 2, 3, 1, 3];</script>
 .ilb-abas::-webkit-scrollbar { display: none; }
 .ilb-aba-toggle { background: oklch(0.20 0.02 260); border: 1px solid oklch(0.40 0.02 260); border-left: 3px solid transparent;
   color: oklch(0.72 0.02 260); font-size: .68rem; padding: 7px 8px; cursor: pointer;
-  font-family: 'Space Mono', 'Courier New', monospace; writing-mode: vertical-rl;
+  font-family: 'Courier New', Courier, monospace; writing-mode: vertical-rl;
   text-orientation: mixed; letter-spacing: 1px; text-transform: uppercase;
   border-radius: 0; transition: color .15s, border-color .15s, background .15s; }
 .ilb-aba-toggle:hover { color: #7FB2D6; border-left-color: #7FB2D6; }
@@ -539,17 +540,17 @@ var PESOS = [1, 2, 3, 1, 3];</script>
   background: oklch(0.13 0.02 260); border-right: 3px solid #3E8E5A;
   box-shadow: 8px 0 32px rgba(0,0,0,.55);
   padding: 24px 22px 24px 42px; transform: translateX(-100%);
-  transition: transform .25s; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  transition: transform .25s; font-family: 'Courier New', Courier, monospace;
   font-size: .92rem; color: oklch(0.90 0 0); line-height: 1.6; }
 .ilb-aba-painel.open { transform: translateX(0); }
 .ilb-aba-painel p strong, .ilb-aba-painel p em { color: #7FB2D6; }
-.ilb-aba-painel h3 { font-family: 'Space Mono', 'Courier New', monospace; font-size: .9rem;
+.ilb-aba-painel h3 { font-family: 'Courier New', Courier, monospace; font-size: .9rem;
   text-transform: uppercase; letter-spacing: 2px; color: #7FB2D6; font-weight: 700;
   border-bottom: 2px solid #3E8E5A; padding-bottom: 8px; margin: 0 0 14px; }
 .ilb-aba-btn { display: block; margin: 10px 0; padding: 11px 14px;
   background: oklch(0.20 0.02 260); border: 1px solid oklch(0.40 0.02 260); border-left: 4px solid #3E8E5A;
   color: oklch(0.98 0 0); text-decoration: none;
-  font-family: 'Space Mono', 'Courier New', monospace; font-size: .85rem;
+  font-family: 'Courier New', Courier, monospace; font-size: .85rem;
   transition: border-color .15s, color .15s; }
 .ilb-aba-btn:hover { border-color: #7FB2D6; color: #7FB2D6; }
 .ilb-aba-link { color: #7FB2D6; }
@@ -566,7 +567,7 @@ var PESOS = [1, 2, 3, 1, 3];</script>
 .ilb-aba-agr { flex-basis: 100%; display: flex; justify-content: center; }
 .ilb-aba-agr svg { width: 40px; height: 40px; display: block; }
 /* ── Corpo dos paineis ─────────────────────────────────────────────── */
-.ilb-aba-h4 { font-family: 'Space Mono', 'Courier New', monospace; font-size: .74rem;
+.ilb-aba-h4 { font-family: 'Courier New', Courier, monospace; font-size: .74rem;
   text-transform: uppercase; letter-spacing: 1.5px; color: #3E8E5A; font-weight: 700;
   margin: 22px 0 6px; }
 .ilb-aba-lead { font-style: italic; color: oklch(0.72 0.02 260); margin: 0 0 10px; }
@@ -579,7 +580,7 @@ var PESOS = [1, 2, 3, 1, 3];</script>
   color: #3E8E5A; font-weight: 700; }
 .ilb-aba-apoio-tit { font-size: .74rem; text-transform: uppercase;
   letter-spacing: 1px; color: oklch(0.72 0.02 260); margin: 12px 0 2px;
-  font-family: 'Space Mono', 'Courier New', monospace; }
+  font-family: 'Courier New', Courier, monospace; }
 .ilb-aba-oa { color: #7FB2D6; font-weight: 700; }
 .ilb-aba-tag { color: #3E8E5A; font-size: .82rem; }
 .ilb-aba-regra { background: oklch(0.26 0.05 105); border-left: 4px solid oklch(0.85 0.15 105);
@@ -590,21 +591,21 @@ var PESOS = [1, 2, 3, 1, 3];</script>
   padding: 10px 12px; margin: 0 0 10px; }
 .ilb-aba-num { display: inline-block; min-width: 1.5em; color: oklch(0.13 0.02 260); background: #3E8E5A;
   text-align: center; font-weight: 700; margin-right: 6px;
-  font-family: 'Space Mono', 'Courier New', monospace; }
+  font-family: 'Courier New', Courier, monospace; }
 .ilb-aba-ouvir { display: inline-block; margin-top: 6px; color: oklch(0.85 0.15 105); text-decoration: none;
-  font-family: 'Space Mono', 'Courier New', monospace; font-size: .78rem;
+  font-family: 'Courier New', Courier, monospace; font-size: .78rem;
   text-transform: uppercase; letter-spacing: 1px; }
 .ilb-aba-ouvir:hover { text-decoration: underline; }
 .ilb-aba-prep { display: inline-block; margin-top: 6px; color: oklch(0.72 0.02 260); font-size: .74rem;
-  font-family: 'Space Mono', 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1px; }
+  font-family: 'Courier New', Courier, monospace; text-transform: uppercase; letter-spacing: 1px; }
 /* ── Creditos ──────────────────────────────────────────────────────── */
 .ilb-aba-cred { margin: 0 0 10px; }
 .ilb-aba-cargo { display: block; font-size: .72rem; text-transform: uppercase;
-  letter-spacing: 1px; color: #3E8E5A; font-family: 'Space Mono', 'Courier New', monospace; }
+  letter-spacing: 1px; color: #3E8E5A; font-family: 'Courier New', Courier, monospace; }
 .ilb-aba-nome { color: oklch(0.98 0 0); }
 .ilb-aba-bio { font-size: .86rem; color: oklch(0.72 0.02 260); margin: 0 0 6px; }
 /* ── Referencia ────────────────────────────────────────────────────── */
-.ilb-refs-label { font-family: 'Space Mono', 'Courier New', monospace; font-size: .74rem;
+.ilb-refs-label { font-family: 'Courier New', Courier, monospace; font-size: .74rem;
   text-transform: uppercase; letter-spacing: 1.5px; color: #3E8E5A; font-weight: 700;
   margin: 22px 0 8px; }
 .ilb-refs-item { font-size: .84rem; color: oklch(0.72 0.02 260); margin: 0 0 9px;
@@ -626,10 +627,10 @@ var PESOS = [1, 2, 3, 1, 3];</script>
 .ilb-aba-painel .toc-ato:hover, .ilb-aba-painel .toc-topico:hover { color: #7FB2D6; }
 .ilb-aba-painel .toc-ato, .ilb-aba-painel .ato-titulo {
   color: #7FB2D6; font-weight: 700; letter-spacing: 1px;
-  font-family: 'Space Mono', 'Courier New', monospace; font-size: .78rem;
+  font-family: 'Courier New', Courier, monospace; font-size: .78rem;
   text-transform: uppercase; }
 .ilb-aba-painel .toc-topico { padding-left: 14px; }
-.ilb-aba-painel .toc-num { font-family: 'Space Mono', 'Courier New', monospace;
+.ilb-aba-painel .toc-num { font-family: 'Courier New', Courier, monospace;
   color: #3E8E5A; margin-right: 8px; }
 /* Celular: a faixa no body empurra o conteudo (#LESSONS 2026-08-09). */
 @media (max-width: 600px) {

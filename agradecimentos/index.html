@@ -52,12 +52,73 @@
     h1 { font-size: 1.75rem; }
     .poema p { font-size: 1.1rem; }
   }
+/* ICONES-ILB */
+.ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
+  flex-shrink: 0; }
+.ilb-cab-marcas svg { width: 52px; height: 52px; display: block; }
+.ilb-inst-marcas { display: flex; gap: 14px; align-items: center; justify-content: center;
+  width: 100%; margin: 0 auto 12px; }
+.ilb-inst-marcas a { display: flex; }
+.ilb-inst-marcas svg { width: 30px; height: 30px; display: block; }
+.ilb-agr-marca { display: flex; justify-content: center; width: 100%; margin: 0 auto 8px; }
+.ilb-agr-marca a { display: flex; }
+.ilb-agr-marca svg { width: 30px; height: 30px; display: block; }
+@media print { .ilb-agr-marca { display: none !important; } }
+/* RODAPE PADRAO */
+.ilb-rodape { text-align: center; padding: 22px 16px 26px; font-size: .82rem; line-height: 1.6;
+  color: var(--cinza, #8a8f98); }
+.ilb-rodape .ilb-inst-marcas { margin: 0 auto 10px; }
+.ilb-rodape .ilb-agr-marca { margin: 0 auto 10px; }
+.ilb-rodape-texto { max-width: 960px; margin: 0 auto; }
+.ilb-rodape-selo { margin-top: 6px; font-size: .78rem; }
+@media print { .ilb-rodape-selo { display: none !important; } }
+/* CABECALHO PADRAO no RB: codigo em verde-quadro, mensagem numa linha abaixo */
+.header h1 .trilha-code { color: #3E8E5A; }
+.ilb-header-sub { font-size: .82rem; color: var(--cinza, #8a8f98); margin: 2px 0 10px; }
+.rodape-info .ilb-selo-ap { margin-left: 12px; font-size: .75rem; color: var(--cinza, #8a8f98); }
+/* AP 1280x720: texto institucional numa linha so, sem invadir a frase */
+.despedida .desp-inst { font-size: .6rem; letter-spacing: 0; white-space: nowrap; }
+/* EXCECAO TT: capa centrada -> icones de curso e disciplina centralizados */
+.capa-marca > .ilb-cab-marcas { justify-content: center; }
+/* EXCECAO AP slide 1 (1280x720): icones centralizados acima da disciplina; o nome
+   da disciplina numa linha so, para o slide caber */
+.capa-conteudo > .ilb-cab-marcas { justify-content: center; margin: 0 0 14px; }
+.capa-conteudo > .ilb-cab-marcas svg { width: 56px; height: 56px; }
+.capa-slide .capa-disciplina { white-space: nowrap; }
+/* AP Despedida: IFMG + NIDEC legiveis e com folga acima da frase. A despedida da
+   ILB e em DUAS colunas (grid, com foto ao fundo) — nao mexer no layout dela. */
+.desp-frase > .ilb-inst-marcas { justify-content: center; margin: 0 0 6px; }
+.desp-frase > .ilb-inst-marcas svg { width: 32px; height: 32px; }
+.desp-frase > .ilb-agr-marca { margin: 0 auto 8px; }
+.desp-frase > .ilb-agr-marca svg { width: 28px; height: 28px; }
+/* RB impresso */
+.header > .ilb-cab-marcas svg { width: 34px; height: 34px; }
+.header > .ilb-cab-marcas + .header-left { margin-right: auto; }
+.pagina > .ilb-rodape { padding: 6px 0 2px; font-size: .72rem; line-height: 1.4; }
+.pagina > .ilb-rodape .ilb-inst-marcas { margin: 0 auto 4px; }
+@media print {
+  .header > .ilb-cab-marcas svg { width: 24px; height: 24px; }
+  .pagina > .ilb-rodape { padding: 2px 0 0; font-size: 6.5pt; color: #555 !important; }
+  .pagina > .ilb-rodape .ilb-inst-marcas svg { width: 20px; height: 20px; }
+  .ilb-header-sub { font-size: 7.5pt; margin: 0 0 6px; color: #555 !important; }
+}
+/* /ICONES-ILB */
+
+/* AGRADECIMENTOS: icones no padrao dos OAs e UMA saida, fixa no topo. */
+.ilb-topo { position: sticky; top: 0; z-index: 10; background: var(--papel);
+  border-bottom: 1px solid var(--fio); padding: .55rem 1rem; font-family: var(--sans);
+  font-size: .8rem; letter-spacing: .06em; }
+.ilb-topo a { color: var(--acento); text-decoration: none; }
+.ilb-topo a:hover { text-decoration: underline; }
+header .marca .ilb-cab-marcas { gap: 8px; }
+header .marca .ilb-cab-marcas svg { width: 34px; height: 34px; }
+footer .ilb-inst-marcas { margin: 0 auto 8px; }
 </style>
 </head>
-<body>
+<body data-pagina="agradecimentos">
 
 <header>
-  <div class="marca"><img src="../_icones/app-site-192.png" alt="">Trilhas de Aprendizagem &middot; Introdu&ccedil;&atilde;o ao Laborat&oacute;rio &middot; Licenciatura em F&iacute;sica &middot; IFMG campus Ouro Preto</div>
+  <div class="marca"><div class="ilb-cab-marcas"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física"> <title>Prisma decompondo a luz — Licenciatura em Física</title> <defs> <radialGradient id="cab-prisma-fundo" cx="50%" cy="42%" r="60%"> <stop offset="0" stop-color="#26302B"/> <stop offset="1" stop-color="#0E1411"/> </radialGradient> <linearGradient id="cab-prisma-vidro" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/> <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/> </linearGradient> <clipPath id="cab-prisma-dentro"><circle cx="100" cy="100" r="86"/></clipPath> </defs> <circle cx="100" cy="100" r="96" fill="url(#cab-prisma-fundo)"/> <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/> <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1" stroke-dasharray="1.5 3" opacity="0.8"/> <g clip-path="url(#cab-prisma-dentro)"> <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/> <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/> <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/> <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/> <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/> <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/> <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/> <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/> <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/> </g> <polygon points="100,50 56,130 144,130" fill="url(#cab-prisma-vidro)" stroke="#DDEBF3" stroke-width="2.5" stroke-linejoin="round"/> <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/> <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/> <g fill="#FFFFFF" opacity="0.55"> <circle cx="46" cy="62" r="1.2"/> <circle cx="150" cy="56" r="1"/> <circle cx="70" cy="160" r="1"/> <circle cx="140" cy="164" r="1.2"/> </g> </svg><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório"> <g fill="none" stroke="#3E8E5A" stroke-width="3"> <ellipse cx="60" cy="52" rx="46" ry="18"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/> </g> <g fill="#3E8E5A"> <circle cx="53" cy="47" r="7"/> <circle cx="67" cy="47" r="7"/> <circle cx="60" cy="58" r="9"/> </g> <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square"> <line x1="26" y1="110" x2="94" y2="110"/> <line x1="30" y1="110" x2="30" y2="104"/> <line x1="40" y1="110" x2="40" y2="104"/> <line x1="50" y1="110" x2="50" y2="104"/> <line x1="60" y1="110" x2="60" y2="98"/> <line x1="70" y1="110" x2="70" y2="104"/> <line x1="80" y1="110" x2="80" y2="104"/> <line x1="90" y1="110" x2="90" y2="104"/> </g> </svg></div>Trilhas de Aprendizagem &middot; Introdu&ccedil;&atilde;o ao Laborat&oacute;rio &middot; Licenciatura em F&iacute;sica &middot; IFMG campus Ouro Preto</div>
   <h1>Agradecimentos &middot; <em>F&iacute;sica e Poesia</em></h1>
   <p class="intro">Toda dica, sugestão e crítica que chega às Trilhas deixa marca no caminho. Aqui ela volta em forma de poema — um obrigado escrito com a mesma física que ajudou a melhorar.</p>
 </header>
@@ -137,9 +198,13 @@
 </main>
 
 <footer>
-<a href="../">&larr; Voltar ao &iacute;ndice das Trilhas</a><br>
+<div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></div>
 IFMG campus Ouro Preto - Coordenadoria da &Aacute;rea de F&iacute;sica (CODAFIS) - N&uacute;cleo de Inova&ccedil;&atilde;o e Desenvolvimento de Experimentos Cient&iacute;ficos (NIDEC) &middot; Primeira edi&ccedil;&atilde;o &middot; 2026
 </footer>
 
+<!-- CONTADOR:INICIO -->
+<script src="../contador-config.js"></script>
+<script src="../acessos.js"></script>
+<!-- CONTADOR:FIM -->
 </body>
 </html>
