@@ -153,7 +153,7 @@ table, pre, figure { page-break-inside: avoid; }
 
 body, .capa p, p, li, td, th, blockquote, figcaption, caption,
 h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
-/* --- capa: o icones_ilb.py troca o <p> da imagem por uma <div> de marcas,
+/* --- capa: o icones_{ilb,lme}.py troca o <p> da imagem por uma <div> de marcas,
          e as tres linhas de titulo deslizam de nth-of-type 2..4 para 1..3 --- */
   .capa { background: var(--sup1); border-color: #555; }
   .capa p:nth-of-type(1) strong {
@@ -234,7 +234,208 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
     tbody tr:hover { background: #f6f6f6; }
     .acoes a { background: none; }
   }
-</style>
+
+  /* ===== navegacao: barra fixa, painel do Sumario e cartao do contador =====
+     (autor, 2026-09-17, briefing PRE-site-navegacao-paginas-documentos) */
+  .doc-barra {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: var(--fundo); border-bottom: 1px solid var(--cor);
+    transform: translateY(-100%); transition: transform .18s ease;
+  }
+  .doc-barra.vis { transform: none; }
+  .doc-barra-in {
+    max-width: 780px; margin: 0 auto; padding: 8px 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .doc-barra-marca { display: flex; gap: 6px; flex: 0 0 auto; }
+  .doc-barra-marca svg { width: 26px; height: 26px; display: block; }
+  .doc-barra-nome {
+    flex: 1 1 auto; min-width: 0; color: var(--cor); font-size: .82rem;
+    letter-spacing: .04em; text-transform: uppercase;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .doc-barra-acoes { display: flex; gap: 6px; flex: 0 0 auto; }
+  .doc-bt {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--sup2); border: 1px solid #555; color: var(--texto);
+    font: inherit; font-size: .76rem; padding: 6px 10px; cursor: pointer;
+    text-decoration: none; white-space: nowrap;
+  }
+  .doc-bt:hover, .doc-bt[aria-expanded="true"] { background: var(--cor); border-color: var(--cor); color: #0d0d0d; }
+  .doc-bt svg { width: 14px; height: 14px; flex: 0 0 auto; }
+
+  .doc-toc-painel {
+    max-width: 780px; margin: 0 auto; padding: 0 20px 18px;
+    max-height: 62vh; overflow-y: auto;
+  }
+  .doc-toc-painel[hidden] { display: none; }
+  .doc-toc-painel ul { list-style: none; margin: 0; }
+  .doc-toc-painel li { margin: 0; max-width: none; }
+  .doc-toc-painel a {
+    display: block; padding: 8px 10px; color: var(--texto);
+    text-decoration: none; font-size: .84rem; border-bottom: 1px solid #262626;
+  }
+  .doc-toc-painel a:hover { background: var(--sup2); color: var(--cor); }
+
+  /* a barra nao pode cobrir o titulo quando o leitor salta para uma secao */
+  h1 { scroll-margin-top: 64px; }
+
+  /* --- cartao do contador, acima do rodape --- */
+  .doc-contador[hidden] { display: none; }
+  .doc-contador {
+    max-width: 780px; margin: 40px auto 0; padding: 14px 18px;
+    background: var(--sup1); border: 1px solid #555; border-left: 4px solid var(--cor);
+    display: flex; align-items: baseline; gap: 10px; justify-content: center;
+  }
+  .doc-contador-rot { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cinza); }
+  .doc-contador #seloAcessos { color: var(--cor); font-size: 1rem; letter-spacing: .02em; }
+
+  @media (max-width: 620px) {
+    .doc-barra-in { padding: 7px 14px; gap: 8px; }
+    .doc-bt span { display: none; }              /* no celular, so os icones */
+    .doc-bt { padding: 7px 9px; }
+    .doc-barra-nome { font-size: .72rem; }
+    .doc-toc-painel { padding: 0 14px 14px; }
+    h1 { scroll-margin-top: 56px; }
+  }
+
+  @media print {
+    .doc-barra { display: none !important; }
+    .doc-contador { display: none !important; }
+  }
+</style><script>
+(function () {
+  function pronto(fn) {
+    if (document.readyState !== 'loading') { fn(); }
+    else { document.addEventListener('DOMContentLoaded', fn); }
+  }
+
+  var IC = {
+    toc:  '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M2 8h12M2 12h8"/></svg>',
+    docs: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5h4l1.2 1.5H14v6.5H2z"/></svg>',
+    casa: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7.5 8 2.5l6 5V14H2z"/></svg>'
+  };
+
+  function botao(tag, icone, rotulo) {
+    var e = document.createElement(tag);
+    e.className = 'doc-bt';
+    e.innerHTML = icone + '<span>' + rotulo + '</span>';
+    return e;
+  }
+
+  function barra() {
+    var capa = document.querySelector('.capa');
+    if (!capa) { return; }
+
+    var nome = capa.querySelector('p:nth-of-type(2) strong');
+    var marcas = capa.querySelector('[class$="-cab-marcas"]');
+    var toc = document.querySelector('#TOC ul');
+
+    var el = document.createElement('div');
+    el.className = 'doc-barra';
+    var linha = document.createElement('div');
+    linha.className = 'doc-barra-in';
+
+    if (marcas) {
+      var m = document.createElement('span');
+      m.className = 'doc-barra-marca';
+      m.innerHTML = marcas.innerHTML;
+      linha.appendChild(m);
+    }
+
+    var tit = document.createElement('span');
+    tit.className = 'doc-barra-nome';
+    tit.textContent = nome ? nome.textContent : (document.title || '');
+    linha.appendChild(tit);
+
+    var acoes = document.createElement('nav');
+    acoes.className = 'doc-barra-acoes';
+
+    var painel = null;
+    if (toc) {
+      var bt = botao('button', IC.toc, 'Sumário');
+      bt.setAttribute('aria-expanded', 'false');
+      bt.type = 'button';
+      painel = document.createElement('div');
+      painel.className = 'doc-toc-painel';
+      painel.hidden = true;
+      painel.innerHTML = '<ul>' + toc.innerHTML + '</ul>';
+      function fecha() { painel.hidden = true; bt.setAttribute('aria-expanded', 'false'); }
+      bt.addEventListener('click', function () {
+        painel.hidden = !painel.hidden;
+        bt.setAttribute('aria-expanded', painel.hidden ? 'false' : 'true');
+      });
+      painel.addEventListener('click', function (ev) {
+        if (ev.target.closest('a')) { fecha(); }
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape') { fecha(); }
+      });
+      acoes.appendChild(bt);
+    }
+
+    // os dois "voltar" ja existem no bloco de acoes do fim da pagina
+    var links = document.querySelectorAll('.acoes a');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i], txt = (a.textContent || '').trim();
+      if (txt.indexOf('Todos os documentos') === 0) {
+        var d = botao('a', IC.docs, 'Documentos'); d.href = a.getAttribute('href'); acoes.appendChild(d);
+      } else if (txt.indexOf('Voltar ao índice') === 0) {
+        var c = botao('a', IC.casa, 'Trilhas'); c.href = a.getAttribute('href'); acoes.appendChild(c);
+      }
+    }
+
+    linha.appendChild(acoes);
+    el.appendChild(linha);
+    if (painel) { el.appendChild(painel); }
+    document.body.insertBefore(el, document.body.firstChild);
+
+    function mostra() {
+      var passou = (capa.getBoundingClientRect().bottom < 8);
+      el.classList.toggle('vis', passou);
+      if (!passou && painel && !painel.hidden) {
+        painel.hidden = true;
+        var b = acoes.querySelector('button');
+        if (b) { b.setAttribute('aria-expanded', 'false'); }
+      }
+    }
+    window.addEventListener('scroll', mostra, { passive: true });
+    window.addEventListener('resize', mostra);
+    mostra();
+  }
+
+  function contador() {
+    var selo = document.getElementById('seloAcessos');
+    var rodape = document.querySelector('[class$="-rodape"]');
+    if (!selo || !rodape) { return; }
+    var cartao = document.createElement('div');
+    cartao.className = 'doc-contador';
+    var rot = document.createElement('span');
+    rot.className = 'doc-contador-rot';
+    rot.textContent = 'Esta página';
+    cartao.appendChild(rot);
+    cartao.appendChild(selo);          // o mesmo elemento: o acessos.js segue achando o id
+    rodape.parentNode.insertBefore(cartao, rodape);
+
+    // o selo so aparece quando o numero chega; sem ele, o cartao nao fica vazio
+    function sincroniza() {
+      var vazio = !(selo.textContent || '').trim();
+      cartao.hidden = vazio;
+    }
+    sincroniza();
+    if (window.MutationObserver) {
+      new MutationObserver(sincroniza).observe(selo, {
+        attributes: true, attributeFilter: ['style', 'class'], childList: true, characterData: true, subtree: true
+      });
+    }
+  }
+
+  pronto(function () {
+    try { barra(); } catch (e) { /* sem barra, a pagina continua inteira */ }
+    try { contador(); } catch (e) { /* idem */ }
+  });
+})();
+</script>
 </head>
 <body data-pagina="documentos:ppc">
 <div class="wrap">
