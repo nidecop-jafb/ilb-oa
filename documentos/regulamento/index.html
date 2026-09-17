@@ -235,6 +235,7 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
     .acoes a { background: none; }
   }
 
+
   /* ===== navegacao: barra fixa, painel do Sumario e cartao do contador =====
      (autor, 2026-09-17, briefing PRE-site-navegacao-paginas-documentos) */
   .doc-barra {
@@ -248,7 +249,7 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
     display: flex; align-items: center; gap: 12px;
   }
   .doc-barra-marca { display: flex; gap: 6px; flex: 0 0 auto; }
-  .doc-barra-marca svg { width: 26px; height: 26px; display: block; }
+  .doc-barra-marca svg, .doc-barra-marca img { width: 26px; height: 26px; display: block; }
   .doc-barra-nome {
     flex: 1 1 auto; min-width: 0; color: var(--cor); font-size: .82rem;
     letter-spacing: .04em; text-transform: uppercase;
@@ -327,8 +328,10 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
     var capa = document.querySelector('.capa');
     if (!capa) { return; }
 
-    var nome = capa.querySelector('p:nth-of-type(2) strong');
-    var marcas = capa.querySelector('[class$="-cab-marcas"]');
+    // `.capa-doc` e `.capa-marcas`: capa do Projeto Executivo da ILB, que nao usa
+    // os mesmos ganchos das paginas de documento
+    var nome = capa.querySelector('p:nth-of-type(2) strong, .capa-doc');
+    var marcas = capa.querySelector('[class$="-cab-marcas"], .capa-marcas');
     var toc = document.querySelector('#TOC ul');
 
     var el = document.createElement('div');
