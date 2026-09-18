@@ -56,8 +56,18 @@
     max-width: 780px; margin: 0 auto; padding: 8px 20px;
     display: flex; align-items: center; gap: 12px;
   }
-  .doc-barra-marca { display: flex; gap: 6px; flex: 0 0 auto; }
-  .doc-barra-marca svg, .doc-barra-marca img { width: 26px; height: 26px; display: block; }
+  .doc-barra-marca { display: flex; gap: 6px; flex: 0 0 auto; align-items: center; }
+  /* as marcas podem vir embrulhadas num <p> (capa do Projeto Executivo, onde o
+     pandoc junta as duas imagens num paragrafo so): sem isto elas empilham na
+     barra em vez de ficarem lado a lado (autor, 2026-09-17) */
+  .doc-barra-marca > p, .doc-barra-marca > div, .doc-barra-marca > span {
+    display: flex; gap: 6px; align-items: center; margin: 0; padding: 0;
+    max-width: none; flex: 0 0 auto;
+  }
+  /* marcas um pouco maiores na barra (autor, 2026-09-17) */
+  .doc-barra-marca svg, .doc-barra-marca img {
+    width: 32px; height: 32px; display: block; flex: 0 0 auto;
+  }
   .doc-barra-nome {
     flex: 1 1 auto; min-width: 0; color: var(--cor); font-size: .82rem;
     letter-spacing: .04em; text-transform: uppercase;
@@ -104,6 +114,7 @@
     .doc-bt span { display: none; }              /* no celular, so os icones */
     .doc-bt { padding: 7px 9px; }
     .doc-barra-nome { font-size: .72rem; }
+    .doc-barra-marca svg, .doc-barra-marca img { width: 30px; height: 30px; }
     .doc-toc-painel { padding: 0 14px 14px; }
     h1 { scroll-margin-top: 56px; }
   }
