@@ -325,12 +325,15 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
   }
 
   function barra() {
-    var capa = document.querySelector('.capa');
+    // `.capa` nas paginas de documento e no Projeto Executivo; `[data-barra]` em
+    // paginas com cabecalho proprio, como a de instalar o site
+    var capa = document.querySelector('.capa, [data-barra]');
     if (!capa) { return; }
 
     // `.capa-doc` e `.capa-marcas`: capa do Projeto Executivo da ILB, que nao usa
     // os mesmos ganchos das paginas de documento
     var nome = capa.querySelector('p:nth-of-type(2) strong, .capa-doc');
+    var rotulo = capa.getAttribute('data-barra-nome');
     var marcas = capa.querySelector('[class$="-cab-marcas"], .capa-marcas');
     var toc = document.querySelector('#TOC ul');
 
@@ -348,7 +351,7 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
 
     var tit = document.createElement('span');
     tit.className = 'doc-barra-nome';
-    tit.textContent = nome ? nome.textContent : (document.title || '');
+    tit.textContent = rotulo || (nome ? nome.textContent : (document.title || ''));
     linha.appendChild(tit);
 
     var acoes = document.createElement('nav');
@@ -377,13 +380,18 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
       acoes.appendChild(bt);
     }
 
-    // os dois "voltar" ja existem no bloco de acoes do fim da pagina
+    // os dois "voltar" ja existem no fim da pagina: no bloco `.acoes` das paginas de
+    // documento, ou como links soltos em paginas de cabecalho proprio
     var links = document.querySelectorAll('.acoes a');
+    if (!links.length) { links = document.querySelectorAll('.wrap a'); }
+    var temDocs = false, temCasa = false;
     for (var i = 0; i < links.length; i++) {
       var a = links[i], txt = (a.textContent || '').trim();
-      if (txt.indexOf('Todos os documentos') === 0) {
+      if (/^(Todos os documentos|Os documentos)/.test(txt) && !temDocs) {
+        temDocs = true;
         var d = botao('a', IC.docs, 'Documentos'); d.href = a.getAttribute('href'); acoes.appendChild(d);
-      } else if (txt.indexOf('Voltar ao índice') === 0) {
+      } else if (/voltar/i.test(txt) && !temCasa) {
+        temCasa = true;
         var c = botao('a', IC.casa, 'Trilhas'); c.href = a.getAttribute('href'); acoes.appendChild(c);
       }
     }
