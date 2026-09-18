@@ -148,6 +148,11 @@ table:not(.folha):not(.folha-capa):has(td:only-child) thead { display: none; }
 .pe-cab, .pe-rod, .pe-banda { display: none; }
 
 @page { size: A4; margin: 0; }
+
+@media screen and (max-width: 720px) {
+table:not(.folha):not(.folha-capa) { display: block; max-width: 100%; overflow-x: auto;
+-webkit-overflow-scrolling: touch; }
+}
 @media print {
 
 body { background: #fff; color: #000; font-size: 12.5px; line-height: 1.5; }
