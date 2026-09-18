@@ -334,7 +334,9 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
     // os mesmos ganchos das paginas de documento
     var nome = capa.querySelector('p:nth-of-type(2) strong, .capa-doc');
     var rotulo = capa.getAttribute('data-barra-nome');
-    var marcas = capa.querySelector('[class$="-cab-marcas"], .capa-marcas');
+    // as marcas podem estar fora da ancora (pagina de instalar: cabecalho proprio)
+    var marcas = capa.querySelector('[class$="-cab-marcas"], .capa-marcas')
+               || document.querySelector('[class$="-cab-marcas"], .capa-marcas');
     var toc = document.querySelector('#TOC ul');
 
     var el = document.createElement('div');
