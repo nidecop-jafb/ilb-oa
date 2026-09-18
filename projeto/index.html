@@ -211,58 +211,73 @@ transform: translateY(-100%); transition: transform .18s ease;
 max-width: 780px; margin: 0 auto; padding: 8px 20px;
 display: flex; align-items: center; gap: 12px;
 }
-.doc-barra-marca { display: flex; gap: 6px; flex: 0 0 auto; }
-.doc-barra-marca svg, .doc-barra-marca img { width: 26px; height: 26px; display: block; }
-.doc-barra-nome {
-flex: 1 1 auto; min-width: 0; color: var(--cor); font-size: .82rem;
-letter-spacing: .04em; text-transform: uppercase;
-overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.doc-barra-acoes { display: flex; gap: 6px; flex: 0 0 auto; }
-.doc-bt {
-display: inline-flex; align-items: center; gap: 6px;
-background: var(--sup2); border: 1px solid #555; color: var(--texto);
-font: inherit; font-size: .76rem; padding: 6px 10px; cursor: pointer;
-text-decoration: none; white-space: nowrap;
-}
-.doc-bt:hover, .doc-bt[aria-expanded="true"] { background: var(--cor); border-color: var(--cor); color: #0d0d0d; }
-.doc-bt svg { width: 14px; height: 14px; flex: 0 0 auto; }
-.doc-toc-painel {
-max-width: 780px; margin: 0 auto; padding: 0 20px 18px;
-max-height: 62vh; overflow-y: auto;
-}
-.doc-toc-painel[hidden] { display: none; }
-.doc-toc-painel ul { list-style: none; margin: 0; }
-.doc-toc-painel li { margin: 0; max-width: none; }
-.doc-toc-painel a {
-display: block; padding: 8px 10px; color: var(--texto);
-text-decoration: none; font-size: .84rem; border-bottom: 1px solid #262626;
-}
-.doc-toc-painel a:hover { background: var(--sup2); color: var(--cor); }
+.doc-barra-marca { display: flex; gap: 6px; flex: 0 0 auto; align-items: center; }
+/* as marcas podem vir embrulhadas num <p> (capa do Projeto Executivo, onde o
+       pandoc junta as duas imagens num paragrafo so): sem isto elas empilham na
+       barra em vez de ficarem lado a lado (autor, 2026-09-17) */
+    .doc-barra-marca > p, .doc-barra-marca > div, .doc-barra-marca > span {
+      display: flex; gap: 6px; align-items: center; margin: 0; padding: 0;
+      max-width: none; flex: 0 0 auto;
+    }
+    .doc-barra-marca svg, .doc-barra-marca img {
+      width: 26px; height: 26px; display: block; flex: 0 0 auto;
+    }
+    .doc-barra-nome {
+      flex: 1 1 auto; min-width: 0; color: var(--cor); font-size: .82rem;
+      letter-spacing: .04em; text-transform: uppercase;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .doc-barra-acoes { display: flex; gap: 6px; flex: 0 0 auto; }
+    .doc-bt {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--sup2); border: 1px solid #555; color: var(--texto);
+      font: inherit; font-size: .76rem; padding: 6px 10px; cursor: pointer;
+      text-decoration: none; white-space: nowrap;
+    }
+    .doc-bt:hover, .doc-bt[aria-expanded="true"] { background: var(--cor); border-color: var(--cor); color: #0d0d0d; }
+    .doc-bt svg { width: 14px; height: 14px; flex: 0 0 auto; }
 
-h1 { scroll-margin-top: 64px; }
+    .doc-toc-painel {
+      max-width: 780px; margin: 0 auto; padding: 0 20px 18px;
+      max-height: 62vh; overflow-y: auto;
+    }
+    .doc-toc-painel[hidden] { display: none; }
+    .doc-toc-painel ul { list-style: none; margin: 0; }
+    .doc-toc-painel li { margin: 0; max-width: none; }
+    .doc-toc-painel a {
+      display: block; padding: 8px 10px; color: var(--texto);
+      text-decoration: none; font-size: .84rem; border-bottom: 1px solid #262626;
+    }
+    .doc-toc-painel a:hover { background: var(--sup2); color: var(--cor); }
 
-.doc-contador[hidden] { display: none; }
-.doc-contador {
-max-width: 780px; margin: 40px auto 0; padding: 14px 18px;
-background: var(--sup1); border: 1px solid #555; border-left: 4px solid var(--cor);
-display: flex; align-items: baseline; gap: 10px; justify-content: center;
-}
-.doc-contador-rot { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cinza); }
-.doc-contador #seloAcessos { color: var(--cor); font-size: 1rem; letter-spacing: .02em; }
-@media (max-width: 620px) {
-.doc-barra-in { padding: 7px 14px; gap: 8px; }
-.doc-bt span { display: none; } 
-.doc-bt { padding: 7px 9px; }
-.doc-barra-nome { font-size: .72rem; }
-.doc-toc-painel { padding: 0 14px 14px; }
-h1 { scroll-margin-top: 56px; }
-}
-@media print {
-.doc-barra { display: none !important; }
-.doc-contador { display: none !important; }
-}
-</style>
+    /* a barra nao pode cobrir o titulo quando o leitor salta para uma secao */
+    h1 { scroll-margin-top: 64px; }
+
+    /* --- cartao do contador, acima do rodape --- */
+    .doc-contador[hidden] { display: none; }
+    .doc-contador {
+      max-width: 780px; margin: 40px auto 0; padding: 14px 18px;
+      background: var(--sup1); border: 1px solid #555; border-left: 4px solid var(--cor);
+      display: flex; align-items: baseline; gap: 10px; justify-content: center;
+    }
+    .doc-contador-rot { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cinza); }
+    .doc-contador #seloAcessos { color: var(--cor); font-size: 1rem; letter-spacing: .02em; }
+
+    @media (max-width: 620px) {
+      .doc-barra-in { padding: 7px 14px; gap: 8px; }
+      .doc-bt span { display: none; }              /* no celular, so os icones */
+      .doc-bt { padding: 7px 9px; }
+      .doc-barra-nome { font-size: .72rem; }
+      .doc-toc-painel { padding: 0 14px 14px; }
+      h1 { scroll-margin-top: 56px; }
+    }
+
+    @media print {
+      .doc-barra { display: none !important; }
+      .doc-contador { display: none !important; }
+    }
+
+  </style>
   <script>
   (function () {
     function pronto(fn) {
