@@ -1,0 +1,21 @@
+{
+  "name": "Lista de Presença — ILB",
+  "short_name": "Presença ILB",
+  "start_url": "/ilb-oa/presenca/",
+  "scope": "/ilb-oa/presenca/",
+  "display": "standalone",
+  "background_color": "#131110",
+  "theme_color": "#131110",
+  "icons": [
+    {
+      "src": "/ilb-oa/_icones/app-presenca-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/ilb-oa/_icones/app-presenca-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
