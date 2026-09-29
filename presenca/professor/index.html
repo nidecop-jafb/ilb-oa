@@ -205,7 +205,7 @@
     professor. Quando um estudante &eacute; recusado, o IP da rede dele aparece aqui como
     <strong>pendente</strong>, com o n&uacute;mero de recusas de hoje: recusas acumulando <strong>durante a aula</strong>
     indicam a rede do campus &mdash; toque em <strong>Autorizar</strong> uma vez e ela vale para as pr&oacute;ximas
-    chamadas. N&atilde;o autorize um IP com poucas recusas fora do hor&aacute;rio de aula (pode ser 4G ou casa).</div>
+    chamadas da ILB e da LME (as duas disciplinas dividem a lista de redes). N&atilde;o autorize um IP com poucas recusas fora do hor&aacute;rio de aula (pode ser 4G ou casa).</div>
   </div>
 
   <!-- QR PARA PROJETAR -->
@@ -365,13 +365,30 @@ function atualizarLista(presentes) {
   }
 }
 
+/* LME-5: ILB e LME dividem as redes autorizadas — o servidor devolve as linhas
+   das duas disciplinas; aqui cada IP aparece uma vez (bloqueada > ativa > pendente). */
+function juntarRedes(redes) {
+  var ordem = { bloqueada: 3, ativa: 2, pendente: 1 }, por = {}, lista = [];
+  redes.forEach(function (r) {
+    var j = por[r.ip];
+    if (!j) { j = por[r.ip] = { ip: r.ip, rotulo: '', status: '', recusas_hoje: 0, disc: [] }; lista.push(j); }
+    if (!j.rotulo && r.rotulo) j.rotulo = r.rotulo;
+    if ((ordem[r.status] || 0) > (ordem[j.status] || 0)) j.status = r.status;
+    j.recusas_hoje += (r.recusas_hoje || 0);
+    if (r.disciplina && j.disc.indexOf(r.disciplina) < 0) j.disc.push(r.disciplina);
+  });
+  return lista;
+}
+
 function atualizarRedes(redes) {
+  redes = juntarRedes(redes);
   var corpo = document.getElementById('redesCorpo');
   corpo.innerHTML = '';
   var pend = 0;
   redes.forEach(function (r) {
     if (r.status === 'pendente') pend++;
-    var nome = (r.rotulo ? esc(r.rotulo) + '<br>' : '') + '<span class="ip-mono">' + esc(r.ip) + '</span>';
+    var nome = (r.rotulo ? esc(r.rotulo) + '<br>' : '') + '<span class="ip-mono">' + esc(r.ip) + '</span>' +
+      (r.disc.length ? '<br><span class="ip-mono">' + esc(r.disc.join(' · ')) + '</span>' : '');
     var acoes = '';
     if (r.status !== 'ativa') acoes += '<button class="btn-mini" onclick="redeAcao(\'' + r.ip + '\', \'autorizar\')">Autorizar</button>';
     if (r.status !== 'bloqueada') acoes += '<button class="btn-mini btn-mini-vermelho" onclick="redeAcao(\'' + r.ip + '\', \'bloquear\')">Bloquear</button>';
@@ -436,7 +453,7 @@ function fecharChamada() {
 
 (function () {
   var c = null;
-  try { c = localStorage.getItem(CHAVE_KEY); } catch (e) {}
+  try { c = localStorage.getItem(CHAVE_KEY) || localStorage.getItem('ifmg_lme_presenca_chave'); } catch (e) {}
   if (c) { chave = c; consultarAdmin(true); }
 })();
 </script>
