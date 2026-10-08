@@ -452,6 +452,11 @@ function fecharChamada() {
 }
 
 (function () {
+  /* 1.o acesso pelo instalador do pen drive: #chave=... (o fragmento nao vai ao servidor); limpa o endereco */
+  var hc = (location.hash.match(/[#&]chave=([^&]+)/) || [])[1];
+  if (hc) { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    try { chave = decodeURIComponent(hc).trim(); } catch (e) { chave = null; }
+    if (chave) { consultarAdmin(true); return; } }
   var c = null;
   try { c = localStorage.getItem(CHAVE_KEY) || localStorage.getItem('ifmg_lme_presenca_chave'); } catch (e) {}
   if (c) { chave = c; consultarAdmin(true); }
