@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILB-T0B · Sistema Internacional de Unidades — Apresentação (modo palco)</title>
+<title>ILB-T0B · O Sistema Internacional e o Quadro Geral de Unidades — Apresentação (modo palco)</title>
 <style>
   input, button, select, textarea { font-family: inherit; }
 /* ═══ DESIGN SYSTEM: BRUTALISMO CIENTIFICO — MODO PALCO ═══ */
@@ -145,7 +145,7 @@ html, body {
 
 /* ── SLIDE 1: CAPA ── */
 .capa-slide {
-  padding: 0; justify-content: flex-end; align-items: center;
+  padding: 0; justify-content: center; align-items: center;
   text-align: center;
   /* NAO redefinir position aqui: o .slide e position:absolute com inset:0.
      Com position:relative a capa saia do posicionamento absoluto, encolhia
@@ -160,16 +160,10 @@ html, body {
   z-index: 0; min-height: 100%;
 }
 [data-theme="light"] .capa-bg { filter: brightness(0.65) saturate(1.1); }
-/* Veu so na base: o texto desce para nao cobrir rosto/corpo do protagonista,
-   que fica enquadrado no centro/alto da foto. */
-.capa-bg::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 42%, rgba(0,0,0,0.72) 100%);
-}
 .capa-conteudo {
   position: relative; z-index: 1;
   display: flex; flex-direction: column; align-items: center; gap: 0;
-  padding: 0 6vw 6vh;
+  padding: 5vh 6vw;
 }
 .capa-disciplina {
   font-size: 3.4rem; font-weight: 800;
@@ -623,10 +617,8 @@ html, body {
 [data-theme="light"] .ca-provinha p { color: oklch(0.18 0 0); }
 
 /* ── DESPEDIDA ── */
-/* Texto descia na altura do pescoco da Sofia (bloco centralizado na vertical);
-   movido para perto do joelho — bloco ancorado embaixo (2026-09-13). */
 .despedida {
-  padding: 0 0 5vh; justify-content: flex-end; align-items: center;
+  padding: 0; justify-content: center; align-items: center;
   text-align: center;
 }
 /* ── Slide 16 em duas colunas, sobre imagem de fundo ──
@@ -643,9 +635,7 @@ html, body {
 /* Veu que protege o lado do texto sem apagar a cena do lado direito. */
 .desp-bg::after {
   content: ""; position: absolute; inset: 0;
-  background:
-    linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 40%),
-    linear-gradient(90deg, rgba(0,0,0,0.64) 0%, rgba(0,0,0,0.48) 52%, rgba(0,0,0,0.20) 100%);
+  background: linear-gradient(90deg, rgba(0,0,0,0.64) 0%, rgba(0,0,0,0.48) 52%, rgba(0,0,0,0.20) 100%);
 }
 .despedida .desp-body {
   position: relative; z-index: 1;
@@ -741,20 +731,15 @@ html, body {
 .rodape-nav {
   display: flex; gap: 6px; align-items: center;
 }
-.rodape-nav button, .rodape-nav a {
+.rodape-nav button {
   background: var(--superficie);
   border: 1px solid var(--cinza-borda);
   color: var(--cinza); width: 32px; height: 32px;
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: 0.9rem; text-decoration: none;
+  cursor: pointer; font-size: 0.9rem;
   transition: color 0.15s, border-color 0.15s;
 }
-.rodape-nav button:hover, .rodape-nav a:hover { color: var(--ouro); border-color: var(--ouro); }
-.rodape-nav-oa {
-  width: auto !important; padding: 0 12px; font-family: var(--mono);
-  font-size: .78rem; font-weight: 700; white-space: nowrap;
-}
-@media (max-width: 700px) { .rodape-nav-oa { display: none; } }
+.rodape-nav button:hover { color: var(--ouro); border-color: var(--ouro); }
 .rodape-nav .contador {
   font-family: var(--mono); font-size: 0.85rem;
   color: var(--cinza); min-width: 60px; text-align: center; font-weight: 700;
@@ -937,19 +922,17 @@ html, body {
 .chk-t { font-size: 1rem; line-height: 1.4; }
 
 
-/* figuras inteiras (corrigido 2026-09-13): a lista de seletores abaixo tinha
-   ficado sem chave de declaracao — os comentarios entre ela e .cred-cargo
-   faziam as duas regras se fundirem, e as figuras 2-9 continuavam cortadas
-   pelo object-fit:cover da regra-base. Cortava 16-57% das fotos. */
+/* figuras inteiras — cartaz (s3), reguas (s4) e simbolo (s10): cover cortava 16-37% */
 .slide[data-slide="2"] .col-img img,
 .slide[data-slide="3"] .col-img img,
 .slide[data-slide="4"] .col-img img,
-.slide[data-slide="5"] .col-img img,
-.slide[data-slide="6"] .col-img img,
-.slide[data-slide="9"] .col-img img {
-  object-fit: contain;
-  background: var(--input-bg);
-}
+.slide[data-slide="9"] .col-img img,
+
+/* ajuste de transbordo — slides 4 e 11 (com botao de revelacao) */
+
+/* ajuste de transbordo — slide 10 (Normas) em 1366x768 */
+/* PADRAO-ABAS-CREDITOS (decisao do autor 2026-09-02): cargos na secundaria (aco --azul), caixa normal. */
+.cred-cargo { color: var(--azul); text-transform: none; }
 /* ICONES-ILB */
 .ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
   flex-shrink: 0; }
@@ -1023,9 +1006,6 @@ html, body {
 
 <!-- ═══ TOOLBAR ═══ -->
 <div class="toolbar">
-  <a href="../../index.html" title="Voltar aos OAs da trilha" style="display:flex;align-items:center;text-decoration:none;">
-    <button style="background:none;border:1px solid var(--cinza-borda);color:var(--cinza);font-size:0.9rem;padding:6px 10px;cursor:pointer;border-radius:0;transition:color 0.15s,border-color 0.15s;letter-spacing:0.5px;font-weight:600;" title="Home">&#x1f3e0;</button>
-  </a>
   <button id="btn-overview" title="Overview grid (tecla O)">&#9638; O</button>
   <button id="btn-tema" title="Alternar tema (T)">Tema</button>
   <button id="btn-fullscreen" title="Tela cheia (F)">&#9974; F</button>
@@ -1054,7 +1034,7 @@ html, body {
       <div class="capa-disciplina">Introdução ao Laboratório</div>
       <div class="capa-curso">Licenciatura em Física &middot; 2.º período</div>
       <div class="capa-trilha">Trilha T0B</div>
-      <div class="capa-titulo">Sistema Internacional de Unidades</div>
+      <div class="capa-titulo">O Sistema Internacional e o Quadro Geral de Unidades</div>
       <div class="capa-epigrafe">&ldquo;A todos os tempos, a todos os povos.&rdquo;</div>
       <div class="capa-epigrafe-autor">&mdash; Condorcet (1743&ndash;1794)</div>
       <div class="capa-inst" style="margin-top:40px;">IFMG &mdash; Campus Ouro Preto &middot; 2026</div>
@@ -1065,18 +1045,15 @@ html, body {
   <section class="slide" data-slide="2" data-titulo="Roteiro da sessão — 100 min">
     <div class="slide-titulo">Roteiro da sessão &mdash; 100 min</div>
     <div class="slide-body">
-      <div class="slide-subtitulo-fe">Hoje se mede &middot; e se aprende a escrever o que se mediu</div>
+      <div class="slide-subtitulo-fe">Hoje se mede &middot; e se aprende a escrever o que se mediu, pelo QGU</div>
       <div class="cols img-r">
         <div class="col-text" style="display:flex;flex-direction:column;gap:6px;">
-          <div class="tl"><span class="tl-t">0&ndash;10 min</span><span class="tl-d"><strong>Chegada</strong> &mdash; distribuição do Roteiro de Bancada; as duas estações já montadas</span></div>
-          <div class="tl"><span class="tl-t">10&ndash;25 min</span><span class="tl-d"><strong>Estação A</strong> &mdash; folha de papel, moeda, rampa</span></div>
-          <div class="tl"><span class="tl-t">25&ndash;40 min</span><span class="tl-d"><strong>Estação B</strong> &mdash; clipe, 100 g, tempo de reação</span></div>
-          <div class="tl"><span class="tl-t">40&ndash;50 min</span><span class="tl-d"><strong>Rodízio</strong> &mdash; troca de estação</span></div>
-          <div class="tl"><span class="tl-t">50&ndash;60 min</span><span class="tl-d"><strong>Por que um padrão</strong> &mdash; do corpo à oitava, da oitava ao metro</span></div>
-          <div class="tl"><span class="tl-t">60&ndash;70 min</span><span class="tl-d"><strong>As sete de base</strong> e a revolução de 2019</span></div>
-          <div class="tl"><span class="tl-t">70&ndash;80 min</span><span class="tl-d"><strong>Derivadas e prefixos</strong> &mdash; escolher a escala certa</span></div>
-          <div class="tl"><span class="tl-t">80&ndash;92 min</span><span class="tl-d"><strong>A grafia</strong> &mdash; o quadro coletivo na lousa</span></div>
-          <div class="tl"><span class="tl-t">92&ndash;100 min</span><span class="tl-d"><strong>Fechamento</strong> &mdash; checklist e os dois relatórios</span></div>
+          <div class="tl"><span class="tl-t">0&ndash;10 min</span><span class="tl-d"><strong>Chegada</strong> &mdash; Roteiro de Bancada na mão; as duas estações já montadas</span></div>
+          <div class="tl"><span class="tl-t">10&ndash;25 min</span><span class="tl-d"><strong>Bloco 1</strong> &mdash; a evolução e a revolução das medidas: a oitava, o metro, o kilograma de 2019</span></div>
+          <div class="tl"><span class="tl-t">25&ndash;40 min</span><span class="tl-d"><strong>Bloco 2</strong> &mdash; o Quadro Geral de Unidades, parte por parte</span></div>
+          <div class="tl"><span class="tl-t">40&ndash;85 min</span><span class="tl-d"><strong>Lab</strong> &mdash; as seis tarefas nas duas estações; troca aos 22 min</span></div>
+          <div class="tl"><span class="tl-t">85&ndash;95 min</span><span class="tl-d"><strong>Fecho do Lab</strong> &mdash; o quadro coletivo na lousa: confere-se a escrita</span></div>
+          <div class="tl"><span class="tl-t">95&ndash;100 min</span><span class="tl-d"><strong>Bloco 3</strong> &mdash; medidas produzem conhecimento; o que vem na T01</span></div>
         </div>
         <div class="col-img">
           <img src="../_imagens/_web/ILB-T0B-Figura-03-v1-web-claro.jpg" alt="Figura 3">
@@ -1090,16 +1067,16 @@ html, body {
   <section class="slide" data-slide="3" data-titulo="As duas estações — o que se mede hoje">
     <div class="slide-titulo">As duas estações &mdash; seis medidas, uma linha cada</div>
     <div class="slide-body">
-      <div class="slide-subtitulo-fe">As bancadas ficam montadas para a T01, na semana que vem</div>
+      <div class="slide-subtitulo-fe">Cada tarefa leva a uma parte do QGU &middot; as bancadas ficam montadas para a T01</div>
       <div class="cols img-r">
         <div class="col-text">
           <div class="passos">
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>A1</strong> a espessura de uma folha de papel &mdash; régua, pilha de 100</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>A2</strong> o diâmetro de uma moeda &mdash; paquímetro</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>A3</strong> a inclinação da rampa &mdash; transferidor</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>B1</strong> a massa de um clipe &mdash; balança, 20 clipes</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>B2</strong> a força-peso sobre 100 g &mdash; dinamômetro</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>B3</strong> o tempo de reação &mdash; a régua que cai</span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>A1</strong> a espessura de uma folha de papel &mdash; régua, pilha de 100 <em>(partes 1 e 2)</em></span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>A2</strong> o diâmetro de uma moeda &mdash; paquímetro <em>(partes 2 e 3)</em></span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>A3</strong> a inclinação da rampa &mdash; transferidor <em>(parte 4)</em></span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>B1</strong> a massa de um clipe &mdash; balança, 20 clipes <em>(partes 1 e 2)</em></span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>B2</strong> a força-peso sobre 100 g &mdash; dinamômetro <em>(partes 4 e 5)</em></span></div>
+            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>B3</strong> o tempo de reação &mdash; a régua que cai <em>(partes 1 e 3)</em></span></div>
           </div>
           <div class="def" style="border-left-color:var(--verde);">
             <div class="termo" style="color:var(--verde)">O que se cobra não é o valor</div>
@@ -1123,15 +1100,15 @@ html, body {
         <div class="col-text">
           <div class="def">
             <div class="termo">A1 &middot; a folha de papel</div>
-            <p>Nenhuma régua tem divisão para isso: mede-se a pilha de <strong>100 folhas</strong> e divide-se por 100. O resultado sai perto de 0,1 mm &mdash; e é aí que o milímetro fica desconfortável. Em micrometros: <strong>100 µm</strong>.</p>
+            <p>Mede-se a pilha de <strong>100 folhas</strong> e divide-se por 100. Perto de 0,1 mm: o milimetro fica grande demais, e o prefixo certo é o <strong>micro</strong> &mdash; 100 µm.</p>
           </div>
           <div class="def">
             <div class="termo">A2 &middot; a moeda</div>
-            <p>No paquímetro a leitura chega ao décimo de milímetro. Duas pessoas medem a mesma moeda: <strong>23,4 e 23,5 mm</strong>. Guarde a diferença — é a T01 inteira.</p>
+            <p>No paquímetro, <strong>23,4 e 23,5 mm</strong> para a mesma moeda. Vírgula decimal, espaço antes do símbolo. A diferença é a T01 inteira.</p>
           </div>
           <div class="def" style="border-left-color:var(--erro);">
             <div class="termo" style="color:var(--erro)">A3 &middot; a rampa</div>
-            <p>O transferidor dá o resultado em <strong>graus</strong> — e o grau é unidade <strong>fora do SI</strong>. A do Sistema é o radiano: 1° = π/180 rad.</p>
+            <p>O transferidor dá <strong>graus</strong>: fora do SI, aceito em uso (QGU, Tabela 4). 1° = (π/180) rad.</p>
           </div>
         </div>
         <div class="col-img">
@@ -1151,15 +1128,15 @@ html, body {
         <div class="col-text">
           <div class="def">
             <div class="termo">B1 &middot; o clipe</div>
-            <p>Pesam-se <strong>vinte</strong> e divide-se por vinte: o mesmo truque da folha, agora em massa. O kilograma é a única unidade de base que já nasce com prefixo.</p>
+            <p>Pesam-se <strong>vinte</strong> e divide-se por vinte. O kilograma já nasce com prefixo: o clipe se escreve em gramas ou miligramas.</p>
           </div>
           <div class="def">
             <div class="termo">B2 &middot; os 100 g</div>
-            <p>O dinamômetro mede <strong>força</strong>, não massa: 100 g pesam cerca de <strong>0,98 N</strong>. E o mostrador em kgf é unidade fora do SI — 1 kgf = 9,81 N.</p>
+            <p>O dinamômetro mede <strong>força</strong>: cerca de <strong>0,98 N</strong>. O kgf do mostrador não está em nenhuma tabela do QGU &mdash; converte-se.</p>
           </div>
           <div class="def" style="border-left-color:var(--verde);">
             <div class="termo" style="color:var(--verde)">B3 &middot; o tempo de reação</div>
-            <p>A régua cai entre os dedos e a distância diz o tempo. É a primeira <strong>medida indireta</strong> da disciplina: mede-se comprimento, obtém-se tempo.</p>
+            <p>A régua cai e a distância diz o tempo: a primeira <strong>medida indireta</strong>. Uns 200 ms &mdash; duzentos <em>milisegundos</em>, com um s só.</p>
           </div>
         </div>
         <div class="col-img">
@@ -1171,23 +1148,28 @@ html, body {
   </section>
 
   <!-- SLIDE 6 -->
-  <section class="slide" data-slide="6" data-titulo="Por que existe um padrão">
-    <div class="slide-titulo">Por que existe um padrão</div>
+  <section class="slide" data-slide="6" data-titulo="O Quadro Geral de Unidades — cinco partes">
+    <div class="slide-titulo">O Quadro Geral de Unidades de Medida no Brasil</div>
     <div class="slide-body">
-      <div class="slide-subtitulo-fe">Do corpo à oitava; da oitava ao metro</div>
+      <div class="slide-subtitulo-fe">O SI escrito para uso no país &middot; Inmetro &middot; tradução luso-brasileira de 2021</div>
       <div class="cols img-r" style="grid-template-columns:1fr 1fr;">
         <div class="col-text">
           <div class="passos">
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>O corpo</strong> &mdash; o pé, o palmo, a braça: funciona na aldeia, falha entre aldeias.</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>Ouro Preto</strong> &mdash; o ouro pesado em <em>oitavas</em>, a pureza em <em>quilates</em>; a Casa dos Contos pesava o quinto da Coroa.</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>1791</strong> &mdash; a Revolução propõe o metro: uma unidade que não pertence a ninguém.</span></div>
-            <div class="passo"><span class="passo-n">&#x25B8;</span><span class="passo-t"><strong>1875</strong> &mdash; a Convenção do Metro cria o BIPM; hoje a CGPM decide, e o Inmetro cuida disso aqui.</span></div>
+            <div class="passo"><span class="passo-n">&#x25A0;</span><span class="passo-t"><strong>Parte 1</strong> &mdash; as sete unidades de base e as constantes que as definem</span></div>
+            <div class="passo"><span class="passo-n">&#x25A0;</span><span class="passo-t"><strong>Parte 2</strong> &mdash; os prefixos, de yotta a yocto</span></div>
+            <div class="passo"><span class="passo-n">&#x25A0;</span><span class="passo-t"><strong>Parte 3</strong> &mdash; a grafia e a pronúncia: nome, símbolo e número</span></div>
+            <div class="passo"><span class="passo-n">&#x25A0;</span><span class="passo-t"><strong>Parte 4</strong> &mdash; as unidades fora do SI</span></div>
+            <div class="passo"><span class="passo-n">&#x25A0;</span><span class="passo-t"><strong>Parte 5</strong> &mdash; a Tabela Geral de unidades (5a a 5g)</span></div>
           </div>
         </div>
         <div class="col-text">
           <div class="def" style="border-left-color:var(--verde);">
-            <div class="termo" style="color:var(--verde)">Rastreabilidade</div>
-            <p>Ligar a sua medida, por uma cadeia sem buracos, a um padrão reconhecido. A régua vale porque se compara a um padrão, que se compara a outro, que termina no BIPM. <strong>Sem a cadeia, o número é uma opinião.</strong></p>
+            <div class="termo" style="color:var(--verde)">Por que um quadro nacional</div>
+            <p>Do corpo à oitava, da oitava ao metro de 1791; em 1875, a Convenção do Metro cria o BIPM. O Inmetro traduz o SI e o publica no QGU: é a <strong>rastreabilidade</strong> chegando ao país.</p>
+          </div>
+          <div class="def">
+            <div class="termo">A regra desta aula</div>
+            <p>Não se decora o Quadro: <strong>consulta-se</strong>. Toda dúvida de escrita tem seção e tabela.</p>
           </div>
         </div>
       </div>
@@ -1195,101 +1177,100 @@ html, body {
   </section>
 
   <!-- SLIDE 7 -->
-  <section class="slide" data-slide="7" data-titulo="As sete que bastam">
-    <div class="slide-titulo">As sete que bastam</div>
+  <section class="slide" data-slide="7" data-titulo="Parte 1 — as sete unidades de base">
+    <div class="slide-titulo">Parte 1 &mdash; as sete unidades de base</div>
     <div class="slide-body">
-      <div class="slide-subtitulo-fe">Sete grandezas de base &mdash; e a lista não cresce</div>
+      <div class="slide-subtitulo-fe">QGU, Tabela 1 &middot; cada unidade definida por uma constante de valor fixado</div>
       <div class="cols img-r">
         <div class="col-text">
           <table class="tbl">
-            <thead><tr><th>Grandeza</th><th>Unidade</th><th>Símbolo</th></tr></thead>
+            <thead><tr><th>Grandeza</th><th>Unidade</th><th>Constante</th></tr></thead>
             <tbody>
-              <tr><td>comprimento</td><td>metro</td><td>m</td></tr>
-              <tr><td>massa</td><td>kilograma</td><td>kg</td></tr>
-              <tr><td>tempo</td><td>segundo</td><td>s</td></tr>
-              <tr><td>corrente elétrica</td><td>ampere</td><td>A</td></tr>
-              <tr><td>temperatura termodinâmica</td><td>kelvin</td><td>K</td></tr>
-              <tr><td>quantidade de substância</td><td>mol</td><td>mol</td></tr>
-              <tr><td>intensidade luminosa</td><td>candela</td><td>cd</td></tr>
+              <tr><td>tempo</td><td>segundo (s)</td><td>&Delta;&nu;<sub>Cs</sub></td></tr>
+              <tr><td>comprimento</td><td>metro (m)</td><td><em>c</em></td></tr>
+              <tr><td>massa</td><td>kilograma (kg)</td><td><em>h</em> (Planck)</td></tr>
+              <tr><td>corrente elétrica</td><td>ampere (A)</td><td><em>e</em></td></tr>
+              <tr><td>temperatura termodinâmica</td><td>kelvin (K)</td><td><em>k</em></td></tr>
+              <tr><td>quantidade de matéria</td><td>mol (mol)</td><td><em>N</em><sub>A</sub></td></tr>
+              <tr><td>intensidade luminosa</td><td>candela (cd)</td><td><em>K</em><sub>cd</sub></td></tr>
             </tbody>
           </table>
-          <p style="margin-top:8px;">Na bancada de hoje vocês usaram <strong>três</strong>: comprimento, massa e tempo.</p>
+          <div class="def" style="border-left-color:var(--verde);">
+            <div class="termo" style="color:var(--verde)">20 de maio de 2019</div>
+            <p>O kilograma deixou de ser um cilindro em Sèvres. <em>&ldquo;Tomando o valor numérico fixado&rdquo;</em>: o número da constante é exato, e a unidade se ajusta a ele.</p>
+          </div>
         </div>
         <div class="col-img">
           <img src="../_imagens/_web/ILB-T0B-Figura-05-v1-web.jpg" alt="Figura 5">
-          <div class="col-img-legenda"><span class="fig-num">Figura 5</span>As sete unidades de base, e as três que a bancada de hoje usou</div>
+          <div class="col-img-legenda"><span class="fig-num">Figura 5</span>As sete unidades de base, e as três que a bancada usou</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SLIDE 8 -->
-  <section class="slide" data-slide="8" data-titulo="A revolução de 2019">
-    <div class="slide-titulo">A revolução de 2019</div>
+  <section class="slide" data-slide="8" data-titulo="Parte 2 — os prefixos">
+    <div class="slide-titulo">Parte 2 &mdash; os prefixos</div>
     <div class="slide-body">
-      <div class="slide-subtitulo-fe">O padrão deixou de ser uma coisa e passou a ser uma lei</div>
-      <div class="cols img-r" style="grid-template-columns:1fr 1fr;">
+      <div class="slide-subtitulo-fe">QGU, Tabela 2 &middot; um prefixo só por unidade</div>
+      <div class="cols img-r" style="grid-template-columns:1.2fr 1fr;">
         <div class="col-text">
-          <div class="def">
-            <div class="termo">Até 2019</div>
-            <p>O kilograma era <strong>um objeto</strong>: um cilindro de platina e irídio guardado em Sèvres desde 1889. Todas as balanças do mundo dependiam dele — e ele perdia massa. Muito pouco, mas perdia.</p>
-          </div>
+          <table class="tbl">
+            <thead><tr><th>Nome</th><th>Símb.</th><th>Fator</th><th>Nome</th><th>Símb.</th><th>Fator</th></tr></thead>
+            <tbody>
+              <tr><td>yotta</td><td>Y</td><td>10<sup>24</sup></td><td>deci</td><td>d</td><td>10<sup>&minus;1</sup></td></tr>
+              <tr><td>zetta</td><td>Z</td><td>10<sup>21</sup></td><td>centi</td><td>c</td><td>10<sup>&minus;2</sup></td></tr>
+              <tr><td>exa</td><td>E</td><td>10<sup>18</sup></td><td>mili</td><td>m</td><td>10<sup>&minus;3</sup></td></tr>
+              <tr><td>peta</td><td>P</td><td>10<sup>15</sup></td><td>micro</td><td>µ</td><td>10<sup>&minus;6</sup></td></tr>
+              <tr><td>tera</td><td>T</td><td>10<sup>12</sup></td><td>nano</td><td>n</td><td>10<sup>&minus;9</sup></td></tr>
+              <tr><td>giga</td><td>G</td><td>10<sup>9</sup></td><td>pico</td><td>p</td><td>10<sup>&minus;12</sup></td></tr>
+              <tr><td>mega</td><td>M</td><td>10<sup>6</sup></td><td>femto</td><td>f</td><td>10<sup>&minus;15</sup></td></tr>
+              <tr><td>kilo</td><td>k</td><td>10<sup>3</sup></td><td>atto</td><td>a</td><td>10<sup>&minus;18</sup></td></tr>
+              <tr><td>hecto</td><td>h</td><td>10<sup>2</sup></td><td>zepto</td><td>z</td><td>10<sup>&minus;21</sup></td></tr>
+              <tr><td>deca</td><td>da</td><td>10<sup>1</sup></td><td>yocto</td><td>y</td><td>10<sup>&minus;24</sup></td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="col-text">
-          <div class="def" style="border-left-color:var(--verde);">
-            <div class="termo" style="color:var(--verde)">Desde 20 de maio de 2019</div>
-            <p>O kilograma é definido pela <strong>constante de Planck</strong>. Kilograma, ampere, kelvin e mol foram redefinidos por constantes da natureza. Qualquer laboratório suficientemente bom pode realizá-los.</p>
+          <div class="def" style="border-left-color:var(--erro);">
+            <div class="termo" style="color:var(--erro)">Obs. a &mdash; o kilograma</div>
+            <p>Já nasce com prefixo: os múltiplos se formam sobre o <em>grama</em>. Miligrama, nunca &ldquo;microkilograma&rdquo;.</p>
           </div>
-          <p style="margin-top:10px;"><strong>Pergunta de aula:</strong> por que trocar um cilindro que funcionava por uma constante? A resposta é sobre <em>confiança</em>, não sobre precisão.</p>
+          <div class="def">
+            <div class="termo">Obs. b &mdash; o tempo</div>
+            <p>Minuto, hora e dia <strong>não aceitam prefixo</strong>.</p>
+          </div>
+          <div class="def" style="border-left-color:var(--verde);">
+            <div class="termo" style="color:var(--verde)">A regra da escala (da disciplina)</div>
+            <p>O prefixo que deixa o número <strong>entre 0,1 e 1 000</strong>.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SLIDE 9 -->
-  <section class="slide" data-slide="9" data-titulo="Derivadas e prefixos">
-    <div class="slide-titulo">Quando uma unidade não basta</div>
-    <div class="slide-body">
-      <div class="slide-subtitulo-fe">As derivadas nascem das de base &middot; os prefixos resolvem a escala</div>
-      <div class="cols img-r" style="grid-template-columns:1fr 1fr;">
-        <div class="col-text">
-          <div class="eq">N = m&middot;kg&middot;s<sup>&minus;2</sup> &nbsp;&middot;&nbsp; J = N&middot;m &nbsp;&middot;&nbsp; Pa = N/m<sup>2</sup></div>
-          <p style="margin-top:8px;">O newton do dinamômetro é o exemplo à mão: um nome curto para três unidades de base.</p>
-        </div>
-        <div class="col-text">
-          <div class="def" style="border-left-color:var(--verde);">
-            <div class="termo" style="color:var(--verde)">A regra da escala</div>
-            <p>Use o prefixo que deixa o número <strong>entre 0,1 e 1 000</strong>. Não é estética: é redução de erro — número com muitos zeros é número que se copia errado.</p>
-          </div>
-          <div class="def" style="border-left-color:var(--erro);">
-            <div class="termo" style="color:var(--erro)">A armadilha do kilograma</div>
-            <p>É a única unidade de base que já nasce com prefixo. Os múltiplos se formam sobre o <em>grama</em>: miligrama, nunca &ldquo;microkilograma&rdquo;.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 10 -->
-  <section class="slide" data-slide="10" data-titulo="A grafia é parte da medida">
-    <div class="slide-titulo">A grafia é parte da medida</div>
+  <section class="slide" data-slide="9" data-titulo="Parte 3 — a grafia e a pronúncia">
+    <div class="slide-titulo">Parte 3 &mdash; a grafia e a pronúncia</div>
     <div class="slide-body">
       <div class="slide-subtitulo-fe">O quadro coletivo na lousa &middot; confere-se a escrita, não o valor</div>
       <div class="cols img-r">
         <div class="col-text">
           <table class="tbl">
-            <thead><tr><th>Escreve-se</th><th>Nunca</th><th>Por quê</th></tr></thead>
+            <thead><tr><th>Escreve-se</th><th>Nunca</th><th>QGU</th></tr></thead>
             <tbody>
-              <tr><td>5 kg</td><td>5 kgs</td><td>símbolo não tem plural</td></tr>
-              <tr><td>12 s</td><td>12 seg.</td><td>símbolo não tem ponto</td></tr>
-              <tr><td>1,6 cm</td><td>1,6 CM</td><td>não vira maiúscula</td></tr>
-              <tr><td>23,5 mm</td><td>23,5mm</td><td>há espaço</td></tr>
-              <tr><td>23,5</td><td>23.5</td><td>vírgula é decimal</td></tr>
+              <tr><td>milisegundo</td><td>milissegundo</td><td>3.1.2</td></tr>
+              <tr><td>pascals, mols</td><td>pascais, moles</td><td>3.2</td></tr>
+              <tr><td>5 kg &middot; 12 s</td><td>5 kgs &middot; 12 seg.</td><td>3.4.1</td></tr>
+              <tr><td>1,6 cm</td><td>1,6 CM</td><td>3.4.1</td></tr>
+              <tr><td>1 ng</td><td>1 mµg</td><td>3.4.1</td></tr>
+              <tr><td>0,98 N</td><td>0.98 N</td><td>3.5.1</td></tr>
+              <tr><td>23,5 mm</td><td>23,5mm</td><td>3.6</td></tr>
             </tbody>
           </table>
-          <div class="def" style="border-left-color:var(--erro);">
-            <div class="termo" style="color:var(--erro)">A sonda que se perdeu</div>
-            <p>Em 1999 a NASA perdeu a <em>Mars Climate Orbiter</em>, de 125 milhões de dólares: uma equipe entregou libra-força-segundo, a outra leu newton-segundo. <strong>Nenhum dos dois lados errou a conta.</strong></p>
+          <div class="def" style="border-left-color:var(--verde);">
+            <div class="termo" style="color:var(--verde)">micrometro &times; micrômetro</div>
+            <p>A unidade e o instrumento: mesmas letras, outro acento (3.3). O QGU admite kilograma <em>ou</em> quilograma; a ILB adota a forma do SI.</p>
           </div>
         </div>
         <div class="col-img">
@@ -1300,8 +1281,65 @@ html, body {
     </div>
   </section>
 
+  <!-- SLIDE 10 -->
+  <section class="slide" data-slide="10" data-titulo="Parte 4 — as unidades fora do SI">
+    <div class="slide-titulo">Parte 4 &mdash; as unidades fora do SI</div>
+    <div class="slide-body">
+      <div class="slide-subtitulo-fe">QGU, Tabela 4 &middot; mede-se no instrumento que existe, relata-se no SI</div>
+      <div class="cols img-r" style="grid-template-columns:1fr 1fr;">
+        <div class="col-text">
+          <table class="tbl">
+            <thead><tr><th>Aceita em uso</th><th>Valor no SI</th></tr></thead>
+            <tbody>
+              <tr><td>minuto (min)</td><td>60 s</td></tr>
+              <tr><td>hora (h)</td><td>3 600 s</td></tr>
+              <tr><td>grau (°)</td><td>(π/180) rad</td></tr>
+              <tr><td>hectare (ha)</td><td>10<sup>4</sup> m<sup>2</sup></td></tr>
+              <tr><td>litro (L, l)</td><td>10<sup>&minus;3</sup> m<sup>3</sup></td></tr>
+              <tr><td>tonelada (t)</td><td>10<sup>3</sup> kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-text">
+          <div class="def" style="border-left-color:var(--erro);">
+            <div class="termo" style="color:var(--erro)">O que o QGU não lista</div>
+            <p>O <strong>kgf</strong> do dinamômetro, a <strong>oitava</strong> e o <strong>quilate</strong>. Conversão à vista: 1 kgf &asymp; 9,81 N.</p>
+          </div>
+          <div class="def">
+            <div class="termo">A sonda que se perdeu</div>
+            <p>Em 1999 a <em>Mars Climate Orbiter</em>: libra-força-segundo de um lado, newton-segundo do outro. <strong>Ninguém errou a conta; erraram a unidade.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SLIDE 11 -->
-  <section class="slide" data-slide="11" data-titulo="Ciência e Arte — o Modulor">
+  <section class="slide" data-slide="11" data-titulo="Parte 5 — a Tabela Geral">
+    <div class="slide-titulo">Parte 5 &mdash; a Tabela Geral: as derivadas da Mecânica</div>
+    <div class="slide-body">
+      <div class="slide-subtitulo-fe">QGU, Tabelas 5a e 5b &middot; derivada = produto de potências das de base</div>
+      <div class="cols img-r" style="grid-template-columns:1fr 1fr;">
+        <div class="col-text">
+          <div class="eq">1 N &#8788; 1 kg&middot;m/s<sup>2</sup> &nbsp;&middot;&nbsp; Pa = N/m<sup>2</sup> &nbsp;&middot;&nbsp; J = N&middot;m &nbsp;&middot;&nbsp; W = J/s</div>
+          <p style="margin-top:8px;">Na <strong>B2</strong>: 0,1 kg &times; 9,8 m/s<sup>2</sup> &asymp; 0,98 N. Massa e peso, dois instrumentos.</p>
+        </div>
+        <div class="col-text">
+          <div class="def" style="border-left-color:var(--verde);">
+            <div class="termo" style="color:var(--verde)">O nome também tem grafia</div>
+            <p><strong>metro por segundo quadrado</strong> (3.1.5) &middot; <strong>newton metro</strong>, com espaço ou hífen (3.1.4).</p>
+          </div>
+          <div class="def">
+            <div class="termo">Coerência dimensional</div>
+            <p>Se a conta deu kg&middot;m/s e a grandeza era força, falta um segundo no denominador. Na T02, a densidade sai em kg/m<sup>3</sup>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 12 -->
+  <section class="slide" data-slide="12" data-titulo="Ciência e Arte — o Modulor">
     <div class="slide-titulo">Ciência e Arte &mdash; o Modulor</div>
     <div class="slide-body">
       <div class="cols img-l">
@@ -1319,20 +1357,20 @@ html, body {
     </div>
   </section>
 
-  <!-- SLIDE 12 -->
-  <section class="slide" data-slide="12" data-titulo="Checklist de encerramento">
+  <!-- SLIDE 13 -->
+  <section class="slide" data-slide="13" data-titulo="Checklist de encerramento">
     <div class="slide-titulo">Checklist de encerramento</div>
     <div class="slide-body">
-      <div class="slide-subtitulo-fe">Fechamento &middot; 92&ndash;100 min</div>
+      <div class="slide-subtitulo-fe">Fechamento &middot; 95&ndash;100 min</div>
       <div class="cols img-r">
         <div class="col-text">
           <div class="chk"><div class="chk-box"></div><div class="chk-t"><span class="hi">Seis resultados</span> no Roteiro, cada um com a menor divisão do instrumento.</div></div>
           <div class="chk"><div class="chk-box"></div><div class="chk-t"><span class="hi">Tabela de coleta</span> preenchida, com a conversão para a unidade do SI.</div></div>
-          <div class="chk"><div class="chk-box"></div><div class="chk-t"><span class="hi">Seis linhas corrigidas</span> na página da grafia.</div></div>
+          <div class="chk"><div class="chk-box"></div><div class="chk-t"><span class="hi">Seis linhas corrigidas</span> na página da grafia &mdash; com a seção do QGU de cada regra.</div></div>
           <div class="chk"><div class="chk-box"></div><div class="chk-t">Cada instrumento <span class="hi">devolvido ao seu lugar</span> — as bancadas ficam montadas para a T01.</div></div>
           <div class="def" style="border-left-color:var(--verde);">
             <div class="termo" style="color:var(--verde)">Os dois relatórios</div>
-            <p><strong>RM</strong> em 1 dia (07/10): as seis medidas na grafia do SI, com a conversão. <strong>RC</strong> em 6 dias (12/10). É o primeiro relatório da disciplina.</p>
+            <p><strong>RM</strong> em 1 dia: as seis medidas na grafia do SI, com a conversão. <strong>RC</strong> em 6 dias. É o primeiro relatório da disciplina.</p>
           </div>
         </div>
         <div class="col-img">
@@ -1343,11 +1381,11 @@ html, body {
     </div>
   </section>
 
-  <!-- SLIDE 13 - DESPEDIDA -->
-  <section class="slide despedida" data-slide="13" data-titulo="Despedida">
+  <!-- SLIDE 14 - DESPEDIDA -->
+  <section class="slide despedida" data-slide="14" data-titulo="Despedida">
     <div class="desp-bg" style="background-image: url('../_imagens/_web/ILB-T0B-Figura-07-v1-web.jpg');"></div>
     <div class="desp-body">
-      <div class="desp-sofia" style="color: var(--ouro);">&ldquo;Não é o número que vale. É o número escrito de um jeito que outra pessoa entenda.&rdquo;</div>
+      <div class="desp-sofia" style="color: var(--ouro);">&ldquo;Não é o número que vale. É o número escrito de um jeito que outra pessoa entenda &mdash; e o QGU diz como.&rdquo;</div>
       <div class="desp-acao">Na próxima aula, a mesma bancada &mdash; e a dúvida junto:</div>
       <div class="desp-tarefa">T01 &middot; Qual é a sua altura?</div>
       <div class="ca-provinha" style="margin-top:24px;">
@@ -1359,8 +1397,8 @@ html, body {
     </div>
   </section>
 
-<!-- ─── SLIDE 14 · CONFIGURAÇÃO DE TEMPOS (oculto por padrão) ─── -->
-  <section class="slide" data-slide="14" data-titulo="⚙ Tempos e visibilidade" data-oculto-padrao="true" style="overflow-y:auto;">
+<!-- ─── SLIDE 15 · CONFIGURAÇÃO DE TEMPOS (oculto por padrão) ─── -->
+  <section class="slide" data-slide="15" data-titulo="⚙ Tempos e visibilidade" data-oculto-padrao="true" style="overflow-y:auto;">
     <div class="slide-titulo">&#9881; Tempos e visibilidade dos slides</div>
     <div class="slide-body" style="justify-content:flex-start; overflow-y:auto;">
       <div class="config-wrap">
@@ -1390,21 +1428,19 @@ html, body {
 <div class="rodape">
   <div class="rodape-info">
     <em>ILB &middot; T0B</em>
-    <span>Sistema Internacional de Unidades</span>
+    <span>O Sistema Internacional e o Quadro Geral de Unidades</span>
     <span class="tag">100 min</span><span class="ilb-selo-ap"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></span>
   </div>
   <div class="rodape-nav">
-    <a href="../../index.html#t0b" title="Todas as Trilhas">&#8962;</a>
     <button id="btn-anterior" title="Slide anterior (←)">&#9664;</button>
     <div class="contador"><span id="num-atual">1</span> / <span id="num-total">18</span></div>
     <button id="btn-proximo" title="Próximo slide (→)">&#9654;</button>
-    <a class="rodape-nav-oa" href="../pr/">OA seguinte: Provinha &#8594;</a>
   </div>
 </div>
 
 <script>
 (function() {
-  var STORAGE_KEY = 'ILB-T0B-AP-v2';
+  var STORAGE_KEY = 'ILB-T0B-AP-v3';
   var slides = document.querySelectorAll('.slide');
   var total = slides.length;
   var atual = 1;
@@ -1755,7 +1791,7 @@ html, body {
 (function () {
   'use strict';
 
-  var KEY = 'ILB-T0B-AP-v2-crono';
+  var KEY = 'ILB-T0B-AP-v3-crono';
 
 
   var slides = document.querySelectorAll('.slide');
@@ -1763,12 +1799,12 @@ html, body {
 
   /* ─── TEMPOS PADRÃO (padronizados para todas as trilhas) ─── */
   var previsto = {
-    1: 120, 2: 300,
-    3: 420, 4: 900, 5: 900,
-    6: 600, 7: 480, 8: 420,
-    9: 480, 10: 720,
-    11: 300, 12: 240,
-    13: 120
+    1: 120, 2: 240,
+    3: 300, 4: 1200, 5: 1200,
+    6: 300, 7: 300, 8: 240,
+    9: 900, 10: 240, 11: 240,
+    12: 240, 13: 300,
+    14: 180
   };
 
   var previstoOriginal = {};
@@ -1777,7 +1813,7 @@ html, body {
   window.__AP_PREVISTO_ORIGINAL = previstoOriginal;
 
   try {
-    var tcust = JSON.parse(localStorage.getItem('ILB-T0B-AP-v2-tempos-custom') || '{}');
+    var tcust = JSON.parse(localStorage.getItem('ILB-T0B-AP-v3-tempos-custom') || '{}');
     for (var kc in tcust) { if (tcust.hasOwnProperty(kc)) previsto[parseInt(kc, 10)] = tcust[kc]; }
   } catch(e) {}
 
@@ -2059,7 +2095,7 @@ html, body {
 <script>
 (function() {
   'use strict';
-  var STORAGE_KEY = 'ILB-T0B-AP-v2';
+  var STORAGE_KEY = 'ILB-T0B-AP-v3';
   var KEY_TEMPOS = STORAGE_KEY + '-tempos-custom';
   var allSlides = document.querySelectorAll('.slide');
   var configSlideNum = allSlides.length;
@@ -2669,14 +2705,15 @@ document.addEventListener('click', function (ev) {
     <a class="toc-item" data-goto="3"><span class="toc-num">03</span>As duas estações — o que se mede hoje</a>
     <a class="toc-item" data-goto="4"><span class="toc-num">04</span>Estação A — comprimento e ângulo</a>
     <a class="toc-item" data-goto="5"><span class="toc-num">05</span>Estação B — massa, força e tempo</a>
-    <a class="toc-item" data-goto="6"><span class="toc-num">06</span>Por que existe um padrão</a>
-    <a class="toc-item" data-goto="7"><span class="toc-num">07</span>As sete que bastam</a>
-    <a class="toc-item" data-goto="8"><span class="toc-num">08</span>A revolução de 2019</a>
-    <a class="toc-item" data-goto="9"><span class="toc-num">09</span>Derivadas e prefixos</a>
-    <a class="toc-item" data-goto="10"><span class="toc-num">10</span>A grafia é parte da medida</a>
-    <a class="toc-item ato-titulo" data-goto="11"><span class="toc-num">11</span>Ciência e Arte — o Modulor</a>
-    <a class="toc-item" data-goto="12"><span class="toc-num">12</span>Checklist de encerramento</a>
-    <a class="toc-item ato-titulo" data-goto="13"><span class="toc-num">13</span>Despedida</a>
+    <a class="toc-item ato-titulo" data-goto="6"><span class="toc-num">06</span>O Quadro Geral de Unidades — cinco partes</a>
+    <a class="toc-item" data-goto="7"><span class="toc-num">07</span>Parte 1 — as sete unidades de base</a>
+    <a class="toc-item" data-goto="8"><span class="toc-num">08</span>Parte 2 — os prefixos</a>
+    <a class="toc-item" data-goto="9"><span class="toc-num">09</span>Parte 3 — a grafia e a pronúncia</a>
+    <a class="toc-item" data-goto="10"><span class="toc-num">10</span>Parte 4 — as unidades fora do SI</a>
+    <a class="toc-item" data-goto="11"><span class="toc-num">11</span>Parte 5 — a Tabela Geral</a>
+    <a class="toc-item ato-titulo" data-goto="12"><span class="toc-num">12</span>Ciência e Arte — o Modulor</a>
+    <a class="toc-item" data-goto="13"><span class="toc-num">13</span>Checklist de encerramento</a>
+    <a class="toc-item ato-titulo" data-goto="14"><span class="toc-num">14</span>Despedida</a>
 
   </div>
   </div>
@@ -3302,6 +3339,8 @@ document.addEventListener('click', function (ev) {
   <p class="ilb-refs-item">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Calendário acadêmico 2026</em>. Ouro Preto: IFMG, 2026. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/ensino/calendario-escolar/2026/. Acesso em: 16 set. 2026.</p>
   <p class="ilb-refs-item">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Curso de Licenciatura em Física</em>. Ouro Preto: IFMG, [202-?]. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/cursos/graduacao/licenciatura-em-fisica. Acesso em: 16 set. 2026.</p>
   <p class="ilb-refs-item">INSTITUTO FEDERAL DE MINAS GERAIS. Campus Ouro Preto. <em>Projeto Pedagógico do Curso de Licenciatura em Física</em>. Ouro Preto: IFMG, 2026. Disponível em: https://ouropreto.ifmg.edu.br/ouropreto/cursos/graduacao/licenciatura-em-fisica. Acesso em: 16 set. 2026.</p>
+  <p class="ilb-refs-item">INMETRO. <em>Quadro Geral de Unidades de Medida no Brasil</em>. [S. l.]: Inmetro, 2021.</p>
+  <p class="ilb-refs-item">BUREAU INTERNATIONAL DES POIDS ET MESURES. <em>Sistema Internacional de Unidades (SI)</em>: tradução autorizada pelo BIPM da 9.ª edição de 2019. Tradução do Grupo de Trabalho luso-brasileiro Inmetro e IPQ. [S. l.]: Inmetro, 2025.</p>
   <p class="ilb-refs-item">BUREAU INTERNATIONAL DES POIDS ET MESURES. <em>Le Système international d'unités (SI)</em>. 9. ed. Sèvres: BIPM, 2019.</p>
   <p class="ilb-refs-item">INMETRO. <em>Vocabulário Internacional de Metrologia (VIM)</em>. Duque de Caxias: Inmetro, 2012.</p>
   <p class="ilb-refs-item">AZEVEDO, J. C. S. <em>O Sistema Internacional de Unidades</em>: quadro geral de unidades para o laboratório de ensino. Ouro Preto: NIDEC/IFMG, 2026. (material da disciplina)</p>
