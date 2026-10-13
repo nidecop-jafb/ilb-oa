@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILB-T0A-RB-v1-estudante-impresso</title>
+<title>ILB-T0A-RB-v2-estudante-impresso</title>
 <style>
   input, button, select, textarea { font-family: inherit; }
 /* ============================================================
@@ -676,6 +676,12 @@ td:first-child { text-align: left; padding-left: 8px; }
   .tab-ie td, .tab-ie th { border-color: #999 !important; }
   .termo { color: #1A1A1A !important; }
 }
+
+/* v2 (autor, 2026-10-13): mesmo padrao do RB da T0B — fecho centralizado, frase menor */
+.fechamento .fecho-destaque { text-align: center; }
+.fechamento .frase { font-size: .8rem; }
+@media screen { .fechamento .frase { font-size: .9rem; } }
+@media print { .fechamento .frase { font-size: 8.5pt !important; } }
 /* ICONES-ILB */
 .ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
   flex-shrink: 0; }
@@ -853,7 +859,7 @@ td:first-child { text-align: left; padding-left: 8px; }
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v1 ·
+    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v2 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 1 de 4
   </div>
 </div><!-- /pagina 1 -->
@@ -914,7 +920,7 @@ td:first-child { text-align: left; padding-left: 8px; }
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v1 ·
+    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v2 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 2 de 4
   </div>
 </div><!-- /pagina 2 -->
@@ -972,7 +978,7 @@ td:first-child { text-align: left; padding-left: 8px; }
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v1 ·
+    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v2 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 3 de 4
   </div>
 </div><!-- /pagina 3 -->
@@ -1041,10 +1047,9 @@ td:first-child { text-align: left; padding-left: 8px; }
   </div>
 
   <!-- RODAPE-ILB:INICIO --><div class="ilb-rodape"><div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div><div class="ilb-rodape-texto">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; Primeira edição &middot; 2026</div><div class="ilb-rodape-selo"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></div></div><!-- RODAPE-ILB:FIM --><div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v1 ·
+    Introdução ao Laboratório (ILB) · T0A · Roteiro de Bancada v2 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 4 de 4
   </div>
-  <div class="fecho-inst">NIDEC-CODAFIS &middot; IFMG &mdash; Campus Ouro Preto &middot; Licenciatura em Física<br>Introdução ao Laboratório (ILB) &middot; T0A &middot; Roteiro de Bancada v1</div>
 
 </div><!-- /pagina 4 -->
 
@@ -1062,7 +1067,7 @@ td:first-child { text-align: left; padding-left: 8px; }
 /* Impressao em janela propria (padrao FA): o <title> vira o nome sugerido do
    PDF, a barra de botoes fica de fora e o @page { margin: 0 } suprime o
    cabecalho/rodape que o navegador injeta. */
-var NOME_ARQUIVO_PDF = 'ILB-T0A-RB-v1-estudante-impresso';
+var NOME_ARQUIVO_PDF = 'ILB-T0A-RB-v2-estudante-impresso';
 
 function abrirParaImpressao() {
   var folha = document.querySelector('.folha').cloneNode(true);
