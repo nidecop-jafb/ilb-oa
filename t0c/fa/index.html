@@ -199,6 +199,16 @@ input.lac.errada { border-color: var(--erro); }
 .figura-fa figcaption { font-size: .82rem; color: var(--cinza); margin: 6px auto 0; max-width: 560px; line-height: 1.45; }
 .figura-fa .figura-num { font-family: var(--mono); color: var(--verde); font-weight: 600; }
 .figura-fa .fig-fonte { white-space: nowrap; }
+.com-fundo { position: relative; overflow: hidden; margin: 34px 0 14px; padding: 4px 16px 12px; min-height: 260px; display: flex; flex-direction: column; border: 1px solid var(--cinza-borda); }
+.com-fundo .fundo-ilustra { position: absolute; top: 0; bottom: 0; background-size: cover; background-position: center; opacity: .34; filter: grayscale(1) contrast(.9); pointer-events: none; }
+.com-fundo > :not(.fundo-ilustra) { position: relative; }
+.com-fundo .topico-fa { margin: 0 0 6px; border-top: 0; }
+.com-fundo .topico-fa h2, .com-fundo .topico-fa .reler { text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.com-fundo .lembrete { background: color-mix(in oklch, var(--aco-bg) 84%, transparent); }
+.fundo-legenda { margin-top: auto; padding-top: 14px; font-size: .78rem; font-style: italic; line-height: 1.45; color: var(--texto); text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.fundo-legenda div + div { margin-top: 4px; }
+.fundo-legenda .figura-num { font-family: var(--mono); font-style: normal; color: var(--verde-claro); font-weight: 600; }
+.fundo-legenda .fig-fonte { white-space: nowrap; }
 .assoc-linha { flex-wrap: wrap; }
 .assoc-linha select { min-width: 0; max-width: 100%; }
 @media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } .tab-fa { font-size: .8rem; } .tab-fa td.cel-pre { display: block; } .assoc-linha .item { flex: 1 1 100%; } .assoc-linha select { width: 100%; } }
@@ -281,7 +291,7 @@ input.lac.errada { border-color: var(--erro); }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Leia um tópico do Texto Temático e faça os oito itens dele aqui, antes de passar ao seguinte. Cada item mostra o nível de Bloom: os primeiros pedem para lembrar e entender; os do meio, para aplicar; os últimos, para analisar, avaliar e criar. Responda, toque em <em>conferir</em> e leia o porquê &mdash; inclusive quando acertar. Nada vale nota e nada sai do seu aparelho. No fim, o placar mostra em que tópico voltar. Prefere papel? <a href="ILB-T0C-FA-v2-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Leia um tópico do Texto Temático e faça os oito itens dele aqui, antes de passar ao seguinte. Cada item mostra o nível de Bloom: os primeiros pedem para lembrar e entender; os do meio, para aplicar; os últimos, para analisar, avaliar e criar. Responda, toque em <em>conferir</em> e leia o porquê &mdash; inclusive quando acertar. Nada vale nota e nada sai do seu aparelho. No fim, o placar mostra em que tópico voltar. Prefere papel? <a href="ILB-T0C-FA-v3-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -718,7 +728,7 @@ input.lac.errada { border-color: var(--erro); }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0C-FA-v2';
+  var CHAVE = 'ILB-T0C-FA-v3';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
