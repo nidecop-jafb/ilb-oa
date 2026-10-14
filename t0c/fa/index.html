@@ -157,12 +157,26 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 .topico-fa h2 { font-family: var(--mono); font-size: .9rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--verde); margin: 8px 0 4px; }
 .topico-fa .reler { font-size: .82rem; color: var(--cinza); }
 .topico-fa .reler a { color: var(--aco); }
+.lembrete { margin: 10px 0 14px; padding: 10px 14px; background: var(--aco-bg); border-left: 3px solid var(--aco); font-size: .9rem; }
+.lembrete p { margin: 4px 0; }
 .q { display: block !important; }
 .q-bloom { font-family: var(--mono); font-size: .7rem; letter-spacing: 1px; color: var(--aco); border: 1px solid var(--aco); padding: 1px 6px; margin-left: 8px; white-space: nowrap; }
 .num-linha { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 8px 0; }
 .num-linha input { font-family: var(--mono); font-size: 1rem; padding: 6px 10px; background: var(--fundo); color: var(--texto); border: 1px solid var(--cinza-borda); min-width: 0; width: 220px; max-width: 100%; }
 .num-linha.certa input { border-color: var(--ok); }
 .num-linha.errada input { border-color: var(--erro); }
+input.lac { font-family: var(--mono); font-size: .95rem; padding: 3px 6px; margin: 2px 2px; background: var(--fundo); color: var(--texto); border: 1px solid var(--cinza-borda); border-bottom: 2px solid var(--aco); min-width: 0; max-width: 100%; }
+input.lac.certa { border-color: var(--ok); }
+input.lac.errada { border-color: var(--erro); }
+.corr { font-family: var(--mono); font-size: .78rem; color: var(--ok); margin-left: 4px; }
+.lac-texto { line-height: 2.1; margin: 8px 0; }
+.tab-fa { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 10px 0; font-size: .9rem; }
+.tab-fa th { text-align: left; font-family: var(--mono); font-size: .72rem; letter-spacing: 1px; color: var(--aco); border-bottom: 1px solid var(--cinza-borda); padding: 6px 4px; }
+.tab-fa td { padding: 4px; border-bottom: 1px dashed var(--cinza-borda); vertical-align: middle; overflow-wrap: anywhere; }
+.tab-fa td input.lac { width: 100%; box-sizing: border-box; margin: 0; }
+.tab-fa td .pre { white-space: nowrap; margin-right: 4px; }
+.tab-fa td.cel-pre { display: flex; align-items: center; gap: 4px; }
+.tab-fa tr.exemplo td { color: var(--cinza); font-style: italic; }
 .btn-conferir { font-family: var(--mono); font-size: .8rem; letter-spacing: 1px; padding: 6px 14px; margin-top: 8px; background: transparent; color: var(--verde); border: 1px solid var(--verde); cursor: pointer; }
 .btn-conferir:disabled { opacity: .45; cursor: default; }
 .aberta textarea { width: 100%; min-height: 90px; font-family: var(--font); font-size: .95rem; padding: 8px 10px; background: var(--fundo); color: var(--texto); border: 1px solid var(--cinza-borda); box-sizing: border-box; }
@@ -178,7 +192,11 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 .placar-linha .pl-n { font-family: var(--mono); white-space: nowrap; }
 .placar-linha.voltar .pl-n { color: var(--erro); }
 .placar-dica { font-size: .85rem; color: var(--cinza); margin-top: 10px; }
-@media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } }
+.aviso-lac { display: none; font-size: .8rem; color: var(--erro); margin-top: 6px; }
+.aviso-lac.visivel { display: block; }
+.assoc-linha { flex-wrap: wrap; }
+.assoc-linha select { min-width: 0; max-width: 100%; }
+@media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } .tab-fa { font-size: .8rem; } .tab-fa td.cel-pre { display: block; } .assoc-linha .item { flex: 1 1 100%; } .assoc-linha select { width: 100%; } }
 /* ICONES-ILB */
 .ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
   flex-shrink: 0; }
@@ -258,11 +276,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Leia um tópico do Texto Temático e faça os oito itens dele aqui, antes de passar
-  ao seguinte. Cada item mostra o nível de Bloom: os primeiros pedem para lembrar e entender; os do meio, para
-  aplicar; os últimos, para analisar, avaliar e criar. Responda, toque em <em>conferir</em> e leia o porquê
-  &mdash; inclusive quando acertar. Nada vale nota e nada sai do seu aparelho. No fim, o placar mostra em que
-  tópico voltar. Prefere papel? <a href="ILB-T0C-FA-v1-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Leia um tópico do Texto Temático e faça os oito itens dele aqui, antes de passar ao seguinte. Cada item mostra o nível de Bloom: os primeiros pedem para lembrar e entender; os do meio, para aplicar; os últimos, para analisar, avaliar e criar. Responda, toque em <em>conferir</em> e leia o porquê &mdash; inclusive quando acertar. Nada vale nota e nada sai do seu aparelho. No fim, o placar mostra em que tópico voltar. Prefere papel? <a href="ILB-T0C-FA-v1-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -674,15 +688,13 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 </div>
 
 <div class="placar-fa" id="placar">
-  <h2>Placar por tópico</h2>
+  <h2>Placar</h2>
   <div class="placar-linha" data-t="1"><span>Tópico 1 · Números decimais: escrita e leitura</span><span class="pl-n">&mdash;</span></div>
 <div class="placar-linha" data-t="2"><span>Tópico 2 · Algarismos significativos</span><span class="pl-n">&mdash;</span></div>
 <div class="placar-linha" data-t="3"><span>Tópico 3 · Regras de arredondamento</span><span class="pl-n">&mdash;</span></div>
 <div class="placar-linha" data-t="4"><span>Tópico 4 · Potenciação</span><span class="pl-n">&mdash;</span></div>
 <div class="placar-linha" data-t="5"><span>Tópico 5 · Potências de 10</span><span class="pl-n">&mdash;</span></div>
-  <div class="placar-dica">Só contam os itens de correção automática (os de "criar" você mesmo avalia). Um
-  tópico fica marcado em vermelho quando você errou mais de um item dele: volte ao Texto Temático antes do
-  Testinho.</div>
+  <div class="placar-dica">Só contam os itens de correção automática (os de "criar" você mesmo avalia). Um tópico fica marcado em vermelho quando você errou mais de um item dele: volte ao Texto Temático antes do Testinho.</div>
 </div>
 
 <div class="encerramento">
@@ -706,13 +718,20 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
   var SUP = {'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-'};
+  function sup(s) { return s.replace(/[⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+/g, function (m) { return '^' + m.split('').map(function (c) { return SUP[c]; }).join(''); }).replace(/\^+/g, '^'); }
   function norm(s) {
     s = (s || '').toLowerCase().replace(/[\s\u202f\u2009\u00a0]/g, '');
     s = s.replace(/[×·*]/g, 'x');
-    s = s.replace(/[⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+/g, function (m) { return '^' + m.split('').map(function (c) { return SUP[c]; }).join(''); });
-    s = s.replace(/\^+/g, '^');
+    s = sup(s);
     s = s.replace(/(\d)e(-?\d+)$/, '$1x10^$2');
     return s;
+  }
+  /* simbolo de unidade: a caixa importa (kg nao e Kg); espacos e o ponto do produto, nao */
+  function normU(s) {
+    s = (s || '').replace(/[\s\u202f\u2009\u00a0·*.]/g, '').replace(/μ/g, 'µ').replace(/Ω/g, 'Ω').replace(/−/g, '-');
+    s = sup(s);
+    /* m2, s-2: expoente digitado sem ^ */
+    return s.replace(/([A-Za-zΩµ)])(-?\d+)/g, '$1^$2').replace(/\^+/g, '^');
   }
   function marcaFeito(q, ok) {
     q.dataset.feita = '1'; q.dataset.ok = ok ? '1' : '0';
@@ -740,7 +759,6 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
           if (j === g.c) op.classList.add('certa'); else if (j === marc) op.classList.add('errada');
         });
         ok = marc === g.c;
-        var pe = q.querySelector('.porque-op[data-op="' + marc + '"]'); if (pe && !ok) pe.classList.add('visivel');
       } else if (g.t === 'multipla') {
         var cert = 0, err = 0;
         q.querySelectorAll('.q-op').forEach(function (op, j) {
@@ -768,11 +786,26 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
         var inp = q.querySelector('.num-linha input'); if (!inp.value.trim()) return;
         ok = g.c.indexOf(norm(inp.value)) >= 0;
         q.querySelector('.num-linha').classList.add(ok ? 'certa' : 'errada');
+      } else if (g.t === 'lac') {
+        /* lacunas no texto e tabela para completar: todas preenchidas, cada uma conferida */
+        var ins = q.querySelectorAll('input.lac'), vazias = 0;
+        ins.forEach(function (i) { if (!i.value.trim()) vazias++; });
+        var av = q.querySelector('.aviso-lac');
+        if (vazias) { if (av) av.classList.add('visivel'); return; }
+        if (av) av.classList.remove('visivel');
+        var okl = 0;
+        ins.forEach(function (i, j) {
+          var sp = g.c[j], v = sp.cs ? normU(i.value) : norm(i.value);
+          var acertou = sp.a.indexOf(v) >= 0;
+          i.classList.add(acertou ? 'certa' : 'errada'); i.readOnly = true;
+          if (acertou) okl++;
+          else { var c = document.createElement('span'); c.className = 'corr'; c.textContent = sp.d; i.insertAdjacentElement('afterend', c); }
+        });
+        ok = okl === ins.length;
       }
       marcaFeito(q, ok);
     });
   });
-  /* L6: aberta, com resposta-modelo e autoavaliacao */
   document.querySelectorAll('.aberta').forEach(function (q) {
     var ver = q.querySelector('.btn-conferir'), ta = q.querySelector('textarea');
     var k = q.dataset.id;
@@ -789,8 +822,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
     });
   });
   function placar() {
-    var linhas = document.querySelectorAll('.placar-linha');
-    linhas.forEach(function (l) {
+    document.querySelectorAll('.placar-linha').forEach(function (l) {
       var t = l.dataset.t, tot = 0, feitos = 0, ok = 0;
       document.querySelectorAll('.q[data-tipo][data-t="' + t + '"]').forEach(function (q) {
         tot++; if (q.dataset.feita) { feitos++; if (q.dataset.ok === '1') ok++; }
