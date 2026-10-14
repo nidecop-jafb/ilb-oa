@@ -199,6 +199,16 @@ input.lac.errada { border-color: var(--erro); }
 .figura-fa figcaption { font-size: .82rem; color: var(--cinza); margin: 6px auto 0; max-width: 560px; line-height: 1.45; }
 .figura-fa .figura-num { font-family: var(--mono); color: var(--verde); font-weight: 600; }
 .figura-fa .fig-fonte { white-space: nowrap; }
+.com-fundo { position: relative; overflow: hidden; margin: 34px 0 14px; padding: 4px 16px 12px; min-height: 260px; display: flex; flex-direction: column; border: 1px solid var(--cinza-borda); }
+.com-fundo .fundo-ilustra { position: absolute; top: 0; bottom: 0; background-size: cover; background-position: center; opacity: .34; filter: grayscale(1) contrast(.9); pointer-events: none; }
+.com-fundo > :not(.fundo-ilustra) { position: relative; }
+.com-fundo .topico-fa { margin: 0 0 6px; border-top: 0; }
+.com-fundo .topico-fa h2, .com-fundo .topico-fa .reler { text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.com-fundo .lembrete { background: color-mix(in oklch, var(--aco-bg) 84%, transparent); }
+.fundo-legenda { margin-top: auto; padding-top: 14px; font-size: .78rem; font-style: italic; line-height: 1.45; color: var(--texto); text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.fundo-legenda div + div { margin-top: 4px; }
+.fundo-legenda .figura-num { font-family: var(--mono); font-style: normal; color: var(--verde-claro); font-weight: 600; }
+.fundo-legenda .fig-fonte { white-space: nowrap; }
 .assoc-linha { flex-wrap: wrap; }
 .assoc-linha select { min-width: 0; max-width: 100%; }
 @media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } .tab-fa { font-size: .8rem; } .tab-fa td.cel-pre { display: block; } .assoc-linha .item { flex: 1 1 100%; } .assoc-linha select { width: 100%; } }
@@ -281,7 +291,7 @@ input.lac.errada { border-color: var(--erro); }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0B-FA-v2-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0B-FA-v3-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -289,13 +299,9 @@ input.lac.errada { border-color: var(--erro); }
   <div class="a-epi">&mdash; Lord Kelvin, <em>Popular Lectures and Addresses</em> (1889)</div>
 </div>
 
+<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:50%;background-image:url('../_imagens/_web/ILB-T0B-Figura-05-v2-web.jpg')"></div><div class="fundo-ilustra" style="left:50%;width:50%;background-image:url('../_imagens/_web/ILB-T0B-Figura-06-v2-web.jpg')"></div>
 <div class="topico-fa" id="topico-1"><h2>Parte 1 · As sete unidades de base (QGU, Tabela 1)</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-1">Tópico 1 do Texto Temático</a>.</div></div>
-
 <div class="lembrete"><p><b>Modelo — o segundo (s):</b> tomando o valor numérico fixado da frequência do césio, ΔνCs, a frequência da transição hiperfina do estado fundamental não perturbado do átomo de césio 133, igual a 9 192 631 770 quando expressa em Hz, unidade igual a s⁻¹.</p><p><b>Modelo — o metro (m):</b> tomando o valor numérico fixado da velocidade da luz no vácuo, c, igual a 299 792 458 quando expressa em m s⁻¹, o segundo sendo definido em função de ΔνCs.</p><p>Agora complete as outras cinco definições com as palavras e os números do QGU (Tabela 1).</p></div>
-
-<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-05-v2-web.jpg" alt="Figura 5"><figcaption><span class="figura-num">Figura 5</span> &mdash; As sete unidades de base do SI, cada uma com o seu símbolo &mdash; e as três que a bancada usou, destacadas. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
-<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-06-v2-web.jpg" alt="Figura 6"><figcaption><span class="figura-num">Figura 6</span> &mdash; De 1889 a 2019, o kilograma foi este objeto: um cilindro de platina e irídio guardado em Sèvres sob três campânulas de vidro. Desde 2019, ele é a constante de Planck. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
-
 <div class="q" data-id="1.1" data-t="1" data-tipo="lacunas">
   <div class="q-topo"><span class="q-num">Item 1.1</span><span class="q-bloom">L1 · Lembrar</span></div>
   <div class="q-enunciado"><b>O kilograma (kg).</b> Complete a definição.</div>
@@ -304,7 +310,6 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">Desde 2019 o kilograma é definido pela <b>constante de Planck</b>, com valor fixado, sem incerteza.</div>
 </div>
-
 <div class="q" data-id="1.2" data-t="1" data-tipo="lacunas">
   <div class="q-topo"><span class="q-num">Item 1.2</span><span class="q-bloom">L1 · Lembrar</span></div>
   <div class="q-enunciado"><b>O ampere (A).</b> Complete a definição.</div>
@@ -313,6 +318,7 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">O ampere é definido pela <b>carga elementar</b>, a carga de um próton, em coulomb.</div>
 </div>
+<div class="fundo-legenda"><div><span class="figura-num">Figura 5</span> &mdash; As sete unidades de base do SI, cada uma com o seu símbolo &mdash; e as três que a bancada usou, destacadas. <span class="fig-fonte">(Texto Temático)</span></div><div><span class="figura-num">Figura 6</span> &mdash; De 1889 a 2019, o kilograma foi este objeto: um cilindro de platina e irídio guardado em Sèvres sob três campânulas de vidro. Desde 2019, ele é a constante de Planck. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
 
 <div class="q" data-id="1.3" data-t="1" data-tipo="lacunas">
   <div class="q-topo"><span class="q-num">Item 1.3</span><span class="q-bloom">L1 · Lembrar</span></div>
@@ -355,12 +361,9 @@ input.lac.errada { border-color: var(--erro); }
   <div class="q-porque">Césio → segundo; luz → metro; Planck → kilograma; carga elementar → ampere; Boltzmann → kelvin; Avogadro → mol; eficácia luminosa → candela. Sete constantes, sete unidades.</div>
 </div>
 
+<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:100%;background-image:url('../_imagens/_web/ILB-T0B-Figura-07-v2-web.jpg')"></div>
 <div class="topico-fa" id="topico-2"><h2>Parte 2 · Os prefixos do SI (QGU, Tabela 2)</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-2">Tópico 2 do Texto Temático</a>.</div></div>
-
 <div class="lembrete"><p>Cada prefixo é uma potência de 10 com nome e símbolo. A <b>caixa</b> do símbolo importa: <b>M</b> (mega) é um milhão; <b>m</b> (mili), um milésimo. Os decimais se escrevem com grupos de três algarismos separados por espaço. Deca e deci vêm preenchidos como exemplo.</p></div>
-
-<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-07-v2-web.jpg" alt="Figura 7"><figcaption><span class="figura-num">Figura 7</span> &mdash; Tarefa A1: Sofia aperta a pilha de 100 folhas no paquímetro e Pedro anota. A espessura de uma folha sai da divisão por 100 &mdash; e só fica legível em micrometros. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
-
 <div class="q" data-id="2.1" data-t="2" data-tipo="tabela">
   <div class="q-topo"><span class="q-num">Item 2.1</span><span class="q-bloom">L1 · Lembrar</span></div>
   <div class="q-enunciado">Os <b>múltiplos</b>: complete o símbolo e a escrita decimal de cada linha.</div>
@@ -369,7 +372,6 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">Do yotta ao deca, cada degrau de prefixo multiplica por mil (até o kilo); hecto e deca são os degraus de 10 em 10. Atenção: o PDF do QGU traz 10²⁴ com um zero a mais; o certo é 1 seguido de 24 zeros.</div>
 </div>
-
 <div class="q" data-id="2.2" data-t="2" data-tipo="tabela">
   <div class="q-topo"><span class="q-num">Item 2.2</span><span class="q-bloom">L1 · Lembrar</span></div>
   <div class="q-enunciado">Os <b>submúltiplos</b>: complete o símbolo e a escrita decimal de cada linha.</div>
@@ -378,6 +380,7 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">O expoente negativo conta quantas casas a vírgula anda para a esquerda: 10⁻⁶ = 0,000 001. O símbolo do micro é a letra grega µ.</div>
 </div>
+<div class="fundo-legenda"><div><span class="figura-num">Figura 7</span> &mdash; Tarefa A1: Sofia aperta a pilha de 100 folhas no paquímetro e Pedro anota. A espessura de uma folha sai da divisão por 100 &mdash; e só fica legível em micrometros. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
 
 <div class="q" data-id="2.3" data-t="2" data-tipo="num">
   <div class="q-topo"><span class="q-num">Item 2.3</span><span class="q-bloom">L3 · Aplicar</span></div>
@@ -398,12 +401,9 @@ input.lac.errada { border-color: var(--erro); }
   <div class="q-porque">Dois prefixos juntos são proibidos (3.4.1 c) e, como o kilograma já tem prefixo, os múltiplos e submúltiplos se formam sobre o grama (Tabela 2, obs. a). 10⁻³ kg = 1 g.</div>
 </div>
 
+<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:100%;opacity:.13 !important;background-image:url('../_imagens/_web/ILB-T0B-Figura-09-v2-web.jpg')"></div>
 <div class="topico-fa" id="topico-3"><h2>Parte 3 · Regras de escrita e pronúncia (QGU, 3.1 a 3.7)</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-3">Tópico 3 do Texto Temático</a>.</div></div>
-
 <div class="lembrete"><p>A parte 3 do QGU tem sete seções. As atividades seguem a ordem dela: <b>3.1</b> nomes · <b>3.2</b> plural · <b>3.3</b> pronúncia · <b>3.4</b> símbolos · <b>3.5</b> números · <b>3.6</b> espaço · <b>3.7</b> valores relativos.</p></div>
-
-<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-09-v2-web.jpg" alt="Figura 9"><figcaption><span class="figura-num">Figura 9</span> &mdash; As mesmas seis medidas da bancada escritas duas vezes: à esquerda como se costuma escrever, à direita como o SI exige &mdash; e o que mudou em cada linha. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
-
 <div class="q" data-id="3.1" data-t="3" data-tipo="vf">
   <div class="q-topo"><span class="q-num">Item 3.1</span><span class="q-bloom">L2 · Entender</span></div>
   <div class="q-enunciado"><b>3.1 Nomes das unidades.</b> Verdadeiro ou falso:</div>
@@ -415,7 +415,6 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">Nome de unidade sempre em minúscula (3.1.1); prefixo colado, sem dobrar consoante: milisegundo (3.1.2); ou tudo por extenso, ou tudo em símbolo (3.1.3).</div>
 </div>
-
 <div class="q" data-id="3.2" data-t="3" data-tipo="tabela">
   <div class="q-topo"><span class="q-num">Item 3.2</span><span class="q-bloom">L3 · Aplicar</span></div>
   <div class="q-enunciado"><b>3.2 Plural — a Tabela 3 do QGU.</b> Complete os dois plurais admitidos para cada nome composto por multiplicação (com hífen ou com espaço).</div>
@@ -424,6 +423,7 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">Quando os componentes variam independentemente, os dois plurais são admitidos (3.2 b, Tabela 3). E o plural não desfigura o nome: pascals, não "pascais".</div>
 </div>
+<div class="fundo-legenda"><div><span class="figura-num">Figura 9</span> &mdash; As mesmas seis medidas da bancada escritas duas vezes: à esquerda como se costuma escrever, à direita como o SI exige &mdash; e o que mudou em cada linha. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
 
 <div class="q" data-id="3.3" data-t="3" data-tipo="lacunas">
   <div class="q-topo"><span class="q-num">Item 3.3</span><span class="q-bloom">L3 · Aplicar</span></div>
@@ -504,12 +504,9 @@ input.lac.errada { border-color: var(--erro); }
   <div class="q-porque">Uma razão entre dois valores da mesma grandeza é adimensional, de dimensão 1 (3.7); no QGU, a densidade relativa aparece com a unidade "um", que não se escreve.</div>
 </div>
 
+<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:100%;background-image:url('../_imagens/_web/ILB-T0B-Figura-10-v2-web.jpg')"></div>
 <div class="topico-fa" id="topico-4"><h2>Parte 4 · Unidades fora do SI em uso com o SI (QGU, 4.1)</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-4">Tópico 4 do Texto Temático</a>.</div></div>
-
 <div class="lembrete"><p>A Tabela 4 do QGU lista as unidades que não são do SI mas são aceitas em uso com ele, cada uma com o seu valor em unidades SI. Os prefixos <b>não</b> se usam com minuto, hora e dia. A linha da unidade astronômica vem preenchida como exemplo.</p></div>
-
-<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-10-v2-web.jpg" alt="Figura 10"><figcaption><span class="figura-num">Figura 10</span> &mdash; Setembro de 1999: a <em>Mars Climate Orbiter</em> entra baixo demais na atmosfera de Marte. Uma equipe mandou libra-força-segundo; a outra leu newton-segundo. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
-
 <div class="q" data-id="4.1" data-t="4" data-tipo="tabela">
   <div class="q-topo"><span class="q-num">Item 4.1</span><span class="q-bloom">L1 · Lembrar</span></div>
   <div class="q-enunciado">Complete o valor em unidades SI (QGU, Tabela 4).</div>
@@ -518,7 +515,6 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">Tempo, ângulo, área, volume e massa: as unidades do dia a dia que o SI aceita ao seu lado, sempre com o fator à vista.</div>
 </div>
-
 <div class="q" data-id="4.2" data-t="4" data-tipo="num">
   <div class="q-topo"><span class="q-num">Item 4.2</span><span class="q-bloom">L3 · Aplicar</span></div>
   <div class="q-enunciado">A rampa de fórmica mediu <b>15°</b> no transferidor. Converta para radiano, com 2 algarismos significativos.</div>
@@ -526,6 +522,7 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">1° = (π/180) rad. 15 × π/180 ≈ 0,26 rad.</div>
 </div>
+<div class="fundo-legenda"><div><span class="figura-num">Figura 10</span> &mdash; Setembro de 1999: a <em>Mars Climate Orbiter</em> entra baixo demais na atmosfera de Marte. Uma equipe mandou libra-força-segundo; a outra leu newton-segundo. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
 
 <div class="q" data-id="4.3" data-t="4" data-tipo="num">
   <div class="q-topo"><span class="q-num">Item 4.3</span><span class="q-bloom">L3 · Aplicar</span></div>
@@ -592,7 +589,7 @@ input.lac.errada { border-color: var(--erro); }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0B-FA-v2';
+  var CHAVE = 'ILB-T0B-FA-v3';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }

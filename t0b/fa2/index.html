@@ -199,6 +199,16 @@ input.lac.errada { border-color: var(--erro); }
 .figura-fa figcaption { font-size: .82rem; color: var(--cinza); margin: 6px auto 0; max-width: 560px; line-height: 1.45; }
 .figura-fa .figura-num { font-family: var(--mono); color: var(--verde); font-weight: 600; }
 .figura-fa .fig-fonte { white-space: nowrap; }
+.com-fundo { position: relative; overflow: hidden; margin: 34px 0 14px; padding: 4px 16px 12px; min-height: 260px; display: flex; flex-direction: column; border: 1px solid var(--cinza-borda); }
+.com-fundo .fundo-ilustra { position: absolute; top: 0; bottom: 0; background-size: cover; background-position: center; opacity: .34; filter: grayscale(1) contrast(.9); pointer-events: none; }
+.com-fundo > :not(.fundo-ilustra) { position: relative; }
+.com-fundo .topico-fa { margin: 0 0 6px; border-top: 0; }
+.com-fundo .topico-fa h2, .com-fundo .topico-fa .reler { text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.com-fundo .lembrete { background: color-mix(in oklch, var(--aco-bg) 84%, transparent); }
+.fundo-legenda { margin-top: auto; padding-top: 14px; font-size: .78rem; font-style: italic; line-height: 1.45; color: var(--texto); text-shadow: 0 1px 3px #000, 0 0 8px #000; }
+.fundo-legenda div + div { margin-top: 4px; }
+.fundo-legenda .figura-num { font-family: var(--mono); font-style: normal; color: var(--verde-claro); font-weight: 600; }
+.fundo-legenda .fig-fonte { white-space: nowrap; }
 .assoc-linha { flex-wrap: wrap; }
 .assoc-linha select { min-width: 0; max-width: 100%; }
 @media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } .tab-fa { font-size: .8rem; } .tab-fa td.cel-pre { display: block; } .assoc-linha .item { flex: 1 1 100%; } .assoc-linha select { width: 100%; } }
@@ -268,7 +278,7 @@ input.lac.errada { border-color: var(--erro); }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0B-FA2-v2-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0B-FA2-v3-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -322,12 +332,9 @@ input.lac.errada { border-color: var(--erro); }
   <div class="q-porque">"Hertz" se escreve com minúscula (3.1.1), e o nome é "metro por segundo quadrado" (3.1.5).</div>
 </div>
 
+<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:100%;background-image:url('../_imagens/_web/ILB-T0B-Figura-11-v2-web.jpg')"></div>
 <div class="topico-fa" id="topico-2"><h2>Seção 2 · Tabela 5b — Grandezas mecânicas</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-5">Tópico 5 do Texto Temático</a>.</div></div>
-
 <div class="lembrete"><p>Massa, densidade, quantidade de movimento, força, pressão, energia e potência. Cada derivada com nome especial esconde um produto de potências: o newton é 1 kg·m/s² (Tabela 5b).</p></div>
-
-<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-11-v2-web.jpg" alt="Figura 11"><figcaption><span class="figura-num">Figura 11</span> &mdash; Tarefa B2: Lucas pendura a massa de 100 g no dinamômetro e Barbara lê o mostrador &mdash; 0,98 N, o kg&middot;m/s² funcionando na mão. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
-
 <div class="q" data-id="2.1" data-t="2" data-tipo="tabela">
   <div class="q-topo"><span class="q-num">Item 2.1</span><span class="q-bloom">L1 · Lembrar</span></div>
   <div class="q-enunciado">Complete o <b>nome da unidade</b> e o <b>símbolo</b> de cada grandeza. A primeira linha é o exemplo.</div>
@@ -336,7 +343,6 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">Os nomes de cientista ficam minúsculos (newton, pascal, joule, watt); os símbolos, maiúsculos.</div>
 </div>
-
 <div class="q" data-id="2.2" data-t="2" data-tipo="lacunas">
   <div class="q-topo"><span class="q-num">Item 2.2</span><span class="q-bloom">L3 · Aplicar</span></div>
   <div class="q-enunciado">Escreva cada unidade como <b>produto de potências das unidades de base</b> (pode usar ponto, espaço ou barra; expoente com ^ ou sobrescrito).</div>
@@ -345,6 +351,7 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">N = kg·m·s⁻²; Pa = N/m² = kg·m⁻¹·s⁻²; J = N·m = kg·m²·s⁻²; W = J/s = kg·m²·s⁻³.</div>
 </div>
+<div class="fundo-legenda"><div><span class="figura-num">Figura 11</span> &mdash; Tarefa B2: Lucas pendura a massa de 100 g no dinamômetro e Barbara lê o mostrador &mdash; 0,98 N, o kg&middot;m/s² funcionando na mão. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
 
 <div class="q" data-id="2.3" data-t="2" data-tipo="assoc">
   <div class="q-topo"><span class="q-num">Item 2.3</span><span class="q-bloom">L2 · Entender</span></div>
@@ -619,7 +626,7 @@ input.lac.errada { border-color: var(--erro); }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0B-FA2-v2';
+  var CHAVE = 'ILB-T0B-FA2-v3';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
