@@ -194,6 +194,11 @@ input.lac.errada { border-color: var(--erro); }
 .placar-dica { font-size: .85rem; color: var(--cinza); margin-top: 10px; }
 .aviso-lac { display: none; font-size: .8rem; color: var(--erro); margin-top: 6px; }
 .aviso-lac.visivel { display: block; }
+.figura-fa { margin: 14px 0 18px; }
+.figura-fa img { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; border: 1px solid var(--cinza-borda); }
+.figura-fa figcaption { font-size: .82rem; color: var(--cinza); margin: 6px auto 0; max-width: 560px; line-height: 1.45; }
+.figura-fa .figura-num { font-family: var(--mono); color: var(--verde); font-weight: 600; }
+.figura-fa .fig-fonte { white-space: nowrap; }
 .assoc-linha { flex-wrap: wrap; }
 .assoc-linha select { min-width: 0; max-width: 100%; }
 @media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } .tab-fa { font-size: .8rem; } .tab-fa td.cel-pre { display: block; } .assoc-linha .item { flex: 1 1 100%; } .assoc-linha select { width: 100%; } }
@@ -276,7 +281,7 @@ input.lac.errada { border-color: var(--erro); }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Leia um tópico do Texto Temático e faça os oito itens dele aqui, antes de passar ao seguinte. Cada item mostra o nível de Bloom: os primeiros pedem para lembrar e entender; os do meio, para aplicar; os últimos, para analisar, avaliar e criar. Responda, toque em <em>conferir</em> e leia o porquê &mdash; inclusive quando acertar. Nada vale nota e nada sai do seu aparelho. No fim, o placar mostra em que tópico voltar. Prefere papel? <a href="ILB-T0C-FA-v1-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Leia um tópico do Texto Temático e faça os oito itens dele aqui, antes de passar ao seguinte. Cada item mostra o nível de Bloom: os primeiros pedem para lembrar e entender; os do meio, para aplicar; os últimos, para analisar, avaliar e criar. Responda, toque em <em>conferir</em> e leia o porquê &mdash; inclusive quando acertar. Nada vale nota e nada sai do seu aparelho. No fim, o placar mostra em que tópico voltar. Prefere papel? <a href="ILB-T0C-FA-v2-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -713,7 +718,7 @@ input.lac.errada { border-color: var(--erro); }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0C-FA-v1';
+  var CHAVE = 'ILB-T0C-FA-v2';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }

@@ -194,6 +194,11 @@ input.lac.errada { border-color: var(--erro); }
 .placar-dica { font-size: .85rem; color: var(--cinza); margin-top: 10px; }
 .aviso-lac { display: none; font-size: .8rem; color: var(--erro); margin-top: 6px; }
 .aviso-lac.visivel { display: block; }
+.figura-fa { margin: 14px 0 18px; }
+.figura-fa img { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; border: 1px solid var(--cinza-borda); }
+.figura-fa figcaption { font-size: .82rem; color: var(--cinza); margin: 6px auto 0; max-width: 560px; line-height: 1.45; }
+.figura-fa .figura-num { font-family: var(--mono); color: var(--verde); font-weight: 600; }
+.figura-fa .fig-fonte { white-space: nowrap; }
 .assoc-linha { flex-wrap: wrap; }
 .assoc-linha select { min-width: 0; max-width: 100%; }
 @media (max-width: 560px) { .q-bloom { display: inline-block; margin: 4px 0 0; } .tab-fa { font-size: .8rem; } .tab-fa td.cel-pre { display: block; } .assoc-linha .item { flex: 1 1 100%; } .assoc-linha select { width: 100%; } }
@@ -263,7 +268,7 @@ input.lac.errada { border-color: var(--erro); }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0B-FA2-v1-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0B-FA2-v2-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -320,6 +325,8 @@ input.lac.errada { border-color: var(--erro); }
 <div class="topico-fa" id="topico-2"><h2>Seção 2 · Tabela 5b — Grandezas mecânicas</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-5">Tópico 5 do Texto Temático</a>.</div></div>
 
 <div class="lembrete"><p>Massa, densidade, quantidade de movimento, força, pressão, energia e potência. Cada derivada com nome especial esconde um produto de potências: o newton é 1 kg·m/s² (Tabela 5b).</p></div>
+
+<figure class="figura-fa"><img src="../_imagens/_web/ILB-T0B-Figura-11-v2-web.jpg" alt="Figura 11"><figcaption><span class="figura-num">Figura 11</span> &mdash; Tarefa B2: Lucas pendura a massa de 100 g no dinamômetro e Barbara lê o mostrador &mdash; 0,98 N, o kg&middot;m/s² funcionando na mão. <span class="fig-fonte">(Texto Temático)</span></figcaption></figure>
 
 <div class="q" data-id="2.1" data-t="2" data-tipo="tabela">
   <div class="q-topo"><span class="q-num">Item 2.1</span><span class="q-bloom">L1 · Lembrar</span></div>
@@ -612,7 +619,7 @@ input.lac.errada { border-color: var(--erro); }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0B-FA2-v1';
+  var CHAVE = 'ILB-T0B-FA2-v2';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
