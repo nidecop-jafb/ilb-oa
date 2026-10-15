@@ -7,7 +7,7 @@
  *
  * Gerado por _scripts/gerar_instalar_ilb.py — nao editar a mao.
  */
-var CACHE = 'ilb-oa-v2';  // v2: corrige fetch que caia no cache do navegador (ver 'fetch' abaixo)
+var CACHE = 'ilb-oa-v3';  // v3: Musica apos Metodo + 3 paginas de Documentos (2026-10-15); v2: corrige fetch que caia no cache do navegador (ver 'fetch' abaixo)
 
 self.addEventListener('install', function (e) {
   self.skipWaiting();
