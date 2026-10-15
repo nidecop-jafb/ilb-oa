@@ -431,6 +431,19 @@ display: flex; align-items: center; gap: 12px;
   })();
   </script>
   <meta name="description" content="Versao executiva do projeto Trilhas de Aprendizagem da disciplina Introducao ao Laboratorio (ILB) — Licenciatura em Fisica, IFMG campus Ouro Preto.">
+<!-- CELULAR:INICIO --><style>
+@media (max-width: 560px) {
+  table { table-layout: fixed; width: 100% !important; max-width: 100%; min-width: 0 !important; }
+  table col { width: auto !important; }
+  th, td { overflow-wrap: anywhere; hyphens: auto; min-width: 0 !important; white-space: normal;
+           padding-left: 5px; padding-right: 5px; }
+  .tabela-rolagem, .quadro { overflow-x: visible; }
+  p, li, a, span, dd, dt, h1, h2, h3, h4, figcaption, blockquote { overflow-wrap: anywhere; }
+  .fase, .fase-oas, .oa-item { flex-wrap: wrap; min-width: 0; }
+  .campo-resultado { flex-wrap: wrap; }
+  .campo-resultado > .rot { flex: 1 1 100%; min-width: 0; }
+}
+</style><!-- CELULAR:FIM -->
 <!-- TOPO-ILB-CABECA:INICIO -->
 <script data-ilb-tema="fixo">(function () {
   var h = document.documentElement, t, l;
@@ -590,19 +603,6 @@ display: flex; align-items: center; gap: 12px;
   document.addEventListener('DOMContentLoaded', function () { varrer(); document.body.appendChild(el); });
 })();</script>
 <!-- TOPO-ILB-CABECA:FIM -->
-<!-- CELULAR:INICIO --><style>
-@media (max-width: 560px) {
-  table { table-layout: fixed; width: 100% !important; max-width: 100%; min-width: 0 !important; }
-  table col { width: auto !important; }
-  th, td { overflow-wrap: anywhere; hyphens: auto; min-width: 0 !important; white-space: normal;
-           padding-left: 5px; padding-right: 5px; }
-  .tabela-rolagem, .quadro { overflow-x: visible; }
-  p, li, a, span, dd, dt, h1, h2, h3, h4, figcaption, blockquote { overflow-wrap: anywhere; }
-  .fase, .fase-oas, .oa-item { flex-wrap: wrap; min-width: 0; }
-  .campo-resultado { flex-wrap: wrap; }
-  .campo-resultado > .rot { flex: 1 1 100%; min-width: 0; }
-}
-</style><!-- CELULAR:FIM -->
 </head>
 <body data-pagina="projeto">
 <!-- TOPO-ILB:INICIO -->
@@ -643,6 +643,11 @@ html[data-tema="claro"] .ilb-topo .tb .lua { display: block; }
 .ilb-estilo ul.dims li { background: #26272c; border-left: 3px solid #7FB2D6; padding: 9px 12px; margin: 0 0 8px; max-width: none; }
 .ilb-estilo ul.dims strong { display: block; color: #7FB2D6; font-weight: 700; }
 .ilb-estilo .est-ref { border-top: 1px solid #444; padding-top: 10px; margin-top: 14px; font-size: 12.5px; color: #9a9a9a; }
+.ilb-estilo a.est-btn { display: block; text-align: center; padding: 12px 14px; margin: 0 0 8px; border: 1px solid #3E8E5A;
+  background: #3E8E5A; color: #fff; font-weight: 700; text-decoration: none; line-height: 1.35; }
+.ilb-estilo a.est-btn small { display: block; font-weight: 400; font-size: 12.5px; opacity: .9; }
+.ilb-estilo a.est-btn-2 { background: #26272c; color: #7FB2D6; border-color: #7FB2D6; }
+.ilb-estilo a.est-btn:hover { filter: brightness(1.12); }
 html[data-tema="claro"] .ilb-topo .tb { background: #fff; color: #1F5F8B; border-color: #c8c8c8; }
 html[data-tema="claro"] .ilb-topo .tb:hover, html[data-tema="claro"] .ilb-topo .tb.ativo { background: #2F6E45; border-color: #2F6E45; color: #fff; }
 html[data-tema="claro"] .ilb-topo .tb:disabled { background: #fff; color: #1F5F8B; border-color: #c8c8c8; }
@@ -658,6 +663,8 @@ html[data-tema="claro"] .ilb-estilo .est-lead { color: #1c1c1c; }
 html[data-tema="claro"] .ilb-estilo ul.dims li { background: #f3f5f7; border-left-color: #1F5F8B; }
 html[data-tema="claro"] .ilb-estilo ul.dims strong { color: #1F5F8B; }
 html[data-tema="claro"] .ilb-estilo .est-ref { border-top-color: #d5d8dd; color: #5f5f5f; }
+html[data-tema="claro"] .ilb-estilo a.est-btn { background: #2F6E45; border-color: #2F6E45; color: #fff; }
+html[data-tema="claro"] .ilb-estilo a.est-btn-2 { background: #fff; color: #1F5F8B; border-color: #1F5F8B; }
 /* as barras de navegacao fixas das paginas de documento descem para baixo dos icones */
 .doc-barra, .agr-barra { top: 54px !important; }
 .doc-barra:not(.vis) { transform: translateY(calc(-100% - 60px)) !important; }
@@ -688,8 +695,10 @@ html[data-tema="claro"] .ilb-estilo .est-ref { border-top-color: #d5d8dd; color:
   <p>Na licenciatura, vale duas vezes: conhecer o seu estilo ajuda a escolher como estudar, e lembrar que uma turma
   tem todos os estilos ajuda a planejar a aula — o mesmo experimento contado pelo gráfico, pelo texto, pelos passos
   e pelo quadro geral.</p>
-  <p class="est-ref">FELDER, R. M.; SOLOMAN, B. A. <em>Index of Learning Styles Questionnaire</em>. Raleigh: North
-  Carolina State University.</p>
+  <p>Com esse retrato, você escolhe estratégias (e usos da IA) que combinam com o seu jeito e treina, de propósito, o polo que usa menos. Em cada Etapa, responda e acompanhe como o seu perfil muda.</p>
+  <a class="est-btn" href="../estilo/">Responder o questionário<small>20 perguntas · cerca de 5 min</small></a>
+  <a class="est-btn est-btn-2" href="../estilo/#grupo">Ver o painel do grupo</a>
+  <p class="est-ref">FELDER, R. M.; SOLOMAN, B. A. <em>Index of Learning Styles Questionnaire</em>. Raleigh: North Carolina State University.</p>
 </aside>
 <script>(function () {
   var h = document.documentElement, $ = function (id) { return document.getElementById(id); };
