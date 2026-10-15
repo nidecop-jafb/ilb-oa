@@ -56,9 +56,8 @@
 #abaMetodoT { top: 120px; }
 #abaDocumentosT { top: 208px; }
 #abaMusicaT { top: 344px; }
-#abaIneditismoT { top: 432px; }
-#abaProjetoT { top: 568px; }
-#abaCreditosT { top: 668px; }
+#abaProjetoT { top: 432px; }
+#abaCreditosT { top: 532px; }
 .aba-painel { position: fixed; top: 0; left: 0; z-index: 997; width: 380px; max-width: 88vw; height: 100vh; overflow-y: auto; background: #1a1b1f; border-right: 1px solid #444; padding: 24px 22px 24px 42px; transform: translateX(-100%); transition: transform .25s; font-size: .92rem; color: #c4c4c4; line-height: 1.6; }
 .aba-painel.open { transform: translateX(0); }
 .aba-painel h3 { font-family: 'Courier New', monospace; font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; color: #3E8E5A; border-bottom: 1px solid #444; padding-bottom: 8px; margin-bottom: 14px; }
@@ -98,6 +97,17 @@
   .wrap { padding-left: 46px; }
   .aba-toggle { font-size: .6rem; padding: 6px 6px; }
 }
+/* painel Site no molde da Oficina IA (ILB, 2026-10-14) */
+#abaSite { font-size: 1rem; }
+#abaSite .site-end { font-family: 'Courier New', monospace; font-size: .95rem; color: #7FB2D6; background: #26272c; border-left: 3px solid #3E8E5A; padding: 10px 12px; }
+#abaSite .site-end span { white-space: nowrap; }
+#abaSite .fis-intro { color: #e8e8e8; font-size: 1.05rem; }
+#abaSite .qr-box { display: flex; flex-direction: column; align-items: center; text-align: center; background: #26272c; padding: 16px 12px 10px; margin: 18px 0 14px; }
+#abaSite .qr-box img { width: 200px; height: 200px; max-width: 100%; background: white; padding: 8px; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,.5); }
+#abaSite .qr-box p { color: #aaa; font-size: .9rem; margin: 10px 0 0; }
+#abaSite a.aba-btn { text-align: center; font-weight: 700; padding: 13px 14px; }
+#abaSite a.aba-btn.sug { background: #3E8E5A; border-color: #3E8E5A; color: #fff; }
+#abaSite a.aba-btn.sug:hover { background: #4FA56C; color: #fff; }
 /* ABAS:CSS-FIM */
 
 /* METODO:CSS-INICIO */
@@ -145,13 +155,28 @@
 </style>
 </head>
 <body data-pagina="inicio">
+<!-- INSTALAR-TOPO:INICIO -->
+<style>
+.ilb-instalar-btn { position: fixed; top: 8px; right: 8px; z-index: 996; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; background: #1a1b1f; border: 1px solid #444; border-radius: 6px; color: #7FB2D6; }
+.ilb-instalar-btn:hover { border-color: #3E8E5A; color: #fff; background: #3E8E5A; }
+.ilb-instalar-btn svg { width: 20px; height: 20px; display: block; }
+@media print { .ilb-instalar-btn { display: none; } }
+</style>
+<a class="ilb-instalar-btn" href="instalar/" aria-label="Instalar" title="Instalar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7"/><path d="M9 11l3 3 3-3"/><path d="M10 18h4"/></svg></a>
+<!-- INSTALAR-TOPO:FIM -->
 <!-- ABAS:INICIO -->
 <!-- ABAS LATERAIS -->
 <button class="aba-toggle" id="abaSiteT">Site</button>
 <aside class="aba-painel" id="abaSite">
   <h3>Site</h3>
-  <p>Endereço: <strong>nidecop-jafb.github.io/ilb-oa</strong> — abre direto, sem senha e sem aplicativo. Nos OAs, a identificação é pelo <strong>RA</strong> (7 dígitos) com confirmação.</p>
-  <a class="aba-btn" href="instalar/">Instalar o site no celular ou no PC &middot; atalho com ícone</a>
+  <p>O endereço do site é</p>
+  <p class="site-end"><span>nidecop-jafb.github.io</span><wbr>/<span>ilb-oa</span></p>
+  <p class="fis-intro">Ele abre direto, sem senha nem cadastro. Nos OAs com envio, você se identifica só pelo RA.</p>
+  <div class="qr-box"><img src="_qr/ilb-oa-qr.png" alt="QR code que abre o site da Introdução ao Laboratório" width="200" height="200">
+    <p>Aponte a câmera do celular para o QR code para abrir o site.</p></div>
+  <p>Funciona no celular e no computador. Para instalar, toque no ícone <strong>Instalar</strong>, no topo.</p>
+  <a class="aba-btn" href="ineditismo/">Ineditismo</a>
+  <a class="aba-btn sug" href="sugestoes/">Enviar uma sugestão</a>
 </aside>
 
 <button class="aba-toggle" id="abaMetodoT">Método</button>
@@ -232,17 +257,6 @@
   <a class="aba-btn" href="https://music.youtube.com/search?q=Bach+Concerto+Italiano+BWV+971+cravo" target="_blank" rel="noopener">ILB-T0A · Bach — Concerto Italiano (BWV 971)</a>
 </aside>
 
-<button class="aba-toggle" id="abaIneditismoT">Ineditismo</button>
-<aside class="aba-painel" id="abaIneditismo">
-  <h3>Ineditismo</h3>
-  <p>A Introdução ao Laboratório é a primeira disciplina experimental da Licenciatura em Física e a única da matriz sem vínculo com uma disciplina teórica. Sua função é propedêutica: instalar o método que os quatro laboratórios seguintes vão supor pronto.</p>
-  <p>Aqui o experimento é <strong>veículo</strong>, não objeto. Mede-se para aprender a medir — avaliar e expressar incertezas, apresentar tabelas e gráficos, ajustar uma curva aos dados. A Mecânica Clássica entra como campo de aplicação porque é o que se pode medir no 2.º período, com montagens simples e a física que se traz da educação básica.</p>
-  <p>Cada trilha tem três paradas. O <strong>Pré-Lab</strong>, feito em casa, prepara o experimento e a previsão. O <strong>Lab</strong> é a bancada, com o Roteiro de Bancada na mão. O <strong>Pós-Lab</strong> transforma o dado bruto em relatório — que é onde a medida vira conhecimento comunicável.</p>
-  <p>Até onde a pesquisa do autor alcançou, este é o primeiro conjunto de Trilhas de Aprendizagem para Introdução ao Laboratório de Física num curso de Licenciatura no Brasil. Os manuais disponíveis organizam-se por experimento; aqui a organização é pelo método de medida, que se repete em todas as trilhas enquanto o experimento muda.</p>
-  <p>E porque quem estuda aqui vai ensinar Física, cada trilha faz uma pergunta a mais: o que desta bancada caberia numa sala de aula de ensino médio?</p>
-  <p>Boas-vindas — e sucesso na sua caminhada pelas Trilhas de Aprendizagem de Introdução ao Laboratório.</p>
-</aside>
-
 <button class="aba-toggle" id="abaProjetoT">Projeto</button>
 <aside class="aba-painel" id="abaProjeto">
   <h3>Projeto</h3>
@@ -307,7 +321,7 @@
     <section>
       <h2 class="intro-t">Trilhas de Aprendizagem</h2>
       <p>Trilhas de Aprendizagem são percursos de estudo construídos para orientar, apoiar e avaliar a sua caminhada pelo mundo da Física.</p>
-      <p>Nas <strong>abas da lateral esquerda</strong> estão a instalação do site, o método de estudo, os documentos da disciplina, a música para estudar, o ineditismo, o projeto executivo, os créditos e a referência para citar o site.</p>
+      <p>Nas <strong>abas da lateral esquerda</strong> estão o endereço, o QR code e o ineditismo do site, o método de estudo, os documentos da disciplina, a música para estudar, o projeto executivo, os créditos e a referência para citar o site.</p>
       <p>Escolha uma trilha e faça os objetos de aprendizagem <strong>na ordem numerada</strong>, sem pular nenhum — a ordem segue como o cérebro aprende. Se pulou, volte.</p>
       <p class="sucesso">Sucesso no seu estudo.</p>
     </section>
@@ -433,7 +447,6 @@ if (location.protocol === 'file:') {
                ['abaMetodoT', 'abaMetodo'],
                ['abaDocumentosT', 'abaDocumentos'],
                ['abaMusicaT', 'abaMusica'],
-               ['abaIneditismoT', 'abaIneditismo'],
                ['abaProjetoT', 'abaProjeto'],
                ['abaCreditosT', 'abaCreditos']];
   /* Espacamento UNIFORME entre as linguetas: o rotulo e vertical e a altura
