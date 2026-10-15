@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="192x192" href="/ilb-oa/_icones/app-site-192.png">
+<meta name="theme-color" content="#131110">
+<title>Sessão do Laboratório · ILB · IFMG-OP</title>
+<style>
+  input, button, select, textarea { font-family: inherit; }
+  :root {
+    --laranja: #3E8E5A; --azul: #7FB2D6; --ambar: #E0A84B;
+    --fundo: #131110; --painel: #1D1814; --borda: #3E3226;
+    --texto: #EFE8DD; --texto-dim: #A99C8C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--fundo); color: var(--texto); font-family: 'Courier New', Courier, monospace;
+         min-height: 100vh; display: flex; flex-direction: column; line-height: 1.7; }
+  header { border-bottom: 2px solid var(--laranja); padding: 1.1rem 1rem .9rem; text-align: center; }
+  header h1 { font-size: 1.15rem; color: var(--laranja); text-transform: uppercase; letter-spacing: .05em; }
+  header p { color: var(--texto-dim); font-size: .85rem; }
+  main { flex: 1; width: 100%; max-width: 680px; margin: 0 auto; padding: 1.4rem 1rem 2rem; }
+  .intro { font-size: .95rem; margin-bottom: 1.2rem; }
+  .fase { border: 1px solid var(--borda); background: var(--painel); padding: 1rem 1.1rem; margin-bottom: 1rem;
+          border-left: 4px solid var(--borda); transition: border-color .3s; }
+  .fase h2 { font-size: .98rem; color: var(--azul); margin-bottom: .35rem; }
+  .fase p { font-size: .95rem; }
+  .fase.agora { border-left-color: var(--laranja); }
+  .fase.agora h2 { color: var(--laranja); }
+  .fase.feita { opacity: .6; }
+  .dica { color: var(--texto-dim); font-size: .82rem; margin-top: .4rem; }
+  .crono-btn { position: fixed; top: 8px; right: 8px; z-index: 996; min-width: 46px; height: 40px; padding: 0 10px;
+               display: flex; align-items: center; justify-content: center; background: #1a1b1f; border: 1px solid #444;
+               border-radius: 6px; color: var(--azul); font: 700 1rem 'Courier New', monospace; cursor: pointer; }
+  .crono-btn svg { width: 22px; height: 22px; display: block; }
+  .crono-btn.aquec { color: var(--ambar); border-color: var(--ambar); }
+  .crono-btn.foco { color: var(--azul); border-color: var(--azul); }
+  .crono-btn.final { color: var(--laranja); border-color: var(--laranja); }
+  .crono-btn.parado { opacity: .6; }
+  .crono-dlg { margin: auto; max-width: 420px; width: calc(100% - 32px); background: var(--painel); color: var(--texto);
+               border: 1px solid var(--laranja); padding: 1.2rem 1.2rem 1rem; font-family: 'Courier New', monospace; }
+  .crono-dlg::backdrop { background: rgba(0,0,0,.6); }
+  .crono-dlg h2 { font-size: 1.05rem; color: var(--laranja); margin-bottom: .6rem; }
+  .crono-dlg p { font-size: .92rem; margin-bottom: .6rem; }
+  .crono-dlg .acoes { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; margin-top: .6rem; }
+  .crono-dlg button { padding: 9px 14px; border: 1px solid #555; background: transparent; color: var(--texto);
+                      font: inherit; font-size: .88rem; cursor: pointer; }
+  .crono-dlg button.principal { border-color: var(--laranja); background: var(--laranja); color: #0d0d0d; font-weight: 700; }
+  footer { border-top: 1px solid var(--borda); padding: .9rem 1rem; text-align: center; font-size: .8rem; color: var(--texto-dim); }
+  footer a { color: var(--azul); }
+  @media (max-width: 560px) { header { padding-right: 64px; } }
+  @media print { .crono-btn { display: none; } }
+/* ICONES-ILB */
+.ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
+  flex-shrink: 0; }
+.ilb-cab-marcas svg { width: 52px; height: 52px; display: block; }
+.ilb-inst-marcas { display: flex; gap: 14px; align-items: center; justify-content: center;
+  width: 100%; margin: 0 auto 12px; }
+.ilb-inst-marcas a { display: flex; }
+.ilb-inst-marcas svg { width: 30px; height: 30px; display: block; }
+.ilb-agr-marca { display: flex; justify-content: center; width: 100%; margin: 0 auto 8px; }
+.ilb-agr-marca a { display: flex; }
+.ilb-agr-marca svg { width: 30px; height: 30px; display: block; }
+@media print { .ilb-agr-marca { display: none !important; } }
+/* RODAPE PADRAO */
+.ilb-rodape { text-align: center; padding: 22px 16px 26px; font-size: .82rem; line-height: 1.6;
+  color: var(--cinza, #8a8f98); }
+.ilb-rodape .ilb-inst-marcas { margin: 0 auto 10px; }
+.ilb-rodape .ilb-agr-marca { margin: 0 auto 10px; }
+.ilb-rodape-texto { max-width: 960px; margin: 0 auto; }
+.ilb-rodape-selo { margin-top: 6px; font-size: .78rem; }
+@media print { .ilb-rodape-selo { display: none !important; } }
+/* CABECALHO PADRAO no RB: codigo em verde-quadro, mensagem numa linha abaixo */
+.header h1 .trilha-code { color: #3E8E5A; }
+.ilb-header-sub { font-size: .82rem; color: var(--cinza, #8a8f98); margin: 2px 0 10px; }
+.rodape-info .ilb-selo-ap { margin-left: 12px; font-size: .75rem; color: var(--cinza, #8a8f98); }
+/* AP 1280x720: texto institucional numa linha so, sem invadir a frase */
+.despedida .desp-inst { font-size: .6rem; letter-spacing: 0; white-space: nowrap; }
+/* EXCECAO TT: capa centrada -> icones de curso e disciplina centralizados */
+.capa-marca > .ilb-cab-marcas { justify-content: center; }
+/* EXCECAO AP slide 1 (1280x720): icones centralizados acima da disciplina; o nome
+   da disciplina numa linha so, para o slide caber */
+.capa-conteudo > .ilb-cab-marcas { justify-content: center; margin: 0 0 14px; }
+.capa-conteudo > .ilb-cab-marcas svg { width: 56px; height: 56px; }
+.capa-slide .capa-disciplina { white-space: nowrap; }
+/* AP Despedida: IFMG + NIDEC legiveis e com folga acima da frase. A despedida da
+   ILB e em DUAS colunas (grid, com foto ao fundo) — nao mexer no layout dela. */
+.desp-frase > .ilb-inst-marcas { justify-content: center; margin: 0 0 6px; }
+.desp-frase > .ilb-inst-marcas svg { width: 32px; height: 32px; }
+.desp-frase > .ilb-agr-marca { margin: 0 auto 8px; }
+.desp-frase > .ilb-agr-marca svg { width: 28px; height: 28px; }
+/* RB impresso */
+.header > .ilb-cab-marcas svg { width: 34px; height: 34px; }
+.header > .ilb-cab-marcas + .header-left { margin-right: auto; }
+.pagina > .ilb-rodape { padding: 6px 0 2px; font-size: .72rem; line-height: 1.4; }
+.pagina > .ilb-rodape .ilb-inst-marcas { margin: 0 auto 4px; }
+@media print {
+  .header > .ilb-cab-marcas svg { width: 24px; height: 24px; }
+  .pagina > .ilb-rodape { padding: 2px 0 0; font-size: 6.5pt; color: #555 !important; }
+  .pagina > .ilb-rodape .ilb-inst-marcas svg { width: 20px; height: 20px; }
+  .ilb-header-sub { font-size: 7.5pt; margin: 0 0 6px; color: #555 !important; }
+}
+
+/* PAGINAS FIXAS: cabecalho e rodape padrao */
+.capa > .ilb-cab-marcas, .wrap > .ilb-cab-marcas.ilb-centro { justify-content: center; }
+.wrap > .ilb-cab-marcas, header > .ilb-cab-marcas { margin-bottom: 14px; }
+.ilb-rodape { border-top: 1px solid var(--fio, #333); margin-top: 40px; }
+.ilb-rodape a { color: inherit; }
+/* /ICONES-ILB */
+</style>
+</head>
+<body>
+<button class="crono-btn" id="cronoBtn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="8"/><path d="M12 9.5v4l2.5 2.5M9.5 2.5h5M12 2.5v3"/></svg></button>
+<header>
+<div class="ilb-cab-marcas"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física"> <title>Prisma decompondo a luz — Licenciatura em Física</title> <defs> <radialGradient id="cab-prisma-fundo" cx="50%" cy="42%" r="60%"> <stop offset="0" stop-color="#26302B"/> <stop offset="1" stop-color="#0E1411"/> </radialGradient> <linearGradient id="cab-prisma-vidro" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/> <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/> </linearGradient> <clipPath id="cab-prisma-dentro"><circle cx="100" cy="100" r="86"/></clipPath> </defs> <circle cx="100" cy="100" r="96" fill="url(#cab-prisma-fundo)"/> <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/> <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1" stroke-dasharray="1.5 3" opacity="0.8"/> <g clip-path="url(#cab-prisma-dentro)"> <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/> <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/> <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/> <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/> <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/> <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/> <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/> <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/> <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/> </g> <polygon points="100,50 56,130 144,130" fill="url(#cab-prisma-vidro)" stroke="#DDEBF3" stroke-width="2.5" stroke-linejoin="round"/> <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/> <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/> <g fill="#FFFFFF" opacity="0.55"> <circle cx="46" cy="62" r="1.2"/> <circle cx="150" cy="56" r="1"/> <circle cx="70" cy="160" r="1"/> <circle cx="140" cy="164" r="1.2"/> </g> </svg><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório"> <g fill="none" stroke="#3E8E5A" stroke-width="3"> <ellipse cx="60" cy="52" rx="46" ry="18"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/> </g> <g fill="#3E8E5A"> <circle cx="53" cy="47" r="7"/> <circle cx="67" cy="47" r="7"/> <circle cx="60" cy="58" r="9"/> </g> <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square"> <line x1="26" y1="110" x2="94" y2="110"/> <line x1="30" y1="110" x2="30" y2="104"/> <line x1="40" y1="110" x2="40" y2="104"/> <line x1="50" y1="110" x2="50" y2="104"/> <line x1="60" y1="110" x2="60" y2="98"/> <line x1="70" y1="110" x2="70" y2="104"/> <line x1="80" y1="110" x2="80" y2="104"/> <line x1="90" y1="110" x2="90" y2="104"/> </g> </svg></div>  <h1>Sessão do Laboratório</h1>
+  <p>Introdução ao Laboratório · Licenciatura em Física</p>
+</header>
+<main>
+  <p class="intro">Você dedica até 30 min em cada sessão de estudo no Pré-Laboratório, 100 min no Laboratório e até 30 min em cada sessão no Pós-Laboratório. Em todas, o botão Começar abre a página da sessão, com as três paradas estratégicas; no alto da tela, o cronômetro marca o tempo.</p>
+  <section class="fase"><h2>Fase 1 · Aquecimento — até 10 min</h2><p>Comece organizando a bancada: os EPIs da prática, o Roteiro de Bancada, caderno de Física, caneta, lápis, borracha, régua e calculadora científica. Toque no cronômetro, no alto da tela, e aperte “Começar o aquecimento”. Sucesso no seu experimento!</p></section>
+  <section class="fase"><h2>Fase 2 · Experimento focado — até 80 min</h2><p>O cronômetro passa sozinho para o experimento focado: até 80 minutos.</p></section>
+  <section class="fase"><h2>Fase 3 · Atividade final — até 10 min</h2><p>Registre os dados no Roteiro de Bancada e organize a bancada.</p></section>
+  <p class="dica">O cronômetro passa de uma fase para a outra sozinho e avisa quando falta 1 minuto. Toque nele para pausar ou zerar.</p>
+</main>
+<footer>
+  <a href="../../#abaMetodo">Voltar ao Método de Estudo</a> · <a href="../../">Início</a>
+</footer>
+<script>
+(function () {
+  'use strict';
+  var S = {"slug": "lab", "total": 100, "metas": "100 minutos: aquecimento até 10, experimento focado até 80 e atividade final até 10. O cronômetro passa de uma fase para a outra sozinho e avisa quando faltar 1 minuto.", "fases": [["Aquecimento", 10], ["Experimento focado", 80], ["Atividade final", 10]]};
+  var b = document.getElementById('cronoBtn');
+  var rapido = /[?&]rapido=1\b/.test(location.search), MIN = rapido ? 1000 : 60000;
+  var CHAVE = 'ilb-sessao-crono-' + S.slug, ICONE = b.innerHTML, est = null, timer = null, dlg = null;
+  var FIM = [], soma = 0;
+  S.fases.forEach(function (f) { soma += f[1] * MIN; FIM.push(soma); });
+  var TOTAL = soma, CLASSE = ['aquec', 'foco', 'final'];
+  function ler() { try { var e = JSON.parse(localStorage.getItem(CHAVE) || 'null'); return e && e.ini ? e : null; } catch (x) { return null; } }
+  function gravar() { try { if (est) { localStorage.setItem(CHAVE, JSON.stringify(est)); } else { localStorage.removeItem(CHAVE); } } catch (x) { /* sem localStorage */ } }
+  function passou() { return est ? (est.parado || Date.now()) - est.ini : 0; }
+  function fase() { var p = passou(); for (var i = 0; i < FIM.length; i++) { if (p < FIM[i]) { return i; } } return FIM.length - 1; }
+  function mmss(ms) { var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor(s / 60); s = s % 60; return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
+  function vibrar() { try { if (navigator.vibrate) { navigator.vibrate([300, 150, 300]); } } catch (x) { /* sem vibracao */ } }
+  function rot(r) { b.setAttribute('aria-label', r); b.title = r; }
+  function fechar() { var d = dlg; dlg = null; if (d) { if (d.close && d.open) { d.close(); } d.remove(); } }
+  function janela(titulo, textos, botoes) {
+    fechar();
+    var d = document.createElement('dialog');
+    d.className = 'crono-dlg'; d.setAttribute('aria-labelledby', 'cronoTit');
+    d.innerHTML = '<h2 id="cronoTit"></h2><div class="texto"></div><div class="acoes"></div>';
+    d.querySelector('h2').textContent = titulo;
+    [].concat(textos).forEach(function (t) { var p = document.createElement('p'); p.textContent = t; d.querySelector('.texto').appendChild(p); });
+    var acoes = d.querySelector('.acoes'), foco = null;
+    botoes.forEach(function (x) {
+      var k = document.createElement('button'); k.type = 'button'; k.textContent = x[0];
+      if (x[2]) { k.className = 'principal'; foco = k; }
+      k.addEventListener('click', function () { fechar(); if (x[1]) { x[1](); } });
+      acoes.appendChild(k);
+    });
+    d.addEventListener('close', function () { if (dlg === d) { dlg = null; } d.remove(); });
+    document.body.appendChild(d); dlg = d;
+    if (d.showModal) { d.showModal(); } else { d.setAttribute('open', ''); }
+    (foco || acoes.firstChild).focus();
+  }
+  function marcar(i) {
+    [].forEach.call(document.querySelectorAll('.fase'), function (el, k) {
+      el.classList.toggle('agora', est !== null && k === i);
+      el.classList.toggle('feita', est !== null && k < i);
+    });
+  }
+  function marcos() {
+    var p = passou(), v = est.visto;
+    if (p >= TOTAL) {
+      est = null; gravar(); vibrar();
+      janela('Pausa!', [S.total + ' minutos de foco: missão cumprida.', 'Levante, beba água e descanse.'], [['Fechar', null, true]]);
+      return true;
+    }
+    if (p >= TOTAL - MIN && !v.alerta) {
+      for (var k = 1; k < FIM.length; k++) { v['f' + k] = true; }
+      v.alerta = true; gravar(); vibrar();
+      janela('Falta 1 minuto', 'Falta 1 minuto para fechar os ' + S.total + ' minutos. Termine o que está fazendo.', [['OK', null, true]]);
+      return false;
+    }
+    var i = fase();
+    if (i > 0 && !v['f' + i]) {
+      for (var j = 1; j <= i; j++) { v['f' + j] = true; }
+      gravar(); vibrar();
+      var f = S.fases[i];
+      janela(f[0], 'Agora, a Fase ' + (i + 1) + ': ' + f[0].toLowerCase() + ', até ' + f[1] + ' minutos.', [['OK', null, true]]);
+    }
+    return false;
+  }
+  function pintar() {
+    clearInterval(timer); timer = null;
+    b.classList.remove('aquec', 'foco', 'final', 'parado');
+    if (!est) { b.innerHTML = ICONE; marcar(-1); rot('Cronômetro da sessão: ' + S.total + ' minutos'); return; }
+    if (!est.parado && marcos()) { pintar(); return; }
+    var i = fase(), r = FIM[i] - passou();
+    b.textContent = mmss(r);
+    b.classList.add(CLASSE[i] || 'foco');
+    if (est.parado) { b.classList.add('parado'); }
+    marcar(i);
+    rot(S.fases[i][0] + (est.parado ? ' parado' : '') + ': faltam ' + mmss(r));
+    if (!est.parado) { timer = setInterval(pintar, rapido ? 250 : 1000); }
+  }
+  function iniciar() { est = { ini: Date.now(), parado: null, visto: {} }; gravar(); pintar(); }
+  b.addEventListener('click', function () {
+    if (!est) {
+      janela('Metas desta sessão', [S.metas, 'Desligue as notificações do celular e deixe as redes sociais de lado durante a sessão.'],
+             [['Agora não', null], ['Começar o aquecimento', iniciar, true]]);
+      return;
+    }
+    var alt = est.parado
+      ? ['Continuar', function () { est.ini += Date.now() - est.parado; est.parado = null; gravar(); pintar(); }, true]
+      : ['Pausar', function () { est.parado = Date.now(); gravar(); pintar(); }, true];
+    janela(S.fases[fase()][0] + ': faltam ' + mmss(FIM[fase()] - passou()),
+           est.parado ? 'O cronômetro está parado.' : 'O cronômetro está contando.',
+           [['Zerar', function () { est = null; gravar(); pintar(); }], alt]);
+  });
+  est = ler();
+  if (est && !est.parado && Date.now() - (est.ini + TOTAL) > 12 * 3600 * 1000) { est = null; gravar(); }
+  if (est && !est.visto) { est.visto = {}; }
+  pintar();
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && !dlg) { pintar(); } });
+})();
+</script>
+<!-- RODAPE-ILB:INICIO --><div class="ilb-rodape"><div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div><div class="ilb-rodape-texto">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; Primeira edição &middot; 2026</div><div class="ilb-rodape-selo"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></div></div><!-- RODAPE-ILB:FIM --><!-- CONTADOR:INICIO -->
+</body>
+</html>
