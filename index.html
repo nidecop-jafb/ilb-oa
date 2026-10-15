@@ -221,6 +221,66 @@
   <div class="regra"><strong>Não pule nenhum objeto de aprendizagem. Se pulou, volte.</strong><br>Cada passo prepara o terreno do seguinte: sem o Ponto de Partida a leitura não encontra pergunta; sem o Pré-Lab a bancada vira receita seguida às cegas; sem o Relatório Mínimo os dados esfriam antes de virar conclusão. Pular um objeto de aprendizagem não adianta a trilha — atrasa. Se você pulou, volte ao passo que ficou para trás e siga dali.</div>
 </aside>
 
+<!-- ETAPAS-ILB:INICIO -->
+<button class="aba-toggle" id="abaEtapa1T">Etapa 1</button>
+<aside class="aba-painel" id="abaEtapa1">
+  <h3>Etapa 1 &middot; Metrologia</h3>
+  <p>As trilhas desta etapa, na ordem em que você vai fazê-las.</p>
+  <div class="etapa-tr"><a class="aba-btn" href="#t0a">T0A &middot; Boas-vindas à Física Experimental</a></div>
+  <div class="etapa-tr"><a class="aba-btn" href="#t0b">T0B &middot; O Sistema Internacional e o Quadro Geral de Unidades</a></div>
+  <div class="etapa-tr"><a class="aba-btn" href="#t0c">T0C &middot; A matemática da medida</a></div>
+  <div class="etapa-tr"><span class="prep">T0D &middot; Densidade dos Cilindros<em>em preparação</em></span></div>
+</aside>
+
+<button class="aba-toggle" id="abaEtapa2T">Etapa 2</button>
+<aside class="aba-painel" id="abaEtapa2">
+  <h3>Etapa 2 &middot; Estática</h3>
+  <p>As trilhas desta etapa, na ordem em que você vai fazê-las.</p>
+  <div class="etapa-tr"><span class="prep">T01 &middot; Forças da Mecânica Clássica: Peso, Tração, Elástica e Empuxo<em>em preparação</em></span></div>
+  <div class="etapa-tr"><span class="prep">T02 &middot; Forças da Mecânica Clássica: Compressão (Normal, Atrito), Aerodinâmica (Sustentação, Arrasto)<em>em preparação</em></span></div>
+  <div class="etapa-tr"><span class="prep">T03 &middot; Equilíbrio Estático de Ponto Material<em>em preparação</em></span></div>
+  <div class="etapa-tr"><span class="prep">T04 &middot; Equilíbrio Estático de Corpo Extenso<em>em preparação</em></span></div>
+</aside>
+
+<button class="aba-toggle" id="abaEtapa3T">Etapa 3</button>
+<aside class="aba-painel" id="abaEtapa3">
+  <h3>Etapa 3 &middot; Cinemática e Dinâmica</h3>
+  <p>As trilhas desta etapa, na ordem em que você vai fazê-las.</p>
+  <div class="etapa-tr"><span class="prep">T05 &middot; Encontro de Pontos Materiais<em>em preparação</em></span></div>
+  <div class="etapa-tr"><span class="prep">T06 &middot; Movimento sob Forças Constantes<em>em preparação</em></span></div>
+  <div class="etapa-tr"><span class="prep">T07 &middot; Movimento Circular Uniforme (MCU)<em>em preparação</em></span></div>
+  <div class="etapa-tr"><span class="prep">T08 &middot; Queda e Lançamentos<em>em preparação</em></span></div>
+</aside>
+
+<script>
+(function () {
+  'use strict';
+  var ids = ["abaEtapa1", "abaEtapa2", "abaEtapa3"];
+  ids.forEach(function (id) {
+    var meu = document.getElementById(id), minha = document.getElementById(id + 'T');
+    if (!meu || !minha) { return; }
+    minha.addEventListener('click', function (e) {
+      e.stopPropagation();
+      [].slice.call(document.querySelectorAll('.aba-painel')).forEach(function (p) {
+        if (p !== meu) { p.classList.remove('open'); }
+      });
+      meu.classList.toggle('open');
+    });
+    [].slice.call(document.querySelectorAll('.aba-toggle')).forEach(function (t) {
+      if (t !== minha) { t.addEventListener('click', function () { meu.classList.remove('open'); }); }
+    });
+  });
+  /* link de trilha: fecha o painel e abre a sanfona da trilha no centro */
+  [].slice.call(document.querySelectorAll('.etapa-tr a[href^="#"]')).forEach(function (a) {
+    a.addEventListener('click', function () {
+      var d = document.getElementById(a.getAttribute('href').slice(1));
+      if (d && d.tagName === 'DETAILS') { d.open = true; }
+    });
+  });
+})();
+</script>
+
+<!-- ETAPAS-ILB:FIM -->
 <button class="aba-toggle" id="abaDocumentosT">Documentos</button>
 <aside class="aba-painel" id="abaDocumentos">
   <h3>Documentos</h3>
@@ -321,7 +381,7 @@
     <section>
       <h2 class="intro-t">Trilhas de Aprendizagem</h2>
       <p>Trilhas de Aprendizagem são percursos de estudo construídos para orientar, apoiar e avaliar a sua caminhada pelo mundo da Física.</p>
-      <p>Nas <strong>abas da lateral esquerda</strong> estão o endereço, o QR code e o ineditismo do site, o método de estudo, os documentos da disciplina, a música para estudar, o projeto executivo, os créditos e a referência para citar o site.</p>
+      <p>Nas <strong>abas da lateral esquerda</strong> estão o endereço, o QR code e o ineditismo do site, o método de estudo, as três etapas com as suas trilhas, os documentos da disciplina, a música para estudar, o projeto executivo, os créditos e a referência para citar o site.</p>
       <p>Escolha uma trilha e faça os objetos de aprendizagem <strong>na ordem numerada</strong>, sem pular nenhum — a ordem segue como o cérebro aprende. Se pulou, volte.</p>
       <p class="sucesso">Sucesso no seu estudo.</p>
     </section>
@@ -329,6 +389,17 @@
 
   <!-- TRILHAS:INICIO -->
   <nav class="trilha-nav" aria-label="Ir para a trilha"><a href="#t0a">T0A</a> <a href="#t0b">T0B</a> <a href="#t0c">T0C</a></nav>
+  <style>
+  .etapa-t { font-family: 'Courier New', monospace; font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; color: #7FB2D6; border-bottom: 2px solid #3E8E5A; padding-bottom: 8px; margin: 34px 0 14px; scroll-margin-top: 64px; }
+  .trilha-prep { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; border: 1px dashed #444; padding: 12px 14px; margin-bottom: 12px; color: #9a9a9a; scroll-margin-top: 64px; }
+  .trilha-prep .tag { font-family: 'Courier New', monospace; font-size: .8rem; color: #7f7f7f; white-space: nowrap; }
+  .aba-painel .etapa-tr { margin: 0 0 12px; }
+  .aba-painel .etapa-tr a.aba-btn { margin: 0; }
+  .aba-painel .etapa-tr .prep { display: block; padding: 11px 14px; border: 1px dashed oklch(0.40 0.02 260); color: #9a9a9a; font-size: .88rem; }
+  .aba-painel .etapa-tr .prep em { display: block; font-size: .78rem; color: #7f7f7f; margin-top: 4px; font-style: normal; }
+</style>
+
+  <h2 class="etapa-t" id="etapa1">Etapa 1 &middot; Metrologia</h2>
 
   <details class="trilha" id="t0a">
   <summary>T0A &middot; Boas-vindas à Física Experimental</summary>
@@ -384,6 +455,19 @@
   </ul>
   </div>
   </details>
+  <div class="trilha-prep" id="t0d"><span>T0D &middot; Densidade dos Cilindros</span><span class="tag">em preparação</span></div>
+
+  <h2 class="etapa-t" id="etapa2">Etapa 2 &middot; Estática</h2>
+  <div class="trilha-prep" id="t01"><span>T01 &middot; Forças da Mecânica Clássica: Peso, Tração, Elástica e Empuxo</span><span class="tag">em preparação</span></div>
+  <div class="trilha-prep" id="t02"><span>T02 &middot; Forças da Mecânica Clássica: Compressão (Normal, Atrito), Aerodinâmica (Sustentação, Arrasto)</span><span class="tag">em preparação</span></div>
+  <div class="trilha-prep" id="t03"><span>T03 &middot; Equilíbrio Estático de Ponto Material</span><span class="tag">em preparação</span></div>
+  <div class="trilha-prep" id="t04"><span>T04 &middot; Equilíbrio Estático de Corpo Extenso</span><span class="tag">em preparação</span></div>
+
+  <h2 class="etapa-t" id="etapa3">Etapa 3 &middot; Cinemática e Dinâmica</h2>
+  <div class="trilha-prep" id="t05"><span>T05 &middot; Encontro de Pontos Materiais</span><span class="tag">em preparação</span></div>
+  <div class="trilha-prep" id="t06"><span>T06 &middot; Movimento sob Forças Constantes</span><span class="tag">em preparação</span></div>
+  <div class="trilha-prep" id="t07"><span>T07 &middot; Movimento Circular Uniforme (MCU)</span><span class="tag">em preparação</span></div>
+  <div class="trilha-prep" id="t08"><span>T08 &middot; Queda e Lançamentos</span><span class="tag">em preparação</span></div>
   <script>
 /* Atalho #t{nn} abre a trilha na sanfona; sem JS o toque no titulo ainda abre. */
 (function () {
