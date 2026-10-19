@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILB-T0B-RB-v4-estudante-impresso</title>
+<title>ILB-T0B-RB-v5-estudante-impresso</title>
 <style>
   input, button, select, textarea { font-family: inherit; }
 /* ============================================================
@@ -684,6 +684,54 @@ td:first-child { text-align: left; padding-left: 8px; }
   .secao.cresce.sem-esticar .esc-lista.desce .esc-item { flex: 1 1 auto; }
   .secao.cresce.sem-esticar .esc-lista.desce .esc-linha { flex: 1 1 auto; height: auto; min-height: 7mm; }
 }
+
+/* ── v5: o ciclo estimar → medir, em 5 passos ── */
+.diretriz { border-left: 3px solid var(--ouro); background: var(--azul-bg);
+  padding: 6px 10px; margin-bottom: 6px; font-size: .9rem; line-height: 1.45; }
+.dica { font-size: .8rem; color: var(--cinza); font-style: italic; margin-bottom: 6px; }
+.v5t { border-left: 2px solid var(--azul); padding: 3px 0 3px 10px; margin-bottom: 8px; }
+.v5t-t { font-size: .95rem; font-weight: 700; }
+.v5t-t .v5t-i { font-weight: 400; }
+.v5t-t .cod { font-family: var(--mono); color: var(--azul); margin-right: 6px; }
+.v5t-i { font-size: .8rem; color: var(--cinza); font-style: italic; margin: 0 0 3px; }
+.passo { display: flex; gap: 6px; font-size: .9rem; line-height: 1.32; margin-top: 2px; }
+.passo .pn { flex: 0 0 auto; font-weight: 700; color: var(--azul); min-width: 1.1em; }
+.passo .pc { flex: 1; }
+.passo .caneta { font-weight: 700; color: var(--ouro); }
+.campos { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 3px; }
+.campo { display: flex; align-items: baseline; gap: 4px; flex: 1 1 0; white-space: nowrap; }
+.campo.f0 { flex: 0 0 auto; }
+.campo .ln { flex: 1; border-bottom: 1px dotted var(--cinza-borda); min-width: 14mm; min-height: 18px; }
+.campo .un { color: var(--cinza); }
+.caixa { display: inline-block; width: 10px; height: 10px; border: 1px solid var(--cinza);
+  vertical-align: -1px; margin: 0 4px 0 10px; }
+.porque { flex-direction: column; gap: 0; }
+.porque .esc-linha { min-height: 20px; }
+.fechamento .fecho-destaque { text-align: center; }
+@media print {
+  body { font-size: 11pt; }
+  .diretriz { font-size: 10.5pt !important; background: #F4F4F4 !important;
+    border-left: 2.5pt solid #1F3864 !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .diretriz strong { color: #1F3864 !important; }
+  .dica { font-size: 9.5pt; }
+  .secao-titulo { font-size: 12pt !important; }
+  .v5t { margin-bottom: 4pt; padding-top: 1pt; padding-bottom: 1pt; }
+  .v5t-t { font-size: 11pt; }
+  .v5t-i { font-size: 9.5pt; }
+  .passo { font-size: 11pt; margin-top: 1pt; }
+  .passo .caneta { color: #1F3864 !important; }
+  .campo .ln { min-height: 13pt; }
+  .caixa { width: 9pt; height: 9pt; border: .75pt solid #1A1A1A !important; }
+  .fechamento .frase { font-size: 9.5pt !important; }
+  .fechamento .fecho-destaque { font-size: 12pt !important; }
+  /* nada de branco ate o rodape (#LESSONS 2026-08-12): as tarefas repartem a altura
+     do bloco e a folga vai para as linhas do passo 5 */
+  .secao.cresce .v5t { flex: 1 1 auto; display: flex; flex-direction: column; }
+  /* a folga vira pauta: linhas de 7 mm, as que nao cabem ficam cortadas */
+  .secao.cresce .v5t .porque { flex: 1 1 0; display: flex; overflow: hidden; min-height: 0; }
+  .secao.cresce .v5t .porque .esc-linha { flex: 0 0 7mm; min-height: 7mm; }
+}
 /* ICONES-ILB */
 .ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
   flex-shrink: 0; }
@@ -757,7 +805,6 @@ td:first-child { text-align: left; padding-left: 8px; }
 
 <!-- ═══════════════════════ PÁGINA 1 ═══════════════════════ -->
 <div class="pagina">
-
   <div class="header"><div class="ilb-cab-marcas"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física"> <title>Prisma decompondo a luz — Licenciatura em Física</title> <defs> <radialGradient id="cab-prisma-fundo" cx="50%" cy="42%" r="60%"> <stop offset="0" stop-color="#26302B"/> <stop offset="1" stop-color="#0E1411"/> </radialGradient> <linearGradient id="cab-prisma-vidro" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/> <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/> </linearGradient> <clipPath id="cab-prisma-dentro"><circle cx="100" cy="100" r="86"/></clipPath> </defs> <circle cx="100" cy="100" r="96" fill="url(#cab-prisma-fundo)"/> <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/> <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1" stroke-dasharray="1.5 3" opacity="0.8"/> <g clip-path="url(#cab-prisma-dentro)"> <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/> <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/> <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/> <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/> <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/> <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/> <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/> <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/> <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/> </g> <polygon points="100,50 56,130 144,130" fill="url(#cab-prisma-vidro)" stroke="#DDEBF3" stroke-width="2.5" stroke-linejoin="round"/> <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/> <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/> <g fill="#FFFFFF" opacity="0.55"> <circle cx="46" cy="62" r="1.2"/> <circle cx="150" cy="56" r="1"/> <circle cx="70" cy="160" r="1"/> <circle cx="140" cy="164" r="1.2"/> </g> </svg><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório"> <g fill="none" stroke="#3E8E5A" stroke-width="3"> <ellipse cx="60" cy="52" rx="46" ry="18"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/> </g> <g fill="#3E8E5A"> <circle cx="53" cy="47" r="7"/> <circle cx="67" cy="47" r="7"/> <circle cx="60" cy="58" r="9"/> </g> <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square"> <line x1="26" y1="110" x2="94" y2="110"/> <line x1="30" y1="110" x2="30" y2="104"/> <line x1="40" y1="110" x2="40" y2="104"/> <line x1="50" y1="110" x2="50" y2="104"/> <line x1="60" y1="110" x2="60" y2="98"/> <line x1="70" y1="110" x2="70" y2="104"/> <line x1="80" y1="110" x2="80" y2="104"/> <line x1="90" y1="110" x2="90" y2="104"/> </g> </svg></div>
     <div class="header-left">
       <h1><span class="trilha-code">ILB-T0B</span> · Sistema Internacional de Unidades</h1>
@@ -767,7 +814,6 @@ td:first-child { text-align: left; padding-left: 8px; }
     </div>
   </div>
   <div class="ilb-header-sub">Laboratório: 100 min</div>
-
   <div class="id-box">
     <div class="id-box-titulo">Identificação</div>
     <div class="campo-linha">
@@ -786,59 +832,68 @@ td:first-child { text-align: left; padding-left: 8px; }
       <label>Colegas de bancada:</label><div class="linha"></div>
     </div>
   </div>
-
   <div class="piazzi">
     <span>Estude <span class="mao">escrevendo à mão</span>, ouvindo música instrumental.</span>
     <span>Pierluigi Piazzi, em <em>Aprendendo Inteligência</em></span>
   </div>
-
   <!-- EPIGRAFE 2 — a do cientista, sem analise. -->
   <div class="epigrafe">
     <span class="cit">"Quando você pode medir aquilo de que fala, e exprimi-lo em números, você sabe algo sobre isso."</span>
     <span class="atrib">— Lord Kelvin, <em>Electrical Units of Measurement</em>, 1883</span>
   </div>
-
-  <div class="lembrete">
-    <strong>Hoje você mede.</strong> Seis tarefas, duas bancadas, e um resultado por linha. O que
-    esta trilha cobra não é o valor: é a <strong>escrita</strong> do valor — unidade, símbolo,
-    espaço, vírgula e o prefixo na escala certa. O termo de segurança você já assinou na T0A; ele
-    é o que lhe dá o direito de estar nesta bancada.
-  </div>
+  <div class="diretriz"><strong>Hoje você estima antes de medir.</strong> Em cada tarefa, a linha 1 se escreve <strong>a caneta</strong> — a sua estimativa antes de tocar no instrumento — e não se apaga. Depois vêm a medida, o cálculo da razão entre a medida e a estimativa e, se a razão sair da faixa de <strong>0,3 a 3</strong>, a estimativa falhou. Errar na estimativa não é erro de conduta; deixar de dizer por quê, é. <span class="dica">Grandeza menor do que a menor divisão do instrumento: meça muitas juntas e divida (A1, B1).</span></div>
 
   <!-- ─────────── 1. ESTAÇÃO A ─────────── -->
   <div class="secao com-fundo cresce sem-esticar">
     <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0B-Figura-04-v1-web.jpg')"></div>
     <div class="secao-titulo">1. Estação A — comprimento e ângulo</div>
-    <div class="tarefa-i" style="margin-bottom:8px;">régua milimetrada · paquímetro · transferidor · rampa de fórmica · resma de papel · moedas</div>
-    <div class="tarefa">
-      <div class="tarefa-t"><span class="cod">A1</span>A espessura de uma folha de papel</div>
-      <div class="tarefa-i">régua milimetrada + pilha de 100 folhas</div>
-      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
-      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
-      <div class="tarefa-si">O que o SI ensina aqui: o milímetro não chega lá: o resultado pede o <b>micrometro</b> (µm)</div>
+    <div class="v5t">
+      <div class="v5t-t"><span class="cod">A1</span>A espessura (<i>e</i>) de uma folha de papel do livro <em>Física Identidade</em> <span class="v5t-i">— régua milimetrada · livro</span></div>
+      <div class="passo"><span class="pn">1.</span><div class="pc">Observe 1 mm na régua. Estime quantas folhas, acumuladas, preenchem 1,0 mm. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span>n =</span><span class="ln"></span><span class="un">folhas</span></span><span class="campo"><span><i>e</i> = 1,0 mm / n =</span><span class="ln"></span><span class="un">mm</span></span></div></div></div>
+      <div class="passo"><span class="pn">2.</span><div class="pc">Separe um pacote de folhas com 1,0 mm de espessura na régua. Conte as folhas.<div class="campos"><span class="campo"><span>n′ =</span><span class="ln"></span><span class="un">folhas</span></span><span class="campo"><span><i>e</i>′ = 1,0 mm / n′ =</span><span class="ln"></span><span class="un">mm</span></span><span class="campo"><span>Menor divisão:</span><span class="ln"></span></span></div></div></div>
+      <div class="passo"><span class="pn">3.</span><div class="pc"><div class="campos"><span class="campo f0">Razão = medido / estimado:</span><span class="campo"><span><i>e</i>′ / <i>e</i> =</span><span class="ln"></span></span><span class="campo f0"><span class="pn">4.</span>&nbsp;Na faixa de 0,3 a 3?<span class="caixa"></span>sim<span class="caixa"></span>não</span></div></div></div>
+      <div class="passo porque"><div class="campos"><span class="campo f0"><span class="pn">5.</span>&nbsp;Se falhou, por quê?</span><span class="campo"><span class="ln"></span></span></div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
     </div>
-    <div class="tarefa">
-      <div class="tarefa-t"><span class="cod">A2</span>O diâmetro de uma moeda</div>
-      <div class="tarefa-i">paquímetro</div>
-      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
-      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
-      <div class="tarefa-si">O que o SI ensina aqui: o décimo de milímetro — e duas leituras que não coincidem</div>
+    <div class="v5t">
+      <div class="v5t-t"><span class="cod">A2</span>A espessura (<i>e</i>) e o diâmetro (<i>d</i>) de uma moeda de R$ 1 <span class="v5t-i">— paquímetro digital</span></div>
+      <div class="passo"><span class="pn">1.</span><div class="pc">Estime a espessura da moeda, em milímetros, e o seu diâmetro, em centímetros. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span><i>e</i> =</span><span class="ln"></span><span class="un">mm</span></span><span class="campo"><span><i>d</i> =</span><span class="ln"></span><span class="un">cm</span></span></div></div></div>
+      <div class="passo"><span class="pn">2.</span><div class="pc">Meça com o paquímetro digital a espessura e o diâmetro.<div class="campos"><span class="campo"><span><i>e</i>′ =</span><span class="ln"></span></span><span class="campo"><span><i>d</i>′ =</span><span class="ln"></span></span><span class="campo"><span>Menor divisão:</span><span class="ln"></span></span></div></div></div>
+      <div class="passo"><span class="pn">3.</span><div class="pc"><div class="campos"><span class="campo f0">Razão = medido / estimado:</span><span class="campo"><span><i>e</i>′ / <i>e</i> =</span><span class="ln"></span></span><span class="campo"><span><i>d</i>′ / <i>d</i> =</span><span class="ln"></span></span><span class="campo f0"><span class="pn">4.</span>&nbsp;Na faixa de 0,3 a 3?<span class="caixa"></span>sim<span class="caixa"></span>não</span></div></div></div>
+      <div class="passo porque"><div class="campos"><span class="campo f0"><span class="pn">5.</span>&nbsp;Se falhou, por quê?</span><span class="campo"><span class="ln"></span></span></div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
     </div>
-    <div class="tarefa">
-      <div class="tarefa-t"><span class="cod">A3</span>A inclinação da rampa de fórmica</div>
-      <div class="tarefa-i">transferidor</div>
-      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
-      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
-      <div class="tarefa-si">O que o SI ensina aqui: o <b>grau é unidade fora do SI</b>; a do Sistema é o radiano</div>
-    </div>
-    <div class="nota-metodo">
-      Anote o que o instrumento mostrou, na unidade em que ele mostrou. A conversão é da página 3.
+    <div class="v5t">
+      <div class="v5t-t"><span class="cod">A3</span>A inclinação (<i>a</i>) da rampa de fórmica <span class="v5t-i">— transferidor</span></div>
+      <div class="passo"><span class="pn">1.</span><div class="pc">Observe 10° no transferidor. Estime a inclinação da rampa, em graus. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span><i>a</i> =</span><span class="ln"></span><span class="un">°</span></span></div></div></div>
+      <div class="passo"><span class="pn">2.</span><div class="pc">Meça a inclinação da rampa com o transferidor.<div class="campos"><span class="campo"><span><i>a</i>′ =</span><span class="ln"></span><span class="un">°</span></span><span class="campo"><span>Menor divisão:</span><span class="ln"></span></span></div></div></div>
+      <div class="passo"><span class="pn">3.</span><div class="pc"><div class="campos"><span class="campo f0">Razão = medido / estimado:</span><span class="campo"><span><i>a</i>′ / <i>a</i> =</span><span class="ln"></span></span><span class="campo f0"><span class="pn">4.</span>&nbsp;Na faixa de 0,3 a 3?<span class="caixa"></span>sim<span class="caixa"></span>não</span></div></div></div>
+      <div class="passo porque"><div class="campos"><span class="campo f0"><span class="pn">5.</span>&nbsp;Se falhou, por quê?</span><span class="campo"><span class="ln"></span></span></div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
     </div>
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v4 ·
-    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 1 de 4
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v5 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 1 de 2
   </div>
 </div><!-- /pagina 1 -->
 
@@ -849,142 +904,57 @@ td:first-child { text-align: left; padding-left: 8px; }
   <div class="secao com-fundo cresce sem-esticar">
     <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0B-Figura-03-v1-web.jpg')"></div>
     <div class="secao-titulo">2. Estação B — massa, força e tempo</div>
-    <div class="tarefa-i" style="margin-bottom:8px;">balança (0,1 g) · dinamômetro · massa aferida de 100 g · caixa de clipes · régua para o teste de reação</div>
-    <div class="tarefa">
-      <div class="tarefa-t"><span class="cod">B1</span>A massa de um clipe</div>
-      <div class="tarefa-i">balança + 20 clipes</div>
-      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
-      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
-      <div class="tarefa-si">O que o SI ensina aqui: a única unidade de base que já nasce com prefixo: o <b>kilograma</b></div>
-    </div>
-    <div class="tarefa">
-      <div class="tarefa-t"><span class="cod">B2</span>A força-peso sobre 100 g</div>
-      <div class="tarefa-i">dinamômetro</div>
-      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
-      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
-      <div class="tarefa-si">O que o SI ensina aqui: o <b>newton</b>, unidade derivada; o kgf do mostrador é fora do SI</div>
-    </div>
-    <div class="tarefa">
-      <div class="tarefa-t"><span class="cod">B3</span>O tempo de reação de um colega</div>
-      <div class="tarefa-i">régua em queda</div>
-      <div class="campo-resultado"><span>Resultado, na unidade do instrumento:</span><span class="linha-r"></span></div>
-      <div class="campo-resultado"><span>Menor divisão do instrumento:</span><span class="linha-r"></span></div>
-      <div class="tarefa-si">O que o SI ensina aqui: o segundo e o milisegundo — e a primeira <b>medida indireta</b></div>
-    </div>
-    <div class="nota-metodo">
-      Em B1 e B3 você mede muitos e divide — é medida por multiplicação, e ela vale sempre que a
-      grandeza é menor do que a menor divisão do instrumento.
-    </div>
-  </div>
-
-  <div class="secao">
-    <div class="secao-titulo">3. Antes de sair da estação</div>
-    <div class="check-list">
-      <div class="esc-item"><span class="oa-box"></span> Anotei o resultado <strong>e</strong> a menor divisão de cada instrumento que usei.</div>
-      <div class="esc-item"><span class="oa-box"></span> Não apaguei nem corrigi nenhum valor: o que mudou está <strong>anotado ao lado</strong>.</div>
-      <div class="esc-item"><span class="oa-box"></span> Devolvi cada instrumento ao seu lugar.</div>
-    </div>
-  </div>
-
-  <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v4 ·
-    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 2 de 4
-  </div>
-</div><!-- /pagina 2 -->
-
-<!-- ═══════════════════════ PÁGINA 3 ═══════════════════════ -->
-<div class="pagina">
-
-  <!-- ─────────── 4. A TABELA DE COLETA ─────────── -->
-  <div class="secao com-fundo cresce sem-esticar">
-    <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0B-Figura-05-v1-web.jpg')"></div>
-    <div class="secao-titulo">4. A tabela de coleta — as seis medidas juntas</div>
-
-    <div class="lembrete">
-      <strong>Esta tabela é o produto do encontro.</strong> É a forma mais simples que a disciplina
-      vai usar — uma coluna por tarefa. A partir da T01 ela ganha a coluna da repetição, e o
-      resultado passa a ter incerteza.
-    </div>
-
-    <div class="tabela-rotulo">Tabela 1 — as seis medidas, como saíram do instrumento e como vão ao relatório</div>
-    <table class="tab-col">
-      <thead>
-        <tr>
-          <th class="cod">#</th>
-          <th class="rot">O que foi medido</th>
-          <th>Instrumento</th>
-          <th>Valor, como saiu</th>
-          <th>Na unidade do SI</th>
-          <th>Prefixo escolhido</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="cod">A1</td><td class="rot">A espessura de uma folha de papel</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td class="cod">A2</td><td class="rot">O diâmetro de uma moeda</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td class="cod">A3</td><td class="rot">A inclinação da rampa de fórmica</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td class="cod">B1</td><td class="rot">A massa de um clipe</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td class="cod">B2</td><td class="rot">A força-peso sobre 100 g</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td class="cod">B3</td><td class="rot">O tempo de reação de um colega</td><td></td><td></td><td></td><td></td></tr>
-      </tbody>
-    </table>
-
-    <div class="esc-lista desce">
-      <div class="esc-item">
-        <div class="esc-label">Alguma das seis mudou de valor durante a aula? Qual, por quê, e o que ficou registrado ao lado?</div>
+    <div class="v5t">
+      <div class="v5t-t"><span class="cod">B1</span>A massa (<i>m</i>) de um clipe <span class="v5t-i">— balança (0,1 g) · caixa de clipes</span></div>
+      <div class="passo"><span class="pn">1.</span><div class="pc">Segure um clipe na palma da mão. Estime a sua massa, em gramas. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span><i>m</i> =</span><span class="ln"></span><span class="un">g</span></span></div></div></div>
+      <div class="passo"><span class="pn">2.</span><div class="pc">Pese 20 clipes juntos e divida por 20.<div class="campos"><span class="campo"><span><i>M</i><sub>20</sub> =</span><span class="ln"></span></span><span class="campo"><span><i>m</i>′ = <i>M</i><sub>20</sub> / 20 =</span><span class="ln"></span></span><span class="campo"><span>Menor divisão:</span><span class="ln"></span></span></div></div></div>
+      <div class="passo"><span class="pn">3.</span><div class="pc"><div class="campos"><span class="campo f0">Razão = medido / estimado:</span><span class="campo"><span><i>m</i>′ / <i>m</i> =</span><span class="ln"></span></span><span class="campo f0"><span class="pn">4.</span>&nbsp;Na faixa de 0,3 a 3?<span class="caixa"></span>sim<span class="caixa"></span>não</span></div></div></div>
+      <div class="passo porque"><div class="campos"><span class="campo f0"><span class="pn">5.</span>&nbsp;Se falhou, por quê?</span><span class="campo"><span class="ln"></span></span></div>
         <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
       <div class="esc-linha"></div>
       <div class="esc-linha"></div>
       <div class="esc-linha"></div>
       <div class="esc-linha"></div>
       </div>
     </div>
-
-    <div class="nota-metodo">
-      Regra do semestre: mede-se no instrumento que existe, relata-se na unidade do SI — com a
-      conversão à vista.
+    <div class="v5t">
+      <div class="v5t-t"><span class="cod">B2</span>A força-peso (<i>P</i>) sobre a massa aferida de 100 g <span class="v5t-i">— dinamômetro · massa aferida de 100 g</span></div>
+      <div class="passo"><span class="pn">1.</span><div class="pc">Segure a massa de 100 g. Estime o seu peso, em newtons. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span><i>P</i> =</span><span class="ln"></span><span class="un">N</span></span></div></div></div>
+      <div class="passo"><span class="pn">2.</span><div class="pc">Pendure a massa no dinamômetro e leia o peso. Se o mostrador estiver em kgf, converta: 1 kgf = 9,8 N.<div class="campos"><span class="campo"><span><i>P</i>′ =</span><span class="ln"></span><span class="un">N</span></span><span class="campo"><span>Menor divisão:</span><span class="ln"></span></span></div></div></div>
+      <div class="passo"><span class="pn">3.</span><div class="pc"><div class="campos"><span class="campo f0">Razão = medido / estimado:</span><span class="campo"><span><i>P</i>′ / <i>P</i> =</span><span class="ln"></span></span><span class="campo f0"><span class="pn">4.</span>&nbsp;Na faixa de 0,3 a 3?<span class="caixa"></span>sim<span class="caixa"></span>não</span></div></div></div>
+      <div class="passo porque"><div class="campos"><span class="campo f0"><span class="pn">5.</span>&nbsp;Se falhou, por quê?</span><span class="campo"><span class="ln"></span></span></div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
+    </div>
+    <div class="v5t">
+      <div class="v5t-t"><span class="cod">B3</span>O tempo de reação (<i>t</i>) de um colega <span class="v5t-i">— régua de 30 cm, em queda</span></div>
+      <div class="passo"><span class="pn">1.</span><div class="pc">Estime, em milissegundos, quanto tempo o seu colega leva para fechar os dedos quando a régua começa a cair. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span><i>t</i> =</span><span class="ln"></span><span class="un">ms</span></span></div></div></div>
+      <div class="passo"><span class="pn">2.</span><div class="pc">Solte a régua entre os dedos do colega e leia a distância de queda <i>h</i>. Calcule <i>t</i>′ = √(2<i>h</i>/<i>g</i>), com <i>g</i> = 9,8 m/s².<div class="campos"><span class="campo"><span><i>h</i> =</span><span class="ln"></span><span class="un">cm</span></span><span class="campo"><span><i>t</i>′ =</span><span class="ln"></span><span class="un">ms</span></span><span class="campo"><span>Menor divisão:</span><span class="ln"></span></span></div></div></div>
+      <div class="passo"><span class="pn">3.</span><div class="pc"><div class="campos"><span class="campo f0">Razão = medido / estimado:</span><span class="campo"><span><i>t</i>′ / <i>t</i> =</span><span class="ln"></span></span><span class="campo f0"><span class="pn">4.</span>&nbsp;Na faixa de 0,3 a 3?<span class="caixa"></span>sim<span class="caixa"></span>não</span></div></div></div>
+      <div class="passo porque"><div class="campos"><span class="campo f0"><span class="pn">5.</span>&nbsp;Se falhou, por quê?</span><span class="campo"><span class="ln"></span></span></div>
+        <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      <div class="esc-linha"></div>
+      </div>
     </div>
   </div>
 
-  <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v4 ·
-    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 3 de 4
-  </div>
-</div><!-- /pagina 3 -->
-
-<!-- ═══════════════════════ PÁGINA 4 ═══════════════════════ -->
-<div class="pagina">
-
-  <!-- ─────────── 5. A GRAFIA ─────────── -->
+  <!-- ─────────── 3. DISCUSSÃO ─────────── -->
   <div class="secao">
-    <div class="secao-titulo">5. Corrija a escrita — seis linhas erradas</div>
-    <div class="tarefa-i" style="margin-bottom:8px;">Todas dizem um valor plausível. Todas estão escritas errado. Reescreva ao lado.</div>
-    <div class="errada"><span class="txt">A folha tem 0,1 MM de espessura.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
-      <div class="errada"><span class="txt">A moeda mede 23,5mm.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
-      <div class="errada"><span class="txt">A rampa tem 15 Graus.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
-      <div class="errada"><span class="txt">O clipe tem 0,52 Kgs.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
-      <div class="errada"><span class="txt">A força medida foi 0.98 n.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
-      <div class="errada"><span class="txt">O tempo de reação foi 210 mseg.</span><span class="seta">&rarr;</span><span class="linha-c"></span></div>
-    <div class="nota-metodo">
-      Símbolo não tem plural, não tem ponto e não vira maiúscula; há espaço entre número e símbolo;
-      a vírgula é decimal.
-    </div>
-  </div>
-
-  <!-- ─────────── 6. DISCUSSÃO ─────────── -->
-  <div class="secao com-fundo cresce sem-esticar">
-    <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0B-Figura-06-v1-web.jpg')"></div>
-    <div class="secao-titulo">6. Discussão</div>
+    <div class="secao-titulo">3. Discussão</div>
     <div class="esc-lista">
       <div class="esc-item">
-        <div class="esc-label"><span class="n">a.</span> Duas pessoas mediram a mesma moeda e acharam valores diferentes. Isso é erro de alguém?</div>
+        <div class="esc-label">Em qual das seis tarefas a sua estimativa falhou mais — e por quê?</div>
         <div class="esc-linha"></div>
-      <div class="esc-linha"></div>
-      <div class="esc-linha"></div>
-      </div>
-      <div class="esc-item">
-        <div class="esc-label"><span class="n">b.</span> Qual das seis tarefas você levaria para uma escola sem laboratório — e com o quê, na prática?</div>
-        <div class="esc-linha"></div>
-      <div class="esc-linha"></div>
       <div class="esc-linha"></div>
       </div>
     </div>
@@ -995,17 +965,17 @@ td:first-child { text-align: left; padding-left: 8px; }
     <div class="frase">
       O <strong>Relatório Mínimo</strong> vence em <strong>1 dia</strong> (___/___) e o
       <strong>Relatório Completo</strong> em <strong>6 dias</strong> (___/___). Nesta trilha eles
-      não valem nota: voltam com a rubrica como devolutiva. Leve esta tabela — ela é o dado bruto
-      dos dois.
+      não valem nota: voltam com a rubrica como devolutiva. Leve este roteiro — ele é o dado
+      bruto dos dois.
     </div>
   </div>
 
   <!-- RODAPE-ILB:INICIO --><div class="ilb-rodape"><div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div><div class="ilb-rodape-texto">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; Primeira edição &middot; 2026</div><div class="ilb-rodape-selo"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></div></div><!-- RODAPE-ILB:FIM --><div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v4 ·
-    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 4 de 4
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v5 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 2 de 2
   </div>
 
-</div><!-- /pagina 4 -->
+</div><!-- /pagina 2 -->
 
 <div class="barra-tela">
   <button class="btn" onclick="abrirParaImpressao()">Imprimir em A4</button>
@@ -1017,7 +987,7 @@ td:first-child { text-align: left; padding-left: 8px; }
 /* Impressao em janela propria (padrao FA): o <title> vira o nome sugerido do
    PDF, a barra de botoes fica de fora e o @page { margin: 0 } suprime o
    cabecalho/rodape que o navegador injeta. */
-var NOME_ARQUIVO_PDF = 'ILB-T0B-RB-v4-estudante-impresso';
+var NOME_ARQUIVO_PDF = 'ILB-T0B-RB-v5-estudante-impresso';
 
 function abrirParaImpressao() {
   var folha = document.querySelector('.folha').cloneNode(true);
@@ -1046,10 +1016,6 @@ function abrirParaImpressao() {
   else { w.addEventListener('load', function () { setTimeout(imprimir, 500); }); }
 }
 </script>
-<!-- CONTADOR:INICIO -->
-<script src="../../contador-config.js"></script>
-<script src="../../acessos.js"></script>
-<!-- CONTADOR:FIM -->
 <!-- ABAS-OA-ILB (trilho de 6 abas — abas_oa_ilb.py) -->
 
 <style>
@@ -1063,7 +1029,7 @@ function abrirParaImpressao() {
 .ilb-abas::-webkit-scrollbar { display: none; }
 .ilb-aba-toggle { background: oklch(0.20 0.02 260); border: 1px solid oklch(0.40 0.02 260); border-left: 3px solid transparent;
   color: oklch(0.72 0.02 260); font-size: .68rem; padding: 7px 8px; cursor: pointer;
-  font-family: 'Space Mono', 'Courier New', monospace; writing-mode: vertical-rl;
+  font-family: 'Courier New', Courier, monospace; writing-mode: vertical-rl;
   text-orientation: mixed; letter-spacing: 1px; text-transform: uppercase;
   border-radius: 0; transition: color .15s, border-color .15s, background .15s; }
 .ilb-aba-toggle:hover { color: #7FB2D6; border-left-color: #7FB2D6; }
@@ -1073,17 +1039,17 @@ function abrirParaImpressao() {
   background: oklch(0.13 0.02 260); border-right: 3px solid #3E8E5A;
   box-shadow: 8px 0 32px rgba(0,0,0,.55);
   padding: 24px 22px 24px 42px; transform: translateX(-100%);
-  transition: transform .25s; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  transition: transform .25s; font-family: 'Courier New', Courier, monospace;
   font-size: .92rem; color: oklch(0.90 0 0); line-height: 1.6; }
 .ilb-aba-painel.open { transform: translateX(0); }
 .ilb-aba-painel p strong, .ilb-aba-painel p em { color: #7FB2D6; }
-.ilb-aba-painel h3 { font-family: 'Space Mono', 'Courier New', monospace; font-size: .9rem;
+.ilb-aba-painel h3 { font-family: 'Courier New', Courier, monospace; font-size: .9rem;
   text-transform: uppercase; letter-spacing: 2px; color: #7FB2D6; font-weight: 700;
   border-bottom: 2px solid #3E8E5A; padding-bottom: 8px; margin: 0 0 14px; }
 .ilb-aba-btn { display: block; margin: 10px 0; padding: 11px 14px;
   background: oklch(0.20 0.02 260); border: 1px solid oklch(0.40 0.02 260); border-left: 4px solid #3E8E5A;
   color: oklch(0.98 0 0); text-decoration: none;
-  font-family: 'Space Mono', 'Courier New', monospace; font-size: .85rem;
+  font-family: 'Courier New', Courier, monospace; font-size: .85rem;
   transition: border-color .15s, color .15s; }
 .ilb-aba-btn:hover { border-color: #7FB2D6; color: #7FB2D6; }
 .ilb-aba-link { color: #7FB2D6; }
@@ -1100,7 +1066,7 @@ function abrirParaImpressao() {
 .ilb-aba-agr { flex-basis: 100%; display: flex; justify-content: center; }
 .ilb-aba-agr svg { width: 40px; height: 40px; display: block; }
 /* ── Corpo dos paineis ─────────────────────────────────────────────── */
-.ilb-aba-h4 { font-family: 'Space Mono', 'Courier New', monospace; font-size: .74rem;
+.ilb-aba-h4 { font-family: 'Courier New', Courier, monospace; font-size: .74rem;
   text-transform: uppercase; letter-spacing: 1.5px; color: #3E8E5A; font-weight: 700;
   margin: 22px 0 6px; }
 .ilb-aba-lead { font-style: italic; color: oklch(0.72 0.02 260); margin: 0 0 10px; }
@@ -1113,7 +1079,7 @@ function abrirParaImpressao() {
   color: #3E8E5A; font-weight: 700; }
 .ilb-aba-apoio-tit { font-size: .74rem; text-transform: uppercase;
   letter-spacing: 1px; color: oklch(0.72 0.02 260); margin: 12px 0 2px;
-  font-family: 'Space Mono', 'Courier New', monospace; }
+  font-family: 'Courier New', Courier, monospace; }
 .ilb-aba-oa { color: #7FB2D6; font-weight: 700; }
 .ilb-aba-tag { color: #3E8E5A; font-size: .82rem; }
 .ilb-aba-regra { background: oklch(0.26 0.05 105); border-left: 4px solid oklch(0.85 0.15 105);
@@ -1124,21 +1090,21 @@ function abrirParaImpressao() {
   padding: 10px 12px; margin: 0 0 10px; }
 .ilb-aba-num { display: inline-block; min-width: 1.5em; color: oklch(0.13 0.02 260); background: #3E8E5A;
   text-align: center; font-weight: 700; margin-right: 6px;
-  font-family: 'Space Mono', 'Courier New', monospace; }
+  font-family: 'Courier New', Courier, monospace; }
 .ilb-aba-ouvir { display: inline-block; margin-top: 6px; color: oklch(0.85 0.15 105); text-decoration: none;
-  font-family: 'Space Mono', 'Courier New', monospace; font-size: .78rem;
+  font-family: 'Courier New', Courier, monospace; font-size: .78rem;
   text-transform: uppercase; letter-spacing: 1px; }
 .ilb-aba-ouvir:hover { text-decoration: underline; }
 .ilb-aba-prep { display: inline-block; margin-top: 6px; color: oklch(0.72 0.02 260); font-size: .74rem;
-  font-family: 'Space Mono', 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1px; }
+  font-family: 'Courier New', Courier, monospace; text-transform: uppercase; letter-spacing: 1px; }
 /* ── Creditos ──────────────────────────────────────────────────────── */
 .ilb-aba-cred { margin: 0 0 10px; }
 .ilb-aba-cargo { display: block; font-size: .72rem; text-transform: uppercase;
-  letter-spacing: 1px; color: #3E8E5A; font-family: 'Space Mono', 'Courier New', monospace; }
+  letter-spacing: 1px; color: #3E8E5A; font-family: 'Courier New', Courier, monospace; }
 .ilb-aba-nome { color: oklch(0.98 0 0); }
 .ilb-aba-bio { font-size: .86rem; color: oklch(0.72 0.02 260); margin: 0 0 6px; }
 /* ── Referencias (fim da aba Documentos) ───────────────────────────── */
-.ilb-refs-label { font-family: 'Space Mono', 'Courier New', monospace; font-size: .74rem;
+.ilb-refs-label { font-family: 'Courier New', Courier, monospace; font-size: .74rem;
   text-transform: uppercase; letter-spacing: 1.5px; color: #3E8E5A; font-weight: 700;
   margin: 22px 0 8px; }
 .ilb-refs-item { font-size: .84rem; color: oklch(0.72 0.02 260); margin: 0 0 9px;
@@ -1160,10 +1126,10 @@ function abrirParaImpressao() {
 .ilb-aba-painel .toc-ato:hover, .ilb-aba-painel .toc-topico:hover { color: #7FB2D6; }
 .ilb-aba-painel .toc-ato, .ilb-aba-painel .ato-titulo {
   color: #7FB2D6; font-weight: 700; letter-spacing: 1px;
-  font-family: 'Space Mono', 'Courier New', monospace; font-size: .78rem;
+  font-family: 'Courier New', Courier, monospace; font-size: .78rem;
   text-transform: uppercase; }
 .ilb-aba-painel .toc-topico { padding-left: 14px; }
-.ilb-aba-painel .toc-num { font-family: 'Space Mono', 'Courier New', monospace;
+.ilb-aba-painel .toc-num { font-family: 'Courier New', Courier, monospace;
   color: #3E8E5A; margin-right: 8px; }
 /* Celular: a faixa no body empurra o conteudo (#LESSONS 2026-08-09). */
 @media (max-width: 600px) {
@@ -1854,5 +1820,9 @@ function abrirParaImpressao() {
 </script>
 
 <!-- /ABAS-OA-ILB -->
+<!-- CONTADOR:INICIO -->
+<script src="../../contador-config.js"></script>
+<script src="../../acessos.js"></script>
+<!-- CONTADOR:FIM -->
 </body>
 </html>
