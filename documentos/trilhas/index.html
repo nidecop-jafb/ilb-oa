@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Temas e Trilhas</title>
-<meta name="description" content="As 3 Etapas da Introdução ao Laboratório (Metrologia, Estática, Cinemática e Dinâmica) e as 12 trilhas.">
+<meta name="description" content="As 3 Etapas da Introdução ao Laboratório (Metrologia; Forças, Torques e Equilíbrio; Forças, Aceleração e Energia) e as 13 trilhas.">
 <style>
 :root { --cor: #3E8E5A; --acento: #7FB2D6;
 --fundo: #0d0d0d; --texto: #e8e8e8; --cinza: #999; --linha: #444; }
@@ -488,21 +488,27 @@ h1, h2, h3, .acoes a, .rodape, #TOC a { font-family: var(--mono); }
 <ul>
 <li><a href="#o-fio-condutor" id="toc-o-fio-condutor">1. O fio
 condutor</a></li>
-<li><a href="#as-etapas" id="toc-as-etapas">2. As etapas</a></li>
-<li><a href="#matriz-síntese" id="toc-matriz-síntese">3.
+<li><a href="#as-trilhas" id="toc-as-trilhas">2. As trilhas</a></li>
+<li><a href="#os-oas-de-cada-trilha" id="toc-os-oas-de-cada-trilha">3.
+Os OAs de cada trilha</a></li>
+<li><a href="#ordem-de-produção-das-camadas-2" id="toc-ordem-de-produção-das-camadas-2">4. Ordem de produção das
+Camadas 2</a></li>
+<li><a href="#matriz-síntese" id="toc-matriz-síntese">5.
 Matriz-síntese</a></li>
 </ul>
 </nav>
-<p>As três Etapas da Introdução ao Laboratório e as doze trilhas em que
+<p>As três Etapas da Introdução ao Laboratório e as treze trilhas em que
 elas se desdobram — o que cada Etapa instala e o que você será capaz de
 fazer ao terminá-la.</p>
 <h1 id="o-fio-condutor">1. O fio condutor</h1>
 <p>A pergunta da disciplina não muda: <strong>como se mede, e quanta
-confiança se tem no que se mediu?</strong> O acervo de instrumentos é
-cumulativo e a tabela de coleta cresce com ele. O produto também:
-<strong>número com incerteza</strong> (Etapa 1) → <strong>vetor e
-condição de equilíbrio verificada dentro da incerteza</strong> (Etapa 2)
-→ <strong>gráfico com curva ajustada</strong> (Etapa 3).</p>
+confiança se tem no que se mediu?</strong> O acervo de instrumentos
+cresce a cada etapa, e a tabela de coleta cresce junto. O produto
+também: <strong>número com incerteza e primeira reta ajustada</strong>
+(Etapa 1) → <strong>condição de equilíbrio verificada dentro da
+incerteza</strong> (Etapa 2) → <strong>gráfico com curva ajustada, lido
+como grandeza física</strong> (Etapa 3) → <strong>o gráfico como
+argumento</strong> (Projeto Integrador).</p>
 <div class="tabela-rolagem"><table>
 <colgroup>
 <col style="width: 25%" />
@@ -521,91 +527,235 @@ condição de equilíbrio verificada dentro da incerteza</strong> (Etapa 2)
 <tbody>
 <tr>
 <td><strong>1 · Metrologia</strong></td>
-<td>régua, trena, paquímetro, micrômetro, balança</td>
-<td>caderno de laboratório → uma coluna repetida</td>
-<td>valor ± incerteza; propagação em medida indireta</td>
+<td>régua, trena, fita, paquímetro, micrômetro, balança</td>
+<td>caderno → uma coluna repetida → par C × D</td>
+<td>valor ± incerteza; propagação; primeira reta ajustada</td>
 </tr>
 <tr>
-<td><strong>2 · Estática</strong></td>
-<td>dinamômetro, transferidor, mesa de forças, roldanas, massas
-aferidas</td>
-<td>duas colunas acopladas (módulo e ângulo, ou componentes)</td>
+<td><strong>2 · Forças, Torques, Resultante e Equilíbrio de Corpos em
+Repouso</strong></td>
+<td>dinamômetro, transferidor, mesa de forças, plano inclinado,
+roldanas, massas aferidas</td>
+<td>duas colunas acopladas (módulo e ângulo, braço e força)</td>
 <td>força com módulo, direção e sentido; equilíbrio julgado com a
 incerteza</td>
 </tr>
 <tr>
-<td><strong>3 · Cinemática e Dinâmica</strong></td>
-<td>cronômetro, sensores fotoelétricos, trilho, plataforma giratória,
-lançador</td>
-<td>posição × tempo · periódica · par acoplado</td>
-<td>ajuste de reta e parábola, linearização, contagem múltipla</td>
+<td><strong>3 · Forças, Aceleração, Trabalho, Energia e Potência de
+Corpos em Movimento</strong></td>
+<td>cronômetro, sensores fotoelétricos, tubo de óleo, trilho e rampa,
+plataforma giratória</td>
+<td>posição × tempo · periódica · energia por estado</td>
+<td>ajuste de reta e parábola, linearização, balanço de energia</td>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Contextualização (regra 6 da ILB):</strong> os três eixos da
+ILB em todo tópico — <strong>Didático</strong> (o que o licenciando leva
+para a escola) · <strong>Histórico-Cultural</strong> (Ouro Preto, Escola
+de Minas, Quadrilátero Ferrífero) · <strong>Metrológico</strong> (a
+ciência da medida) — e a mineração como aplicação.
+<strong>Elenco:</strong> Sofia, Pedro, Lucas e Bárbara
+(<code>elenco-ilb.md</code>), com o Prof. Julio Azevedo como professor
+personagem.</p>
 <hr />
-<h1 id="as-etapas">2. As etapas</h1>
+<h1 id="as-trilhas">2. As trilhas</h1>
+<p>Os cinco tópicos de cada trilha são <strong>ponto de
+partida</strong>: a Camada 2 de cada uma os refina (decisão do autor,
+2026-10-19).</p>
 <h2 id="etapa-1-metrologia">Etapa 1 — Metrologia</h2>
-<p><strong>Trilhas:</strong> T0A · Boas-Vindas à Física Experimental —
-T0B · O Sistema Internacional de Unidades — T0C · A Matemática da Medida
-— T0D · Densidade dos Cilindros</p>
-<p>A etapa que instala o hábito que todas as outras supõem: <strong>toda
-medida é um número e uma dúvida.</strong> T0A apresenta o curso, o
-laboratório, a segurança e o caderno; T0B, a linguagem das unidades
-(QGU/Inmetro); T0C, o nivelamento matemático da medida (assíncrono, sem
-nota). Em <strong>T0D</strong> a densidade não se lê em instrumento
-nenhum: calcula-se do diâmetro e da altura (paquímetro) e da massa
-(balança), e a incerteza de cada uma se transmite ao resultado — a
-<strong>primeira medida indireta</strong> e a primeira
-<strong>propagação de incertezas</strong>, fechando na identificação do
-material.</p>
-<blockquote>
-<p><strong>Ao terminar, o estudante é capaz de:</strong> registrar de
-forma rastreável; expressar uma medida como valor e incerteza com
-algarismos significativos coerentes; e propagar incertezas até o
-resultado de uma medida indireta.</p>
-</blockquote>
-<h2 id="etapa-2-estática">Etapa 2 — Estática</h2>
-<p><strong>Trilhas:</strong> T01 · Forças da Mecânica Clássica: Peso,
-Tração, Elástica e Empuxo — T02 · Forças da Mecânica Clássica:
-Compressão (Normal, Atrito), Aerodinâmica (Sustentação, Arrasto) — T03 ·
-Equilíbrio Estático de Ponto Material — T04 · Equilíbrio Estático de
-Corpo Extenso</p>
-<p>Uma força pede <strong>direção</strong> (a reta) e
-<strong>sentido</strong> (uma das duas orientações dessa reta), além do
-módulo. T01 e T02 medem, com dinamômetro e montagens próprias, as forças
-que a Mecânica Clássica trata no laboratório — de um lado peso, tração,
-elástica e empuxo; do outro, as de contato por compressão (normal,
-atrito) e as aerodinâmicas (sustentação, arrasto). T03 compõe forças
-sobre um ponto (mesa de forças: o polígono fecha dentro da incerteza?).
-T04 leva o equilíbrio ao <strong>corpo extenso</strong>: entra o momento
-da força, e a condição passa a ser dupla.</p>
-<blockquote>
-<p><strong>Ao terminar, o estudante é capaz de:</strong> medir uma força
-com módulo, direção e sentido; compor e decompor vetores a partir de
-dados próprios; e julgar, com a incerteza na mão, se as condições de
-equilíbrio foram verificadas.</p>
-</blockquote>
-<h2 id="etapa-3-cinemática-e-dinâmica">Etapa 3 — Cinemática e
-Dinâmica</h2>
-<p><strong>Trilhas:</strong> T05 · Encontro de Pontos Materiais — T06 ·
-Movimento sob Forças Constantes — T07 · Movimento Circular Uniforme
-(MCU) — T08 · Queda e Lançamentos</p>
-<p>A passagem de medir grandezas para <strong>ajustar um modelo a um
-conjunto de pontos</strong>. T05: posição × tempo é reta e o encontro é
-a interseção de duas retas ajustadas. T06: com força constante a curva
-vira parábola, e a linearização a devolve à reta. T07: o período por
-contagem múltipla — melhorar a medida mudando o procedimento. T08: a
-trajetória em duas dimensões, decomposta em duas descrições
-independentes. É aqui que o ajuste assistido por IA entra, sempre com a
-conferência dimensional, de ordem de grandeza e dos resíduos.</p>
-<blockquote>
-<p><strong>Ao terminar, o estudante é capaz de:</strong> construir e
-ajustar gráficos a partir de dados próprios; linearizar; reduzir a
-incerteza de grandeza periódica; e ler o coeficiente ajustado como
-grandeza física com unidade e incerteza.</p>
-</blockquote>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Trilha</th>
+<th>5 tópicos</th>
+<th>Conceito-âncora</th>
+<th>Lacuna que fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T0A</strong> · Primeiros Passos no Laboratório</td>
+<td>segurança (CS) · caderno de laboratório · inventário (IE) · o método
+Pré-Lab/Lab/Pós-Lab · primeira entrada e termo</td>
+<td>registro rastreável</td>
+<td>chegar ao laboratório sem hábito de registro</td>
+</tr>
+<tr>
+<td><strong>T0B</strong> · Noções sobre Estimativas e Medidas</td>
+<td>estimar antes de medir · grandeza, unidade e instrumento · leitura
+de escala e menor divisão · erro e incerteza · valor ± incerteza</td>
+<td>toda medida é um número e uma dúvida</td>
+<td>confundir medida com número exato</td>
+</tr>
+<tr>
+<td><strong>T0C</strong> · O Sistema Internacional de Unidades de
+Medida</td>
+<td>as 7 unidades de base · prefixos · grafia e pronúncia · unidades
+fora do SI · derivadas da Mecânica (QGU, partes 1 a 5)</td>
+<td>o SI como linguagem comum</td>
+<td>grafia errada (kgs, Kg, KM/H)</td>
+</tr>
+<tr>
+<td><strong>T0D</strong> · A Matemática das Medidas</td>
+<td>decimais · algarismos significativos · arredondamento · potenciação
+· potências de 10</td>
+<td>o número da medida carrega informação</td>
+<td>23,5 ≠ 23,50; notação científica</td>
+</tr>
+<tr>
+<td><strong>T0E</strong> · O Número π (pi)</td>
+<td>C/D constante · medir C e D de cilindros (fita, paquímetro) ·
+gráfico C × D e reta ajustada · π medido ± incerteza contra π tabelado ·
+densidade dos cilindros, a segunda medida indireta</td>
+<td>primeira reta ajustada e primeira propagação</td>
+<td>medida indireta e discrepância</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="etapa-2-forças-torques-resultante-e-equilíbrio-de-corpos-em-repouso">Etapa
+2 — Forças, Torques, Resultante e Equilíbrio de Corpos em Repouso</h2>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Trilha</th>
+<th>5 tópicos</th>
+<th>Conceito-âncora</th>
+<th>Lacuna que fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T01</strong> · Forças: Peso, Elástica, Tração e Empuxo,
+Compressão (Normal, Atrito) e Aerodinâmica (Sustentação, Arrasto)</td>
+<td>peso e massa (dinamômetro) · elástica e Hooke · tração e empuxo ·
+normal e atrito · sustentação e arrasto</td>
+<td>a força é medida, com módulo, direção e sentido</td>
+<td>força como “coisa do corpo”</td>
+</tr>
+<tr>
+<td><strong>T02</strong> · Resultante das Forças no Equilíbrio Estático
+de Ponto Material</td>
+<td>força como vetor · mesa de forças · polígono de forças ·
+decomposição em componentes · equilíbrio julgado com a incerteza</td>
+<td>ΣF = 0 dentro da incerteza</td>
+<td>vetor só como seta, sem dado</td>
+</tr>
+<tr>
+<td><strong>T03</strong> · Máquinas Simples: Plano Inclinado e
+Polias</td>
+<td>máquina simples e vantagem mecânica · plano inclinado · polia fixa ·
+polia móvel e talha · o que se ganha em força perde-se em
+deslocamento</td>
+<td>vantagem mecânica medida</td>
+<td>“máquina cria força”</td>
+</tr>
+<tr>
+<td><strong>T04</strong> · Centro de Massa, Torque, Resultante de Forças
+e Torques no Equilíbrio de Corpo Extenso</td>
+<td>centro de massa (fio de prumo) · torque · alavancas · ΣF = 0 e Στ =
+0 · estabilidade e tombamento</td>
+<td>condição dupla de equilíbrio</td>
+<td>confundir ponto material com corpo extenso</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="etapa-3-forças-aceleração-trabalho-energia-e-potência-de-corpos-em-movimento">Etapa
+3 — Forças, Aceleração, Trabalho, Energia e Potência de Corpos em
+Movimento</h2>
+<div class="tabela-rolagem"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Trilha</th>
+<th>5 tópicos</th>
+<th>Conceito-âncora</th>
+<th>Lacuna que fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T05</strong> · Forças e Aceleração em Esfera e Bolha em MRU
+num Tubo com Óleo Mineral, em Carrinho Descendo uma Rampa e em uma
+Esfera em Queda Livre</td>
+<td>MRU da esfera e da bolha no óleo (resultante nula) · s × t e reta
+ajustada · carrinho na rampa: parábola e linearização · queda livre e g
+· resultante e aceleração</td>
+<td>a aceleração vem da resultante</td>
+<td>velocidade constante ≠ ausência de força</td>
+</tr>
+<tr>
+<td><strong>T06</strong> · Forças e Aceleração em Corpos em Movimento
+Circular Uniforme</td>
+<td>período por contagem múltipla · velocidades angular e linear ·
+aceleração centrípeta · força centrípeta medida · a força centrífuga não
+existe</td>
+<td>força para dentro no movimento curvo</td>
+<td>MCU “sem aceleração”</td>
+</tr>
+<tr>
+<td><strong>T07</strong> · Formas de Energia, Fontes de Energia,
+Conversões, Transformação da Energia, Potência e Rendimento na
+Mecânica</td>
+<td>formas e fontes · conversões (rampa, pêndulo) · conservação e
+dissipação · potência · rendimento</td>
+<td>a energia se transforma e se mede</td>
+<td>energia “gasta” × energia transformada</td>
+</tr>
+<tr>
+<td><strong>T08</strong> · Projeto Integrador — Gráficos de apoio para
+aulas e reuniões: novos desafios econômicos e sociais</td>
+<td>ler um gráfico · eixos, escala e unidade · tendência e ajuste · da
+incerteza do laboratório à incerteza do dado social · produto: um
+gráfico próprio para aula ou reunião</td>
+<td>o gráfico como argumento</td>
+<td>ler gráfico sem escala e sem fonte</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Referência do Projeto Integrador (ABNT NBR
+6023:2018):</strong> DOWBOR, Ladislau. <strong>Gráficos de apoio para
+aulas e reuniões</strong>: novos desafios econômicos e sociais. [<em>S.
+l.</em>]: Dowbor.org, set. 2026. 84 p. Disponível em:
+https://dowbor.org/2026/09/graficos-de-apoio-para-aulas-e-reunioes-novos-desafios-economicos-e-sociais.html.
+Acesso em: 19 out. 2026.</p>
 <hr />
-<h1 id="matriz-síntese">3. Matriz-síntese</h1>
+<h1 id="os-oas-de-cada-trilha">3. Os OAs de cada trilha</h1>
+<p>Toda trilha tem os 17 OAs da disciplina (<code>PARADAS_ILB</code> +
+FA), com duas exceções de trilha:</p>
+<ul>
+<li><strong>T0A</strong> — 5 OAs: MD, TT, CD, RB de reconhecimento, AP
+(sem Pós-Lab).</li>
+<li><strong>T08 · Projeto Integrador</strong> — 4 OAs: TT, AP, RB,
+RC.</li>
+</ul>
+<h1 id="ordem-de-produção-das-camadas-2">4. Ordem de produção das
+Camadas 2</h1>
+<ol type="1">
+<li>Renumeração (feita em 2026-10-19) e <strong>T0B nova</strong>.</li>
+<li><strong>T0E</strong> → <strong>T01</strong> → <strong>T02</strong> →
+<strong>T03</strong> → <strong>T04</strong> → <strong>T05</strong> →
+<strong>T06</strong> → <strong>T07</strong> → <strong>T08</strong>.</li>
+</ol>
+<hr />
+<h1 id="matriz-síntese">5. Matriz-síntese</h1>
 <div class="tabela-rolagem"><table>
 <colgroup>
 <col style="width: 33%" />
@@ -623,76 +773,82 @@ grandeza física com unidade e incerteza.</p>
 <tr>
 <td>1</td>
 <td>T0A</td>
-<td>Boas-Vindas à Física Experimental</td>
+<td>Primeiros Passos no Laboratório</td>
 </tr>
 <tr>
 <td>1</td>
 <td>T0B</td>
-<td>O Sistema Internacional de Unidades</td>
+<td>Noções sobre Estimativas e Medidas</td>
 </tr>
 <tr>
 <td>1</td>
 <td>T0C</td>
-<td>A Matemática da Medida</td>
+<td>O Sistema Internacional de Unidades de Medida</td>
 </tr>
 <tr>
 <td>1</td>
 <td>T0D</td>
-<td>Densidade dos Cilindros</td>
+<td>A Matemática das Medidas</td>
+</tr>
+<tr>
+<td>1</td>
+<td>T0E</td>
+<td>O Número π (pi)</td>
 </tr>
 <tr>
 <td>2</td>
 <td>T01</td>
-<td>Forças da Mecânica Clássica: Peso, Tração, Elástica e Empuxo</td>
+<td>Forças: Peso, Elástica, Tração e Empuxo, Compressão e
+Aerodinâmica</td>
 </tr>
 <tr>
 <td>2</td>
 <td>T02</td>
-<td>Forças da Mecânica Clássica: Compressão (Normal, Atrito),
-Aerodinâmica (Sustentação, Arrasto)</td>
+<td>Resultante das Forças no Equilíbrio Estático de Ponto Material</td>
 </tr>
 <tr>
 <td>2</td>
 <td>T03</td>
-<td>Equilíbrio Estático de Ponto Material</td>
+<td>Máquinas Simples: Plano Inclinado e Polias</td>
 </tr>
 <tr>
 <td>2</td>
 <td>T04</td>
-<td>Equilíbrio Estático de Corpo Extenso</td>
+<td>Centro de Massa, Torque e Equilíbrio de Corpo Extenso</td>
 </tr>
 <tr>
 <td>3</td>
 <td>T05</td>
-<td>Encontro de Pontos Materiais</td>
+<td>Forças e Aceleração (óleo, rampa, queda livre)</td>
 </tr>
 <tr>
 <td>3</td>
 <td>T06</td>
-<td>Movimento sob Forças Constantes</td>
+<td>Forças e Aceleração no MCU</td>
 </tr>
 <tr>
 <td>3</td>
 <td>T07</td>
-<td>Movimento Circular Uniforme (MCU)</td>
+<td>Energia, Potência e Rendimento</td>
 </tr>
 <tr>
 <td>3</td>
 <td>T08</td>
-<td>Queda e Lançamentos</td>
+<td>Projeto Integrador — Gráficos de Apoio</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Na reserva, para a próxima edição:</strong> T01 Qual é a sua
-altura? · T09 Forças impulsivas · T10 Leis de conservação nas
-colisões.</p>
+altura? · T09 Forças impulsivas · T10 Leis de conservação nas colisões
+(v1) · T02 Compressão e Aerodinâmica · T05 Encontro de Pontos Materiais
+· T08 Queda e Lançamentos (v2).</p>
 <hr />
-<p>Ouro Preto, 14 de outubro de 2026.</p>
+<p>Ouro Preto, 19 de outubro de 2026.</p>
 <p><strong>Prof. Julio Azevedo</strong> Licenciatura em Física — IFMG,
 <em>Campus</em> Ouro Preto</p>
 
 <div class="acoes" style="margin-top:44px">
-  <a href="ILB-Temas-e-Trilhas.pdf" target="_blank" rel="noopener">Abrir o PDF (2 páginas)</a>
+  <a href="ILB-Temas-e-Trilhas.pdf" target="_blank" rel="noopener">Abrir o PDF (4 páginas)</a>
   <a href="_qr/">QR desta página · projetar ou imprimir</a>
   <a href="../../#abaDocumentos">Todos os documentos</a>
   <a class="destaque" href="../../">Voltar ao índice das Trilhas</a>
