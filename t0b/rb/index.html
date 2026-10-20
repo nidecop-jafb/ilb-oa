@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILB-T0B-RB-v8-estudante-impresso</title>
+<title>ILB-T0B-RB-v9-estudante-impresso</title>
 <style>
   input, button, select, textarea { font-family: inherit; }
 /* ============================================================
@@ -693,6 +693,11 @@ td:first-child { text-align: left; padding-left: 8px; }
 /* v8 (autor, 2026-10-20): o texto nao encosta na borda direita da imagem de fundo */
 .secao.com-fundo > .v5t { padding-right: 16px; }
 .passo .caneta { white-space: nowrap; }   /* "A caneta:" nunca se parte em duas linhas */
+/* v9 (autor, 2026-10-20): o titulo de cada estacao em destaque — o selo numerado e o h2
+   do template, numa faixa clara sobre a imagem, com fio azul embaixo */
+.secao-titulo.estacao { background: rgba(255,255,255,.88); border-bottom: 2px solid var(--azul);
+  padding: 4px 8px; margin-bottom: 8px; }
+.secao-titulo.estacao h2 { font-size: 1.05rem; }
 .v5t-t { font-size: .95rem; font-weight: 700; }
 .v5t-t .v5t-i { font-weight: 400; }
 .v5t-t .cod { font-family: var(--mono); color: var(--azul); margin-right: 6px; }
@@ -721,6 +726,9 @@ td:first-child { text-align: left; padding-left: 8px; }
   .secao-titulo { font-size: 12pt !important; }
   .v5t { margin-bottom: 4pt; padding-top: 1pt; padding-bottom: 1pt; }
   .secao.com-fundo > .v5t { padding-right: 6mm; }
+  .secao-titulo.estacao { background: #FFFFFF !important; border-bottom: 1.5pt solid #1F3864 !important;
+    padding: 3pt 6pt; margin-bottom: 5pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .secao-titulo.estacao h2 { font-size: 12pt !important; letter-spacing: .5pt; }
   .v5t-t { font-size: 11pt; }
   .v5t-i { font-size: 9.5pt; }
   .passo { font-size: 11pt; margin-top: 1pt; }
@@ -845,12 +853,12 @@ td:first-child { text-align: left; padding-left: 8px; }
     <span class="cit">"Quando você pode medir aquilo de que fala, e exprimi-lo em números, você sabe algo sobre isso."</span>
     <span class="atrib">— Lord Kelvin, <em>Electrical Units of Measurement</em>, 1883</span>
   </div>
-  <div class="diretriz"><strong>Hoje você estima antes de medir.</strong> Em cada tarefa, a linha 1 se escreve <strong>a caneta</strong> — a sua estimativa antes de tocar no instrumento — e não se apaga. Depois vêm a medida, o cálculo da razão entre a medida e a estimativa e, se a razão sair da faixa de <strong>0,3 a 3</strong>, a estimativa falhou. Errar na estimativa não é erro de conduta; deixar de dizer por quê, é. <span class="dica">Grandeza menor do que a menor divisão do instrumento: meça muitas juntas e divida (A1, B1).</span></div>
+  <div class="diretriz"><strong>Hoje você estima antes de medir.</strong> Em cada tarefa, a linha 1 se escreve <strong>a caneta</strong> — a sua estimativa antes de tocar no instrumento — e não se apaga. Depois vêm a medida, o cálculo da razão entre a medida e a estimativa e, se a razão sair da faixa de <strong>0,3 a 3</strong>, a estimativa falhou. Errar na estimativa não é erro de conduta; deixar de dizer por quê, é.</div>
 
   <!-- ─────────── 1. ESTAÇÃO A ─────────── -->
   <div class="secao com-fundo cresce sem-esticar">
     <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0B-Figura-04-v1-web.jpg')"></div>
-    <div class="secao-titulo">1. Estação A — comprimento e ângulo</div>
+    <div class="secao-titulo estacao"><span class="num">1</span><h2>Estação A — comprimento e ângulo</h2></div>
     <div class="v5t">
       <div class="v5t-t"><span class="cod">A1</span>A espessura (<i>e</i>) de uma folha de papel do livro <em>Física Identidade</em> <span class="v5t-i">— régua milimetrada · livro</span></div>
       <div class="passo"><span class="pn">1.</span><div class="pc">Observe 1 mm na régua. Estime quantas folhas, acumuladas, preenchem 1,0 mm. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span>n =</span><span class="ln"></span><span class="un">folhas</span></span><span class="campo"><span><i>e</i> = 1,0 mm / n =</span><span class="ln"></span><span class="un">mm</span></span></div></div></div>
@@ -896,7 +904,7 @@ td:first-child { text-align: left; padding-left: 8px; }
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v8 ·
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v9 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 1 de 2
   </div>
 </div><!-- /pagina 1 -->
@@ -907,7 +915,7 @@ td:first-child { text-align: left; padding-left: 8px; }
   <!-- ─────────── 2. ESTAÇÃO B ─────────── -->
   <div class="secao com-fundo cresce sem-esticar">
     <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0B-Figura-03-v1-web.jpg')"></div>
-    <div class="secao-titulo">2. Estação B — massa, força e tempo</div>
+    <div class="secao-titulo estacao"><span class="num">2</span><h2>Estação B — massa, força e tempo</h2></div>
     <div class="v5t">
       <div class="v5t-t"><span class="cod">B1</span>A massa (<i>m</i>) de um clipe <span class="v5t-i">— balança digital · caixa de clipes · padrão de massa de 10,0 g</span></div>
       <div class="passo"><span class="pn">1.</span><div class="pc">Coloque o padrão de massa de 10,0 g na palma de uma mão e, na outra, a quantidade de clipes que, juntos, dão a mesma sensação de 10,0 g. Estime a massa de um clipe, em gramas. <span class="caneta">A caneta:</span><div class="campos"><span class="campo"><span><i>m</i> =</span><span class="ln"></span><span class="un">g</span></span></div></div></div>
@@ -975,7 +983,7 @@ td:first-child { text-align: left; padding-left: 8px; }
   </div>
 
   <!-- RODAPE-ILB:INICIO --><div class="ilb-rodape"><div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div><div class="ilb-rodape-texto">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; Primeira edição &middot; 2026</div><div class="ilb-rodape-selo"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></div></div><!-- RODAPE-ILB:FIM --><div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v8 ·
+    Introdução ao Laboratório (ILB) · T0B · Roteiro de Bancada v9 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 2 de 2
   </div>
 
@@ -991,7 +999,7 @@ td:first-child { text-align: left; padding-left: 8px; }
 /* Impressao em janela propria (padrao FA): o <title> vira o nome sugerido do
    PDF, a barra de botoes fica de fora e o @page { margin: 0 } suprime o
    cabecalho/rodape que o navegador injeta. */
-var NOME_ARQUIVO_PDF = 'ILB-T0B-RB-v8-estudante-impresso';
+var NOME_ARQUIVO_PDF = 'ILB-T0B-RB-v9-estudante-impresso';
 
 function abrirParaImpressao() {
   var folha = document.querySelector('.folha').cloneNode(true);
