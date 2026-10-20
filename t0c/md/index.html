@@ -385,12 +385,12 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   });
 })();
 </script>
-<!-- ABAS-OA-ILB (trilho de 6 abas — abas_oa_ilb.py) -->
+<!-- ABAS-OA-ILB (trilho de 8 abas — abas_oa_ilb.py) -->
 
 <style>
-/* ── Trilho de 6 abas da ILB (abas_oa_ilb.py) ─────────────────────────
+/* ── Trilho de 8 abas da ILB (abas_oa_ilb.py) ─────────────────────────
    Flex column ancorado no meio da borda esquerda: as abas se empilham
-   sozinhas, sem tabela de `top:` em px — com seis abas, px fixo quebraria na
+   sozinhas, sem tabela de `top:` em px — com oito abas, px fixo quebraria na
    primeira mudanca de rotulo e em tela baixa. Cores literais. */
 .ilb-abas { position: fixed; left: 0; top: 50%; transform: translateY(-50%);
   z-index: 998; display: flex; flex-direction: column; gap: 2px;
@@ -482,6 +482,13 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   background: oklch(0.26 0.05 105); border-left: 4px solid oklch(0.85 0.15 105); padding: 8px 12px; margin: 14px 0 0; }
 .ilb-aba-todo { font-style: italic; color: oklch(0.72 0.02 260); border: 1px dashed oklch(0.40 0.02 260);
   padding: 14px; margin: 0; }
+/* ── Etapas: as trilhas da etapa; a do OA destacada ─────────────────── */
+.ilb-aba-btn.ilb-aba-aqui { border-left-color: oklch(0.85 0.15 105); background: oklch(0.26 0.05 105); }
+.ilb-aba-aqui-tag { display: block; margin-top: 4px; color: oklch(0.85 0.15 105); font-size: .72rem;
+  font-family: 'Courier New', Courier, monospace; text-transform: uppercase; letter-spacing: 1px; }
+.ilb-aba-prep-tr { display: block; margin: 10px 0; padding: 11px 14px; border: 1px dashed oklch(0.40 0.02 260);
+  color: oklch(0.72 0.02 260); font-size: .85rem; }
+.ilb-aba-prep-tr em { display: block; font-size: .74rem; font-style: normal; margin-top: 4px; }
 /* ── Sumario herdado, dentro da aba Site ───────────────────────────────
    Os links vem do proprio OA (o <nav> do TT, a lista de slides da AP) e
    perdem o CSS antigo junto com a sidebar que os hospedava. O estilo deles
@@ -514,9 +521,11 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 <div class="ilb-abas">
   <button class="ilb-aba-toggle" type="button" data-aba="site">Site</button>
   <button class="ilb-aba-toggle" type="button" data-aba="metodo">Método</button>
-  <button class="ilb-aba-toggle" type="button" data-aba="documentos">Documentos</button>
   <button class="ilb-aba-toggle" type="button" data-aba="musica">Música</button>
-  <button class="ilb-aba-toggle" type="button" data-aba="ineditismo">Ineditismo</button>
+  <button class="ilb-aba-toggle" type="button" data-aba="etapa1">Etapa 1</button>
+  <button class="ilb-aba-toggle" type="button" data-aba="etapa2">Etapa 2</button>
+  <button class="ilb-aba-toggle" type="button" data-aba="etapa3">Etapa 3</button>
+  <button class="ilb-aba-toggle" type="button" data-aba="documentos">Documentos</button>
   <button class="ilb-aba-toggle" type="button" data-aba="creditos">Créditos</button>
 </div>
 <aside class="ilb-aba-painel" id="ilb-painel-site" hidden>
@@ -603,6 +612,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/instalar/">Instalar o site no celular ou no PC · atalho com ícone</a>
   <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/#t0c">Ver todos os OAs da trilha</a>
   <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/">Início do site</a>
+  <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/ineditismo/">Ineditismo</a>
   <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/sugestoes/">Sugestões de aprimoramento</a>
   <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/">Agradecimentos</a>
   <div class="ilb-aba-rodape">
@@ -734,6 +744,382 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
     <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
   </div>
 </aside>
+<aside class="ilb-aba-painel" id="ilb-painel-musica" hidden>
+  <h3>Música</h3>
+  <div class="ilb-aba-marcas">
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
+  <g fill="none" stroke="#3E8E5A" stroke-width="3">
+    <ellipse cx="60" cy="52" rx="46" ry="18"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+  </g>
+  <g fill="#3E8E5A">
+    <circle cx="53" cy="47" r="7"/>
+    <circle cx="67" cy="47" r="7"/>
+    <circle cx="60" cy="58" r="9"/>
+  </g>
+  <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+    <line x1="26" y1="110" x2="94" y2="110"/>
+    <line x1="30" y1="110" x2="30" y2="104"/>
+    <line x1="40" y1="110" x2="40" y2="104"/>
+    <line x1="50" y1="110" x2="50" y2="104"/>
+    <line x1="60" y1="110" x2="60" y2="98"/>
+    <line x1="70" y1="110" x2="70" y2="104"/>
+    <line x1="80" y1="110" x2="80" y2="104"/>
+    <line x1="90" y1="110" x2="90" y2="104"/>
+  </g>
+</svg>
+
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+     role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física">
+  <title>Prisma decompondo a luz — Licenciatura em Física</title>
+  <defs>
+    <radialGradient id="fundo" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#26302B"/>
+      <stop offset="1" stop-color="#0E1411"/>
+    </radialGradient>
+    <linearGradient id="vidro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/>
+    </linearGradient>
+    <clipPath id="dentro"><circle cx="100" cy="100" r="86"/></clipPath>
+  </defs>
+
+  <!-- medalhao: fundo, aro verde-quadro e anel pontilhado (familia da vagoneta) -->
+  <circle cx="100" cy="100" r="96" fill="url(#fundo)"/>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1"
+          stroke-dasharray="1.5 3" opacity="0.8"/>
+
+  <g clip-path="url(#dentro)">
+    <!-- feixe branco incidente -->
+    <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/>
+    <!-- trajeto dentro do vidro -->
+    <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/>
+    <!-- espectro: vermelho desvia menos (em cima), violeta mais (embaixo) -->
+    <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/>
+    <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/>
+    <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/>
+    <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/>
+    <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/>
+    <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/>
+    <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/>
+  </g>
+
+  <!-- prisma de vidro -->
+  <polygon points="100,50 56,130 144,130" fill="url(#vidro)" stroke="#DDEBF3"
+           stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- bancada: traco azul-aco sob o prisma -->
+  <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- brilhos discretos -->
+  <g fill="#FFFFFF" opacity="0.55">
+    <circle cx="46" cy="62" r="1.2"/>
+    <circle cx="150" cy="56" r="1"/>
+    <circle cx="70" cy="160" r="1"/>
+    <circle cx="140" cy="164" r="1.2"/>
+  </g>
+</svg>
+
+  </div>
+  <p>Por que estudar ouvindo? Miguel Nicolelis responde em <em>O Verdadeiro Criador de Tudo</em>: ciência e arte saem do mesmo lugar — o cérebro humano. E Pierluigi Piazzi, em <em>Aprendendo Inteligência</em>, acrescenta a parte prática: música sem letra não disputa com a leitura as áreas da linguagem. A palavra cantada rouba a palavra lida; a música instrumental sustenta, e some.</p>
+  <p>Daí a regra do projeto — <strong>uma trilha, uma música</strong>: ler, medir e registrar ouvindo música instrumental.</p>
+  <div class="ilb-aba-h4">A música desta trilha</div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-oa">J. S. Bach — O Cravo Bem Temperado (BWV 846–893)</span> — cravo solo · ouça em repetição enquanto lê.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/search?q=Bach+Cravo+Bem+Temperado+BWV+846" target="_blank" rel="noopener">▶ Ouvir</a></div>
+  <div class="ilb-aba-h4">O acervo — as oito playlists</div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">1</span><span class="ilb-aba-oa">Baden Powell</span> <span class="ilb-aba-tag">· T01 · T06</span> — nos Afro-sambas cabem a bossa, o candomblé e a harmonia de câmara. Somar mundos é o ofício de quem mede: a bancada mede, o caderno deduz, a teoria explica por que importa.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLMB5arbCorsU" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">2</span><span class="ilb-aba-oa">Yamandu Costa</span> <span class="ilb-aba-tag">· T02 · T07</span> — improvisa porque conhece a estrutura até o último traste. Improviso não é sorte: é o nome da liberdade de quem estudou.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLXyZd3QdGENs" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">3</span><span class="ilb-aba-oa">Orquestra Ouro Preto</span> <span class="ilb-aba-tag">· T03 · T08</span> — nasceu no ano 2000, por iniciativa do professor Ronaldo R. B. Toffolo e do compositor Rufo Herrera, e é a casa desta escola: Toffolo foi aluno, professor e diretor-geral da Escola Técnica Federal de Ouro Preto, que hoje é o IFMG campus Ouro Preto. Estudar com ela ao fundo é estudar ouvindo a própria instituição.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLLck6FRNMdAs" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">4</span><span class="ilb-aba-oa">Filarmônica de Minas Gerais</span> <span class="ilb-aba-tag">· T04 · T09</span> — noventa músicos, um único referencial de tempo, erro na casa dos milissegundos: ordem de grandeza, sincronia, medida.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLH9GvshumD2s" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">5</span><span class="ilb-aba-oa">Marco Antônio Araújo</span> <span class="ilb-aba-tag">· T05 · T10</span> — violoncelista da Sinfônica de Minas e compositor que fez o barroco mineiro, a modinha e a seresta caberem no rock progressivo. A obra, interrompida aos 36 anos, ficou inacabada — e é isso que ela ensina a quem mede: nenhum experimento termina; toda medida com incerteza é um convite à medida seguinte.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">6</span><span class="ilb-aba-oa">J. S. Bach</span> <span class="ilb-aba-tag">· T0A · T0C</span> — a fuga é a definição de sistema físico: muitas vozes, uma lei só. É a abertura do curso, e por isso não entra no ciclo das dez trilhas de bancada.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">7</span><span class="ilb-aba-oa">W. A. Mozart</span> <span class="ilb-aba-tag">· acervo</span> — nada sobra, nada falta. Elegância é saber o que pode ser retirado sem quebrar o todo — no pentagrama e na montagem experimental.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
+  <div class="ilb-aba-faixa"><span class="ilb-aba-num">8</span><span class="ilb-aba-oa">L. van Beethoven</span> <span class="ilb-aba-tag">· acervo</span> — de quatro notas, uma sinfonia; de duas ou três letras, uma lei. Muda a escala; a lei, não. E a Nona, composta já na surdez, lembra: o modelo vem antes da medida.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
+  <p>Na ILB, cinco playlists giram em <strong>duas voltas exatas</strong> pelas trilhas T01-T10 — Baden Powell, Yamandu Costa, Orquestra Ouro Preto, Filarmônica de Minas Gerais e Marco Antônio Araújo. As duas trilhas do Tema 0 ficam fora do ciclo, com Bach.</p>
+  <div class="ilb-aba-h4">Ampliando o acervo — em preparação</div>
+  <p><span class="ilb-aba-oa">Raphael Rabello</span> (Petrópolis, 1962 — Rio de Janeiro, 1995) — primeiro registro profissional aos treze anos; discípulo de Dino 7 Cordas e parceiro de Radamés Gnattali, levou o violão de sete cordas do acompanhamento ao centro do palco. Morreu aos 32 anos, deixando uma obra relevante e inacabada.</p>
+  <div class="ilb-aba-rodape">
+    <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
+    <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
+    <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
+  </div>
+</aside>
+<aside class="ilb-aba-painel" id="ilb-painel-etapa1" hidden>
+  <h3>Etapa 1 &middot; Metrologia</h3>
+  <div class="ilb-aba-marcas">
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
+  <g fill="none" stroke="#3E8E5A" stroke-width="3">
+    <ellipse cx="60" cy="52" rx="46" ry="18"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+  </g>
+  <g fill="#3E8E5A">
+    <circle cx="53" cy="47" r="7"/>
+    <circle cx="67" cy="47" r="7"/>
+    <circle cx="60" cy="58" r="9"/>
+  </g>
+  <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+    <line x1="26" y1="110" x2="94" y2="110"/>
+    <line x1="30" y1="110" x2="30" y2="104"/>
+    <line x1="40" y1="110" x2="40" y2="104"/>
+    <line x1="50" y1="110" x2="50" y2="104"/>
+    <line x1="60" y1="110" x2="60" y2="98"/>
+    <line x1="70" y1="110" x2="70" y2="104"/>
+    <line x1="80" y1="110" x2="80" y2="104"/>
+    <line x1="90" y1="110" x2="90" y2="104"/>
+  </g>
+</svg>
+
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+     role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física">
+  <title>Prisma decompondo a luz — Licenciatura em Física</title>
+  <defs>
+    <radialGradient id="fundo" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#26302B"/>
+      <stop offset="1" stop-color="#0E1411"/>
+    </radialGradient>
+    <linearGradient id="vidro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/>
+    </linearGradient>
+    <clipPath id="dentro"><circle cx="100" cy="100" r="86"/></clipPath>
+  </defs>
+
+  <!-- medalhao: fundo, aro verde-quadro e anel pontilhado (familia da vagoneta) -->
+  <circle cx="100" cy="100" r="96" fill="url(#fundo)"/>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1"
+          stroke-dasharray="1.5 3" opacity="0.8"/>
+
+  <g clip-path="url(#dentro)">
+    <!-- feixe branco incidente -->
+    <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/>
+    <!-- trajeto dentro do vidro -->
+    <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/>
+    <!-- espectro: vermelho desvia menos (em cima), violeta mais (embaixo) -->
+    <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/>
+    <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/>
+    <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/>
+    <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/>
+    <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/>
+    <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/>
+    <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/>
+  </g>
+
+  <!-- prisma de vidro -->
+  <polygon points="100,50 56,130 144,130" fill="url(#vidro)" stroke="#DDEBF3"
+           stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- bancada: traco azul-aco sob o prisma -->
+  <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- brilhos discretos -->
+  <g fill="#FFFFFF" opacity="0.55">
+    <circle cx="46" cy="62" r="1.2"/>
+    <circle cx="150" cy="56" r="1"/>
+    <circle cx="70" cy="160" r="1"/>
+    <circle cx="140" cy="164" r="1.2"/>
+  </g>
+</svg>
+
+  </div>
+  <p class="ilb-aba-lead">As trilhas desta etapa, na ordem em que você vai fazê-las.</p>
+  <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/#t0a">T0A &middot; Primeiros Passos no Laboratório</a>
+  <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/#t0b">T0B &middot; Noções sobre Estimativas e Medidas</a>
+  <a class="ilb-aba-btn ilb-aba-aqui" href="https://nidecop-jafb.github.io/ilb-oa/#t0c">T0C &middot; O Sistema Internacional de Unidades de Medida<span class="ilb-aba-aqui-tag">você está aqui</span></a>
+  <a class="ilb-aba-btn" href="https://nidecop-jafb.github.io/ilb-oa/#t0d">T0D &middot; A Matemática das Medidas</a>
+  <span class="ilb-aba-prep-tr">T0E &middot; O Número π (pi)<em>em preparação</em></span>
+  <div class="ilb-aba-rodape">
+    <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
+    <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
+    <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
+  </div>
+</aside>
+<aside class="ilb-aba-painel" id="ilb-painel-etapa2" hidden>
+  <h3>Etapa 2 &middot; Forças, Torques, Resultante e Equilíbrio de Corpos em Repouso</h3>
+  <div class="ilb-aba-marcas">
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
+  <g fill="none" stroke="#3E8E5A" stroke-width="3">
+    <ellipse cx="60" cy="52" rx="46" ry="18"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+  </g>
+  <g fill="#3E8E5A">
+    <circle cx="53" cy="47" r="7"/>
+    <circle cx="67" cy="47" r="7"/>
+    <circle cx="60" cy="58" r="9"/>
+  </g>
+  <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+    <line x1="26" y1="110" x2="94" y2="110"/>
+    <line x1="30" y1="110" x2="30" y2="104"/>
+    <line x1="40" y1="110" x2="40" y2="104"/>
+    <line x1="50" y1="110" x2="50" y2="104"/>
+    <line x1="60" y1="110" x2="60" y2="98"/>
+    <line x1="70" y1="110" x2="70" y2="104"/>
+    <line x1="80" y1="110" x2="80" y2="104"/>
+    <line x1="90" y1="110" x2="90" y2="104"/>
+  </g>
+</svg>
+
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+     role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física">
+  <title>Prisma decompondo a luz — Licenciatura em Física</title>
+  <defs>
+    <radialGradient id="fundo" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#26302B"/>
+      <stop offset="1" stop-color="#0E1411"/>
+    </radialGradient>
+    <linearGradient id="vidro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/>
+    </linearGradient>
+    <clipPath id="dentro"><circle cx="100" cy="100" r="86"/></clipPath>
+  </defs>
+
+  <!-- medalhao: fundo, aro verde-quadro e anel pontilhado (familia da vagoneta) -->
+  <circle cx="100" cy="100" r="96" fill="url(#fundo)"/>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1"
+          stroke-dasharray="1.5 3" opacity="0.8"/>
+
+  <g clip-path="url(#dentro)">
+    <!-- feixe branco incidente -->
+    <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/>
+    <!-- trajeto dentro do vidro -->
+    <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/>
+    <!-- espectro: vermelho desvia menos (em cima), violeta mais (embaixo) -->
+    <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/>
+    <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/>
+    <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/>
+    <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/>
+    <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/>
+    <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/>
+    <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/>
+  </g>
+
+  <!-- prisma de vidro -->
+  <polygon points="100,50 56,130 144,130" fill="url(#vidro)" stroke="#DDEBF3"
+           stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- bancada: traco azul-aco sob o prisma -->
+  <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- brilhos discretos -->
+  <g fill="#FFFFFF" opacity="0.55">
+    <circle cx="46" cy="62" r="1.2"/>
+    <circle cx="150" cy="56" r="1"/>
+    <circle cx="70" cy="160" r="1"/>
+    <circle cx="140" cy="164" r="1.2"/>
+  </g>
+</svg>
+
+  </div>
+  <p class="ilb-aba-lead">As trilhas desta etapa, na ordem em que você vai fazê-las.</p>
+  <span class="ilb-aba-prep-tr">T01 &middot; Forças: Peso, Elástica, Tração e Empuxo, Compressão (Normal, Atrito) e Aerodinâmica (Sustentação, Arrasto)<em>em preparação</em></span>
+  <span class="ilb-aba-prep-tr">T02 &middot; Resultante das Forças no Equilíbrio Estático de Ponto Material<em>em preparação</em></span>
+  <span class="ilb-aba-prep-tr">T03 &middot; Máquinas Simples: Plano Inclinado e Polias<em>em preparação</em></span>
+  <span class="ilb-aba-prep-tr">T04 &middot; Centro de Massa, Torque, Resultante de Forças e Torques no Equilíbrio de Corpo Extenso<em>em preparação</em></span>
+  <div class="ilb-aba-rodape">
+    <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
+    <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
+    <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
+  </div>
+</aside>
+<aside class="ilb-aba-painel" id="ilb-painel-etapa3" hidden>
+  <h3>Etapa 3 &middot; Forças, Aceleração, Trabalho, Energia e Potência de Corpos em Movimento</h3>
+  <div class="ilb-aba-marcas">
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
+  <g fill="none" stroke="#3E8E5A" stroke-width="3">
+    <ellipse cx="60" cy="52" rx="46" ry="18"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
+    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
+  </g>
+  <g fill="#3E8E5A">
+    <circle cx="53" cy="47" r="7"/>
+    <circle cx="67" cy="47" r="7"/>
+    <circle cx="60" cy="58" r="9"/>
+  </g>
+  <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
+    <line x1="26" y1="110" x2="94" y2="110"/>
+    <line x1="30" y1="110" x2="30" y2="104"/>
+    <line x1="40" y1="110" x2="40" y2="104"/>
+    <line x1="50" y1="110" x2="50" y2="104"/>
+    <line x1="60" y1="110" x2="60" y2="98"/>
+    <line x1="70" y1="110" x2="70" y2="104"/>
+    <line x1="80" y1="110" x2="80" y2="104"/>
+    <line x1="90" y1="110" x2="90" y2="104"/>
+  </g>
+</svg>
+
+  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+     role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física">
+  <title>Prisma decompondo a luz — Licenciatura em Física</title>
+  <defs>
+    <radialGradient id="fundo" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#26302B"/>
+      <stop offset="1" stop-color="#0E1411"/>
+    </radialGradient>
+    <linearGradient id="vidro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/>
+    </linearGradient>
+    <clipPath id="dentro"><circle cx="100" cy="100" r="86"/></clipPath>
+  </defs>
+
+  <!-- medalhao: fundo, aro verde-quadro e anel pontilhado (familia da vagoneta) -->
+  <circle cx="100" cy="100" r="96" fill="url(#fundo)"/>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1"
+          stroke-dasharray="1.5 3" opacity="0.8"/>
+
+  <g clip-path="url(#dentro)">
+    <!-- feixe branco incidente -->
+    <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/>
+    <!-- trajeto dentro do vidro -->
+    <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/>
+    <!-- espectro: vermelho desvia menos (em cima), violeta mais (embaixo) -->
+    <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/>
+    <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/>
+    <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/>
+    <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/>
+    <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/>
+    <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/>
+    <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/>
+  </g>
+
+  <!-- prisma de vidro -->
+  <polygon points="100,50 56,130 144,130" fill="url(#vidro)" stroke="#DDEBF3"
+           stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- bancada: traco azul-aco sob o prisma -->
+  <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- brilhos discretos -->
+  <g fill="#FFFFFF" opacity="0.55">
+    <circle cx="46" cy="62" r="1.2"/>
+    <circle cx="150" cy="56" r="1"/>
+    <circle cx="70" cy="160" r="1"/>
+    <circle cx="140" cy="164" r="1.2"/>
+  </g>
+</svg>
+
+  </div>
+  <p class="ilb-aba-lead">As trilhas desta etapa, na ordem em que você vai fazê-las.</p>
+  <span class="ilb-aba-prep-tr">T05 &middot; Forças e Aceleração: Esfera e Bolha em MRU no Óleo, Carrinho na Rampa e Queda Livre<em>em preparação</em></span>
+  <span class="ilb-aba-prep-tr">T06 &middot; Forças e Aceleração no Movimento Circular Uniforme<em>em preparação</em></span>
+  <span class="ilb-aba-prep-tr">T07 &middot; Formas, Fontes e Transformações da Energia, Potência e Rendimento na Mecânica<em>em preparação</em></span>
+  <span class="ilb-aba-prep-tr">T08 &middot; Projeto Integrador — Gráficos de Apoio para Aulas e Reuniões<em>em preparação</em></span>
+  <div class="ilb-aba-rodape">
+    <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
+    <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
+    <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
+  </div>
+</aside>
 <aside class="ilb-aba-painel" id="ilb-painel-documentos" hidden>
   <h3>Documentos</h3>
   <div class="ilb-aba-marcas">
@@ -851,200 +1237,6 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   <p class="ilb-refs-item">CONDORCET, N. <em>Lema do sistema métrico decimal</em>, 1791–1799.</p>
   <p class="ilb-refs-item">THOMSON, William (Lord Kelvin). <em>Popular Lectures and Addresses</em>. London: Macmillan, 1889. v. 1, p. 73. (usada no Roteiro de Bancada desta trilha)</p>
   <p class="ilb-refs-item">LE CORBUSIER. <em>Le Modulor</em>. Boulogne: Éditions de l'Architecture d'Aujourd'hui, 1948.</p>
-  <div class="ilb-aba-rodape">
-    <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
-    <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
-    <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
-  </div>
-</aside>
-<aside class="ilb-aba-painel" id="ilb-painel-musica" hidden>
-  <h3>Música</h3>
-  <div class="ilb-aba-marcas">
-  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
-  <g fill="none" stroke="#3E8E5A" stroke-width="3">
-    <ellipse cx="60" cy="52" rx="46" ry="18"/>
-    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
-    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
-  </g>
-  <g fill="#3E8E5A">
-    <circle cx="53" cy="47" r="7"/>
-    <circle cx="67" cy="47" r="7"/>
-    <circle cx="60" cy="58" r="9"/>
-  </g>
-  <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
-    <line x1="26" y1="110" x2="94" y2="110"/>
-    <line x1="30" y1="110" x2="30" y2="104"/>
-    <line x1="40" y1="110" x2="40" y2="104"/>
-    <line x1="50" y1="110" x2="50" y2="104"/>
-    <line x1="60" y1="110" x2="60" y2="98"/>
-    <line x1="70" y1="110" x2="70" y2="104"/>
-    <line x1="80" y1="110" x2="80" y2="104"/>
-    <line x1="90" y1="110" x2="90" y2="104"/>
-  </g>
-</svg>
-
-  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
-     role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física">
-  <title>Prisma decompondo a luz — Licenciatura em Física</title>
-  <defs>
-    <radialGradient id="fundo" cx="50%" cy="42%" r="60%">
-      <stop offset="0" stop-color="#26302B"/>
-      <stop offset="1" stop-color="#0E1411"/>
-    </radialGradient>
-    <linearGradient id="vidro" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/>
-    </linearGradient>
-    <clipPath id="dentro"><circle cx="100" cy="100" r="86"/></clipPath>
-  </defs>
-
-  <!-- medalhao: fundo, aro verde-quadro e anel pontilhado (familia da vagoneta) -->
-  <circle cx="100" cy="100" r="96" fill="url(#fundo)"/>
-  <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/>
-  <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1"
-          stroke-dasharray="1.5 3" opacity="0.8"/>
-
-  <g clip-path="url(#dentro)">
-    <!-- feixe branco incidente -->
-    <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/>
-    <!-- trajeto dentro do vidro -->
-    <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/>
-    <!-- espectro: vermelho desvia menos (em cima), violeta mais (embaixo) -->
-    <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/>
-    <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/>
-    <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/>
-    <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/>
-    <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/>
-    <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/>
-    <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/>
-  </g>
-
-  <!-- prisma de vidro -->
-  <polygon points="100,50 56,130 144,130" fill="url(#vidro)" stroke="#DDEBF3"
-           stroke-width="2.5" stroke-linejoin="round"/>
-  <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
-
-  <!-- bancada: traco azul-aco sob o prisma -->
-  <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/>
-
-  <!-- brilhos discretos -->
-  <g fill="#FFFFFF" opacity="0.55">
-    <circle cx="46" cy="62" r="1.2"/>
-    <circle cx="150" cy="56" r="1"/>
-    <circle cx="70" cy="160" r="1"/>
-    <circle cx="140" cy="164" r="1.2"/>
-  </g>
-</svg>
-
-  </div>
-  <p>Por que estudar ouvindo? Miguel Nicolelis responde em <em>O Verdadeiro Criador de Tudo</em>: ciência e arte saem do mesmo lugar — o cérebro humano. E Pierluigi Piazzi, em <em>Aprendendo Inteligência</em>, acrescenta a parte prática: música sem letra não disputa com a leitura as áreas da linguagem. A palavra cantada rouba a palavra lida; a música instrumental sustenta, e some.</p>
-  <p>Daí a regra do projeto — <strong>uma trilha, uma música</strong>: ler, medir e registrar ouvindo música instrumental.</p>
-  <div class="ilb-aba-h4">A música desta trilha</div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-oa">J. S. Bach — O Cravo Bem Temperado (BWV 846–893)</span> — cravo solo · ouça em repetição enquanto lê.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/search?q=Bach+Cravo+Bem+Temperado+BWV+846" target="_blank" rel="noopener">▶ Ouvir</a></div>
-  <div class="ilb-aba-h4">O acervo — as oito playlists</div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">1</span><span class="ilb-aba-oa">Baden Powell</span> <span class="ilb-aba-tag">· T01 · T06</span> — nos Afro-sambas cabem a bossa, o candomblé e a harmonia de câmara. Somar mundos é o ofício de quem mede: a bancada mede, o caderno deduz, a teoria explica por que importa.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLMB5arbCorsU" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">2</span><span class="ilb-aba-oa">Yamandu Costa</span> <span class="ilb-aba-tag">· T02 · T07</span> — improvisa porque conhece a estrutura até o último traste. Improviso não é sorte: é o nome da liberdade de quem estudou.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLXyZd3QdGENs" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">3</span><span class="ilb-aba-oa">Orquestra Ouro Preto</span> <span class="ilb-aba-tag">· T03 · T08</span> — nasceu no ano 2000, por iniciativa do professor Ronaldo R. B. Toffolo e do compositor Rufo Herrera, e é a casa desta escola: Toffolo foi aluno, professor e diretor-geral da Escola Técnica Federal de Ouro Preto, que hoje é o IFMG campus Ouro Preto. Estudar com ela ao fundo é estudar ouvindo a própria instituição.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLLck6FRNMdAs" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">4</span><span class="ilb-aba-oa">Filarmônica de Minas Gerais</span> <span class="ilb-aba-tag">· T04 · T09</span> — noventa músicos, um único referencial de tempo, erro na casa dos milissegundos: ordem de grandeza, sincronia, medida.<br><a class="ilb-aba-ouvir" href="https://music.youtube.com/playlist?list=PLH9GvshumD2s" target="_blank" rel="noopener">▶ Ouvir a playlist</a></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">5</span><span class="ilb-aba-oa">Marco Antônio Araújo</span> <span class="ilb-aba-tag">· T05 · T10</span> — violoncelista da Sinfônica de Minas e compositor que fez o barroco mineiro, a modinha e a seresta caberem no rock progressivo. A obra, interrompida aos 36 anos, ficou inacabada — e é isso que ela ensina a quem mede: nenhum experimento termina; toda medida com incerteza é um convite à medida seguinte.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">6</span><span class="ilb-aba-oa">J. S. Bach</span> <span class="ilb-aba-tag">· T0A · T0C</span> — a fuga é a definição de sistema físico: muitas vozes, uma lei só. É a abertura do curso, e por isso não entra no ciclo das dez trilhas de bancada.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">7</span><span class="ilb-aba-oa">W. A. Mozart</span> <span class="ilb-aba-tag">· acervo</span> — nada sobra, nada falta. Elegância é saber o que pode ser retirado sem quebrar o todo — no pentagrama e na montagem experimental.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
-  <div class="ilb-aba-faixa"><span class="ilb-aba-num">8</span><span class="ilb-aba-oa">L. van Beethoven</span> <span class="ilb-aba-tag">· acervo</span> — de quatro notas, uma sinfonia; de duas ou três letras, uma lei. Muda a escala; a lei, não. E a Nona, composta já na surdez, lembra: o modelo vem antes da medida.<br><span class="ilb-aba-prep">Playlist em preparação</span></div>
-  <p>Na ILB, cinco playlists giram em <strong>duas voltas exatas</strong> pelas trilhas T01-T10 — Baden Powell, Yamandu Costa, Orquestra Ouro Preto, Filarmônica de Minas Gerais e Marco Antônio Araújo. As duas trilhas do Tema 0 ficam fora do ciclo, com Bach.</p>
-  <div class="ilb-aba-h4">Ampliando o acervo — em preparação</div>
-  <p><span class="ilb-aba-oa">Raphael Rabello</span> (Petrópolis, 1962 — Rio de Janeiro, 1995) — primeiro registro profissional aos treze anos; discípulo de Dino 7 Cordas e parceiro de Radamés Gnattali, levou o violão de sete cordas do acompanhamento ao centro do palco. Morreu aos 32 anos, deixando uma obra relevante e inacabada.</p>
-  <div class="ilb-aba-rodape">
-    <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
-    <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
-    <div class="ilb-aba-agr"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div>
-  </div>
-</aside>
-<aside class="ilb-aba-painel" id="ilb-painel-ineditismo" hidden>
-  <h3>Ineditismo</h3>
-  <div class="ilb-aba-marcas">
-  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório">
-  <g fill="none" stroke="#3E8E5A" stroke-width="3">
-    <ellipse cx="60" cy="52" rx="46" ry="18"/>
-    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/>
-    <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/>
-  </g>
-  <g fill="#3E8E5A">
-    <circle cx="53" cy="47" r="7"/>
-    <circle cx="67" cy="47" r="7"/>
-    <circle cx="60" cy="58" r="9"/>
-  </g>
-  <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square">
-    <line x1="26" y1="110" x2="94" y2="110"/>
-    <line x1="30" y1="110" x2="30" y2="104"/>
-    <line x1="40" y1="110" x2="40" y2="104"/>
-    <line x1="50" y1="110" x2="50" y2="104"/>
-    <line x1="60" y1="110" x2="60" y2="98"/>
-    <line x1="70" y1="110" x2="70" y2="104"/>
-    <line x1="80" y1="110" x2="80" y2="104"/>
-    <line x1="90" y1="110" x2="90" y2="104"/>
-  </g>
-</svg>
-
-  <svg class="ilb-aba-marca" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
-     role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física">
-  <title>Prisma decompondo a luz — Licenciatura em Física</title>
-  <defs>
-    <radialGradient id="fundo" cx="50%" cy="42%" r="60%">
-      <stop offset="0" stop-color="#26302B"/>
-      <stop offset="1" stop-color="#0E1411"/>
-    </radialGradient>
-    <linearGradient id="vidro" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/>
-    </linearGradient>
-    <clipPath id="dentro"><circle cx="100" cy="100" r="86"/></clipPath>
-  </defs>
-
-  <!-- medalhao: fundo, aro verde-quadro e anel pontilhado (familia da vagoneta) -->
-  <circle cx="100" cy="100" r="96" fill="url(#fundo)"/>
-  <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/>
-  <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1"
-          stroke-dasharray="1.5 3" opacity="0.8"/>
-
-  <g clip-path="url(#dentro)">
-    <!-- feixe branco incidente -->
-    <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/>
-    <!-- trajeto dentro do vidro -->
-    <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/>
-    <!-- espectro: vermelho desvia menos (em cima), violeta mais (embaixo) -->
-    <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/>
-    <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/>
-    <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/>
-    <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/>
-    <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/>
-    <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/>
-    <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/>
-  </g>
-
-  <!-- prisma de vidro -->
-  <polygon points="100,50 56,130 144,130" fill="url(#vidro)" stroke="#DDEBF3"
-           stroke-width="2.5" stroke-linejoin="round"/>
-  <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/>
-
-  <!-- bancada: traco azul-aco sob o prisma -->
-  <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/>
-
-  <!-- brilhos discretos -->
-  <g fill="#FFFFFF" opacity="0.55">
-    <circle cx="46" cy="62" r="1.2"/>
-    <circle cx="150" cy="56" r="1"/>
-    <circle cx="70" cy="160" r="1"/>
-    <circle cx="140" cy="164" r="1.2"/>
-  </g>
-</svg>
-
-  </div>
-  <p>A Introdução ao Laboratório é a primeira disciplina experimental da Licenciatura em Física e a única da matriz sem vínculo com uma disciplina teórica. Sua função é propedêutica: instalar o método que os quatro laboratórios seguintes vão supor pronto.</p>
-  <p>Aqui o experimento é <strong>veículo</strong>, não objeto. Mede-se para aprender a medir — avaliar e expressar incertezas, apresentar tabelas e gráficos, ajustar uma curva aos dados. A Mecânica Clássica entra como campo de aplicação porque é o que se pode medir no 2.º período, com montagens simples e a física que se traz da educação básica.</p>
-  <p>Cada trilha tem três paradas. O <strong>Pré-Lab</strong>, feito em casa, prepara o experimento e a previsão. O <strong>Lab</strong> é a bancada, com o Roteiro de Bancada na mão. O <strong>Pós-Lab</strong> transforma o dado bruto em relatório — que é onde a medida vira conhecimento comunicável.</p>
-  <p>Até onde a pesquisa do autor alcançou, este é o primeiro conjunto de Trilhas de Aprendizagem para Introdução ao Laboratório de Física num curso de Licenciatura no Brasil. Os manuais disponíveis organizam-se por experimento; aqui a organização é pelo método de medida, que se repete em todas as trilhas enquanto o experimento muda.</p>
-  <p>E porque quem estuda aqui vai ensinar Física, cada trilha faz uma pergunta a mais: o que desta bancada caberia numa sala de aula de ensino médio?</p>
-  <p class="ilb-aba-lead">Boas-vindas — e sucesso na sua caminhada pelas Trilhas de Aprendizagem de Introdução ao Laboratório.</p>
   <div class="ilb-aba-rodape">
     <a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-ifmg.png" alt="IFMG — Campus Ouro Preto"></a>
     <img class="ilb-aba-selo" src="https://nidecop-jafb.github.io/ilb-oa/_icones/icon-nidec.png" alt="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos">
