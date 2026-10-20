@@ -1057,7 +1057,7 @@ html, body {
         </div>
         <div class="col-img">
           <img src="../_imagens/_web/ILB-T0C-Figura-03-v1-web-claro.jpg" alt="Figura 3">
-          <div class="col-img-legenda"><span class="fig-num">Figura 3</span>Os quatro licenciandos diante da balança de pesar ouro: o padrão antigo, antes do SI</div>
+          <div class="col-img-legenda"><span class="fig-num">Figura 3</span>Os quatro licenciandos diante da balança de ouro: o padrão antigo, antes do SI</div>
         </div>
       </div>
     </div>
@@ -1128,7 +1128,7 @@ html, body {
         <div class="col-text">
           <div class="def">
             <div class="termo">B1 &middot; o clipe</div>
-            <p>Pesam-se <strong>vinte</strong> e divide-se por vinte. O kilograma já nasce com prefixo: o clipe se escreve em gramas ou miligramas.</p>
+            <p>Mede-se a massa de <strong>vinte</strong> e divide-se por vinte. O kilograma já nasce com prefixo: o clipe se escreve em gramas ou miligramas.</p>
           </div>
           <div class="def">
             <div class="termo">B2 &middot; os 100 g</div>
@@ -1440,7 +1440,7 @@ html, body {
 
 <script>
 (function() {
-  var STORAGE_KEY = 'ILB-T0C-AP-v3';
+  var STORAGE_KEY = 'ILB-T0C-AP-v4';
   var slides = document.querySelectorAll('.slide');
   var total = slides.length;
   var atual = 1;
@@ -1505,7 +1505,7 @@ html, body {
     document.documentElement.setAttribute('data-theme', atual);
     try { localStorage.setItem(STORAGE_KEY + '-theme', atual); } catch(e) {}
   }
-  /* As sidebars do deck sairam (trilho de 7 abas, abas_oa_ilb.py):
+  /* As sidebars do deck sairam (trilho de 6 abas, abas_oa_ilb.py):
      a lista fica vazia e quem fecha o painel e o clique global do trilho. */
   var sidebars = [];
 
@@ -1791,7 +1791,7 @@ html, body {
 (function () {
   'use strict';
 
-  var KEY = 'ILB-T0C-AP-v3-crono';
+  var KEY = 'ILB-T0C-AP-v4-crono';
 
 
   var slides = document.querySelectorAll('.slide');
@@ -1813,7 +1813,7 @@ html, body {
   window.__AP_PREVISTO_ORIGINAL = previstoOriginal;
 
   try {
-    var tcust = JSON.parse(localStorage.getItem('ILB-T0C-AP-v3-tempos-custom') || '{}');
+    var tcust = JSON.parse(localStorage.getItem('ILB-T0C-AP-v4-tempos-custom') || '{}');
     for (var kc in tcust) { if (tcust.hasOwnProperty(kc)) previsto[parseInt(kc, 10)] = tcust[kc]; }
   } catch(e) {}
 
@@ -2095,7 +2095,7 @@ html, body {
 <script>
 (function() {
   'use strict';
-  var STORAGE_KEY = 'ILB-T0C-AP-v3';
+  var STORAGE_KEY = 'ILB-T0C-AP-v4';
   var KEY_TEMPOS = STORAGE_KEY + '-tempos-custom';
   var allSlides = document.querySelectorAll('.slide');
   var configSlideNum = allSlides.length;

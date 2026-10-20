@@ -189,9 +189,9 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 <div class="player" id="player">
   <div class="player-topo">
     <span class="player-titulo">&Aacute;udio da trilha</span>
-    <button class="faixa-btn ativa" data-src="ILB-T0A-MD-v1-padrao.m4a">Vers&atilde;o padr&atilde;o</button><button class="faixa-btn" data-src="ILB-T0A-MD-v1-curto.m4a">Vers&atilde;o curta</button>
+    <button class="faixa-btn ativa" data-src="ILB-T0A-MD-v2-padrao.m4a">Vers&atilde;o padr&atilde;o</button><button class="faixa-btn" data-src="ILB-T0A-MD-v2-curto.m4a">Vers&atilde;o curta</button>
   </div>
-  <audio id="audio" controls preload="none" src="ILB-T0A-MD-v1-padrao.m4a"></audio>
+  <audio id="audio" controls preload="none" src="ILB-T0A-MD-v2-padrao.m4a"></audio>
   <div class="sem-audio">O arquivo de &aacute;udio ainda n&atilde;o foi publicado nesta pasta. O texto abaixo &eacute; o roteiro completo &mdash; d&aacute; para ler enquanto isso.</div>
 </div>
 
@@ -275,7 +275,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   <div class="secao-body"><div class="secao-texto">
 <p><strong>Pr&aacute;tica docente:</strong> ler um documento oficial, desenhar uma aula em tr&ecirc;s tempos, escolher pesos que premiam o processo em vez de uma prova final &mdash; decis&otilde;es que voc&ecirc; vai ter de tomar na sua pr&oacute;pria turma.</p>
 <p><strong>Hist&oacute;ria:</strong> a Escola de Minas, fundada por Claude-Henri Gorceix em 1876, na Pra&ccedil;a Tiradentes &mdash; <strong>150 anos</strong> de <em>medir antes de afirmar</em>, tradi&ccedil;&atilde;o que chega at&eacute; os Pavilh&otilde;es de F&iacute;sica, erguidos a partir de 1982 e inaugurados em 1985. E o roteiro-receita que esta metodologia recusa &eacute; heran&ccedil;a do laborat&oacute;rio demonstrativo do s&eacute;culo XIX, em que o estudante assistia e copiava.</p>
-<p><strong>Metrologia:</strong> menor divis&atilde;o, resolu&ccedil;&atilde;o e rastreabilidade atravessam dois s&eacute;culos. Antes do SI, o ouro desta regi&atilde;o era pesado em oitavas e quilates &mdash; parte desse acervo est&aacute; no Museu de Ci&ecirc;ncia e T&eacute;cnica da Escola de Minas.</p>
+<p><strong>Metrologia:</strong> menor divis&atilde;o, resolu&ccedil;&atilde;o e rastreabilidade atravessam dois s&eacute;culos. Antes do SI, o ouro desta regi&atilde;o tinha a massa medida em oitavas e a pureza em quilates &mdash; parte desse acervo est&aacute; no Museu de Ci&ecirc;ncia e T&eacute;cnica da Escola de Minas.</p>
 <p><strong>Arte:</strong> Leonardo da Vinci escreveu, num caderno de trabalho e enquanto a m&atilde;o ainda media, que <span class="citacao">a sabedoria &eacute; filha da experi&ecirc;ncia</span>. Os cadernos dele s&atilde;o, ao mesmo tempo, obra de arte e caderno de bancada &mdash; exatamente o que se pede de voc&ecirc; a partir de hoje.</p></div></div>
 </div>
 
@@ -340,7 +340,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0A-MD-v1';
+  var CHAVE = 'ILB-T0A-MD-v2';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { estado = {}; }
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }

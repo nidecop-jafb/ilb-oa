@@ -189,20 +189,20 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 <div class="player" id="player">
   <div class="player-topo">
     <span class="player-titulo">&Aacute;udio da trilha</span>
-    <button class="faixa-btn ativa" data-src="ILB-T0C-MD-v3-padrao.m4a">Vers&atilde;o padr&atilde;o</button><button class="faixa-btn" data-src="ILB-T0C-MD-v3-curto.m4a">Vers&atilde;o curta</button>
+    <button class="faixa-btn ativa" data-src="ILB-T0C-MD-v4-padrao.m4a">Vers&atilde;o padr&atilde;o</button><button class="faixa-btn" data-src="ILB-T0C-MD-v4-curto.m4a">Vers&atilde;o curta</button>
   </div>
-  <audio id="audio" controls preload="none" src="ILB-T0C-MD-v3-padrao.m4a"></audio>
+  <audio id="audio" controls preload="none" src="ILB-T0C-MD-v4-padrao.m4a"></audio>
   <div class="sem-audio">O arquivo de &aacute;udio ainda n&atilde;o foi publicado nesta pasta. O texto abaixo &eacute; o roteiro completo &mdash; d&aacute; para ler enquanto isso.</div>
 </div>
 
 <div class="secao" data-idx="0">
   <div class="secao-header" data-idx="0">
-    <span class="secao-num">00</span><span class="secao-titulo">Antes de tudo — uma balança que pesou ouro</span><div class="secao-check"><input type="checkbox" id="chk-0" data-idx="0"><label for="chk-0">ouvido</label></div><span class="secao-seta">&#9654;</span>
+    <span class="secao-num">00</span><span class="secao-titulo">Antes de tudo — uma balança que mediu a massa do ouro</span><div class="secao-check"><input type="checkbox" id="chk-0" data-idx="0"><label for="chk-0">ouvido</label></div><span class="secao-seta">&#9654;</span>
   </div>
   <div class="secao-body"><div class="secao-texto">
-<p>A quinze minutos a pé da sala de aula, na Praça Tiradentes, existe uma balança que pesou ouro. Ela está no <span class="termo">Museu de Ciência e Técnica da Escola de Minas</span>, e o que ela media não era grama: era <span class="termo">oitava</span> — cerca de 3,586&nbsp;g.</p>
+<p>A quinze minutos a pé da sala de aula, na Praça Tiradentes, existe uma balança que mediu a massa do ouro. Ela está no <span class="termo">Museu de Ciência e Técnica da Escola de Minas</span>, e o que ela media não era grama: era <span class="termo">oitava</span> — cerca de 3,586&nbsp;g.</p>
 <p>A segunda pergunta é a que a trilha inteira responde: <em>quem decide como isso se escreve, aqui no Brasil?</em> A resposta é um documento de quinze páginas do Inmetro, o <span class="termo">Quadro Geral de Unidades de Medida no Brasil (QGU)</span>: o SI escrito para uso no país, na tradução luso-brasileira de 2021.</p>
-<p>O Quadro tem <strong>cinco partes</strong> — unidades de base, prefixos, grafia e pronúncia, unidades fora do SI e tabela geral —, e cada uma tem um pé na bancada: a folha, a moeda, a rampa, o clipe, o peso de 100&nbsp;g e o tempo de reação.</p>
+<p>O Quadro tem <strong>cinco partes</strong> — unidades de base, prefixos, grafia e pronúncia, unidades fora do SI e tabela geral —, e cada uma tem um pé na bancada: a folha, a moeda, a rampa, o clipe, a força-peso sobre 100&nbsp;g e o tempo de reação.</p>
 <p class="citacao">&ldquo;A todos os tempos, a todos os povos.&rdquo; &mdash; Condorcet, 1791</p></div></div>
 </div>
 <div class="secao" data-idx="1">
@@ -323,7 +323,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0C-MD-v3';
+  var CHAVE = 'ILB-T0C-MD-v4';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) { estado = {}; }
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
