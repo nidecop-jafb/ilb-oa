@@ -184,6 +184,24 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 }
 /* /ICONES-ILB */
 </style>
+<style>
+/* FIGURAS-ILB (figuras_ilb.py) */
+.figura-ilb { display: flex; flex-direction: column; align-items: stretch;
+  max-width: 680px; margin: 26px auto; border: 1px solid var(--cinza-borda, #b8c2bb);
+  border-radius: 6px; overflow: hidden; background: var(--superficie, #fff); }
+.figura-ilb img { display: block; width: 100%; height: auto; margin: 0; }
+.figura-ilb figcaption { border-top: 2px solid var(--verde, #3E8E5A);
+  background: var(--fundo-legenda, rgba(62,142,90,.10)); padding: 9px 14px;
+  font-size: .95rem; line-height: 1.45; text-align: left; }
+.figura-ilb .figura-ilb-num { font-weight: 700; color: var(--verde, #3E8E5A); }
+.figura-ilb.figura-ilb-p { max-width: 420px; }
+@media print {
+  .figura-ilb { break-inside: avoid; page-break-inside: avoid; }
+  .figura-ilb img { filter: grayscale(1); }
+  .figura-ilb figcaption { background: #eeeeee; color: #222; }
+  .figura-ilb .figura-ilb-num { color: #222; }
+}
+</style>
 </head>
 <body data-pagina="t0b:sm">
 
@@ -203,6 +221,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   Nada aqui vale nota e nada sai do seu aparelho. Faça depois da Folha de Atividades e antes do Testinho.
 </div>
 
+<figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-10-v2-web.jpg" alt="Figura 10 &mdash; O olho na perpendicular lê o traço certo; o olho de lado lê o vizinho." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 10</span> &mdash; O olho na perpendicular lê o traço certo; o olho de lado lê o vizinho.</figcaption></figure>
 <div class="sim" id="sim1">
   <div class="sim-head"><span class="sim-num">Simulação 1</span><span class="sim-titulo">Ler a escala até o último traço</span></div>
   <div class="sim-body">
@@ -224,6 +243,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
   </div>
 </div>
 
+<figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-06-v2-web.jpg" alt="Figura 6 &mdash; A régua das potências de 10: de 1 a 10 em dois passos iguais de 3,16." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 6</span> &mdash; A régua das potências de 10: de 1 a 10 em dois passos iguais de 3,16.</figcaption></figure>
 <div class="sim" id="sim2">
   <div class="sim-head"><span class="sim-num">Simulação 2</span><span class="sim-titulo">Estimar, medir e julgar a razão</span></div>
   <div class="sim-body">

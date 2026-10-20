@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILB · T0B · Noções sobre Estimativas e Medidas — Texto Temático v3</title>
+<title>ILB · T0B · Noções sobre Estimativas e Medidas — Texto Temático v4</title>
 <style>
   input, button, select, textarea { font-family: inherit; }
 /* ═══ DESIGN SYSTEM: BRUTALISMO CIENTIFICO ═══ */
@@ -578,6 +578,24 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 }
 /* /ICONES-ILB */
 </style>
+<style>
+/* FIGURAS-ILB (figuras_ilb.py) */
+.figura-ilb { display: flex; flex-direction: column; align-items: stretch;
+  max-width: 680px; margin: 26px auto; border: 1px solid var(--cinza-borda, #b8c2bb);
+  border-radius: 6px; overflow: hidden; background: var(--superficie, #fff); }
+.figura-ilb img { display: block; width: 100%; height: auto; margin: 0; }
+.figura-ilb figcaption { border-top: 2px solid var(--verde, #3E8E5A);
+  background: var(--fundo-legenda, rgba(62,142,90,.10)); padding: 9px 14px;
+  font-size: .95rem; line-height: 1.45; text-align: left; }
+.figura-ilb .figura-ilb-num { font-weight: 700; color: var(--verde, #3E8E5A); }
+.figura-ilb.figura-ilb-p { max-width: 420px; }
+@media print {
+  .figura-ilb { break-inside: avoid; page-break-inside: avoid; }
+  .figura-ilb img { filter: grayscale(1); }
+  .figura-ilb figcaption { background: #eeeeee; color: #222; }
+  .figura-ilb .figura-ilb-num { color: #222; }
+}
+</style>
 <!-- CELULAR:INICIO --><style>
 @media (max-width: 560px) {
   table { table-layout: fixed; width: 100% !important; max-width: 100%; min-width: 0 !important; }
@@ -630,7 +648,7 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
   <div class="capa-marca"><div class="ilb-cab-marcas"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física"> <title>Prisma decompondo a luz — Licenciatura em Física</title> <defs> <radialGradient id="cab-prisma-fundo" cx="50%" cy="42%" r="60%"> <stop offset="0" stop-color="#26302B"/> <stop offset="1" stop-color="#0E1411"/> </radialGradient> <linearGradient id="cab-prisma-vidro" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/> <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/> </linearGradient> <clipPath id="cab-prisma-dentro"><circle cx="100" cy="100" r="86"/></clipPath> </defs> <circle cx="100" cy="100" r="96" fill="url(#cab-prisma-fundo)"/> <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/> <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1" stroke-dasharray="1.5 3" opacity="0.8"/> <g clip-path="url(#cab-prisma-dentro)"> <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/> <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/> <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/> <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/> <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/> <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/> <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/> <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/> <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/> </g> <polygon points="100,50 56,130 144,130" fill="url(#cab-prisma-vidro)" stroke="#DDEBF3" stroke-width="2.5" stroke-linejoin="round"/> <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/> <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/> <g fill="#FFFFFF" opacity="0.55"> <circle cx="46" cy="62" r="1.2"/> <circle cx="150" cy="56" r="1"/> <circle cx="70" cy="160" r="1"/> <circle cx="140" cy="164" r="1.2"/> </g> </svg><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório"> <g fill="none" stroke="#3E8E5A" stroke-width="3"> <ellipse cx="60" cy="52" rx="46" ry="18"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/> </g> <g fill="#3E8E5A"> <circle cx="53" cy="47" r="7"/> <circle cx="67" cy="47" r="7"/> <circle cx="60" cy="58" r="9"/> </g> <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square"> <line x1="26" y1="110" x2="94" y2="110"/> <line x1="30" y1="110" x2="30" y2="104"/> <line x1="40" y1="110" x2="40" y2="104"/> <line x1="50" y1="110" x2="50" y2="104"/> <line x1="60" y1="110" x2="60" y2="98"/> <line x1="70" y1="110" x2="70" y2="104"/> <line x1="80" y1="110" x2="80" y2="104"/> <line x1="90" y1="110" x2="90" y2="104"/> </g> </svg></div></div>
   <div class="capa-disciplina">Introdução ao Laboratório</div>
   <div class="capa-curso">Licenciatura em Física &mdash; IFMG campus Ouro Preto</div>
-  <div class="capa-img"><img src="../_imagens/_web/ILB-T0B-Figura-01-v1-web.jpg" alt="As duas bancadas prontas antes da aula, cada uma com os seus instrumentos"></div>
+  <div class="capa-img"><img src="../_imagens/_web/ILB-T0B-Figura-01-v2-web.jpg" alt="A caneta sobre a linha 1 do Roteiro de Bancada, antes de qualquer instrumento"></div>
   <div class="capa-trilha">Trilha de Aprendizagem T0B</div>
   <div class="capa-titulo">Noções sobre Estimativas e Medidas</div>
   <div class="capa-autores"><strong>Júlio Azevedo</strong></div>
@@ -649,16 +667,22 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
   <div class="nota"><strong>Edgar Morin</strong> (Paris, 1921). Pensador e educador francês, autor da teoria da complexidade. <em>Os sete saberes necessários à educação do futuro</em>, 1999. A frase serve de porta para esta trilha: nenhuma medida é um continente firme; cada uma é uma ilha de certeza, e a incerteza é o mar que se aprende a atravessar.</div>
 </div>
 
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-02-v2-web.jpg" alt="Figura 2 &mdash; Um mar de incertezas e um arquipélago de certezas: a navegação de Morin." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 2</span> &mdash; Um mar de incertezas e um arquipélago de certezas: a navegação de Morin.</figcaption></figure>
+
 <div class="ato" id="ato-i">
   <div class="ato-titulo">Ato I &mdash; O Gancho</div>
 
-    <p>Em 1720, Vila Rica se levantou contra uma balança. A Coroa portuguesa mandara instalar em Minas as <strong>Casas de Fundição</strong>: todo o ouro em pó tirado dos ribeirões teria de ser levado até lá, ter a massa medida na balança, ser fundido em barras e marcado — e, nessa medição, a Coroa ficaria com o <strong>quinto</strong>, a quinta parte. Até então o ouro corria em pó, de mão em mão, com a massa medida em <strong>oitavas</strong> na balancinha de cada um. Os mineradores e comerciantes de Vila Rica pegaram em armas. A revolta durou poucas semanas; o governador, o Conde de Assumar, a sufocou, e Filipe dos Santos, um dos líderes, foi executado. A Casa de Fundição acabou funcionando alguns anos depois.</p>
+    <p>Em 1720, Vila Rica se levantou contra uma balança. A Coroa portuguesa mandara instalar em Minas as <strong>Casas de Fundição</strong>: todo o ouro em pó tirado dos ribeirões teria de ser levado até lá, ter a massa medida na balança, ser fundido em barras e marcado — e, nessa medição, a Coroa ficaria com o <strong>quinto</strong>, a quinta parte. Até então o ouro corria em pó, de mão em mão, com a massa medida em <strong>oitavas</strong> na balancinha de cada um. Os mineradores e comerciantes de Vila Rica pegaram em armas. A revolta durou poucas semanas; o governador, o Conde de Assumar, a sufocou, e Filipe dos Santos, um dos líderes, foi executado. A Casa de Fundição acabou funcionando alguns anos depois (Figura 3).</p>
 
-    <p>Na visita ao Museu de Ciência e Técnica da Escola de Minas, na Praça Tiradentes — o mesmo largo em que tudo isso aconteceu —, o professor Julio parou a turma diante da balança de ouro. Sofia leu a placa, olhou para o prato vazio e fez uma pergunta que ninguém esperava:</p>
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-03-v2-web.jpg" alt="Figura 3 &mdash; Vila Rica, 1720: o minerador diante da balança da Coroa, na Casa de Fundição." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 3</span> &mdash; Vila Rica, 1720: o minerador diante da balança da Coroa, na Casa de Fundição.</figcaption></figure>
+
+    <p>Na visita ao Museu de Ciência e Técnica da Escola de Minas, na Praça Tiradentes — o mesmo largo em que tudo isso aconteceu —, o professor Julio parou a turma diante da balança de ouro. Sofia leu a placa, olhou para o prato vazio (Figura 4) e fez uma pergunta que ninguém esperava:</p>
 
     <ul>
       <li><em>Quanto ouro o minerador achava que tinha, antes de pôr o ouro na balança?</em></li>
     </ul>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-04-v2-web.jpg" alt="Figura 4 &mdash; No museu, Sofia aponta o prato vazio: quanto o minerador achava que tinha?" loading="lazy"><figcaption><span class="figura-ilb-num">Figura 4</span> &mdash; No museu, Sofia aponta o prato vazio: quanto o minerador achava que tinha?</figcaption></figure>
 
     <p>Pedro riu: "achava não é medir". Bárbara discordou: quem passou a vida peneirando cascalho sabia, com o pó na palma da mão, se ali havia meia oitava ou três. Lucas lembrou o que estava por trás da revolta: o minerador tinha um número na cabeça; a Coroa ia pôr outro número na balança; e quando os dois números não batiam, cada lado chamava o outro de ladrão.</p>
 
@@ -688,7 +712,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 
     <p>Na Estação A do Roteiro de Bancada (RB), a primeira linha de cada tarefa não pede a medida com um instrumento: pede uma estimativa, feita com o cérebro e escrita a caneta. Quantas folhas do livro cabem em 1,0 mm? Quantos graus tem a rampa? A pergunta parece fora de lugar num laboratório. Não é: é por ela que toda medida começa.</p>
 
-    <p><strong>Estimar é medir com o cérebro.</strong> A estimativa não é chute. É uma medida feita com os instrumentos que você leva consigo: o olho, que compara tamanhos; o palmo e o passo; a mão, que sente o peso; e a memória de uma medida conhecida. O RB dá a você, em cada tarefa, uma dessas memórias: 1 mm na régua, 10° no transferidor, 10,0 g de clipes na palma, 100 g de massa que pesam perto de 1,0 N. Estimar é comparar o tamanho da grandeza desconhecida com essa referência — exatamente o que o instrumento faz, só que com resolução menor que a dele.</p>
+    <p><strong>Estimar é medir com o cérebro.</strong> A estimativa não é chute. É uma medida feita com os instrumentos que você leva consigo: o olho, que compara tamanhos; o palmo e o passo; a mão, que sente o peso; e a memória de uma medida conhecida. O RB dá a você, em cada tarefa, uma dessas memórias: 1 mm na régua, 10° no transferidor, 10,0 g de clipes na palma (Figura 5), 100 g de massa que pesam perto de 1,0 N. Estimar é comparar o tamanho da grandeza desconhecida com essa referência — exatamente o que o instrumento faz, só que com resolução menor que a dele.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-05-v2-web.jpg" alt="Figura 5 &mdash; Estação B, tarefa B1: o padrão de 10,0 g numa mão, os clipes na outra." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 5</span> &mdash; Estação B, tarefa B1: o padrão de 10,0 g numa mão, os clipes na outra.</figcaption></figure>
 
     <p><strong>Ordem de grandeza.</strong> Uma estimativa boa acerta, no mínimo, a <strong>ordem de grandeza</strong>: a potência de 10 mais próxima do valor. A espessura de uma folha é da ordem de 0,1 mm, não de 1 mm nem de 0,01 mm. Um clipe tem massa da ordem de 1 g, não de 10 g. Errar a ordem de grandeza é errar o modelo mental que se tem do tamanho da grandeza, e é isso que a bancada quer analisar.</p>
 
@@ -727,7 +753,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 
     <p>√(1 × 10) = √(10) ≈ 3,16 = 10<sup>0,5</sup>.</p>
 
-    <p>Confira: de 1 a 3,16 multiplica-se por 3,16; de 3,16 a 10, multiplica-se outra vez por 3,16. São dois passos iguais, de meio expoente cada um. A média aritmética não passa nesse teste: de 1 a 5,5 o fator é 5,5, mas de 5,5 a 10 é só 1,8. Do outro lado do 1, a média geométrica entre 10<sup>&minus;1</sup> = 0,1 e 10<sup>0</sup> = 1 é √(0,1 × 1) ≈ 0,316 = 10<sup>&minus;0,5</sup>, o inverso de 3,16. Arredondados, os dois limites viram 0,3 e 3. A faixa é simétrica nos fatores: errar 3 vezes para mais ou 3 vezes para menos é a mesma falha. É também a regra que dá a ordem de grandeza de qualquer número: escrito como N × 10<sup>n</sup>, com 1 ≤ N &lt; 10, ele é da ordem de 10<sup>n</sup> se N &lt; 3,16, e de 10<sup>n+1</sup> se N ≥ 3,16. Errar por um fator 2 é estimar bem; errar por um fator 10 é não saber de que tamanho é a coisa.</p>
+    <p>Confira: de 1 a 3,16 multiplica-se por 3,16; de 3,16 a 10, multiplica-se outra vez por 3,16. São dois passos iguais, de meio expoente cada um (Figura 6). A média aritmética não passa nesse teste: de 1 a 5,5 o fator é 5,5, mas de 5,5 a 10 é só 1,8. Do outro lado do 1, a média geométrica entre 10<sup>&minus;1</sup> = 0,1 e 10<sup>0</sup> = 1 é √(0,1 × 1) ≈ 0,316 = 10<sup>&minus;0,5</sup>, o inverso de 3,16. Arredondados, os dois limites viram 0,3 e 3. A faixa é simétrica nos fatores: errar 3 vezes para mais ou 3 vezes para menos é a mesma falha. É também a regra que dá a ordem de grandeza de qualquer número: escrito como N × 10<sup>n</sup>, com 1 ≤ N &lt; 10, ele é da ordem de 10<sup>n</sup> se N &lt; 3,16, e de 10<sup>n+1</sup> se N ≥ 3,16. Errar por um fator 2 é estimar bem; errar por um fator 10 é não saber de que tamanho é a coisa.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-06-v2-web.jpg" alt="Figura 6 &mdash; A régua das potências de 10: de 1 a 10 em dois passos iguais de 3,16." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 6</span> &mdash; A régua das potências de 10: de 1 a 10 em dois passos iguais de 3,16.</figcaption></figure>
 
     <div class="quadro">
       <div class="quadro-titulo">Quadro 1 — Uma estimativa julgada pela razão</div>
@@ -744,7 +772,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 
     <p><strong>A regra da caneta.</strong> A estimativa se escreve a caneta e não se apaga. Se ela pudesse ser corrigida depois da medida, deixaria de ser estimativa e viraria cópia. O RB diz: <em>errar na estimativa não é erro de conduta; deixar de dizer por quê, é</em>. No Quadro 1, o clipe falhou. A linha 5 do RB pede o porquê: quem estimou 3 g imaginou o clipe "do tamanho de uma moeda", e a moeda é que tem alguns gramas. É essa frase — e não a razão — o dado mais valioso da tarefa.</p>
 
-    <p><strong>Estimativa de Fermi.</strong> Às vezes o tamanho da grandeza não se compara de uma vez com nada conhecido: ninguém traz na memória o tamanho da energia de uma explosão, nem o de um ano inteiro de trabalho na bateia. Então a grandeza se quebra em partes que se sabem estimar, cada parte é estimada com uma referência que se tem, e as partes se juntam numa conta. É uma <strong>estimativa indireta</strong>: não se compara o todo com uma referência; compara-se cada pedaço, e o todo sai da conta. Em 16 de julho de 1945, no primeiro teste de uma bomba atômica, no deserto do Novo México, nos Estados Unidos, o físico Enrico Fermi estava a uns 16 km da explosão. Quando a onda de choque — o empurrão de ar que a explosão espalha em todas as direções — passou por ele, Fermi soltou pedacinhos de papel da altura do ombro e viu quanto o ar os arrastou: uns 2,5 m. Ele não mediu a energia, que não cabia em nenhum instrumento à mão; mediu o deslocamento dos papéis, que cabia, e encadeou o resto em estimativas que sabia fazer. Chegou a uma energia equivalente a cerca de 10 mil toneladas de trinitrotolueno (TNT), o explosivo que serve de padrão para a energia de explosões. O valor calculado depois, com os instrumentos, ficou perto de 20 mil: razão ≈ 2, dentro da faixa de 0,3 a 3. A técnica leva o nome dele: <strong>dividir o problema até cada parte caber na mão</strong>. O Quadro 2 aplica a técnica a uma pergunta de Vila Rica: quantas bateias um minerador lavava num ano?</p>
+    <p><strong>Estimativa de Fermi.</strong> Às vezes o tamanho da grandeza não se compara de uma vez com nada conhecido: ninguém traz na memória o tamanho da energia de uma explosão, nem o de um ano inteiro de trabalho na bateia. Então a grandeza se quebra em partes que se sabem estimar, cada parte é estimada com uma referência que se tem, e as partes se juntam numa conta. É uma <strong>estimativa indireta</strong>: não se compara o todo com uma referência; compara-se cada pedaço, e o todo sai da conta. Em 16 de julho de 1945, no primeiro teste de uma bomba atômica, no deserto do Novo México, nos Estados Unidos, o físico Enrico Fermi estava a uns 16 km da explosão. Quando a onda de choque — o empurrão de ar que a explosão espalha em todas as direções — passou por ele, Fermi soltou pedacinhos de papel da altura do ombro e viu quanto o ar os arrastou: uns 2,5 m (Figura 7). Ele não mediu a energia, que não cabia em nenhum instrumento à mão; mediu o deslocamento dos papéis, que cabia, e encadeou o resto em estimativas que sabia fazer. Chegou a uma energia equivalente a cerca de 10 mil toneladas de trinitrotolueno (TNT), o explosivo que serve de padrão para a energia de explosões. O valor calculado depois, com os instrumentos, ficou perto de 20 mil: razão ≈ 2, dentro da faixa de 0,3 a 3. A técnica leva o nome dele: <strong>dividir o problema até cada parte caber na mão</strong>. O Quadro 2 aplica a técnica a uma pergunta de Vila Rica: quantas bateias um minerador lavava num ano?</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-07-v2-web.jpg" alt="Figura 7 &mdash; Deserto do Novo México, 1945: os papéis soltos ao vento da onda de choque." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 7</span> &mdash; Deserto do Novo México, 1945: os papéis soltos ao vento da onda de choque.</figcaption></figure>
 
     <div class="quadro">
       <div class="quadro-titulo">Quadro 2 — Fermi na bateia: quantas por ano?</div>
@@ -765,7 +795,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 
     <p><strong>Aplicação — metrologia.</strong> A estimativa prévia é uma prática de laboratório, não um passatempo: ela protege contra o <em>erro grosseiro</em> (Tópico 4). Quem estimou 0,1 mm e leu 1,0 mm desconfia na hora de ter contado a pilha errado; quem não estimou, copia o número.</p>
 
-    <p><strong>Aplicação — prática docente.</strong> Peça à turma a estimativa antes de qualquer medida, por escrito e sem nota. A razão medido/estimado vira autoavaliação: o aluno vê, em números, o quanto o seu modelo da grandeza estava certo. E a pergunta "por que falhou?" ensina mais do que "qual é a resposta?", porque obriga a reconstruir o raciocínio.</p>
+    <p><strong>Aplicação — prática docente.</strong> Peça à turma a estimativa antes de qualquer medida, por escrito e sem nota (Figura 8). A razão medido/estimado vira autoavaliação: o aluno vê, em números, o quanto o seu modelo da grandeza estava certo. E a pergunta "por que falhou?" ensina mais do que "qual é a resposta?", porque obriga a reconstruir o raciocínio.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-08-v2-web.jpg" alt="Figura 8 &mdash; Numa sala de ensino médio, a turma escreve o palpite antes da medida." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 8</span> &mdash; Numa sala de ensino médio, a turma escreve o palpite antes da medida.</figcaption></figure>
 
   </div>
 
@@ -793,7 +825,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
       </table>
     </div>
 
-    <p><strong>Massa não é peso.</strong> No Quadro 3, o B1 mede uma <strong>massa</strong> e o B2 mede um <strong>peso</strong>, e a troca de nome não é capricho: na Mecânica Clássica, são grandezas distintas. A <strong>massa</strong> m mede a inércia do corpo, a resistência que ele opõe a mudar de velocidade; é grandeza de base, medida em quilograma (kg), e não muda se o corpo for levado à Lua. O <strong>peso</strong> P é uma <strong>força</strong>, um vetor: a atração gravitacional da Terra sobre o corpo, de módulo P = m g, medida em newton (N), com direção vertical e sentido para baixo. Na Lua, onde g é cerca de seis vezes menor, o mesmo corpo tem a mesma massa e um peso seis vezes menor. Na bancada, a balança indica massa, em gramas (a balança digital sente uma força, mas vem calibrada para mostrar massa); o dinamômetro indica peso, em newtons. Os 100 g de massa do Roteiro de Bancada (RB) pesam 0,100 kg × 9,8 m/s<sup>2</sup> ≈ 0,98 N, perto de 1,0 N. Na fala do dia a dia, "pesar" e "peso" servem para as duas coisas; no laboratório, quem lê gramas mede massa, e quem lê newtons mede peso.</p>
+    <p><strong>Massa não é peso.</strong> No Quadro 3, o B1 mede uma <strong>massa</strong> e o B2 mede um <strong>peso</strong>, e a troca de nome não é capricho: na Mecânica Clássica, são grandezas distintas. A <strong>massa</strong> m mede a inércia do corpo, a resistência que ele opõe a mudar de velocidade; é grandeza de base, medida em quilograma (kg), e não muda se o corpo for levado à Lua. O <strong>peso</strong> P é uma <strong>força</strong>, um vetor: a atração gravitacional da Terra sobre o corpo, de módulo P = m g, medida em newton (N), com direção vertical e sentido para baixo. Na Lua, onde g é cerca de seis vezes menor, o mesmo corpo tem a mesma massa e um peso seis vezes menor. Na bancada, a balança indica massa, em gramas (a balança digital sente uma força, mas vem calibrada para mostrar massa); o dinamômetro indica peso, em newtons (Figura 9). Os 100 g de massa do Roteiro de Bancada (RB) pesam 0,100 kg × 9,8 m/s<sup>2</sup> ≈ 0,98 N, perto de 1,0 N. Na fala do dia a dia, "pesar" e "peso" servem para as duas coisas; no laboratório, quem lê gramas mede massa, e quem lê newtons mede peso.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-09-v2-web.jpg" alt="Figura 9 &mdash; O mesmo bloco duas vezes: na balança, a massa em kg; no dinamômetro, o peso em N." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 9</span> &mdash; O mesmo bloco duas vezes: na balança, a massa em kg; no dinamômetro, o peso em N.</figcaption></figure>
 
     <p><strong>Direta e indireta.</strong> Na medida <strong>direta</strong>, o instrumento compara o próprio mensurando com a unidade: o paquímetro abraça a moeda e mostra o diâmetro. Na <strong>indireta</strong>, mede-se outra grandeza e o mensurando sai de uma conta. No B3, a régua não mede tempo nenhum: mede a distância h que ela caiu até ser segurada; o tempo vem da fórmula da queda livre, t = √(2h/g), com g = 9,8 m/s<sup>2</sup>. Uma régua que cai 18,0 cm dá t ≈ 0,19 s.</p>
 
@@ -830,7 +864,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 
     <p><strong>Escala analógica.</strong> Na régua, no transferidor e no dinamômetro, a indicação é a posição de uma borda ou de um ponteiro entre traços. Quando ela cai entre dois traços, o último algarismo <strong>se estima</strong>: a borda da moeda entre 26 e 27 mm, "mais perto do 27, uns 26,8". Esse último algarismo é duvidoso — e é honesto escrevê-lo. A T0D dará nome a ele: o primeiro algarismo duvidoso, que ainda é significativo.</p>
 
-    <p><strong>Paralaxe.</strong> Se o olho não está na perpendicular da escala, a borda parece cair num traço vizinho. É o mesmo cuidado que o B3 pede quando manda alinhar o zero da régua a uma linha imaginária perpendicular ao olho. A paralaxe é sempre do mesmo lado para o mesmo observador na mesma posição — guarde isso para o Tópico 4.</p>
+    <p><strong>Paralaxe.</strong> Se o olho não está na perpendicular da escala, a borda parece cair num traço vizinho (Figura 10). É o mesmo cuidado que o B3 pede quando manda alinhar o zero da régua a uma linha imaginária perpendicular ao olho. A paralaxe é sempre do mesmo lado para o mesmo observador na mesma posição — guarde isso para o Tópico 4.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-10-v2-web.jpg" alt="Figura 10 &mdash; O olho na perpendicular lê o traço certo; o olho de lado lê o vizinho." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 10</span> &mdash; O olho na perpendicular lê o traço certo; o olho de lado lê o vizinho.</figcaption></figure>
 
     <p><strong>Mostrador digital.</strong> No paquímetro digital e na balança, não há traço para estimar: o último dígito do visor faz o papel de duvidoso. O visor não mostra a dúvida, mas ela está lá. Um paquímetro de 0,01 mm que mostra 26,98 mm não garante que a moeda tem 26,98 e não 26,99.</p>
 
@@ -847,7 +883,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
   <div class="topico" id="topico-4">
     <div class="topico-titulo">Tópico 4 &mdash; Erro e incerteza</div>
 
-    <p>No B3, Lucas segurou a régua depois de 18,0 cm. Na segunda vez, 15,5 cm. Na terceira, 20,5 cm. Nenhuma das três leituras está errada, e nenhuma é "o" tempo de reação dele. Para falar disso sem confusão, a Metrologia separa duas palavras que a escola costuma usar como sinônimas.</p>
+    <p>No B3, Lucas segurou a régua depois de 18,0 cm (Figura 11). Na segunda vez, 15,5 cm. Na terceira, 20,5 cm. Nenhuma das três leituras está errada, e nenhuma é "o" tempo de reação dele. Para falar disso sem confusão, a Metrologia separa duas palavras que a escola costuma usar como sinônimas.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-11-v2-web.jpg" alt="Figura 11 &mdash; Estação B, tarefa B3: a régua cai, e a mão a segura depois de alguns centímetros." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 11</span> &mdash; Estação B, tarefa B3: a régua cai, e a mão a segura depois de alguns centímetros.</figcaption></figure>
 
     <p><strong>Erro de medição</strong> (Vocabulário Internacional de Metrologia — VIM 2.16) é a diferença entre o valor medido e um valor de referência. Para calcular o erro, é preciso conhecer o valor de referência — e, na bancada, quase nunca se conhece. Ninguém sabe a espessura "verdadeira" da folha.</p>
 
@@ -937,7 +975,9 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
 
     <p><strong>De volta a Vila Rica.</strong> A pergunta de Sofia — <em>quanto o minerador achava que tinha, antes de pôr o ouro na balança?</em> — agora tem resposta em cinco partes. Ele tinha uma <strong>estimativa</strong>, feita com a mão, que provavelmente acertava a ordem de grandeza (Tópico 1). A Coroa tinha uma <strong>medida</strong>, feita com um instrumento, de uma grandeza com unidade, a oitava (Tópico 2). A balança tinha uma <strong>resolução</strong>, a da menor massa-padrão, e abaixo dela não decidia (Tópico 3). A diferença entre os dois números podia ser engano, erro sistemático de uma balança viciada ou simples dispersão — <strong>erro</strong> não é o mesmo que <strong>incerteza</strong> (Tópico 4). E nenhum dos lados escreveu a sua dúvida: tinham só números, e números sozinhos não se comparam (Tópico 5).</p>
 
-    <p>É o que você vai fazer na bancada, seis vezes: o número da cabeça, a caneta; o número do instrumento, com a menor divisão; a razão entre eles; e, quando a razão sair da faixa, a frase que diz por quê. <strong>Toda medida é um número e uma dúvida</strong> — e a dúvida, declarada, é o que deixa duas pessoas concordarem.</p>
+    <p>É o que você vai fazer na bancada, seis vezes: o número da cabeça, a caneta; o número do instrumento, com a menor divisão; a razão entre eles; e, quando a razão sair da faixa, a frase que diz por quê (Figura 12). <strong>Toda medida é um número e uma dúvida</strong> — e a dúvida, declarada, é o que deixa duas pessoas concordarem.</p>
+
+    <figure class="figura-ilb"><img src="../_imagens/_web/ILB-T0B-Figura-12-v2-web.jpg" alt="Figura 12 &mdash; O laboratório depois da aula: seis tarefas, seis roteiros preenchidos sobre as bancadas." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 12</span> &mdash; O laboratório depois da aula: seis tarefas, seis roteiros preenchidos sobre as bancadas.</figcaption></figure>
 
     <p><strong>Agora a Folha de Atividades e o Testinho.</strong> A Folha de Atividades (FA) pratica os cinco tópicos, do reconhecer ao criar. O Testinho (TN) fecha o Pré-Lab. No encontro de 20/10, o Roteiro de Bancada (RB) espera por você com a caneta na mão.</p>
 
@@ -949,9 +989,11 @@ blockquote .bq-autor { font-size: 0.9rem; color: var(--ouro); font-style: normal
   <div class="ciencia-arte-titulo">Ciência e Arte</div>
   <div class="ciencia-arte-obra"><strong>Romance:</strong> <em>Grande Sertão: Veredas</em>, 1956 &mdash; João Guimarães Rosa</div>
 
-    <p>Em 1956, o escritor mineiro <strong>João Guimarães Rosa</strong> (1908–1967), nascido em Cordisburgo, publicou <em>Grande Sertão: Veredas</em>. Riobaldo, o narrador, atravessa o sertão de Minas, da Bahia e de Goiás, e tenta dizer o tamanho dele. Não tem trena nem mapa que sirva. Tem a frase:</p>
+    <p>Em 1956, o escritor mineiro <strong>João Guimarães Rosa</strong> (1908–1967), nascido em Cordisburgo, publicou <em>Grande Sertão: Veredas</em>. Riobaldo, o narrador, atravessa o sertão de Minas, da Bahia e de Goiás, e tenta dizer o tamanho dele (Figura 13). Não tem trena nem mapa que sirva. Tem a frase:</p>
 
     <p><em>"O sertão é do tamanho do mundo."</em></p>
+
+    <figure class="figura-ilb figura-ilb-p"><img src="../_imagens/_web/ILB-T0B-Figura-13-v2-web.jpg" alt="Figura 13 &mdash; O sertão de Guimarães Rosa: veredas, buritis e um vaqueiro do tamanho de um ponto." loading="lazy"><figcaption><span class="figura-ilb-num">Figura 13</span> &mdash; O sertão de Guimarães Rosa: veredas, buritis e um vaqueiro do tamanho de um ponto.</figcaption></figure>
 
     <p>É uma estimativa. Riobaldo não mediu o sertão; comparou-o com a maior coisa que conhecia, e acertou a ordem de grandeza do que ele significava. Faz o mesmo que você na linha 1 de cada tarefa do Roteiro de Bancada (RB): pega uma referência que traz consigo e diz "é desse tamanho". A literatura não declara a incerteza — e é justamente por isso que a frase abre o pensamento em vez de fechá-lo. Na bancada, a dúvida se escreve; no romance, ela é o próprio assunto. Riobaldo passa o livro inteiro dizendo que não sabe, que desconfia, que "viver é muito perigoso".</p>
 
@@ -1013,7 +1055,7 @@ window.addEventListener('scroll', function() {
 // Restauracao de scroll REMOVIDA (2026-09-13): computador de laboratorio e
 // compartilhado entre turmas — o scroll salvo por um estudante reabria a
 // pagina de todo o proximo estudante ja no final do TT.
-var STORAGE_KEY = 'ILB-T0B-TT-v3';
+var STORAGE_KEY = 'ILB-T0B-TT-v4';
 window.scrollTo(0, 0);
 
 // ─── FONT SIZE ───
