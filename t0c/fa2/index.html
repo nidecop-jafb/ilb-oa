@@ -278,7 +278,7 @@ input.lac.errada { border-color: var(--erro); }
 <main>
 
 <div class="intro-box">
-  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0C-FA2-v5-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
+  <strong>Como usar.</strong> Esta folha segue o Quadro Geral de Unidades de Medida no Brasil (QGU), parte por parte. Preencha as lacunas e as tabelas, toque em <em>conferir</em> e leia o porquê. Símbolos contam a caixa: <b>kg</b> está certo, <b>Kg</b> não. Potências: escreva 10^-34 ou use o sobrescrito. Nada vale nota e nada sai do seu aparelho. Prefere papel? <a href="ILB-T0C-FA2-v6-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a>.
 </div>
 
 <div class="epi-fa">
@@ -332,7 +332,7 @@ input.lac.errada { border-color: var(--erro); }
   <div class="q-porque">"Hertz" se escreve com minúscula (3.1.1), e o nome é "metro por segundo quadrado" (3.1.5).</div>
 </div>
 
-<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:100%;background-image:url('../_imagens/_web/ILB-T0C-Figura-11-v2-web.jpg')"></div>
+<div class="com-fundo"><div class="fundo-ilustra" style="left:0%;width:100%;background-image:url('../_imagens/_web/ILB-T0C-Figura-14-v3-web.jpg')"></div>
 <div class="topico-fa" id="topico-2"><h2>Seção 2 · Tabela 5b — Grandezas mecânicas</h2><div class="reler">Dúvida? Releia o <a href="../tt/#topico-5">Tópico 5 do Texto Temático</a>.</div></div>
 <div class="lembrete"><p>Massa, densidade, quantidade de movimento, força, pressão, energia e potência. Cada derivada com nome especial esconde um produto de potências: o newton é 1 kg·m/s² (Tabela 5b).</p></div>
 <div class="q" data-id="2.1" data-t="2" data-tipo="tabela">
@@ -351,7 +351,7 @@ input.lac.errada { border-color: var(--erro); }
   <button class="btn-conferir" type="button">conferir</button>
   <div class="q-porque">N = kg·m·s⁻²; Pa = N/m² = kg·m⁻¹·s⁻²; J = N·m = kg·m²·s⁻²; W = J/s = kg·m²·s⁻³.</div>
 </div>
-<div class="fundo-legenda"><div><span class="figura-num">Figura 11</span> &mdash; Tarefa B2: Lucas pendura a massa de 100 g no dinamômetro e Barbara lê o mostrador &mdash; 0,98 N, o kg&middot;m/s² funcionando na mão. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
+<div class="fundo-legenda"><div><span class="figura-num">Figura 14</span> &mdash; Tarefa B2: Lucas pendura a massa de 100 g no dinamômetro e Barbara lê o mostrador &mdash; 0,98 N, o kg&middot;m/s² funcionando na mão. <span class="fig-fonte">(Texto Temático)</span></div></div></div>
 
 <div class="q" data-id="2.3" data-t="2" data-tipo="assoc">
   <div class="q-topo"><span class="q-num">Item 2.3</span><span class="q-bloom">L2 · Entender</span></div>
@@ -626,7 +626,7 @@ input.lac.errada { border-color: var(--erro); }
 
 <script>
 (function () {
-  var CHAVE = 'ILB-T0C-FA2-v5';
+  var CHAVE = 'ILB-T0C-FA2-v6';
   var estado = {};
   try { estado = JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch (e) {}
   function grava() { try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {} }
@@ -666,16 +666,17 @@ input.lac.errada { border-color: var(--erro); }
       var ok = false;
       if (g.t === 'simples') {
         var marc = -1;
-        q.querySelectorAll('.q-op').forEach(function (op, j) { if (op.querySelector('input').checked) marc = j; });
+        q.querySelectorAll('.q-op').forEach(function (op) { if (op.querySelector('input').checked) marc = +op.dataset.op; });
         if (marc < 0) return;
-        q.querySelectorAll('.q-op').forEach(function (op, j) {
+        q.querySelectorAll('.q-op').forEach(function (op) {
+          var j = +op.dataset.op;
           if (j === g.c) op.classList.add('certa'); else if (j === marc) op.classList.add('errada');
         });
         ok = marc === g.c;
       } else if (g.t === 'multipla') {
         var cert = 0, err = 0;
-        q.querySelectorAll('.q-op').forEach(function (op, j) {
-          var m = op.querySelector('input').checked, e = g.c.indexOf(j) >= 0;
+        q.querySelectorAll('.q-op').forEach(function (op) {
+          var j = +op.dataset.op, m = op.querySelector('input').checked, e = g.c.indexOf(j) >= 0;
           if (e) op.classList.add('certa'); if (m && !e) { op.classList.add('errada'); err++; } if (m && e) cert++;
         });
         ok = cert === g.c.length && err === 0;
