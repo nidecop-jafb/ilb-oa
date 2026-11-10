@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILB-T0E-RB-v2-estudante-impresso</title>
+<title>ILB-T0E-RB-v3-estudante-impresso</title>
 <style>
   input, button, select, textarea { font-family: inherit; }
 /* ============================================================
@@ -797,6 +797,12 @@ table.rubrica-rb tr.total td { font-weight: 700; }
 .res-padrao { font-size: .9rem; margin: 6px 0 2px; }
 .res-padrao .branco { display: inline-block; min-width: 26mm; border-bottom: 1px solid currentColor; text-align: center; }
 .res-padrao small { font-size: .74rem; opacity: .8; }
+/* RB v3 (PRE-outro-t0e-rb-v3-grafico-apos-item-11-sem-pagina-5-ilb-2026-11-10) */
+.graf-v3 .secao-titulo h2 { font-size: .9rem; }
+.graf-v3 .grade-v5 { text-align: center; }
+@media print {
+  .graf-v3 .grade-v5 svg { width: auto !important; height: 182mm !important; }
+}
 /* ICONES-ILB */
 .ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
   flex-shrink: 0; }
@@ -937,7 +943,7 @@ table.rubrica-rb tr.total td { font-weight: 700; }
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v2 ·
+    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v3 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 1 de 4
   </div>
 </div>
@@ -1006,14 +1012,14 @@ table.rubrica-rb tr.total td { font-weight: 700; }
   </div>
 
   <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v2 ·
+    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v3 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 2 de 4
   </div>
 </div>
 
 <div class="pagina">
 
-  <div class="secao cresce sem-esticar">
+  <div class="secao">
     <div class="enun com-fundo"><div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0E-Figura-07-v2-web.jpg')"></div>
     <div class="secao-titulo"><h2>3. π<sub>exp</sub> pela declividade do gráfico C × D — da cartolina ao papel milimetrado</h2></div>
     <div class="tarefa-i">O professor junta as tiras de todos os grupos e as cola em pé na cartolina branca, a tira
@@ -1026,48 +1032,16 @@ table.rubrica-rb tr.total td { font-weight: 700; }
     </ol>
     <div class="pares"><span>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span><span>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span><span>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span><span>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span><span>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></div>
     <ol class="passos v5" start="10">
-      <li>Marque os 5 pontos no <b>Gráfico 1</b>, na página seguinte, com um pequeno círculo, nas escalas impressas.
+      <li>Marque os 5 pontos no <b>Gráfico 1</b>, abaixo do item 11, com um pequeno círculo, nas escalas impressas.
         Não ligue os pontos.</li>
       <li>Trace UMA reta, o mais perto possível de todos os pontos, como o barbante na cartolina. Marque sobre ela
         dois pontos P1 e P2, longe um do outro e fora dos pontos da tabela, e trace uma linha hachurada horizontal
         por P1 e outra vertical por P2. Escreva as coordenadas, em mm:</li>
     </ol>
     <div class="pares"><span>P1 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span><span>P2 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></div>
-    <ol class="passos v5" start="12">
-      <li>Calcule a declividade da reta, com os algarismos que a leitura do gráfico permite:</li>
-    </ol>
-    <div class="contas">
-      <div class="conta">ΔC = C(P2) − C(P1) = <span class="branco"></span></div>
-      <div class="conta">ΔD = D(P2) − D(P1) = <span class="branco"></span></div>
-      <div class="conta">a = ΔC/ΔD = π<sub>exp</sub> = <span class="branco"></span></div>
-    </div>
-    <div class="esc-lista desce v4">
-      <div class="esc-item">
-        <div class="esc-label"><span class="n">13.</span> Compare a com o resultado padrão escrito depois do item 8 e com a faixa π̄ ± 2u. Qual dos dois métodos deu o π mais
-          preciso, e por quê? A reta, prolongada, passa perto da origem? O que isso diz da relação entre C e D?</div>
-        <div class="espaco-branco"></div>
-      </div>
-    </div>
   </div>
 
-  <div class="secao">
-    <div class="secao-titulo"><h2>4. Antes de sair da estação</h2></div>
-    <div class="check-list">
-      <div class="esc-item"><span class="oa-box"></span> Escrevi a estimativa e a previsão <strong>antes</strong> de medir, e nada foi apagado.</div>
-      <div class="esc-item"><span class="oa-box"></span> A Tabela 2 tem os cinco discos, com D e C em mm e 1 casa decimal.</div>
-      <div class="esc-item"><span class="oa-box"></span> Entreguei as 5 tiras ao professor e deixei disco, régua, tesoura e barbante na estação.</div>
-    </div>
-  </div>
-
-  <div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v2 ·
-    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 3 de 4
-  </div>
-</div>
-
-<div class="pagina">
-
-  <div class="secao cresce sem-esticar">
+  <div class="secao cresce sem-esticar graf-v3">
     <div class="secao-titulo"><h2>Gráfico 1 — C × D (mm), com as medidas da Tabela 2</h2></div>
     <div class="grade-v5"><svg class="grade" viewBox="0 0 188 216" width="188mm" height="216mm" xmlns="http://www.w3.org/2000/svg">
 <line x1="14" y1="6" x2="14" y2="206" stroke="#D88C6A" stroke-width="0.32"/>
@@ -1486,23 +1460,43 @@ table.rubrica-rb tr.total td { font-weight: 700; }
 </svg></div>
   </div>
 
-  <div class="so-tela">
-  <div class="secao">
-    <div class="secao-titulo"><h2>Rubrica desta Trilha de Aprendizagem — a T0E vale ___ no SUAP</h2></div>
-    <table class="rubrica-rb rm-rub faixa"><thead><tr><th>Pré-Lab · Folha de Atividades (FA)</th><th class="destaque">Lab · Roteiro de Bancada (RB)</th><th>Pós-Lab · Relatório Mínimo (RM)</th><th>Pós-Lab · Relatório Completo (RC)</th><th>Uso de Tecnologias (IA)</th><th class="pts">Total</th></tr></thead><tbody><tr><td data-rot="Pré-Lab · Folha de Atividades (FA)"><b>___</b> (20 %)</td><td data-rot="Lab · Roteiro de Bancada (RB)" class="destaque"><b>___</b> (40 %)</td><td data-rot="Pós-Lab · Relatório Mínimo (RM)"><b>___</b> (15 %)</td><td data-rot="Pós-Lab · Relatório Completo (RC)"><b>___</b> (25 %)</td><td data-rot="Uso de Tecnologias (IA)"><b>___</b> (20 %) Extra</td><td data-rot="Total" class="pts"><b>___</b> (100 %)</td></tr></tbody></table>
+  <div class="rodape-print">
+    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v3 ·
+    IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 3 de 4
   </div>
-  <div class="secao">
-    <div class="secao-titulo"><h2>Rubrica do Roteiro de Bancada (RB): 10,0 pontos = 40 % da T0E</h2></div>
-    <table class="rubrica-rb"><thead><tr><th>Critério</th><th>O que se avalia</th><th class="pts">Pontos</th></tr></thead><tbody><tr><td><strong>Previsão</strong></td><td>Estimativa (passo 4) e previsão (passo 5) a caneta, antes de medir · nada apagado</td><td class="pts">2,0</td></tr><tr><td><strong>Tabelas 1 e 2</strong></td><td>Os cinco discos · D e C em mm, com 1 casa decimal · π<sub>exp</sub> com 6 casas e arredondado aos algarismos significativos da medida mais pobre</td><td class="pts">2,0</td></tr><tr><td><strong>Média, u e decisão</strong></td><td>π̄, s, u, Disc e 2u com n = 5 · a decisão Disc ≤ 2u · a interpretação escrita</td><td class="pts">2,0</td></tr><tr><td><strong>Gráfico e declividade</strong></td><td>Os cinco pontos na escala impressa · uma reta · P1 e P2 sobre a reta, fora dos pontos · ΔC, ΔD e a = ΔC/ΔD com algarismos coerentes · a comparação com π̄ ± 2u</td><td class="pts">2,0</td></tr><tr><td><strong>Conduta e montagem</strong></td><td>Rodízio pelas 5 estações · 3 voltas e o corte na média · tiras entregues ao professor · disco, régua, tesoura e barbante devolvidos prontos para o próximo grupo</td><td class="pts">2,0</td></tr><tr class="total"><td>Total</td><td></td><td class="pts">10,0</td></tr></tbody></table>
-  </div>
+</div>
+
+<div class="pagina">
+
+  <div class="secao cresce sem-esticar">
+    <ol class="passos v5" start="12">
+      <li>Calcule a declividade da reta, com os algarismos que a leitura do gráfico permite:</li>
+    </ol>
+    <div class="contas">
+      <div class="conta">ΔC = C(P2) − C(P1) = <span class="branco"></span></div>
+      <div class="conta">ΔD = D(P2) − D(P1) = <span class="branco"></span></div>
+      <div class="conta">a = ΔC/ΔD = π<sub>exp</sub> = <span class="branco"></span></div>
+    </div>
+    <div class="esc-lista desce v4">
+      <div class="esc-item">
+        <div class="esc-label"><span class="n">13.</span> Compare a com o resultado padrão escrito depois do item 8 e com a faixa π̄ ± 2u. Qual dos dois métodos deu o π mais
+          preciso, e por quê? A reta, prolongada, passa perto da origem? O que isso diz da relação entre C e D?</div>
+        <div class="espaco-branco"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="fechamento com-fundo">
-    <div class="fundo-ilustra" style="background-image:url('../_imagens/_web/ILB-T0E-Figura-10-v2-web.jpg')"></div>
-    <div class="fecho-destaque">Terminamos por aqui, um abraço, e até o próximo encontro.</div>
+  <div class="secao">
+    <div class="secao-titulo"><h2>4. Antes de sair da estação</h2></div>
+    <div class="check-list">
+      <div class="esc-item"><span class="oa-box"></span> Escrevi a estimativa e a previsão <strong>antes</strong> de medir, e nada foi apagado.</div>
+      <div class="esc-item"><span class="oa-box"></span> A Tabela 2 tem os cinco discos, com D e C em mm e 1 casa decimal.</div>
+      <div class="esc-item"><span class="oa-box"></span> Entreguei as 5 tiras ao professor e deixei disco, régua, tesoura e barbante na estação.</div>
+    </div>
   </div>
+
   <!-- RODAPE-ILB:INICIO --><div class="ilb-rodape"><div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div><div class="ilb-rodape-texto">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; Primeira edição &middot; 2026</div><div class="ilb-rodape-selo"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></div></div><!-- RODAPE-ILB:FIM --><div class="rodape-print">
-    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v2 ·
+    Introdução ao Laboratório (ILB) · T0E · Roteiro de Bancada v3 ·
     IFMG — Campus Ouro Preto · NIDEC/CODAFIS · página 4 de 4
   </div>
 </div>
@@ -1520,7 +1514,7 @@ table.rubrica-rb tr.total td { font-weight: 700; }
 /* Impressao em janela propria (padrao FA): o <title> vira o nome sugerido do
    PDF, a barra de botoes fica de fora e o @page { margin: 0 } suprime o
    cabecalho/rodape que o navegador injeta. */
-var NOME_ARQUIVO_PDF = 'ILB-T0E-RB-v2-estudante-impresso';
+var NOME_ARQUIVO_PDF = 'ILB-T0E-RB-v3-estudante-impresso';
 
 function abrirParaImpressao() {
   var folha = document.querySelector('.folha').cloneNode(true);
