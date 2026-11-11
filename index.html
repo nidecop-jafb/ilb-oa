@@ -855,7 +855,17 @@ html[data-tema="claro"] .ilb-estilo a.est-btn-2 { background: #fff; color: #1F5F
   .cartao-botoes a { font-size: .82rem; text-decoration: none; padding: 5px 12px; border-radius: 6px;
                      border: 1px solid var(--c); color: #e8e8e8; }
   .cartao-botoes a:hover { background: var(--c); color: #0d0d0d; }
+  /* Fonte do corpo e hierarquia titulo > parada > cartao
+     (PRE-site-t0e-fonte-corpo-hierarquia-paradas-ilb-2026-11-11) */
+  #t0e { font-family: 'Segoe UI', Arial, sans-serif; }
+  #t0e > summary { font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.4rem; font-weight: 700;
+                   color: #3E8E5A; text-transform: none; letter-spacing: 0; }
+  #t0e .parada { font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; font-weight: 700;
+                 text-transform: none; letter-spacing: 0; color: #fff; }
+  #t0e .parada span { font-size: .85rem; font-weight: 400; color: #a8a8a8; }
   @media (max-width: 560px) {
+    #t0e > summary { font-size: 1.25rem; }
+    #t0e .parada span { font-size: .85rem; }
     .cartao-ic { flex-basis: 38px; height: 38px; font-size: .75rem; }
     .cartao-botoes { padding-left: 16px; }
   }
