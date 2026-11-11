@@ -834,20 +834,46 @@ html[data-tema="claro"] .ilb-estilo a.est-btn-2 { background: #fff; color: #1F5F
   <details class="trilha" id="t0e">
   <summary>T0E &middot; O Número π (pi)</summary>
   <div class="trilha-corpo">
+  <style>
+  .cartoes li { max-width: none; }
+  .cartao { border: 1px solid #3a3a3a; border-left: 6px solid var(--c); border-radius: 8px;
+            background: #151618; margin-bottom: 14px; overflow: hidden;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.4; }
+  .cartao a.oa { display: flex; align-items: center; gap: 14px; border: 0; padding: 14px 16px;
+                 font-family: inherit; font-size: 1rem; }
+  .cartao a.oa:hover { background: #1c1e21; color: #fff; }
+  .cartao-ic { flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--c); color: #0d0d0d;
+               display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; }
+  .cartao-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+  .cartao-nome { font-weight: 600; font-size: 1.05rem; color: #f2f2f2; overflow-wrap: anywhere; }
+  .cartao-desc { font-size: .82rem; color: #a8a8a8; margin-top: 2px; }
+  .selos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .selo { font-size: .72rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .selo-nota { background: #3E8E5A; color: #fff; }
+  .selo-prazo { background: #7FB2D6; color: #0d0d0d; }
+  .cartao-botoes { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px 76px; }
+  .cartao-botoes a { font-size: .82rem; text-decoration: none; padding: 5px 12px; border-radius: 6px;
+                     border: 1px solid var(--c); color: #e8e8e8; }
+  .cartao-botoes a:hover { background: var(--c); color: #0d0d0d; }
+  @media (max-width: 560px) {
+    .cartao-ic { flex-basis: 38px; height: 38px; font-size: .75rem; }
+    .cartao-botoes { padding-left: 16px; }
+  }
+  </style>
   <p class="parada">Pré-Lab <span>&middot; fazer em casa, antes do encontro</span></p>
-  <ul>
-    <li><a class="oa" href="t0e/tt/">Texto Temático (TT)<span class="tag">ler · a disciplina explicada</span></a><span class="tag pdf-indice"><a href="t0e/tt/ILB-T0E-TT-v1.pdf" target="_blank" rel="noopener">Abrir o PDF do Texto Temático (33 páginas)</a></span></li>
-    <li><a class="oa" href="t0e/fa/">Folha de Atividades, Parte I (FA)<span class="tag">praticar · simulação da UFC, impressa · vale nota</span></a><span class="tag pdf-indice"><a href="t0e/fa/ILB-T0E-FA-v1-parte1-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF da Folha de Atividades, Parte I (4 páginas)</a></span><span class="tag pdf-indice"><a href="t0e/fa/ILB-T0E-FA-v1-parte1-professor.pdf" target="_blank" rel="noopener">Abrir a resolução do professor da Folha de Atividades, Parte I (4 páginas)</a></span></li>
+  <ul class="cartoes">
+    <li class="cartao" style="--c:#3E8E5A"><a class="oa" href="t0e/tt/"><span class="cartao-ic">TT</span><span class="cartao-txt"><span class="cartao-nome">Texto Temático</span><span class="cartao-desc">ler · a disciplina explicada</span></span></a><div class="cartao-botoes"><a href="t0e/tt/ILB-T0E-TT-v1.pdf" target="_blank" rel="noopener">PDF (33 páginas)</a></div></li>
+    <li class="cartao" style="--c:#7FB2D6"><a class="oa" href="t0e/fa/"><span class="cartao-ic">FA</span><span class="cartao-txt"><span class="cartao-nome">Folha de Atividades, Parte I</span><span class="cartao-desc">praticar · simulação da UFC, impressa</span><span class="selos"><span class="selo selo-nota">vale nota</span></span></span></a><div class="cartao-botoes"><a href="t0e/fa/ILB-T0E-FA-v1-parte1-estudante.pdf" target="_blank" rel="noopener">PDF (4 páginas)</a><a href="t0e/fa/ILB-T0E-FA-v1-parte1-professor.pdf" target="_blank" rel="noopener">Resolução (4 páginas)</a></div></li>
   </ul>
   <p class="parada">Lab <span>&middot; na bancada, com o professor · 100 min</span></p>
-  <ul>
-    <li><a class="oa" href="t0e/rb/">Roteiro de Bancada (RB)<span class="tag">execução · registrar os dados</span></a><span class="tag pdf-indice"><a href="t0e/rb/ILB-T0E-RB-v4-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF do Roteiro de Bancada (4 páginas)</a></span><span class="tag pdf-indice"><a href="t0e/rb/ILB-T0E-RB-v4-professor.pdf" target="_blank" rel="noopener">Abrir a resolução do professor do Roteiro de Bancada (4 páginas)</a></span></li>
+  <ul class="cartoes">
+    <li class="cartao" style="--c:#E0B341"><a class="oa" href="t0e/rb/"><span class="cartao-ic">RB</span><span class="cartao-txt"><span class="cartao-nome">Roteiro de Bancada</span><span class="cartao-desc">execução · registrar os dados</span></span></a><div class="cartao-botoes"><a href="t0e/rb/ILB-T0E-RB-v4-estudante.pdf" target="_blank" rel="noopener">PDF (4 páginas)</a><a href="t0e/rb/ILB-T0E-RB-v4-professor.pdf" target="_blank" rel="noopener">Resolução (4 páginas)</a></div></li>
   </ul>
   <p class="parada">Pós-Lab <span>&middot; a partir do mesmo dia da prática</span></p>
-  <ul>
-    <li><a class="oa" href="t0e/fa2/">Folha de Atividades, Parte II (FA2)<span class="tag">resolver · Questões 1 a 7, impressa · vale nota</span></a><span class="tag pdf-indice"><a href="t0e/fa2/ILB-T0E-FA-v1-parte2-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF da Folha de Atividades, Parte II (4 páginas)</a></span><span class="tag pdf-indice"><a href="t0e/fa2/ILB-T0E-FA-v1-parte2-professor.pdf" target="_blank" rel="noopener">Abrir a resolução do professor da Folha de Atividades, Parte II (4 páginas)</a></span></li>
-    <li><a class="oa" href="t0e/rm/">Relatório Mínimo (RM)<span class="tag">relatar · até 1 dia · vale nota</span></a><span class="tag pdf-indice"><a href="t0e/rm/ILB-T0E-RM-v5-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF do Relatório Mínimo (2 páginas)</a></span><span class="tag pdf-indice"><a href="t0e/rm/ILB-T0E-RM-v5-professor.pdf" target="_blank" rel="noopener">Abrir a resolução do professor do Relatório Mínimo (2 páginas)</a></span></li>
-    <li><a class="oa" href="t0e/rc/">Relatório Completo (RC)<span class="tag">relatar · até 6 dias · vale nota</span></a><span class="tag pdf-indice"><a href="t0e/rc/ILB-T0E-RC-v6-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF do Relatório Completo (4 páginas)</a></span><span class="tag pdf-indice"><a href="t0e/rc/ILB-T0E-RC-v6-professor.pdf" target="_blank" rel="noopener">Abrir a resolução do professor do Relatório Completo (4 páginas)</a></span></li>
+  <ul class="cartoes">
+    <li class="cartao" style="--c:#7FB2D6"><a class="oa" href="t0e/fa2/"><span class="cartao-ic">FA2</span><span class="cartao-txt"><span class="cartao-nome">Folha de Atividades, Parte II</span><span class="cartao-desc">resolver · Questões 1 a 7, impressa</span><span class="selos"><span class="selo selo-nota">vale nota</span></span></span></a><div class="cartao-botoes"><a href="t0e/fa2/ILB-T0E-FA-v1-parte2-estudante.pdf" target="_blank" rel="noopener">PDF (4 páginas)</a><a href="t0e/fa2/ILB-T0E-FA-v1-parte2-professor.pdf" target="_blank" rel="noopener">Resolução (4 páginas)</a></div></li>
+    <li class="cartao" style="--c:#C98BD9"><a class="oa" href="t0e/rm/"><span class="cartao-ic">RM</span><span class="cartao-txt"><span class="cartao-nome">Relatório Mínimo</span><span class="cartao-desc">relatar</span><span class="selos"><span class="selo selo-prazo">até 1 dia</span><span class="selo selo-nota">vale nota</span></span></span></a><div class="cartao-botoes"><a href="t0e/rm/ILB-T0E-RM-v5-estudante.pdf" target="_blank" rel="noopener">PDF (2 páginas)</a><a href="t0e/rm/ILB-T0E-RM-v5-professor.pdf" target="_blank" rel="noopener">Resolução (2 páginas)</a></div></li>
+    <li class="cartao" style="--c:#E07A5F"><a class="oa" href="t0e/rc/"><span class="cartao-ic">RC</span><span class="cartao-txt"><span class="cartao-nome">Relatório Completo</span><span class="cartao-desc">relatar</span><span class="selos"><span class="selo selo-prazo">até 6 dias</span><span class="selo selo-nota">vale nota</span></span></span></a><div class="cartao-botoes"><a href="t0e/rc/ILB-T0E-RC-v6-estudante.pdf" target="_blank" rel="noopener">PDF (4 páginas)</a><a href="t0e/rc/ILB-T0E-RC-v6-professor.pdf" target="_blank" rel="noopener">Resolução (4 páginas)</a></div></li>
   </ul>
   </div>
   </details>
