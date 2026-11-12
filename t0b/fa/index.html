@@ -312,6 +312,7 @@ body .box-artista-titulo { background-color: #2F6E45 !important; }
 :root:not([data-tema="claro"]) body .folha figcaption { color: var(--cinza); }
 html[data-tema="claro"] body :is(main, article, section, .conteudo) :is(a, summary):not(:is(.ilb-topo, .ilb-menu, [class*="aba"], [class*="card"], [class*="cartao"], button) *) { color: #1F5F8B; }
 body, body *:not(:is(svg, svg *, canvas, math, math *, .katex, .katex *)) { font-family: var(--ilb-sans) !important; }
+body *:not(:is(svg, svg *, canvas, math, math *, .katex, .katex *))::before, body *:not(:is(svg, svg *, canvas, math, math *, .katex, .katex *))::after { font-family: var(--ilb-sans) !important; }
 body :is(code, pre, kbd, samp, input[type="number"], .ilb-num, .ilb-aba-selo, .ilb-rodape-selo, .badge, .oa-sigla, .selo, .ilb-selo-ap, .capa-selo, .contador, .contador *, .ip-mono) { font-family: var(--ilb-mono) !important; }
 
 body :is(p, li, dd, blockquote):not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label) *):not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label)) {
