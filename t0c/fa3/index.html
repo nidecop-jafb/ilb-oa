@@ -264,6 +264,68 @@ input.lac.errada { border-color: var(--erro); }
 }
 /* /ICONES-ILB */
 </style>
+<!-- VISUAL:INICIO --><style id="visual-ilb">
+@media screen {
+:root { --ilb-sans: 'Segoe UI', Arial, sans-serif; --ilb-mono: 'Courier New', Courier, monospace; }
+/* modo escuro: o cinza de apoio dos OAs (oklch .50-.55) fica abaixo de 4,5:1 no fundo escuro */
+:root:not([data-tema="claro"]) { --cinza: oklch(0.72 0.02 260); }
+/* folhas com fundo de papel (FA/RB da T0E): texto escuro so onde o fundo e claro */
+body .enun .tarefa-i, body .fechamento.com-fundo .frase { color: inherit !important; }
+body .rubrica-site { color: #1A1A1A !important; }
+/* laranja-EPI herdado da FE1 sobre fundo claro (2,4-3,0:1) e branco sobre o verde (3,3:1) */
+body th.destaque, body .secao-titulo h2 { color: #9A4A18 !important; }
+body .box-artista-titulo { background-color: #2F6E45 !important; }
+@media (max-width: 560px) {
+  body :is(.enun, .com-fundo, .resp, .resp-regua, .campo-resultado) { flex-shrink: 1 !important; min-width: 0 !important;
+    max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+  body table { table-layout: fixed; width: 100% !important; max-width: 100%; min-width: 0 !important; }
+  body :is(th, td) { overflow-wrap: anywhere; min-width: 0 !important; white-space: normal; }
+  body .q5 { flex-wrap: wrap; }
+  body .q5 img { width: 100% !important; max-width: 72mm; }
+  body .q5 .resp { flex: 1 1 100%; }
+  body .campo-resultado { flex-wrap: wrap; }
+  body .campo-resultado .rot { flex: 1 1 100% !important; width: auto; min-width: 0; }
+}
+:root:not([data-tema="claro"]) { --erro: oklch(0.70 0.2 25); }
+:root:not([data-tema="claro"]) body .folha figcaption { color: var(--cinza); }
+html[data-tema="claro"] body :is(main, article, section, .conteudo) :is(a, summary):not(:is(.ilb-topo, .ilb-menu, [class*="aba"], [class*="card"], [class*="cartao"], button) *) { color: #1F5F8B; }
+body, body *:not(:is(svg, svg *, canvas, math, math *, .katex, .katex *)) { font-family: var(--ilb-sans) !important; }
+body :is(code, pre, kbd, samp, input[type="number"], .ilb-num, .ilb-aba-selo, .ilb-rodape-selo, .badge, .oa-sigla, .selo, .ilb-selo-ap, .capa-selo, .contador, .contador *, .ip-mono) { font-family: var(--ilb-mono) !important; }
+
+body :is(p, li, dd, blockquote):not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label) *):not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label)) {
+  font-size: 1.0625rem; line-height: 1.6; }
+body p:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label) *) { max-width: 72ch; }
+body .ilb-corrido { font-size: 1.0625rem !important; line-height: 1.6 !important; }
+svg[width$="mm"] { max-width: 100%; height: auto; }
+body :is(h1, h2, h3):not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label) *) { letter-spacing: normal; line-height: 1.25; }
+body h2:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="card"], [class*="cartao"], [class*="oa-"], .fase, .selos, .badge, button, label) *) { font-weight: 700; }
+}
+</style><script>
+(function () {
+  var RE = /^[\s(±+\-−–]*\d[\d\s.,]*(\s*[±]\s*[\d.,]+)?\s*[)]?\s*([a-zA-Zµμ°%²³·\/]{1,8}\)?)?\s*$/;
+  var NAO = 'header, footer, nav, aside, figcaption, small, svg, .ilb-topo, .ilb-menu, .ilb-estilo, [class*="aba"], [class*="rodape"], [class*="footer"], [class*="legenda"], [class*="header"], [class*="piazzi"], [class*="selo"], .badge, button, label';
+  function marcar() {
+    var cs = document.querySelectorAll('td, th'), i, e, n, t;
+    for (i = 0; i < cs.length; i++) {
+      t = cs[i].textContent;
+      if (t && t.length < 40 && RE.test(t)) cs[i].classList.add('ilb-num');
+    }
+    if (!true) return;
+    var raiz = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    var todos = document.body.querySelectorAll('div, span, p, li, dd, blockquote');
+    for (i = 0; i < todos.length; i++) {
+      e = todos[i];
+      if (e.closest(NAO)) continue;
+      t = 0;
+      for (n = e.firstChild; n; n = n.nextSibling) if (n.nodeType === 3) t += n.textContent.trim().length;
+      if (t < 60) continue;
+      if (parseFloat(getComputedStyle(e).fontSize) / raiz < 1.06) e.classList.add('ilb-corrido');
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', marcar);
+  else marcar();
+})();
+</script><!-- VISUAL:FIM -->
 </head>
 <body data-pagina="t0c:fa3">
 
