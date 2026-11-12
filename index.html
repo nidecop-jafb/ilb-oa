@@ -1041,11 +1041,37 @@ html[data-tema="claro"] .ilb-estilo a.est-btn-2 { background: #fff; color: #1F5F
     #t0d .parada span { font-size: .85rem; }
   }
   </style>
+  <style>
+  .cartoes li { max-width: none; }
+  .cartao { border: 1px solid #3a3a3a; border-left: 6px solid var(--c); border-radius: 8px;
+            background: #151618; margin-bottom: 14px; overflow: hidden;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.4; }
+  .cartao a.oa { display: flex; align-items: center; gap: 14px; border: 0; padding: 14px 16px;
+                 font-family: inherit; font-size: 1rem; }
+  .cartao a.oa:hover { background: #1c1e21; color: #fff; }
+  .cartao-ic { flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--c); color: #0d0d0d;
+               display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; }
+  .cartao-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+  .cartao-nome { font-weight: 600; font-size: 1.05rem; color: #f2f2f2; overflow-wrap: anywhere; }
+  .cartao-desc { font-size: .82rem; color: #a8a8a8; margin-top: 2px; }
+  .selos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .selo { font-size: .72rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .selo-nota { background: #3E8E5A; color: #fff; }
+  .selo-prazo { background: #7FB2D6; color: #0d0d0d; }
+  .cartao-botoes { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px 76px; }
+  .cartao-botoes a { font-size: .82rem; text-decoration: none; padding: 5px 12px; border-radius: 6px;
+                     border: 1px solid var(--c); color: #e8e8e8; }
+  .cartao-botoes a:hover { background: var(--c); color: #0d0d0d; }
+  @media (max-width: 560px) {
+    .cartao-ic { flex-basis: 38px; height: 38px; font-size: .75rem; }
+    .cartao-botoes { padding-left: 16px; }
+  }
+  </style>
   <p class="parada">Pré-Lab <span>&middot; fazer em casa, antes do encontro</span></p>
-  <ul>
-    <li><a class="oa" href="t0d/tt/">Texto Temático (TT)<span class="tag">ler · a disciplina explicada</span></a></li>
-    <li><a class="oa" href="t0d/fa/">Folha de Atividades (FA)<span class="tag">praticar · 40 itens · sem nota</span></a><span class="tag"><a href="t0d/fa/ILB-T0D-FA-v4-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF para imprimir</a></span></li>
-    <li><a class="oa" href="t0d/tn/">Testinho (TN)<span class="tag">verificar · 10 min · sem nota</span></a></li>
+  <ul class="cartoes">
+    <li class="cartao" style="--c:#3E8E5A"><a class="oa" href="t0d/tt/"><span class="cartao-ic">TT</span><span class="cartao-txt"><span class="cartao-nome">Texto Temático</span><span class="cartao-desc">ler · a disciplina explicada</span></span></a><div class="cartao-botoes"><a href="t0d/tt/ILB-T0D-TT-v3.pdf" target="_blank" rel="noopener">PDF (22 páginas)</a></div></li>
+    <li class="cartao" style="--c:#7FB2D6"><a class="oa" href="t0d/fa/"><span class="cartao-ic">FA</span><span class="cartao-txt"><span class="cartao-nome">Folha de Atividades</span><span class="cartao-desc">praticar · 40 itens</span><span class="selos"><span class="selo selo-nota">vale nota</span></span></span></a><div class="cartao-botoes"><a href="t0d/fa/ILB-T0D-FA-v4-estudante.pdf" target="_blank" rel="noopener">PDF (4 páginas)</a><a href="t0d/fa/ILB-T0D-FA-v4-professor.pdf" target="_blank" rel="noopener">Resolução (4 páginas)</a></div></li>
+    <li class="cartao" style="--c:#D9A65F"><a class="oa" href="t0d/tn/"><span class="cartao-ic">TN</span><span class="cartao-txt"><span class="cartao-nome">Testinho</span><span class="cartao-desc">verificar · 10 min</span><span class="selos"><span class="selo selo-nota">vale nota</span></span></span></a></li>
   </ul>
   </div>
   </details>
