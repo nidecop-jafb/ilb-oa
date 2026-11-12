@@ -851,16 +851,42 @@ html[data-tema="claro"] .ilb-estilo a.est-btn-2 { background: #fff; color: #1F5F
     #t0a .parada span { font-size: .85rem; }
   }
   </style>
+  <style>
+  .cartoes li { max-width: none; }
+  .cartao { border: 1px solid #3a3a3a; border-left: 6px solid var(--c); border-radius: 8px;
+            background: #151618; margin-bottom: 14px; overflow: hidden;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.4; }
+  .cartao a.oa { display: flex; align-items: center; gap: 14px; border: 0; padding: 14px 16px;
+                 font-family: inherit; font-size: 1rem; }
+  .cartao a.oa:hover { background: #1c1e21; color: #fff; }
+  .cartao-ic { flex: 0 0 46px; height: 46px; border-radius: 50%; background: var(--c); color: #0d0d0d;
+               display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; }
+  .cartao-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+  .cartao-nome { font-weight: 600; font-size: 1.05rem; color: #f2f2f2; overflow-wrap: anywhere; }
+  .cartao-desc { font-size: .82rem; color: #a8a8a8; margin-top: 2px; }
+  .selos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .selo { font-size: .72rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .selo-nota { background: #3E8E5A; color: #fff; }
+  .selo-prazo { background: #7FB2D6; color: #0d0d0d; }
+  .cartao-botoes { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px 76px; }
+  .cartao-botoes a { font-size: .82rem; text-decoration: none; padding: 5px 12px; border-radius: 6px;
+                     border: 1px solid var(--c); color: #e8e8e8; }
+  .cartao-botoes a:hover { background: var(--c); color: #0d0d0d; }
+  @media (max-width: 560px) {
+    .cartao-ic { flex-basis: 38px; height: 38px; font-size: .75rem; }
+    .cartao-botoes { padding-left: 16px; }
+  }
+  </style>
   <p class="parada">Pré-Lab <span>&middot; fazer em casa, antes do encontro</span></p>
-  <ul>
-    <li><a class="oa" href="t0a/md/">Resumo em Áudio (MD)<span class="tag">ouvir · 3 a 5 min</span></a></li>
-    <li><a class="oa" href="t0a/tt/">Texto Temático (TT)<span class="tag">ler · a disciplina explicada</span></a></li>
-    <li><a class="oa" href="t0a/cd/">Cartões Didáticos (CD)<span class="tag">ler · revisão ativa</span></a></li>
+  <ul class="cartoes">
+    <li class="cartao" style="--c:#6FB0A0"><a class="oa" href="t0a/md/"><span class="cartao-ic">MD</span><span class="cartao-txt"><span class="cartao-nome">Resumo em Áudio</span><span class="cartao-desc">ouvir · 3 a 5 min</span></span></a></li>
+    <li class="cartao" style="--c:#3E8E5A"><a class="oa" href="t0a/tt/"><span class="cartao-ic">TT</span><span class="cartao-txt"><span class="cartao-nome">Texto Temático</span><span class="cartao-desc">ler · a disciplina explicada</span></span></a><div class="cartao-botoes"><a href="t0a/tt/ILB-T0A-TT-v7.pdf" target="_blank" rel="noopener">PDF (29 páginas)</a></div></li>
+    <li class="cartao" style="--c:#A9C97F"><a class="oa" href="t0a/cd/"><span class="cartao-ic">CD</span><span class="cartao-txt"><span class="cartao-nome">Cartões Didáticos</span><span class="cartao-desc">ler · revisão ativa</span></span></a></li>
   </ul>
   <p class="parada">Lab <span>&middot; na bancada, com o professor · 100 min</span></p>
-  <ul>
-    <li><a class="oa" href="t0a/rb/">Roteiro de Bancada (RB)<span class="tag">execução · registrar os dados</span></a></li>
-    <li><a class="oa" href="t0a/ap/">Apresentação do Lab (AP)<span class="tag">projetar · o encontro conduzido</span></a></li>
+  <ul class="cartoes">
+    <li class="cartao" style="--c:#E0B341"><a class="oa" href="t0a/rb/"><span class="cartao-ic">RB</span><span class="cartao-txt"><span class="cartao-nome">Roteiro de Bancada</span><span class="cartao-desc">execução · registrar os dados</span><span class="selos"><span class="selo selo-nota">vale nota</span></span></span></a><div class="cartao-botoes"><a href="t0a/rb/ILB-T0A-RB-v4-estudante.pdf" target="_blank" rel="noopener">PDF (4 páginas)</a></div></li>
+    <li class="cartao" style="--c:#C9C26F"><a class="oa" href="t0a/ap/"><span class="cartao-ic">AP</span><span class="cartao-txt"><span class="cartao-nome">Apresentação do Lab</span><span class="cartao-desc">projetar · o encontro conduzido</span></span></a></li>
   </ul>
   </div>
   </details>
