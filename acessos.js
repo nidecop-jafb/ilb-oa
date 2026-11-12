@@ -54,8 +54,16 @@
     var selo = document.getElementById('seloAcessos');
     return !!(selo && selo.getAttribute('data-escopo') === 'pagina');
   }
-
   function mostrarTotal(total, daPagina) {
+    /* indice: bloco do olho + numero grande, abaixo da marca (zona ACESSOS) */
+    var bloco = document.getElementById('blocoAcessos');
+    var num = document.getElementById('acessosNum');
+    if (bloco && num && total) {
+      num.textContent = Number(total).toLocaleString('pt-BR');
+      var rot = document.getElementById('acessosRot');
+      if (rot) rot.textContent = Number(total) === 1 ? 'acesso' : 'acessos';
+      bloco.style.display = '';
+    }
     var selo = document.getElementById('seloAcessos');
     if (!selo) return;
     var n = porPagina() ? daPagina : total;
