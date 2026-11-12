@@ -182,7 +182,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 .prompt-ia .prompt-rot { font-size: .82rem; margin-bottom: 4px; }
 svg.cronometro { vertical-align: -.2em; }
 
-/* RC v7 (PRE-outro-t0e-rc-v3-cinco-secoes-padrao-rm-v5-ilb-2026-11-11) */
+/* RC v8 (PRE-outro-t0e-rc-v3-cinco-secoes-padrao-rm-v5-ilb-2026-11-11) */
 .pib { text-decoration: overline; }
 .modo-ops { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 4px 0; }
 .modo-ops label { display: flex; align-items: center; gap: 6px; font-weight: 400; }
@@ -350,9 +350,9 @@ body h2:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-m
 <div class="so-print">Introdução ao Laboratório (ILB) &middot; ILB-T0E &middot; Relatório Completo v2</div>
 
 <div class="intro-box">
-  <strong>O relatório completo.</strong> As <strong>cinco seções</strong>, na ordem dos 5 passos da Resolução Científica do Problema (RCP): introdução e objetivo, materiais e procedimentos, dados brutos e análises (a Tabela 2 do RB e o ajuste C = a·D + b, que a página calcula e desenha), discussão e <strong>tomada de decisão</strong>, recomendações e melhorias. Depois, as referências e o Uso de Tecnologias (IA), só aqui no site. O que você digita fica <strong>só neste aparelho</strong>; no fim, <strong>gere o PDF</strong> e entregue ao professor. Prefere papel? A <a href="ILB-T0E-RC-v7-estudante.pdf" target="_blank" rel="noopener">folha impressa</a> (A4) tem as mesmas cinco seções.
+  <strong>O relatório completo.</strong> As <strong>cinco seções</strong>, na ordem dos 5 passos da Resolução Científica do Problema (RCP): introdução e objetivo, materiais e procedimentos, dados brutos e análises (a Tabela 2 do RB e o ajuste C = a·D + b, que a página calcula e desenha), discussão e <strong>tomada de decisão</strong>, recomendações e melhorias. Depois, as referências e o Uso de Tecnologias (IA), só aqui no site. O que você digita fica <strong>só neste aparelho</strong>; no fim, <strong>gere o PDF</strong> e entregue ao professor. Prefere papel? A <a href="ILB-T0E-RC-v8-estudante.pdf" target="_blank" rel="noopener">folha impressa</a> (A4) tem as mesmas cinco seções.
 </div>
-<div class="botao-pdf"><a href="ILB-T0E-RC-v7-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF do Relatório Completo (4 páginas)</a></div>
+<div class="botao-pdf"><a href="ILB-T0E-RC-v8-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF do Relatório Completo (4 páginas)</a></div>
 
 
 <section class="bloco"><div class="bloco-num">Identificação</div><div class="bloco-tit">Quem assina o relatório</div><div class="bloco-dica nao-imprime">Nome, RA e colegas de bancada.</div><div class="ident"><div class="campo"><label>Nome</label><input type="text" data-k="nome" placeholder=""></div><div class="campo"><label>RA</label><input type="text" data-k="ra" placeholder="0000000"></div><div class="campo modo-med"><label>Como você mediu</label><div class="modo-ops"><label><input type="checkbox" data-modo="individual"> Medições individuais</label><label><input type="checkbox" data-modo="equipe"> Medições em equipe</label></div></div><div class="campo"><label>RA dos colegas de bancada (separe por vírgula)</label><input type="text" data-k="colegas" placeholder="0000001, 0000002"></div><div class="campo"><label>Data do encontro</label><input type="text" data-k="data" placeholder="dd/mm/aaaa"></div></div><div class="acoes nao-imprime"><button class="acao-btn" id="trazer" type="button">Trazer os dados do RM</button></div></section>
@@ -548,7 +548,7 @@ body h2:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-m
 })();
 </script>
 <script>
-/* RC v7: [ ] Medicoes individuais / [ ] Medicoes em equipe (uma so marcada, lembrada neste aparelho) */
+/* RC v8: [ ] Medicoes individuais / [ ] Medicoes em equipe (uma so marcada, lembrada neste aparelho) */
 (function () {
   var K = 'ILB-T0E-RC-v1-modo', cx = document.querySelectorAll('input[data-modo]'), v = '';
   try { v = localStorage.getItem(K) || ''; } catch (e) {}
