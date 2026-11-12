@@ -182,7 +182,7 @@ main { max-width: 800px; margin: 0 auto; padding: 16px; }
 .prompt-ia .prompt-rot { font-size: .82rem; margin-bottom: 4px; }
 svg.cronometro { vertical-align: -.2em; }
 
-/* RC v8 (PRE-outro-t0e-rc-v3-cinco-secoes-padrao-rm-v5-ilb-2026-11-11) */
+/* RC v9 (PRE-outro-t0e-rc-v3-cinco-secoes-padrao-rm-v5-ilb-2026-11-11) */
 .pib { text-decoration: overline; }
 .modo-ops { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 4px 0; }
 .modo-ops label { display: flex; align-items: center; gap: 6px; font-weight: 400; }
@@ -206,6 +206,54 @@ svg.cronometro { vertical-align: -.2em; }
 .ciclo-card b{color:#1A1A1A}
 @media print{.pagina > .aviso-site.ao-pe{margin-top:auto!important}.pagina > .aviso-site.ao-pe ~ .rodape-print{margin-top:0!important}}
 @media print{.ciclo-card{background:#ECECEC!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* RC v9: os 15 itens da estrutura (PRE-outro-t0e-rc-v9-site-15-itens-estrutura-ilb-2026-11-12) */
+@media screen { body { padding-top: 54px; } }   /* a barra do site (fixa no topo) fica acima do cabecalho */
+.header-inner { align-items: center; }
+.rc-cab-dir { text-align: right; line-height: 1.3; margin-left: auto; }
+.rc-cab-tit { font-weight: 700; font-size: .92rem; }
+.rc-cab-prazo { font-size: .82rem; color: var(--cinza); }
+.rc-acessos { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 64px; }
+.rc-acessos[hidden] { display: none; }
+.rc-acessos .ilb-acessos-olho { width: 40px; height: 40px; display: block; }
+.rc-ac-txt { font-size: .82rem; font-weight: 700; white-space: nowrap; }
+.rc-ac-txt b { color: var(--verde); font-size: 1.05rem; }
+.ilb-rodape-selo { display: none !important; }
+.rc-id { margin: 0 0 14px; }
+.rc-id-tit { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; }
+.rc-id-box { border: 1.5px solid var(--texto); padding: 6px 14px; }
+.rc-id-linha { padding: 8px 0; border-bottom: 1px solid var(--cinza-borda); }
+.rc-id-linha:last-child { border-bottom: none; }
+.rc-id-linha.l3 { display: grid; grid-template-columns: 2fr 1.4fr 1fr; gap: 10px 16px; }
+.rc-id .campo label { font-weight: 700; font-size: .86rem; color: var(--texto); }
+.rc-id .modo-ops label { font-weight: 700; font-size: .9rem; }
+.rc-id-acoes { margin-top: 8px; }
+.bloco-tit.rc-sec { font-size: 1.05rem; }
+.bloco-sub { font-weight: 700; font-size: .95rem; color: var(--aco); margin: 2px 0 6px; }
+details.rc-dobra > summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; list-style: none;
+  display: flex; align-items: center; gap: 8px; min-height: 32px; }
+details.rc-dobra > summary::-webkit-details-marker { display: none; }
+details.rc-dobra > summary::before { content: '\25B6'; display: inline-block; font-size: .7rem; color: var(--verde); transition: transform .15s; }
+details.rc-dobra[open] > summary::before { transform: rotate(90deg); }
+details.rc-dobra > summary .rc-dica { font-weight: 400; font-size: .8rem; color: var(--cinza); }
+details.rc-dobra[open] > summary { margin-bottom: 8px; }
+.rc-nav { max-width: 800px; margin: 26px auto 10px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.rc-nav-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; flex: 1 1 180px;
+  padding: 12px 16px; min-height: 48px; background: transparent; border: 1px solid var(--aco); color: var(--aco);
+  font-family: var(--mono); font-size: .88rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.rc-nav-btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
+.rc-nav-btn.forte { background: var(--verde); border-color: var(--verde); color: oklch(0.13 0.01 260); }
+.rc-nav-btn:hover { border-color: var(--verde-claro); }
+html body div.rc-fechamento { text-align: center; font-size: .74rem !important; color: var(--cinza); padding: 4px 16px 22px; }
+@media (max-width: 560px) {
+  .rc-id-linha.l3 { grid-template-columns: 1fr; }
+  .rc-cab-dir { text-align: left; margin-left: 0; }
+  .rc-nav-btn { flex-basis: 100%; }
+}
+@media print {
+  .rc-nav, .rc-acessos { display: none !important; }
+  details.rc-dobra > summary::before { content: none; }
+}
 /* ICONES-ILB */
 .ilb-cab-marcas { display: flex; gap: 10px; align-items: center; justify-content: flex-start;
   flex-shrink: 0; }
@@ -258,7 +306,167 @@ svg.cronometro { vertical-align: -.2em; }
 }
 /* /ICONES-ILB */
 </style>
-<style id="botao-pdf-ilb">.botao-pdf{margin:10px 0 18px}.botao-pdf a{display:inline-block;padding:9px 16px;border:2px solid #3E8E5A;border-radius:6px;color:#3E8E5A;font-weight:700;text-decoration:none}.botao-pdf a:hover{background:#3E8E5A;color:#fff}@media print{.botao-pdf{display:none}}</style><!-- CELULAR:INICIO --><style>
+<style data-ilb-tema="fixo">html[data-tema="claro"] .ciclo-card{background:#ECECEC!important;color:#1A1A1A!important;border-color:#363636!important}html[data-tema="claro"] .ciclo-card .cc-tit{color:#363636!important}html[data-tema="claro"] .ciclo-card b{color:#1A1A1A!important}</style>
+<!-- TOPO-ILB-CABECA:INICIO -->
+<script data-ilb-tema="fixo">(function () {
+  var h = document.documentElement, t, l;
+  try { t = localStorage.getItem('ilb-tema'); l = localStorage.getItem('ilb-letra'); } catch (e) { /* sem localStorage */ }
+  if (t !== 'claro' && t !== 'escuro') { t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'claro' : 'escuro'; }
+  h.setAttribute('data-tema', t);
+  if (l === 'g' || l === 'gg') { h.setAttribute('data-letra', l); }
+  var vistas = [], regras = [], el = document.createElement('style'), meta = document.querySelector('meta[name="theme-color"]');
+  var metaEsc = meta ? meta.getAttribute('content') : '';
+  el.id = 'ilbClaro'; el.setAttribute('data-ilb-tema', 'fixo');
+  function hsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), L = (mx + mn) / 2, d = mx - mn, H = 0, S = 0;
+    if (d) { S = d / (1 - Math.abs(2 * L - 1)); H = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; H *= 60; if (H < 0) { H += 360; } }
+    return [H, S, L];
+  }
+  function rgb(H, S, L) {
+    var c = (1 - Math.abs(2 * L - 1)) * S, x = c * (1 - Math.abs((H / 60) % 2 - 1)), m = L - c / 2, p;
+    p = H < 60 ? [c, x, 0] : H < 120 ? [x, c, 0] : H < 180 ? [0, c, x] : H < 240 ? [0, x, c] : H < 300 ? [x, 0, c] : [c, 0, x];
+    return [Math.round((p[0] + m) * 255), Math.round((p[1] + m) * 255), Math.round((p[2] + m) * 255)];
+  }
+  function lum(c) {
+    var v = c.map(function (k) { k /= 255; return k <= 0.03928 ? k / 12.92 : Math.pow((k + 0.055) / 1.055, 2.4); });
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+  }
+  function saida(c, a) { return a < 1 ? 'rgba(' + c.join(', ') + ', ' + a + ')' : 'rgb(' + c.join(', ') + ')'; }
+  function oklch(L, C, H) {
+    var A = C * Math.cos(H * Math.PI / 180), B = C * Math.sin(H * Math.PI / 180);
+    var l = Math.pow(L + 0.3963377774 * A + 0.2158037573 * B, 3), m = Math.pow(L - 0.1055613458 * A - 0.0638541728 * B, 3),
+        s = Math.pow(L - 0.0894841775 * A - 1.2914855480 * B, 3);
+    return [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+            -0.0041960863 * l - 0.7034186147 * m + 1.7076127010 * s].map(function (k) {
+      k = k <= 0.0031308 ? 12.92 * k : 1.055 * Math.pow(k, 1 / 2.4) - 0.055; return Math.round(Math.min(1, Math.max(0, k)) * 255); });
+  }
+  /* texto e borda precisam de 4,5:1 sobre o cinza-claro dos paineis (luminancia ~0,75), e entao tambem sobre o branco */
+  function escurecer(x, n, alvo) { var L = x[2], b = alvo || 0.70; while (L > 0.03 && (b / (lum(n) + 0.05)) < 4.6) { L -= 0.02; n = rgb(x[0], x[1], L); } return n; }
+  /* fundo: neutro escuro vira claro; cor de marca fica. Texto e borda: neutro inverte (e escurece se ficou
+     cinza-medio); cor de marca escurece. manter=true: texto sobre fundo de cor (botao) fica como esta. */
+  /* fundo: true = fundo; 'var' = variavel CSS (o uso e desconhecido: neutro so inverte, marca escura vira clara) */
+  function cor(c, a, fundo, manter) {
+    var x = hsl(c[0], c[1], c[2]), neutro = (Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2])) < 40;
+    if (neutro) {
+      if (manter) { return null; }
+      var y = [x[0], x[1], 1 - x[2]], n = rgb(y[0], y[1], y[2]);
+      return saida(fundo || a < 0.5 ? n : escurecer(y, n), a);
+    }
+    if (fundo === 'var' && x[2] < 0.22) { return saida(rgb(x[0], x[1], 1 - x[2]), a); }
+    if (fundo === true) { return x[2] < 0.22 ? saida(rgb(x[0], x[1], 1 - x[2]), a) : null; }
+    if (a < 0.5) { return null; }
+    var e = escurecer(x, c);
+    return e === c ? null : saida(e, a);
+  }
+  var NOMES = { white: [255, 255, 255], black: [0, 0, 0] };
+  function ler1(m, hx, nome) {
+    var c, a = 1, p;
+    if (hx) {
+      if (hx.length === 3 || hx.length === 4) { hx = hx.replace(/./g, '$&$&'); }
+      c = [0, 2, 4].map(function (i) { return parseInt(hx.substr(i, 2), 16); });
+      if (hx.length === 8) { a = parseInt(hx.substr(6, 2), 16) / 255; }
+      return [c, a];
+    }
+    if (nome) { return [NOMES[nome.toLowerCase()], 1]; }
+    p = m.replace(/^[a-z]+\(|\)$/gi, '').split(/[\s,\/]+/).filter(Boolean).map(function (k) { return /%$/.test(k) ? parseFloat(k) / 100 : parseFloat(k); });
+    if (p.length < 3 || p.slice(0, 3).some(isNaN)) { return null; }
+    if (/^oklch/i.test(m)) { c = oklch(p[0], p[1], p[2]); } else { c = p.slice(0, 3).map(Math.round); }
+    if (p.length > 3) { a = p[3]; }
+    return [c, a];
+  }
+  var COR = /#([0-9a-f]{3,8})\b|(?:rgba?|oklch)\([^)]*\)|\b(white|black)\b/gi;
+  function trocar(v, fundo, manter) {
+    return v.replace(COR, function (m, hx, nome) {
+      var x = ler1(m, hx, nome);
+      return (x && cor(x[0], x[1], fundo, manter)) || m;
+    });
+  }
+  function um(v) {     /* a primeira cor de um valor, como [rgb, alfa] */
+    var m = (v || '').match(COR); if (!m) { return null; }
+    var t = m[0]; return ler1(t, t.charAt(0) === '#' ? t.slice(1) : '', /^(white|black)$/i.test(t) ? t : '');
+  }
+  var VARS = {};       /* valor ORIGINAL (tema escuro) das variaveis da raiz, lido antes da folha clara valer */
+  function original(nome) {
+    if (!(nome in VARS)) { VARS[nome] = getComputedStyle(h).getPropertyValue(nome).trim(); }
+    return VARS[nome];
+  }
+  function deCor(v) {   /* o fundo da regra e uma cor de marca opaca (botao verde, etiqueta azul)? */
+    var k = /var\(\s*(--[\w-]+)/.exec(v || '');
+    if (k) { v = original(k[1]); }
+    var x = um(v);
+    return !!x && x[1] >= 0.5 && (Math.max.apply(null, x[0]) - Math.min.apply(null, x[0])) >= 40;
+  }
+  var PROP = /color$|^background|^border-(top|right|bottom|left)-color$|^outline-color$|^fill$|^stroke$|^--/;
+  function regra(r, sai) {
+    if (r.cssRules && r.type !== 1) {
+      var dentro = []; ler(r.cssRules, dentro);
+      if (dentro.length && r.media) { sai.push('@media ' + r.media.mediaText + ' {\n' + dentro.join('\n') + '\n}'); }
+      else if (dentro.length && r.conditionText) { sai.push('@supports ' + r.conditionText + ' {\n' + dentro.join('\n') + '\n}'); }
+      return;
+    }
+    if (r.type !== 1 || /\bimg\b/i.test(r.selectorText)) { return; }
+    /* com var() no atalho `background`, o longhand vem vazio: ler o atalho tambem */
+    var s = r.style, comCor = deCor(s.getPropertyValue('background-color') || s.getPropertyValue('background')), out = [];
+    for (var i = 0; i < s.length; i++) {
+      var n = s[i];
+      if (n === 'box-shadow') {   /* sombra preta forte faz faixa escura no fundo claro: suaviza */
+        var sv = s.getPropertyValue(n), sw = sv.replace(/rgba\(\s*0,\s*0,\s*0,\s*([\d.]+)\s*\)/g, function (m, a) { return 'rgba(0, 0, 0, ' + Math.min(+a, 0.16) + ')'; });
+        if (sw !== sv) { out.push('box-shadow: ' + sw); }
+        continue;
+      }
+      if (!PROP.test(n)) { continue; }
+      var v = s.getPropertyValue(n), f = /^background/.test(n) ? true : /^--/.test(n) ? 'var' : false;
+      var w = trocar(v, f, n === 'color' && comCor);
+      if (n === 'background-color' && comCor) {   /* botao de cor com letra branca: escurece o fundo ate ler bem */
+        var cl = um(s.getPropertyValue('color')), bx = um(v);
+        if (cl && bx && lum(cl[0]) > 0.8) { var hb = hsl(bx[0][0], bx[0][1], bx[0][2]); w = saida(escurecer(hb, bx[0], 1.05), bx[1]); }
+      }
+      if (w !== v) { out.push(n + ': ' + w + (s.getPropertyPriority(n) ? ' !important' : '')); }
+    }
+    if (comCor) {   /* botao de cor com letra escura e fundo por variavel: o fundo fica com a cor original */
+      var bv = s.getPropertyValue('background-color') || s.getPropertyValue('background'), kv = /var\(\s*(--[\w-]+)/.exec(bv),
+          lc = um(s.getPropertyValue('color'));
+      if (kv && lc && lum(lc[0]) < 0.2) { out.push('background-color: ' + original(kv[1])); }
+    }
+    if (out.length) { sai.push(r.selectorText + ' { ' + out.join('; ') + ' }'); }
+  }
+  function ler(lista, sai) { for (var i = 0; i < lista.length; i++) { regra(lista[i], sai); } }
+  function varrer() {
+    var fs = document.styleSheets;
+    for (var i = 0; i < fs.length; i++) {
+      var f = fs[i], dono = f.ownerNode;
+      if (vistas.indexOf(f) >= 0 || (dono && dono.getAttribute && dono.getAttribute('data-ilb-tema'))) { continue; }
+      vistas.push(f);
+      try { ler(f.cssRules, regras); } catch (e) { /* folha de outra origem */ }
+    }
+    el.textContent = regras.join('\n');
+    [].forEach.call(document.querySelectorAll('[style]'), function (n) {
+      if (n.hasAttribute('data-ilb-esc')) { return; }
+      var v = n.getAttribute('style'), w = v.replace(/(^|;)\s*((?:background|color|border)[a-z-]*)\s*:([^;]*)/gi, function (m, a, p, val) {
+        return a + p + ':' + trocar(val, /^background/i.test(p), false); });
+      if (w !== v) { n.setAttribute('data-ilb-esc', v); n.setAttribute('data-ilb-cla', w); }
+    });
+    aplicar();
+  }
+  function aplicar() {
+    var claro = h.getAttribute('data-tema') === 'claro';
+    el.media = claro ? 'all' : 'not all';
+    if (meta) { meta.setAttribute('content', claro ? '#ffffff' : metaEsc); }
+    [].forEach.call(document.querySelectorAll('[data-ilb-esc]'), function (n) {
+      n.setAttribute('style', n.getAttribute(claro ? 'data-ilb-cla' : 'data-ilb-esc')); });
+  }
+  window.ilbTema = function (novo) {
+    h.setAttribute('data-tema', novo);
+    try { localStorage.setItem('ilb-tema', novo); } catch (e) { /* sem localStorage */ }
+    aplicar();
+  };
+  document.head.appendChild(el);
+  varrer();
+  document.addEventListener('DOMContentLoaded', function () { varrer(); document.body.appendChild(el); });
+})();</script>
+<!-- TOPO-ILB-CABECA:FIM -->
+<!-- CELULAR:INICIO --><style>
 @media (max-width: 560px) {
   table { table-layout: fixed; width: 100% !important; max-width: 100%; min-width: 0 !important; }
   table col { width: auto !important; }
@@ -336,48 +544,160 @@ body h2:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-m
 </script><!-- VISUAL:FIM -->
 </head>
 <body data-pagina="t0e:rc">
+<!-- TOPO-ILB:INICIO -->
+<style data-ilb-tema="fixo">
+html[data-letra="g"] { font-size: 125%; }
+html[data-letra="gg"] { font-size: 137.5%; }
+.ilb-topo { position: fixed; top: 8px; right: 8px; z-index: 999; display: flex; gap: 6px; font-family: 'Courier New', Courier, monospace; }
+.ilb-topo .tb { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; padding: 0; margin: 0;
+  background: #1a1b1f; color: #7FB2D6; border: 1px solid #444; border-radius: 6px; cursor: pointer; text-decoration: none;
+  font: 700 18px/1 'Courier New', Courier, monospace; letter-spacing: 0; }
+.ilb-topo .tb:hover, .ilb-topo .tb.ativo { border-color: #3E8E5A; background: #3E8E5A; color: #fff; }
+.ilb-topo .tb:disabled { opacity: .4; cursor: default; background: #1a1b1f; color: #7FB2D6; border-color: #444; }
+.ilb-topo .tb svg { width: 20px; height: 20px; display: block; }
+.ilb-topo .tb .lua, html[data-tema="claro"] .ilb-topo .tb .sol { display: none; }
+html[data-tema="claro"] .ilb-topo .tb .lua { display: block; }
+.ilb-topo .tb.crono-btn { min-width: 38px; width: auto; padding: 0 8px; font-size: 15px; }
+.ilb-topo .ilb-caixa { position: relative; }
+.ilb-menu { position: absolute; top: 44px; right: 0; min-width: 250px; background: #1a1b1f; border: 1px solid #444;
+  border-top: 3px solid #3E8E5A; box-shadow: 0 8px 22px rgba(0,0,0,.5); }
+.ilb-menu[hidden] { display: none; }
+.ilb-menu a, .ilb-menu span { display: block; padding: 11px 16px; color: #e8e8e8; text-decoration: none; font-size: 15px; line-height: 1.4; }
+.ilb-menu a + a, .ilb-menu a + span, .ilb-menu span + a, .ilb-menu span + span { border-top: 1px solid #333; }
+.ilb-menu a:hover { background: #26272c; color: #7FB2D6; }
+.ilb-menu small { display: block; color: #9a9a9a; font-size: 12px; }
+.ilb-menu .off { color: #8a8a8a; cursor: default; }
+.ilb-menu .tit { color: #7FB2D6; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding-bottom: 6px; }
+.ilb-estilo { position: fixed; top: 54px; right: 8px; z-index: 999; width: 400px; max-width: calc(100vw - 16px);
+  max-height: calc(100vh - 66px); overflow-y: auto; background: #1a1b1f; color: #c4c4c4; border: 1px solid #444;
+  border-top: 3px solid #3E8E5A; padding: 18px 20px 16px; font-size: 15px; line-height: 1.6; box-shadow: 0 8px 22px rgba(0,0,0,.5); }
+.ilb-estilo[hidden] { display: none; }
+.ilb-estilo h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #3E8E5A; border-bottom: 1px solid #444;
+  padding: 0 30px 8px 0; margin: 0 0 14px; }
+.ilb-estilo .fechar { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background: none; border: 1px solid #444;
+  color: #c4c4c4; font: 700 18px/1 'Courier New', Courier, monospace; cursor: pointer; }
+.ilb-estilo p { margin: 0 0 11px; max-width: none; }
+.ilb-estilo .est-lead { color: #e8e8e8; font-size: 16px; line-height: 1.5; }
+.ilb-estilo ul.dims { list-style: none; margin: 0 0 14px; padding: 0; }
+.ilb-estilo ul.dims li { background: #26272c; border-left: 3px solid #7FB2D6; padding: 9px 12px; margin: 0 0 8px; max-width: none; }
+.ilb-estilo ul.dims strong { display: block; color: #7FB2D6; font-weight: 700; }
+.ilb-estilo .est-ref { border-top: 1px solid #444; padding-top: 10px; margin-top: 14px; font-size: 12.5px; color: #9a9a9a; }
+.ilb-estilo a.est-btn { display: block; text-align: center; padding: 12px 14px; margin: 0 0 8px; border: 1px solid #3E8E5A;
+  background: #3E8E5A; color: #fff; font-weight: 700; text-decoration: none; line-height: 1.35; }
+.ilb-estilo a.est-btn small { display: block; font-weight: 400; font-size: 12.5px; opacity: .9; }
+.ilb-estilo a.est-btn-2 { background: #26272c; color: #7FB2D6; border-color: #7FB2D6; }
+.ilb-estilo a.est-btn:hover { filter: brightness(1.12); }
+html[data-tema="claro"] .ilb-topo .tb { background: #fff; color: #1F5F8B; border-color: #c8c8c8; }
+html[data-tema="claro"] .ilb-topo .tb:hover, html[data-tema="claro"] .ilb-topo .tb.ativo { background: #2F6E45; border-color: #2F6E45; color: #fff; }
+html[data-tema="claro"] .ilb-topo .tb:disabled { background: #fff; color: #1F5F8B; border-color: #c8c8c8; }
+html[data-tema="claro"] .ilb-menu, html[data-tema="claro"] .ilb-estilo { background: #fff; border-color: #d5d8dd; border-top-color: #2F6E45;
+  box-shadow: 0 10px 28px rgba(0,0,0,.18); color: #2a2a2a; }
+html[data-tema="claro"] .ilb-menu a, html[data-tema="claro"] .ilb-menu span { color: #1c1c1c; border-top-color: #e0e2e6; }
+html[data-tema="claro"] .ilb-menu a:hover { background: #eef2f7; color: #1F5F8B; }
+html[data-tema="claro"] .ilb-menu small, html[data-tema="claro"] .ilb-menu .off { color: #6a6a6a; }
+html[data-tema="claro"] .ilb-menu .tit { color: #1F5F8B; }
+html[data-tema="claro"] .ilb-estilo h3 { color: #2F6E45; border-bottom-color: #d5d8dd; }
+html[data-tema="claro"] .ilb-estilo .fechar { color: #2a2a2a; border-color: #c8c8c8; }
+html[data-tema="claro"] .ilb-estilo .est-lead { color: #1c1c1c; }
+html[data-tema="claro"] .ilb-estilo ul.dims li { background: #f3f5f7; border-left-color: #1F5F8B; }
+html[data-tema="claro"] .ilb-estilo ul.dims strong { color: #1F5F8B; }
+html[data-tema="claro"] .ilb-estilo .est-ref { border-top-color: #d5d8dd; color: #5f5f5f; }
+html[data-tema="claro"] .ilb-estilo a.est-btn { background: #2F6E45; border-color: #2F6E45; color: #fff; }
+html[data-tema="claro"] .ilb-estilo a.est-btn-2 { background: #fff; color: #1F5F8B; border-color: #1F5F8B; }
+/* as barras de navegacao fixas das paginas de documento descem para baixo dos icones */
+.doc-barra, .agr-barra { top: 54px !important; }
+.doc-barra:not(.vis) { transform: translateY(calc(-100% - 60px)) !important; }
+@media (max-width: 900px) { body { padding-top: 54px; } }
+@media (max-width: 420px) {
+  .ilb-topo { gap: 4px; right: 6px; }
+  .ilb-topo .tb { width: 34px; height: 34px; font-size: 16px; }
+  .ilb-topo .tb.crono-btn { min-width: 34px; width: auto; padding: 0 5px; font-size: 13px; }
+  .ilb-topo .tb svg { width: 18px; height: 18px; }
+  .ilb-menu { top: 40px; }
+}
+#ilbCronoMenu { right: auto; left: 0; }
+@media print { .ilb-topo, .ilb-estilo { display: none !important; } }
+</style>
+<div class="ilb-topo"><a class="tb" href="../../index.html" aria-label="Início" title="Início"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg></a><div class="ilb-caixa"><button class="tb" id="ilbCronoBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ilbCronoMenu" aria-label="Cronometrar" title="Cronometrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="8"/><path d="M12 9.5v4l2.5 2.5M9.5 2.5h5M12 2.5v3"/></svg></button><nav class="ilb-menu" id="ilbCronoMenu" hidden><span class="tit">Cronometrar uma sessão</span><a href="../../sessao/pre/">Sessão do Pré-Laboratório<small>até 30 min</small></a><a href="../../sessao/lab/">Sessão do Laboratório<small>até 100 min</small></a><a href="../../sessao/pos/">Sessão do Pós-Laboratório<small>até 30 min</small></a></nav></div><button class="tb" id="ilbLetraMenos" type="button" aria-label="Diminuir a letra" title="Diminuir a letra">A&minus;</button><button class="tb" id="ilbLetraMais" type="button" aria-label="Aumentar a letra" title="Aumentar a letra">A+</button><button class="tb" id="ilbTemaBtn" type="button" aria-label="Mudar o tema"><svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M1.5 12h2.5M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg><svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg></button><a class="tb" href="../../instalar/" aria-label="Instalar" title="Instalar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7"/><path d="M9 11l3 3 3-3"/><path d="M10 18h4"/></svg></a><button class="tb" id="ilbEstiloBtn" type="button" aria-controls="ilbEstilo" aria-expanded="false" aria-label="Estilo de aprendizagem" title="Estilo de aprendizagem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.3 1.1 2.2h5c0-.9.5-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg></button><div class="ilb-caixa"><button class="tb" id="ilbAvaBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ilbAvaMenu" aria-label="Avaliação das Etapas" title="Avaliação das Etapas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8.5 13l2.5 2.5 4.5-5"/></svg></button><nav class="ilb-menu" id="ilbAvaMenu" hidden><span class="tit">Avaliação das Etapas</span><span class="off" aria-disabled="true">Avaliação da Etapa 1 · Metrologia<small>em breve</small></span><span class="off" aria-disabled="true">Avaliação da Etapa 2 · Forças, Torques, Resultante e Equilíbrio de Corpos em Repouso<small>em breve</small></span><span class="off" aria-disabled="true">Avaliação da Etapa 3 · Forças, Aceleração, Trabalho, Energia e Potência de Corpos em Movimento<small>em breve</small></span><a href="../../sugestoes/">Enviar uma sugestão</a><a href="../../agradecimentos/">Agradecimentos</a></nav></div></div>
+<aside class="ilb-estilo" id="ilbEstilo" hidden aria-label="Estilo de aprendizagem"><h3>Estilo de aprendizagem</h3><button class="fechar" id="ilbEstiloFechar" type="button" aria-label="Fechar">&times;</button>
+  <p class="est-lead">Conhecer o seu estilo de aprendizagem é descobrir como você prefere receber, processar e organizar o
+  que aprende — na bancada e fora dela. O Índice de Estilos de Aprendizagem de Felder e Soloman olha para quatro
+  dimensões, cada uma com dois polos:</p>
+  <ul class="dims">
+    <li><strong>Ativo ou Reflexivo</strong>Aprender montando e medindo com o grupo, ou pensando no procedimento antes de tocar no equipamento.</li>
+    <li><strong>Sensorial ou Intuitivo</strong>Partir dos dados e dos instrumentos, ou do modelo e da hipótese.</li>
+    <li><strong>Visual ou Verbal</strong>Lembrar melhor do gráfico, do esquema e da montagem, ou do roteiro escrito e da explicação falada.</li>
+    <li><strong>Sequencial ou Global</strong>Seguir o Roteiro de Bancada passo a passo, ou ver o experimento inteiro antes de começar.</li>
+  </ul>
+  <p>Ninguém é um polo só: cada um pende para um lado, com mais ou menos força, e isso muda com a prática. Não existe
+  estilo melhor nem pior.</p>
+  <p>Na licenciatura, vale duas vezes: conhecer o seu estilo ajuda a escolher como estudar, e lembrar que uma turma
+  tem todos os estilos ajuda a planejar a aula — o mesmo experimento contado pelo gráfico, pelo texto, pelos passos
+  e pelo quadro geral.</p>
+  <p>Com esse retrato, você escolhe estratégias (e usos da IA) que combinam com o seu jeito e treina, de propósito, o polo que usa menos. Em cada Etapa, responda e acompanhe como o seu perfil muda.</p>
+  <a class="est-btn" href="../../estilo/">Responder o questionário<small>20 perguntas · cerca de 5 min</small></a>
+  <a class="est-btn est-btn-2" href="../../estilo/#grupo">Ver o painel do grupo</a>
+  <p class="est-ref">FELDER, R. M.; SOLOMAN, B. A. <em>Index of Learning Styles Questionnaire</em>. Raleigh: North Carolina State University.</p>
+</aside>
+<script>(function () {
+  var h = document.documentElement, $ = function (id) { return document.getElementById(id); };
+  var menos = $('ilbLetraMenos'), mais = $('ilbLetraMais'), passos = ['', 'g', 'gg'];
+  function atual() { return Math.max(0, passos.indexOf(h.getAttribute('data-letra') || '')); }
+  function mostrar() { var i = atual(); menos.disabled = i === 0; mais.disabled = i === passos.length - 1; }
+  function letra(d) {
+    var i = Math.min(passos.length - 1, Math.max(0, atual() + d));
+    if (passos[i]) { h.setAttribute('data-letra', passos[i]); } else { h.removeAttribute('data-letra'); }
+    try { localStorage.setItem('ilb-letra', passos[i]); } catch (e) { /* sem localStorage */ }
+    mostrar(); window.dispatchEvent(new Event('resize'));
+  }
+  menos.addEventListener('click', function (e) { e.stopPropagation(); letra(-1); });
+  mais.addEventListener('click', function (e) { e.stopPropagation(); letra(1); });
+  mostrar();
+  var tb = $('ilbTemaBtn');
+  function rotulo() { var r = h.getAttribute('data-tema') === 'claro' ? 'Mudar para o modo escuro' : 'Mudar para o modo claro'; tb.setAttribute('aria-label', r); tb.title = r; }
+  tb.addEventListener('click', function (e) { e.stopPropagation(); if (window.ilbTema) { window.ilbTema(h.getAttribute('data-tema') === 'claro' ? 'escuro' : 'claro'); } rotulo(); });
+  rotulo();
+  var abertos = [['ilbCronoBtn', 'ilbCronoMenu'], ['ilbAvaBtn', 'ilbAvaMenu'], ['ilbEstiloBtn', 'ilbEstilo']];
+  function fechar(menos1) { abertos.forEach(function (p) { var b = $(p[0]), m = $(p[1]); if (b && m && p[0] !== menos1) { m.hidden = true; b.setAttribute('aria-expanded', 'false'); b.classList.remove('ativo'); } }); }
+  abertos.forEach(function (p) {
+    var b = $(p[0]), m = $(p[1]);
+    if (!b || !m) { return; }
+    b.addEventListener('click', function (e) { e.stopPropagation(); var abre = m.hidden; fechar(p[0]); m.hidden = !abre; b.setAttribute('aria-expanded', abre ? 'true' : 'false'); b.classList.toggle('ativo', abre); });
+    m.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+  var x = $('ilbEstiloFechar'); if (x) { x.addEventListener('click', function () { fechar(''); }); }
+  document.addEventListener('click', function () { fechar(''); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { fechar(''); } });
+})();</script>
+<!-- TOPO-ILB:FIM -->
 
 <header class="header">
   <div class="header-inner">
     <div class="ilb-cab-marcas"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Prisma decompondo a luz — Licenciatura em Física"> <title>Prisma decompondo a luz — Licenciatura em Física</title> <defs> <radialGradient id="cab-prisma-fundo" cx="50%" cy="42%" r="60%"> <stop offset="0" stop-color="#26302B"/> <stop offset="1" stop-color="#0E1411"/> </radialGradient> <linearGradient id="cab-prisma-vidro" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#E8F2F8" stop-opacity="0.42"/> <stop offset="1" stop-color="#7FB2D6" stop-opacity="0.16"/> </linearGradient> <clipPath id="cab-prisma-dentro"><circle cx="100" cy="100" r="86"/></clipPath> </defs> <circle cx="100" cy="100" r="96" fill="url(#cab-prisma-fundo)"/> <circle cx="100" cy="100" r="95" fill="none" stroke="#3E8E5A" stroke-width="3"/> <circle cx="100" cy="100" r="88" fill="none" stroke="#3E8E5A" stroke-width="1" stroke-dasharray="1.5 3" opacity="0.8"/> <g clip-path="url(#cab-prisma-dentro)"> <polygon points="12,116 12,110 79,88 80,92" fill="#FFFFFF" opacity="0.95"/> <polygon points="79,88 80,92 121,95 119,86" fill="#FFFFFF" opacity="0.35"/> <polygon points="119,86 120.1,88 190,92 190,82"   fill="#E53935"/> <polygon points="120.1,88 120.9,89.5 190,102 190,92" fill="#FB8C00"/> <polygon points="120.9,89.5 121.7,91 190,112 190,102" fill="#FDD835"/> <polygon points="121.7,91 122.5,92.4 190,122 190,112" fill="#43A047"/> <polygon points="122.5,92.4 123.3,93.8 190,132 190,122" fill="#1E88E5"/> <polygon points="123.3,93.8 124.1,95.2 190,142 190,132" fill="#3949AB"/> <polygon points="124.1,95.2 125,97 190,152 190,142" fill="#8E24AA"/> </g> <polygon points="100,50 56,130 144,130" fill="url(#cab-prisma-vidro)" stroke="#DDEBF3" stroke-width="2.5" stroke-linejoin="round"/> <line x1="100" y1="54" x2="64" y2="121" stroke="#FFFFFF" stroke-width="1.2" opacity="0.5"/> <line x1="50" y1="138" x2="150" y2="138" stroke="#7FB2D6" stroke-width="3" stroke-linecap="round"/> <g fill="#FFFFFF" opacity="0.55"> <circle cx="46" cy="62" r="1.2"/> <circle cx="150" cy="56" r="1"/> <circle cx="70" cy="160" r="1"/> <circle cx="140" cy="164" r="1.2"/> </g> </svg><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Marca da Introdução ao Laboratório"> <g fill="none" stroke="#3E8E5A" stroke-width="3"> <ellipse cx="60" cy="52" rx="46" ry="18"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(60 60 52)"/> <ellipse cx="60" cy="52" rx="46" ry="18" transform="rotate(120 60 52)"/> </g> <g fill="#3E8E5A"> <circle cx="53" cy="47" r="7"/> <circle cx="67" cy="47" r="7"/> <circle cx="60" cy="58" r="9"/> </g> <g stroke="#7FB2D6" stroke-width="3" stroke-linecap="square"> <line x1="26" y1="110" x2="94" y2="110"/> <line x1="30" y1="110" x2="30" y2="104"/> <line x1="40" y1="110" x2="40" y2="104"/> <line x1="50" y1="110" x2="50" y2="104"/> <line x1="60" y1="110" x2="60" y2="98"/> <line x1="70" y1="110" x2="70" y2="104"/> <line x1="80" y1="110" x2="80" y2="104"/> <line x1="90" y1="110" x2="90" y2="104"/> </g> </svg></div><h1><span class="trilha-code">ILB-T0E</span> &middot; O Número π (pi)</h1>
-    <span class="badge">Relatório Completo (RC)</span>
+    <div class="rc-cab-dir"><div class="rc-cab-tit">Relatório Completo (RC)</div><div class="rc-cab-prazo">Pós-Lab: até ___/___/_____</div></div><div class="rc-acessos" id="rcAcessos" hidden title="Acessos a esta página"><svg class="ilb-acessos-olho" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 32 C16 13 48 13 60 32 C48 51 16 51 4 32 Z" fill="none" stroke="#3E8E5A" stroke-width="4" stroke-linejoin="round"/><circle cx="32" cy="32" r="11" fill="none" stroke="#7FB2D6" stroke-width="4"/><circle cx="32" cy="32" r="4.5" fill="#7FB2D6"/></svg><span class="rc-ac-txt"><b id="rcAcNum"></b> <span id="rcAcRot">acessos</span></span></div>
   </div>
-  <div class="header-sub">Pós-Lab &middot; até ___/___/_____ &middot; vale nota &mdash; rubrica de 25 pontos = 25 % da trilha</div>
 </header>
 
 <main>
 
-<div class="so-print">Introdução ao Laboratório (ILB) &middot; ILB-T0E &middot; Relatório Completo v2</div>
 
-<div class="intro-box">
-  <strong>O relatório completo.</strong> As <strong>cinco seções</strong>, na ordem dos 5 passos da Resolução Científica do Problema (RCP): introdução e objetivo, materiais e procedimentos, dados brutos e análises (a Tabela 2 do RB e o ajuste C = a·D + b, que a página calcula e desenha), discussão e <strong>tomada de decisão</strong>, recomendações e melhorias. Depois, as referências e o Uso de Tecnologias (IA), só aqui no site. O que você digita fica <strong>só neste aparelho</strong>; no fim, <strong>gere o PDF</strong> e entregue ao professor. Prefere papel? A <a href="ILB-T0E-RC-v8-estudante.pdf" target="_blank" rel="noopener">folha impressa</a> (A4) tem as mesmas cinco seções.
-</div>
-<div class="botao-pdf"><a href="ILB-T0E-RC-v8-estudante.pdf" target="_blank" rel="noopener">Abrir o PDF do Relatório Completo (4 páginas)</a></div>
-
-
-<section class="bloco"><div class="bloco-num">Identificação</div><div class="bloco-tit">Quem assina o relatório</div><div class="bloco-dica nao-imprime">Nome, RA e colegas de bancada.</div><div class="ident"><div class="campo"><label>Nome</label><input type="text" data-k="nome" placeholder=""></div><div class="campo"><label>RA</label><input type="text" data-k="ra" placeholder="0000000"></div><div class="campo modo-med"><label>Como você mediu</label><div class="modo-ops"><label><input type="checkbox" data-modo="individual"> Medições individuais</label><label><input type="checkbox" data-modo="equipe"> Medições em equipe</label></div></div><div class="campo"><label>RA dos colegas de bancada (separe por vírgula)</label><input type="text" data-k="colegas" placeholder="0000001, 0000002"></div><div class="campo"><label>Data do encontro</label><input type="text" data-k="data" placeholder="dd/mm/aaaa"></div></div><div class="acoes nao-imprime"><button class="acao-btn" id="trazer" type="button">Trazer os dados do RM</button></div></section>
+<section class="rc-id"><h2 class="rc-id-tit">Identificação</h2><div class="rc-id-box"><div class="rc-id-linha l3"><div class="campo"><label>Nome:</label><input type="text" data-k="nome" placeholder=""></div><div class="campo"><label>Registro Acadêmico (RA):</label><input type="text" data-k="ra" placeholder="0000000"></div><div class="campo"><label>Data:</label><input type="text" data-k="data" placeholder="dd/mm/aaaa"></div></div><div class="rc-id-linha modo-ops"><label><input type="checkbox" data-modo="individual"> Medições individuais</label><label><input type="checkbox" data-modo="equipe"> Medições em equipe</label></div><div class="rc-id-linha"><div class="campo"><label>RA dos colegas de bancada (separe por vírgula):</label><input type="text" data-k="colegas" placeholder="0000001, 0000002"></div></div></div><div class="acoes nao-imprime rc-id-acoes"><button class="acao-btn" id="trazer" type="button">Trazer os dados do RM</button></div></section>
 <div class="ciclo-card"><div class="cc-tit">Método de Estudo - Ciclo Circadiano de Aprendizagem</div><div class="cc-txt">Escreva <b>uma seção deste Relatório Completo por noite, antes de dormir</b>, a começar pela <b>noite do Laboratório</b>: o que se revê antes do sono se consolida durante ele, conforme explica Pierluigi Piazzi em <em>Aprendendo Inteligência</em>.</div></div>
 
-<section class="bloco"><div class="bloco-num">Seção 1</div><div class="bloco-tit">Introdução e Objetivo</div><div class="bloco-dica nao-imprime">Introdução e objetivo, em 3 a 5 linhas: o que se mede nesta trilha e por quê; depois o objetivo, que é a pergunta, não o assunto: "o perímetro de um disco é π vezes o seu diâmetro, dentro da incerteza da bancada?" é objetivo; "estudar o número π" não é.</div><div class="campo"><label>Introdução e objetivo</label><textarea data-k="s1" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Seção 2</div><div class="bloco-tit">Materiais e Procedimentos</div><div class="bloco-dica nao-imprime">Os materiais e como cada medida foi feita, na ordem da bancada: cinco discos de acrílico com D impresso (90,0 a 150,0 mm); régua graduada de 0,0 a 500,0 mm (menor divisão 1 mm, duvidoso no décimo de mm: 1 casa); tira de papel e tesoura; escolha a estação para começar; com o ponto A no início da tira, 1 volta sem escorregar; segura-se o disco com uma mão e com a outra marca-se na tira o tamanho de C, repete-se uma volta completa do disco mais 2 vezes; corta-se a tira na média dos 3 traços. Avançar para outra estação repetindo os mesmos procedimentos. Encerra-se esta etapa de marcação de C ao passar pelas cinco estações. Mede-se com a régua os tamanhos de C de cada tira de papel. Finalizar com a fotografia das tiras reunidas em pé na base de uma cartolina e o barbante passando pelo centro da extremidade superior de cada tira. Outra pessoa tem que conseguir repetir lendo só isto.</div><div class="campo"><label>Materiais e procedimentos</label><textarea data-k="s2" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Seção 3</div><div class="bloco-tit">Dados Brutos e Análises</div><div class="bloco-dica nao-imprime">A Tabela 2 do Roteiro de Bancada (RB), em mm (se você já fez o RM neste aparelho, traga a Tabela 2 de lá com o botão). Depois a análise: o ajuste C = a·D + b por mínimos quadrados (a página dá a, b, u(a) e u(b) e desenha o gráfico) e π = a ± u(a), arredondados juntos.</div><div class="tab-rotulo">Tabela 2 do RB — régua graduada em mm (anote em mm, com 1 casa decimal)</div><table class="tab-dados"><thead><tr><th>#</th><th>Diâmetro D (mm), impresso</th><th>Comprimento C (mm)</th><th>π<sub>exp</sub> = C/D</th></tr></thead><tbody><tr><td class="n">1</td><td><input type="text" inputmode="decimal" data-k="d-mm-1-D" placeholder="90,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-1-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-1-CD" placeholder="C/D"></td></tr><tr><td class="n">2</td><td><input type="text" inputmode="decimal" data-k="d-mm-2-D" placeholder="105,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-2-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-2-CD" placeholder="C/D"></td></tr><tr><td class="n">3</td><td><input type="text" inputmode="decimal" data-k="d-mm-3-D" placeholder="120,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-3-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-3-CD" placeholder="C/D"></td></tr><tr><td class="n">4</td><td><input type="text" inputmode="decimal" data-k="d-mm-4-D" placeholder="135,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-4-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-4-CD" placeholder="C/D"></td></tr><tr><td class="n">5</td><td><input type="text" inputmode="decimal" data-k="d-mm-5-D" placeholder="150,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-5-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-5-CD" placeholder="C/D"></td></tr></tbody></table><div class="ajuste"><div class="tab-rotulo">Ajuste C = a·D + b — régua graduada em mm</div><button class="acao-btn nao-imprime" type="button" data-ajuste="mm">Calcular o ajuste e desenhar o gráfico</button><div class="ajuste-res" id="res-mm"></div></div><div class="campo"><label>Comentário dos dados (opcional)</label><textarea data-k="s3" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Seção 4 (a)</div><div class="bloco-tit">Discussão e Tomada de Decisão: π medido ± incerteza e a decisão</div><div class="bloco-dica nao-imprime"><b>(a) A decisão.</b> A diferença |a − 3,14159| cabe em 2u(a)? Escreva a decisão. Compare com o π̄ que o RB e o RM deram pela média dos C/D. E o b: deveria ser zero? Ele cabe em 2u(b)? Se não, o que um b diferente de zero diz sobre como C ou D foram medidos?</div><div class="campo"><label>π medido ± incerteza e a decisão</label><textarea data-k="s4" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Seção 4 (b)</div><div class="bloco-tit">Os dois métodos: a média e a declividade</div><div class="bloco-dica nao-imprime">A média dos C/D (RB e RM) e a declividade da reta, traçada à mão (RB e RM) ou por mínimos quadrados (Seção 3), mediram o mesmo π com os mesmos discos. Qual deu a incerteza menor, e por quê? O que cada método usa das medidas?</div><div class="campo"><label>Os dois métodos: a média e a declividade</label><textarea data-k="s5" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Seção 4 (c)</div><div class="bloco-tit">Tomada de posição</div><div class="bloco-dica nao-imprime">Um parágrafo: com quantos algarismos de π a conta da sua bancada precisa, pela regra do Texto Temático (π com um algarismo significativo a mais que o π̄ da bancada), e o que acontece com a decisão se o π tiver menos? Depois, por que o Gráfico 1 do RB (1 cm = 25 mm em C) e o do RM (1 cm = 50 mm) desenham a mesma reta com ângulos diferentes, mas com a mesma declividade.</div><div class="campo"><label>Tomada de posição</label><textarea data-k="s6" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Seção 5</div><div class="bloco-tit">Recomendações e Melhorias</div><div class="bloco-dica nao-imprime">Qual foi a maior fonte de incerteza da sua bancada: o disco escorregar, o corte da tira na média dos 3 traços, a leitura da régua ou o D impresso? Justifique com os seus dados e proponha uma mudança concreta no procedimento que a reduziria, dizendo qual incerteza cairia.</div><div class="campo"><label>Recomendações e melhorias</label><textarea data-k="s8" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">Referências</div><div class="bloco-tit">Referências</div><div class="bloco-dica nao-imprime">As obras consultadas, em ABNT: o Texto Temático, o Roteiro de Bancada e o que mais você usou. O uso de inteligência artificial se declara no bloco Uso de Tecnologias (IA), logo abaixo.</div><div class="campo"><label>Referências</label><textarea data-k="s7" placeholder=""></textarea></div></section>
-<section class="bloco"><div class="bloco-num">IA</div><div class="bloco-tit">Uso de Tecnologias (IA)</div><div class="bloco-dica nao-imprime">Depois de terminar as cinco seções: copie o prompt, cole na inteligência artificial que você usa e mande o seu RC. Ela aponta a seção e o passo do primeiro erro sem resolver por você. Vale nota extra até completar o valor da trilha no SUAP; diga abaixo se usou.</div><ol class="dicas-ia"><li><strong>Dica 1.</strong> Peça perguntas, não respostas: a IA aponta o passo do erro e quem corrige é você.</li><li><strong>Dica 2.</strong> Confira tudo o que ela disser contra a sua medida, a sua conta e a unidade: a IA erra com a mesma segurança com que acerta.</li><li><strong>Dica 3.</strong> Declare o uso, qual IA e para quê: registrar o método com honestidade é parte da ciência e é o que vale a nota extra.</li></ol><p class="contas-ia"><strong>Recomendação do Professor:</strong> crie uma conta gratuita (marque a que criou): <span class="caixa">( ) Claude (Anthropic)</span> <span class="caixa">( ) Gemini (Google)</span> <span class="caixa">( ) ChatGPT (OpenAI)</span> <span class="caixa">( ) Copilot (Microsoft)</span> <span class="caixa">( ) Perplexity</span></p><div class="campo"><label>Conta(s) gratuita(s) que criei</label><input type="text" data-k="rc-ia-conta" placeholder="ex.: Claude, Gemini"></div><div class="prompt-ia nao-imprime"><div class="prompt-rot"><strong>Meu Perfil</strong> — cole na personalização (instruções personalizadas) da IA, uma vez só:</div><p class="prompt-txt">Sou estudante do 2.º período da Licenciatura em Física do IFMG campus Ouro Preto e curso a Introdução ao Laboratório. Estou me formando para dar aulas de Física na Educação Básica. Quando eu pedir ajuda, não me dê a resposta pronta: faça perguntas que me levem a pensar, aponte o passo em que errei e deixe que eu corrija sozinho. Responda em português do Brasil, com as grandezas nas unidades do SI e a linguagem da Física com rigor. Quando eu acertar, diga o ponto forte do meu raciocínio.</p><button class="acao-btn s-copiar" type="button">Copiar o perfil</button></div><div class="prompt-ia nao-imprime"><p class="prompt-txt">Escrevi o Relatório Completo (RC) da T0E da ILB, O Número π (pi): a Tabela 2 (régua em mm), o ajuste C = a·D + b com u(a) e u(b), π = a ± u(a) e a decisão |a − 3,14159| ≤ 2u(a), o que o b diz sobre a medida, os dois métodos (a média e a declividade), a minha tomada de posição e as recomendações e melhorias, pelos 5 passos da Resolução Científica do Problema (1 O que a questão quer?; 2 O que eu tenho?; 3 Qual é o desenho?; 4 Minha solução; 5 Confiro e respondo). Vou te mandar o texto ou a foto. Não reescreva o relatório nem refaça as contas por mim. Diga em que seção e em que passo está o primeiro erro, faça uma pergunta que me ajude a corrigir sozinho e, no fim, me diga um ponto forte do meu raciocínio.</p><button class="acao-btn s-copiar" type="button">Copiar o prompt</button></div><div class="campo"><label>Usei IA? não · sim — qual e para quê</label><input type="text" data-k="rc-ia" placeholder="não"></div></section>
+<section class="bloco"><div class="bloco-tit rc-sec">Seção 1 &middot; Introdução e Objetivo</div><div class="bloco-dica nao-imprime">Introdução e objetivo, em 3 a 5 linhas: o que se mede nesta trilha e por quê; depois o objetivo, que é a pergunta, não o assunto: "o perímetro de um disco é π vezes o seu diâmetro, dentro da incerteza da bancada?" é objetivo; "estudar o número π" não é.</div><div class="campo"><label>Introdução e objetivo</label><textarea data-k="s1" placeholder=""></textarea></div></section>
+<section class="bloco"><div class="bloco-tit rc-sec">Seção 2 &middot; Materiais e Procedimentos</div><div class="bloco-dica nao-imprime">Os materiais e como cada medida foi feita, na ordem da bancada: cinco discos de acrílico com D impresso (90,0 a 150,0 mm); régua graduada de 0,0 a 500,0 mm (menor divisão 1 mm, duvidoso no décimo de mm: 1 casa); tira de papel e tesoura; escolha a estação para começar; com o ponto A no início da tira, 1 volta sem escorregar; segura-se o disco com uma mão e com a outra marca-se na tira o tamanho de C, repete-se uma volta completa do disco mais 2 vezes; corta-se a tira na média dos 3 traços. Avançar para outra estação repetindo os mesmos procedimentos. Encerra-se esta etapa de marcação de C ao passar pelas cinco estações. Mede-se com a régua os tamanhos de C de cada tira de papel. Finalizar com a fotografia das tiras reunidas em pé na base de uma cartolina e o barbante passando pelo centro da extremidade superior de cada tira. Outra pessoa tem que conseguir repetir lendo só isto.</div><div class="campo"><label>Materiais e procedimentos</label><textarea data-k="s2" placeholder=""></textarea></div></section>
+<section class="bloco"><div class="bloco-tit rc-sec">Seção 3 &middot; Dados Brutos e Análises</div><div class="bloco-dica nao-imprime">A Tabela 2 do Roteiro de Bancada (RB), em mm (se você já fez o RM neste aparelho, traga a Tabela 2 de lá com o botão). Depois a análise: o ajuste C = a·D + b por mínimos quadrados (a página dá a, b, u(a) e u(b) e desenha o gráfico) e π = a ± u(a), arredondados juntos.</div><div class="tab-rotulo">Tabela 2 do RB — régua graduada em mm (anote em mm, com 1 casa decimal)</div><table class="tab-dados"><thead><tr><th>#</th><th>Diâmetro D (mm), impresso</th><th>Comprimento C (mm)</th><th>π<sub>exp</sub> = C/D</th></tr></thead><tbody><tr><td class="n">1</td><td><input type="text" inputmode="decimal" data-k="d-mm-1-D" placeholder="90,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-1-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-1-CD" placeholder="C/D"></td></tr><tr><td class="n">2</td><td><input type="text" inputmode="decimal" data-k="d-mm-2-D" placeholder="105,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-2-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-2-CD" placeholder="C/D"></td></tr><tr><td class="n">3</td><td><input type="text" inputmode="decimal" data-k="d-mm-3-D" placeholder="120,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-3-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-3-CD" placeholder="C/D"></td></tr><tr><td class="n">4</td><td><input type="text" inputmode="decimal" data-k="d-mm-4-D" placeholder="135,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-4-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-4-CD" placeholder="C/D"></td></tr><tr><td class="n">5</td><td><input type="text" inputmode="decimal" data-k="d-mm-5-D" placeholder="150,0"></td><td><input type="text" inputmode="decimal" data-k="d-mm-5-C" placeholder="mm"></td><td><input type="text" inputmode="decimal" data-k="d-mm-5-CD" placeholder="C/D"></td></tr></tbody></table><div class="ajuste"><div class="tab-rotulo">Ajuste C = a·D + b — régua graduada em mm</div><button class="acao-btn nao-imprime" type="button" data-ajuste="mm">Calcular o ajuste e desenhar o gráfico</button><div class="ajuste-res" id="res-mm"></div></div><div class="campo"><label>Comentário dos dados (opcional)</label><textarea data-k="s3" placeholder=""></textarea></div></section>
+<section class="bloco"><div class="bloco-tit rc-sec">Seção 4 &middot; Discussão e Tomada de Decisão</div><div class="bloco-sub">(a) π medido ± incerteza e a decisão</div><div class="bloco-dica nao-imprime"><b>(a) A decisão.</b> A diferença |a − 3,14159| cabe em 2u(a)? Escreva a decisão. Compare com o π̄ que o RB e o RM deram pela média dos C/D. E o b: deveria ser zero? Ele cabe em 2u(b)? Se não, o que um b diferente de zero diz sobre como C ou D foram medidos?</div><div class="campo"><label>π medido ± incerteza e a decisão</label><textarea data-k="s4" placeholder=""></textarea></div></section>
+<section class="bloco"><div class="bloco-sub">(b) Os dois métodos: a média e a declividade</div><div class="bloco-dica nao-imprime">A média dos C/D (RB e RM) e a declividade da reta, traçada à mão (RB e RM) ou por mínimos quadrados (Seção 3), mediram o mesmo π com os mesmos discos. Qual deu a incerteza menor, e por quê? O que cada método usa das medidas?</div><div class="campo"><label>Os dois métodos: a média e a declividade</label><textarea data-k="s5" placeholder=""></textarea></div></section>
+<section class="bloco"><div class="bloco-sub">(c) Tomada de posição</div><div class="bloco-dica nao-imprime">Um parágrafo: com quantos algarismos de π a conta da sua bancada precisa, pela regra do Texto Temático (π com um algarismo significativo a mais que o π̄ da bancada), e o que acontece com a decisão se o π tiver menos? Depois, por que o Gráfico 1 do RB (1 cm = 25 mm em C) e o do RM (1 cm = 50 mm) desenham a mesma reta com ângulos diferentes, mas com a mesma declividade.</div><div class="campo"><label>Tomada de posição</label><textarea data-k="s6" placeholder=""></textarea></div></section>
+<section class="bloco"><div class="bloco-tit rc-sec">Seção 5 &middot; Recomendações e Melhorias</div><div class="bloco-dica nao-imprime">Qual foi a maior fonte de incerteza da sua bancada: o disco escorregar, o corte da tira na média dos 3 traços, a leitura da régua ou o D impresso? Justifique com os seus dados e proponha uma mudança concreta no procedimento que a reduziria, dizendo qual incerteza cairia.</div><div class="campo"><label>Recomendações e melhorias</label><textarea data-k="s8" placeholder=""></textarea></div></section>
+<details class="bloco rubrica-bloco rc-dobra"><summary>Rubrica <span class="rc-dica">(clique para abrir)</span></summary><div class="bloco-tit">Rubrica desta Trilha de Aprendizagem — a T0E vale ___ no SUAP</div><table class="rubrica faixa"><thead><tr><th>Pré-Lab · Folha de Atividades (FA)</th><th>Lab · Roteiro de Bancada (RB)</th><th>Pós-Lab · Relatório Mínimo (RM)</th><th class="destaque">Pós-Lab · Relatório Completo (RC)</th><th>Uso de Tecnologias (IA)</th><th class="pts">Total</th></tr></thead><tbody><tr><td data-rot="Pré-Lab · Folha de Atividades (FA)"><b>___</b> (20 %)</td><td data-rot="Lab · Roteiro de Bancada (RB)"><b>___</b> (40 %)</td><td data-rot="Pós-Lab · Relatório Mínimo (RM)"><b>___</b> (15 %)</td><td data-rot="Pós-Lab · Relatório Completo (RC)" class="destaque"><b>___</b> (25 %)</td><td data-rot="Uso de Tecnologias (IA)"><b>___</b> (20 %) Extra</td><td data-rot="Total" class="pts"><b>___</b> (100 %)</td></tr></tbody></table><div class="bloco-tit">Como o RC é corrigido (25 pontos = 25 % desta trilha)</div><table class="rubrica"><thead><tr><th>Critério</th><th>O que se avalia</th><th>Pontos</th></tr></thead><tbody><tr><td><strong>Dados e gráfico</strong></td><td>A Tabela 2 completa, D e C em mm com 1 casa · o gráfico C × D com a reta ajustada</td><td class="pts">5</td></tr><tr><td><strong>Ajuste e incertezas</strong></td><td>a, b, u(a) e u(b), arredondados juntos (incerteza com 1 ou 2 algarismos) e com unidade</td><td class="pts">6</td></tr><tr><td><strong>π e a decisão</strong></td><td>π = a ± u(a) · |a − 3,14159| contra 2u(a) e a decisão · comparação com o π̄ do RB e do RM · o que b diz sobre a medida</td><td class="pts">6</td></tr><tr><td><strong>Os dois métodos</strong></td><td>Média × declividade (à mão e por mínimos quadrados): qual dá a menor incerteza, e por quê</td><td class="pts">2</td></tr><tr><td><strong>Tomada de posição</strong></td><td>Com quantos algarismos de π a bancada precisa · por que a escala dos eixos muda o ângulo desenhado e não a declividade</td><td class="pts">2</td></tr><tr><td><strong>Recomendações e melhorias</strong></td><td>A maior fonte de incerteza, justificada pelos dados · uma mudança concreta no procedimento e a incerteza que ela reduz</td><td class="pts">2</td></tr><tr><td><strong>Estrutura e redação</strong></td><td>As cinco seções na ordem · linguagem da comunicação em Física · referências em ABNT</td><td class="pts">2</td></tr><tr class="total"><td>Total</td><td></td><td class="pts">25</td></tr></tbody></table></details>
+<details class="bloco rc-dobra" id="rcIA"><summary>Uso de Tecnologias <span class="rc-dica">(clique para abrir)</span></summary><div class="bloco-sub">Referências</div><div class="bloco-dica nao-imprime">As obras consultadas, em ABNT: o Texto Temático, o Roteiro de Bancada e o que mais você usou. O uso de inteligência artificial se declara logo abaixo.</div><div class="campo"><label>Referências</label><textarea data-k="s7" placeholder=""></textarea></div><div class="bloco-sub">Inteligência artificial (IA)</div><div class="bloco-dica nao-imprime">Depois de terminar as cinco seções: copie o prompt, cole na inteligência artificial que você usa e mande o seu RC. Ela aponta a seção e o passo do primeiro erro sem resolver por você. Vale nota extra até completar o valor da trilha no SUAP; diga abaixo se usou.</div><ol class="dicas-ia"><li><strong>Dica 1.</strong> Peça perguntas, não respostas: a IA aponta o passo do erro e quem corrige é você.</li><li><strong>Dica 2.</strong> Confira tudo o que ela disser contra a sua medida, a sua conta e a unidade: a IA erra com a mesma segurança com que acerta.</li><li><strong>Dica 3.</strong> Declare o uso, qual IA e para quê: registrar o método com honestidade é parte da ciência e é o que vale a nota extra.</li></ol><p class="contas-ia"><strong>Recomendação do Professor:</strong> crie uma conta gratuita (marque a que criou): <span class="caixa">( ) Claude (Anthropic)</span> <span class="caixa">( ) Gemini (Google)</span> <span class="caixa">( ) ChatGPT (OpenAI)</span> <span class="caixa">( ) Copilot (Microsoft)</span> <span class="caixa">( ) Perplexity</span></p><div class="campo"><label>Conta(s) gratuita(s) que criei</label><input type="text" data-k="rc-ia-conta" placeholder="ex.: Claude, Gemini"></div><div class="prompt-ia nao-imprime"><div class="prompt-rot"><strong>Meu Perfil</strong> — cole na personalização (instruções personalizadas) da IA, uma vez só:</div><p class="prompt-txt">Sou estudante do 2.º período da Licenciatura em Física do IFMG campus Ouro Preto e curso a Introdução ao Laboratório. Estou me formando para dar aulas de Física na Educação Básica. Quando eu pedir ajuda, não me dê a resposta pronta: faça perguntas que me levem a pensar, aponte o passo em que errei e deixe que eu corrija sozinho. Responda em português do Brasil, com as grandezas nas unidades do SI e a linguagem da Física com rigor. Quando eu acertar, diga o ponto forte do meu raciocínio.</p><button class="acao-btn s-copiar" type="button">Copiar o perfil</button></div><div class="prompt-ia nao-imprime"><p class="prompt-txt">Escrevi o Relatório Completo (RC) da T0E da ILB, O Número π (pi): a Tabela 2 (régua em mm), o ajuste C = a·D + b com u(a) e u(b), π = a ± u(a) e a decisão |a − 3,14159| ≤ 2u(a), o que o b diz sobre a medida, os dois métodos (a média e a declividade), a minha tomada de posição e as recomendações e melhorias, pelos 5 passos da Resolução Científica do Problema (1 O que a questão quer?; 2 O que eu tenho?; 3 Qual é o desenho?; 4 Minha solução; 5 Confiro e respondo). Vou te mandar o texto ou a foto. Não reescreva o relatório nem refaça as contas por mim. Diga em que seção e em que passo está o primeiro erro, faça uma pergunta que me ajude a corrigir sozinho e, no fim, me diga um ponto forte do meu raciocínio.</p><button class="acao-btn s-copiar" type="button">Copiar o prompt</button></div><div class="campo"><label>Usei IA? não · sim — qual e para quê</label><input type="text" data-k="rc-ia" placeholder="não"></div></details>
 
-<div class="acoes nao-imprime">
-  <button class="acao-btn forte" id="pdf" type="button">Gerar o PDF para entregar</button>
-</div>
-
-<section class="bloco rubrica-bloco"><div class="bloco-num">Rubrica</div><div class="bloco-tit">Rubrica desta Trilha de Aprendizagem — a T0E vale ___ no SUAP</div><table class="rubrica faixa"><thead><tr><th>Pré-Lab · Folha de Atividades (FA)</th><th>Lab · Roteiro de Bancada (RB)</th><th>Pós-Lab · Relatório Mínimo (RM)</th><th class="destaque">Pós-Lab · Relatório Completo (RC)</th><th>Uso de Tecnologias (IA)</th><th class="pts">Total</th></tr></thead><tbody><tr><td data-rot="Pré-Lab · Folha de Atividades (FA)"><b>___</b> (20 %)</td><td data-rot="Lab · Roteiro de Bancada (RB)"><b>___</b> (40 %)</td><td data-rot="Pós-Lab · Relatório Mínimo (RM)"><b>___</b> (15 %)</td><td data-rot="Pós-Lab · Relatório Completo (RC)" class="destaque"><b>___</b> (25 %)</td><td data-rot="Uso de Tecnologias (IA)"><b>___</b> (20 %) Extra</td><td data-rot="Total" class="pts"><b>___</b> (100 %)</td></tr></tbody></table><div class="bloco-tit">Como o RC é corrigido (25 pontos = 25 % desta trilha)</div><table class="rubrica"><thead><tr><th>Critério</th><th>O que se avalia</th><th>Pontos</th></tr></thead><tbody><tr><td><strong>Dados e gráfico</strong></td><td>A Tabela 2 completa, D e C em mm com 1 casa · o gráfico C × D com a reta ajustada</td><td class="pts">5</td></tr><tr><td><strong>Ajuste e incertezas</strong></td><td>a, b, u(a) e u(b), arredondados juntos (incerteza com 1 ou 2 algarismos) e com unidade</td><td class="pts">6</td></tr><tr><td><strong>π e a decisão</strong></td><td>π = a ± u(a) · |a − 3,14159| contra 2u(a) e a decisão · comparação com o π̄ do RB e do RM · o que b diz sobre a medida</td><td class="pts">6</td></tr><tr><td><strong>Os dois métodos</strong></td><td>Média × declividade (à mão e por mínimos quadrados): qual dá a menor incerteza, e por quê</td><td class="pts">2</td></tr><tr><td><strong>Tomada de posição</strong></td><td>Com quantos algarismos de π a bancada precisa · por que a escala dos eixos muda o ângulo desenhado e não a declividade</td><td class="pts">2</td></tr><tr><td><strong>Recomendações e melhorias</strong></td><td>A maior fonte de incerteza, justificada pelos dados · uma mudança concreta no procedimento e a incerteza que ela reduz</td><td class="pts">2</td></tr><tr><td><strong>Estrutura e redação</strong></td><td>As cinco seções na ordem · linguagem da comunicação em Física · referências em ABNT</td><td class="pts">2</td></tr><tr class="total"><td>Total</td><td></td><td class="pts">25</td></tr></tbody></table></section>
-
-<div class="encerramento"><div class="fecho-acao">A devolutiva vem comentada no encontro de fechamento</div><div class="fecho-links"><a class="fecho-btn" href="../rb/">Roteiro de Bancada</a><a class="fecho-btn secundario" href="../../">Todas as trilhas</a></div>
-</div>
+<nav class="rc-nav nao-imprime" aria-label="Navegação"><button class="rc-nav-btn forte" id="pdf" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6"/><path d="M9.5 14.5 12 17l2.5-2.5"/></svg><span>Gerar PDF</span></button><a class="rc-nav-btn" href="../rb/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6.5L5 18a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-8.5V3"/><path d="M7.5 14h9"/></svg><span>Roteiro de Bancada</span></a><a class="rc-nav-btn" href="../../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg><span>Todas as Trilhas</span></a></nav>
 
 <!-- RODAPE-ILB:INICIO --><div class="ilb-rodape"><div class="ilb-inst-marcas"><a href="https://ouropreto.ifmg.edu.br/ouropreto" target="_blank" rel="noopener" title="IFMG — Campus Ouro Preto (abre em nova aba)"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="-36.75 -4 258.5 258.5" role="img" aria-label="Instituto Federal de Minas Gerais"> <title>Instituto Federal de Minas Gerais</title> <circle cx="27" cy="27" r="30" fill="#C8191E"/> <g fill="#32A041"> <rect x="65.5" y="0" width="54" height="54"/> <rect x="131" y="0" width="54" height="54"/> <rect x="0" y="65.5" width="54" height="54"/> <rect x="65.5" y="65.5" width="54" height="54"/> <rect x="0" y="131" width="54" height="54"/> <rect x="65.5" y="131" width="54" height="54"/> <rect x="131" y="131" width="54" height="54"/> <rect x="0" y="196.5" width="54" height="54"/> <rect x="65.5" y="196.5" width="54" height="54"/> </g> </svg></a><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos"> <title>NIDEC — Núcleo de Inovação e Desenvolvimento de Experimentos Científicos</title> <defs> <linearGradient id="inst-nidec-o1" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-30 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o2" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-90 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <linearGradient id="inst-nidec-o3" gradientUnits="userSpaceOnUse" x1="8" y1="100" x2="192" y2="100" gradientTransform="rotate(-150 100 100)"> <stop offset="0" stop-color="#4A1F95"/><stop offset=".38" stop-color="#2C5AA4"/> <stop offset=".70" stop-color="#2CC2A2"/><stop offset="1" stop-color="#2C9E41"/> </linearGradient> <radialGradient id="inst-nidec-nucleo" cx="40%" cy="36%" r="70%"> <stop offset="0" stop-color="#A0EBE1"/> <stop offset=".45" stop-color="#2CC8C2"/> <stop offset="1" stop-color="#1E5DA5"/> </radialGradient> </defs> <g fill="none" stroke-width="8"> <g transform="rotate(30 100 100)" stroke="url(#inst-nidec-o1)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o1)" stroke="none"/> </g> <g transform="rotate(90 100 100)" stroke="url(#inst-nidec-o2)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="12" cy="100" r="8" fill="url(#inst-nidec-o2)" stroke="none"/> </g> <g transform="rotate(150 100 100)" stroke="url(#inst-nidec-o3)"> <ellipse cx="100" cy="100" rx="88" ry="31"/> <circle cx="188" cy="100" r="8" fill="url(#inst-nidec-o3)" stroke="none"/> </g> </g> <circle cx="100" cy="100" r="23" fill="url(#inst-nidec-nucleo)"/> </svg></div><div class="ilb-agr-marca"><a href="https://nidecop-jafb.github.io/ilb-oa/agradecimentos/" title="Agradecimentos &middot; F&iacute;sica e Poesia"><svg class="ilb-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Agradecimentos — Física e Poesia"> <g fill="none" stroke="#7FB2D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"> <path d="M 60 44 C 46 36 28 36 12 40 L 12 104 C 28 100 46 100 60 108 C 74 100 92 100 108 104 L 108 40 C 92 36 74 36 60 44 Z"/> <line x1="60" y1="44" x2="60" y2="108"/> </g> <g stroke="#7FB2D6" stroke-width="2" stroke-linecap="round" opacity=".7"> <line x1="22" y1="58" x2="50" y2="56"/><line x1="22" y1="70" x2="50" y2="68"/><line x1="22" y1="82" x2="44" y2="81"/> </g> <path d="M 68 70 C 72 62 76 62 80 70 S 88 78 92 70 S 98 62 100 66" fill="none" stroke="#3E8E5A" stroke-width="2.5" stroke-linecap="round"/> <path d="M 104 8 C 86 12 72 24 66 44 C 80 40 94 28 104 8 Z" fill="none" stroke="#3E8E5A" stroke-width="3" stroke-linejoin="round"/> <line x1="100" y1="13" x2="62" y2="56" stroke="#3E8E5A" stroke-width="3" stroke-linecap="round"/> </svg></a></div><div class="ilb-rodape-texto">IFMG campus Ouro Preto - Coordenadoria da Área de Física (CODAFIS) - Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) &middot; Primeira edição &middot; 2026</div><div class="ilb-rodape-selo"><span id="seloAcessos" data-escopo="pagina" style="display:none;"></span></div></div><!-- RODAPE-ILB:FIM -->
+<div class="rc-fechamento">Introdução ao Laboratório (ILB) &middot; T0E &middot; Relatório Completo v9 &middot; IFMG &mdash; Campus Ouro Preto &middot; NIDEC/CODAFIS</div>
 
 </main>
 
@@ -548,7 +868,7 @@ body h2:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-m
 })();
 </script>
 <script>
-/* RC v8: [ ] Medicoes individuais / [ ] Medicoes em equipe (uma so marcada, lembrada neste aparelho) */
+/* RC v9: [ ] Medicoes individuais / [ ] Medicoes em equipe (uma so marcada, lembrada neste aparelho) */
 (function () {
   var K = 'ILB-T0E-RC-v1-modo', cx = document.querySelectorAll('input[data-modo]'), v = '';
   try { v = localStorage.getItem(K) || ''; } catch (e) {}
@@ -559,6 +879,27 @@ body h2:not(:is(header, footer, nav, aside, table, figcaption, .ilb-topo, .ilb-m
       try { localStorage.setItem(K, c.checked ? c.dataset.modo : ''); } catch (e) {}
     });
   });
+})();
+</script>
+<script>
+/* RC v9: contador do cabecalho (copia o numero do selo do rodape, preenchido pelo acessos.js)
+   e Uso de Tecnologias aberto na impressao (o que se digitou la sai no PDF). */
+(function () {
+  var s = document.getElementById('seloAcessos'), b = document.getElementById('rcAcessos');
+  if (s && b) {
+    var f = function () {
+      var m = (s.textContent || '').match(/\d[\d.]*/);
+      if (!m) return;
+      document.getElementById('rcAcNum').textContent = m[0];
+      document.getElementById('rcAcRot').textContent = m[0] === '1' ? 'acesso' : 'acessos';
+      b.hidden = false;
+    };
+    f();
+    new MutationObserver(f).observe(s, { childList: true, characterData: true, subtree: true });
+  }
+  var ia = document.getElementById('rcIA'), aberto = false;
+  window.addEventListener('beforeprint', function () { if (ia) { aberto = ia.open; ia.open = true; } });
+  window.addEventListener('afterprint', function () { if (ia) ia.open = aberto; });
 })();
 </script>
 <!-- ABAS-OA-ILB (trilho de 8 abas — abas_oa_ilb.py) -->
